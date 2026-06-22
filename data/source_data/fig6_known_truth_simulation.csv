@@ -1,0 +1,28 @@
+﻿dataset_id,method,family,seed,metric,value,threshold,support,n_cells,n_unit,analysis_axis,simulation_replicate,simulation_definition
+known_truth_count_simulation,PCA,factor,0,local_retention,0.078375,0.3,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PCA,factor,0,trustworthiness,0.8772839515958571,0.9,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PCA,factor,0,global_rank_corr,0.9345933050774998,0.45,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PCA,factor,0,label_neighbor_recall,0.9925416666666667,0.55,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PCA,factor,0,latent_distance_corr,0.9696262438817227,0.45,pass,1600,simulation cells generated from one known-truth replicate,known_truth_simulation,0,"realistic count-like simulation with known latent geometry, batch labels and rare state"
+known_truth_count_simulation,UMAP,graph,0,local_retention,0.09875,0.3,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,UMAP,graph,0,trustworthiness,0.8775655781018812,0.9,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,UMAP,graph,0,global_rank_corr,0.8767705710081827,0.45,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,UMAP,graph,0,label_neighbor_recall,0.9873750000000001,0.55,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,UMAP,graph,0,latent_distance_corr,0.8959899636957188,0.45,pass,1600,simulation cells generated from one known-truth replicate,known_truth_simulation,0,"realistic count-like simulation with known latent geometry, batch labels and rare state"
+known_truth_count_simulation,PHATE,graph,0,local_retention,0.0745,0.3,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PHATE,graph,0,trustworthiness,0.8711881473261467,0.9,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PHATE,graph,0,global_rank_corr,0.9108792072525845,0.45,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PHATE,graph,0,label_neighbor_recall,0.9894583333333332,0.55,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PHATE,graph,0,latent_distance_corr,0.9294381064256392,0.45,pass,1600,simulation cells generated from one known-truth replicate,known_truth_simulation,0,"realistic count-like simulation with known latent geometry, batch labels and rare state"
+known_truth_count_simulation,t-SNE,relational,0,local_retention,0.15983333333333333,0.3,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,t-SNE,relational,0,trustworthiness,0.9077770291693088,0.9,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,t-SNE,relational,0,global_rank_corr,0.8648900037333505,0.45,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,t-SNE,relational,0,label_neighbor_recall,0.9823333333333332,0.55,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,t-SNE,relational,0,latent_distance_corr,0.875673487277489,0.45,pass,1600,simulation cells generated from one known-truth replicate,known_truth_simulation,0,"realistic count-like simulation with known latent geometry, batch labels and rare state"
+known_truth_count_simulation,PaCMAP,relational,0,local_retention,0.09654166666666666,0.3,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PaCMAP,relational,0,trustworthiness,0.8796886493341788,0.9,below_threshold,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PaCMAP,relational,0,global_rank_corr,0.8916234592671042,0.45,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PaCMAP,relational,0,label_neighbor_recall,0.985,0.55,pass,1600,method-dataset-condition run; cells compute metrics and are not independent replicates,known_truth_simulation,0,
+known_truth_count_simulation,PaCMAP,relational,0,latent_distance_corr,0.9159661312040904,0.45,pass,1600,simulation cells generated from one known-truth replicate,known_truth_simulation,0,"realistic count-like simulation with known latent geometry, batch labels and rare state"
+
+

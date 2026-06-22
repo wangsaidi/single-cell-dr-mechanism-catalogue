@@ -1,0 +1,91 @@
+﻿dataset_id,method,family,claim_gate,support,components,source_data,support_definition
+heart_cell_atlas_subsampled,GLM-PCA,factor,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,GLM-PCA,factor,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,PCA,factor,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,PCA,factor,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,PHATE,graph,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,PHATE,graph,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,PaCMAP,relational,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,PaCMAP,relational,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,SAUCIE,deep,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,SAUCIE,deep,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,UMAP,graph,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,UMAP,graph,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,scScope,deep,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,scScope,deep,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,t-SNE,relational,local_neighbourhood_gate,pass,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+heart_cell_atlas_subsampled,t-SNE,relational,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,GLM-PCA,factor,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,GLM-PCA,factor,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,PCA,factor,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,PCA,factor,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,PHATE,graph,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,PHATE,graph,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,PaCMAP,relational,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,PaCMAP,relational,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,SAUCIE,deep,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,SAUCIE,deep,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,UMAP,graph,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,UMAP,graph,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,scScope,deep,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,scScope,deep,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+paul15,t-SNE,relational,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+paul15,t-SNE,relational,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,GLM-PCA,factor,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,GLM-PCA,factor,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,PCA,factor,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,PCA,factor,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,PHATE,graph,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,PHATE,graph,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,PaCMAP,relational,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,PaCMAP,relational,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,SAUCIE,deep,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,SAUCIE,deep,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,UMAP,graph,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,UMAP,graph,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,scScope,deep,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,scScope,deep,label_support_gate,below_threshold,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+pbmc3k,t-SNE,relational,local_neighbourhood_gate,below_threshold,local_retention;trustworthiness,fig4_local_gate_metrics.csv,All listed predeclared components pass the Fig4 diagnostic thresholds.
+pbmc3k,t-SNE,relational,label_support_gate,pass,label_neighbor_recall,fig4_local_gate_metrics.csv,Label-neighbour recall passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,GLM-PCA,factor,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,PCA,factor,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,PHATE,graph,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,PaCMAP,relational,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,SAUCIE,deep,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,UMAP,graph,global_geometry_gate,below_threshold,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,scScope,deep,global_geometry_gate,below_threshold,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+heart_cell_atlas_subsampled,t-SNE,relational,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,GLM-PCA,factor,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,PCA,factor,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,PHATE,graph,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,PaCMAP,relational,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,SAUCIE,deep,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,UMAP,graph,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,scScope,deep,global_geometry_gate,below_threshold,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,t-SNE,relational,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,GLM-PCA,factor,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,PCA,factor,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,PHATE,graph,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,PaCMAP,relational,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,SAUCIE,deep,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,UMAP,graph,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,scScope,deep,global_geometry_gate,below_threshold,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+pbmc3k,t-SNE,relational,global_geometry_gate,pass,global_rank_corr,fig4_global_gate_metrics.csv,Global rank correlation passes the Fig4 diagnostic threshold.
+paul15,GLM-PCA,factor,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,PCA,factor,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,PHATE,graph,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,PaCMAP,relational,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,SAUCIE,deep,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,UMAP,graph,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,scScope,deep,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+paul15,t-SNE,relational,continuum_gate,below_threshold,pseudotime_rank_corr;pseudotime_neighborhood_retention,fig4_paul15_continuum_metrics.csv,Both Paul15 pseudotime diagnostic components pass the Fig4 continuum thresholds.
+heart_cell_atlas_subsampled,GLM-PCA,factor,donor_aware_gate,pass,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,PCA,factor,donor_aware_gate,pass,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,PHATE,graph,donor_aware_gate,pass,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,PaCMAP,relational,donor_aware_gate,below_threshold,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,SAUCIE,deep,donor_aware_gate,pass,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,UMAP,graph,donor_aware_gate,below_threshold,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,scScope,deep,donor_aware_gate,below_threshold,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+heart_cell_atlas_subsampled,t-SNE,relational,donor_aware_gate,below_threshold,cell_type_label_recall;donor_entropy_norm,fig4_heart_donor_gate_metrics.csv,Both heart atlas cell-type conservation and donor-mixing diagnostic components pass thresholds.
+
+

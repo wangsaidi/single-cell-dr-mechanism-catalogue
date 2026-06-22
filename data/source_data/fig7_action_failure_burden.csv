@@ -1,0 +1,12 @@
+﻿action_category,failed_cases,n_cases,weighted_failure_fraction
+global geometry check,3.9999999999999982,24,0.1666666666666666
+dimension sensitivity,97.0,240,0.4041666666666667
+upstream PCA sensitivity,66.0,144,0.4583333333333333
+dropout / noise sensitivity,92.0,192,0.4791666666666667
+mechanism simulation,112.0,224,0.5
+donor-aware evidence,4.0,8,0.5
+local / marker support,33.0,48,0.6875
+robustness stress test,531.0,531,1.0
+trajectory evidence,8.0,8,1.0
+
+

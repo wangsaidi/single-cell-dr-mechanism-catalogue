@@ -1,0 +1,59 @@
+﻿dataset_id,program,group,genes_present,genes_missing,mean_score,fraction_detected,z_score,score_definition
+pbmc3k,T cells (CD4/CD8),B cells,CD3D;CD3E;IL7R,,0.07407452166080475,0.0935672514619883,-0.7056825859660621,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),CD14+ Monocytes,CD3D;CD3E;IL7R,,0.07489194720983505,0.10069444444444443,-0.7031721744574503,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),CD4 T cells,CD3D;CD3E;IL7R,,0.885352611541748,0.7660256410256411,1.7858493412385443,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),CD8 T cells,CD3D;CD3E;IL7R,,0.8386778831481934,0.70042194092827,1.6425056746997242,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),Dendritic cells,CD3D;CD3E;IL7R,,0.15918564796447754,0.20720720720720723,-0.4442961499326863,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),FCGR3A+ Monocytes,CD3D;CD3E;IL7R,,0.08268430083990097,0.10888888888888888,-0.6792409256051275,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),Megakaryocytes,CD3D;CD3E;IL7R,,0.10142996162176132,0.13333333333333333,-0.6216707620359296,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,T cells (CD4/CD8),NK cells,CD3D;CD3E;IL7R,,0.2145412713289261,0.22294372294372297,-0.2742924179410126,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,B cells,MS4A1;CD79A;CD79B,,1.2442373037338257,0.9035087719298246,2.6135447815472754,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,CD14+ Monocytes,MS4A1;CD79A;CD79B,,0.04279553145170212,0.05972222222222222,-0.49521437497030324,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,CD4 T cells,MS4A1;CD79A;CD79B,,0.04790420085191727,0.06643356643356643,-0.4819955714111652,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,CD8 T cells,MS4A1;CD79A;CD79B,,0.05210643634200096,0.06751054852320675,-0.47112218714983195,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,Dendritic cells,MS4A1;CD79A;CD79B,,0.11912649869918823,0.13513513513513514,-0.2977061820382998,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,FCGR3A+ Monocytes,MS4A1;CD79A;CD79B,,0.23627986013889313,0.24444444444444438,0.0054309266379698184,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,Megakaryocytes,MS4A1;CD79A;CD79B,,0.06161308288574219,0.06666666666666667,-0.4465235131462683,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,B cells,NK cells,MS4A1;CD79A;CD79B,,0.0693848505616188,0.08441558441558442,-0.4264138794693768,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,B cells,CD14;LYZ;S100A8,,0.1497316211462021,0.1705653021442495,-0.7345250366212142,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,CD14+ Monocytes,CD14;LYZ;S100A8,,2.268422842025757,0.8791666666666665,2.0054837407131756,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,CD4 T cells,CD14;LYZ;S100A8,,0.17354626953601837,0.20629370629370627,-0.7037266149474132,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,CD8 T cells,CD14;LYZ;S100A8,,0.13376423716545105,0.16561181434599154,-0.7551749415375916,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,Dendritic cells,CD14;LYZ;S100A8,,1.6264448165893555,0.5675675675675674,1.1752422183920055,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,FCGR3A+ Monocytes,CD14;LYZ;S100A8,,0.9725370407104492,0.54,0.32957248236902836,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,Megakaryocytes,CD14;LYZ;S100A8,,0.2779426872730255,0.26666666666666666,-0.5687153881566978,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,CD14+ Monocytes,NK cells,CD14;LYZ;S100A8,,0.13919122517108917,0.17532467532467533,-0.7481564602112926,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,B cells,FCGR3A;MS4A7,,0.037839196622371674,0.049707602339181284,-0.6281162824596633,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,CD14+ Monocytes,FCGR3A;MS4A7,,0.18458452820777893,0.20833333333333334,-0.324943583865881,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,CD4 T cells,FCGR3A;MS4A7,,0.02816515788435936,0.035402097902097904,-0.6481026384058285,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,CD8 T cells,FCGR3A;MS4A7,,0.1059623435139656,0.12025316455696203,-0.48737532629640123,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,Dendritic cells,FCGR3A;MS4A7,,0.1420944780111313,0.1891891891891892,-0.4127271136199815,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,FCGR3A+ Monocytes,FCGR3A;MS4A7,,1.5598368644714355,0.88,2.5162981614621054,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,Megakaryocytes,FCGR3A;MS4A7,,0.13862943649291992,0.06666666666666667,-0.4198858148642812,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,FCGR3A+ Monocytes,NK cells,FCGR3A;MS4A7,,0.5378293395042419,0.4253246753246753,0.4048525980499315,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,B cells,GNLY;NKG7;KLRD1,,0.04020373523235321,0.054580896686159834,-0.5988801523112922,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,CD14+ Monocytes,GNLY;NKG7;KLRD1,,0.09076631814241409,0.11180555555555553,-0.5239088756650713,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,CD4 T cells,GNLY;NKG7;KLRD1,,0.06711637228727341,0.0844988344988345,-0.5589756489849346,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,CD8 T cells,GNLY;NKG7;KLRD1,,0.8309678435325623,0.4567510548523206,0.5736191804607447,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,Dendritic cells,GNLY;NKG7;KLRD1,,0.15093077719211578,0.19819819819819817,-0.4347004918349031,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,FCGR3A+ Monocytes,GNLY;NKG7;KLRD1,,0.13642722368240356,0.15333333333333332,-0.45620552302494427,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,Megakaryocytes,GNLY;NKG7;KLRD1,,0.1258435696363449,0.13333333333333333,-0.47189835376554073,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,NK cells,NK cells,GNLY;NKG7;KLRD1,,2.11057710647583,0.8311688311688312,2.4709498651259416,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,B cells,FCER1A;CST3,,0.07552886754274368,0.09210526315789473,-0.7968828991591809,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,CD14+ Monocytes,FCER1A;CST3,,1.2570362091064453,0.49895833333333334,0.5886058546656737,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,CD4 T cells,FCER1A;CST3,,0.08283630013465881,0.1048951048951049,-0.7883138743894894,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,CD8 T cells,FCER1A;CST3,,0.06526745110750198,0.08702531645569621,-0.8089158985060363,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,Dendritic cells,FCER1A;CST3,,2.553001880645752,0.918918918918919,2.1083136043309576,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,FCGR3A+ Monocytes,FCER1A;CST3,,1.420420527458191,0.5033333333333333,0.7801976693454632,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,Megakaryocytes,FCER1A;CST3,,0.48645293712615967,0.3333333333333333,-0.3150148167059081,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Dendritic cells,NK cells,FCER1A;CST3,,0.10016825795173645,0.1266233766233766,-0.7679896395814798,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,B cells,PPBP,,0.010133731178939342,0.014619883040935672,-0.3863749890399469,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,CD14+ Monocytes,PPBP,,0.04328889027237892,0.05416666666666667,-0.35832683915220753,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,CD4 T cells,PPBP,,0.009694365784525871,0.013986013986013986,-0.3867466773917736,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,CD8 T cells,PPBP,,0.010057132691144943,0.012658227848101266,-0.3864397887853131,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,Dendritic cells,PPBP,,0.018733708187937737,0.02702702702702703,-0.3790996976290476,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,FCGR3A+ Monocytes,PPBP,,0.04891291260719299,0.06,-0.3535691053414815,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,Megakaryocytes,PPBP,,3.5940585136413574,1.0,2.645504882252236,mean log1p marker expression and detection fraction among cells in each PBMC label
+pbmc3k,Megakaryocytes,NK cells,PPBP,,0.0,0.0,-0.3949477849124658,mean log1p marker expression and detection fraction among cells in each PBMC label
+
+

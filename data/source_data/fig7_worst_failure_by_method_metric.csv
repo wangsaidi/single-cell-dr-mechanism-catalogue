@@ -1,0 +1,26 @@
+method,family,metric,worst_value,n_conditions,threshold,support,support_definition,failure_fraction
+PCA,factor,global_rank_corr,0.4930833126535065,28,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+PCA,factor,label_neighbor_recall,0.3432234432234432,28,0.55,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PCA,factor,latent_distance_corr,0.9696262438817228,1,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+PCA,factor,local_retention,0.0371998989133181,28,0.3,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PCA,factor,trustworthiness,0.7270568747882954,28,0.9,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PHATE,graph,global_rank_corr,0.375942271639917,37,0.45,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PHATE,graph,label_neighbor_recall,0.3106227106227106,37,0.55,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PHATE,graph,latent_distance_corr,0.9294381064256392,1,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+PHATE,graph,local_retention,0.0488248673237301,37,0.3,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PHATE,graph,trustworthiness,0.7364627779219342,37,0.9,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PaCMAP,relational,global_rank_corr,0.4622104622744422,37,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+PaCMAP,relational,label_neighbor_recall,0.5151892551892552,37,0.55,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PaCMAP,relational,latent_distance_corr,0.9159661312040904,1,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+PaCMAP,relational,local_retention,0.0679807935304523,37,0.3,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+PaCMAP,relational,trustworthiness,0.7810367086717587,37,0.9,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+UMAP,graph,global_rank_corr,0.3033979130130427,37,0.45,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+UMAP,graph,label_neighbor_recall,0.4429304029304029,37,0.55,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+UMAP,graph,latent_distance_corr,0.8959899636957188,1,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+UMAP,graph,local_retention,0.0693454637351528,37,0.3,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+UMAP,graph,trustworthiness,0.7627857788627361,37,0.9,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+t-SNE,relational,global_rank_corr,0.3972865327708101,10,0.45,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+t-SNE,relational,label_neighbor_recall,0.475921855921856,10,0.55,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+t-SNE,relational,latent_distance_corr,0.875673487277489,1,0.45,pass,"minimum metric value across predeclared dimension, perturbation and simulation conditions",0.0
+t-SNE,relational,local_retention,0.1151377306039929,10,0.3,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0
+t-SNE,relational,trustworthiness,0.8188433016301919,10,0.9,below_threshold,"minimum metric value across predeclared dimension, perturbation and simulation conditions",1.0

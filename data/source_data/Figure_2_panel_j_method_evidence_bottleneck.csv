@@ -1,0 +1,9 @@
+weakest_evidence_layer,minimum_support,mean_support,method,family,source_definition
+biological anchors,0.375,0.5091991342,PCA,factor,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+empirical gates,0.5454545455,0.7115800866,GLM-PCA,factor,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+empirical gates,0,0,scScope,deep,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+empirical gates,0.5454545455,0.5925324675,SAUCIE,deep,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+empirical gates,0.3636363636,0.6331168831,UMAP,graph,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+mechanism simulations,0.5,0.6818181818,PHATE,graph,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+mechanism simulations,0.5,0.6818181818,t-SNE,relational,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"
+empirical gates,0.4545454545,0.6634199134,PaCMAP,relational,"weakest evidence layer per method, computed from empirical, biological-anchor, and simulation support fractions"

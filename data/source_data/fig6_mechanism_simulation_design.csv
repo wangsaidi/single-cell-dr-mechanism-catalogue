@@ -1,0 +1,9 @@
+﻿scenario,scenario_definition,replicate,seed,n_cells,n_genes,n_labels,label_counts,batch_counts,has_pseudotime
+linear_low_rank,Known low-rank count model with discrete biological states and no batch shift.,0,1000,720,320,3,"{""state_A"": 240, ""state_B"": 240, ""state_C"": 240}","{""batch_1"": 720}",False
+nonlinear_manifold,Known curved continuum with pseudotime and smooth nonlinear latent geometry.,0,2000,720,320,3,"{""early"": 238, ""late"": 245, ""middle"": 237}","{""batch_1"": 720}",True
+branching_trajectory,Known Y-shaped branching process with branch labels and pseudotime.,0,3000,720,320,3,"{""branch_A"": 240, ""branch_B"": 240, ""trunk"": 240}","{""batch_1"": 720}",True
+dropout_stress,Linear biological states with elevated zero inflation applied after count generation.,0,4000,720,320,3,"{""state_A"": 240, ""state_B"": 240, ""state_C"": 240}","{""batch_1"": 720}",False
+batch_shift,Discrete biological states with a technical batch shift orthogonal to biology.,0,5000,720,320,3,"{""state_A"": 240, ""state_B"": 240, ""state_C"": 240}","{""batch_1"": 357, ""batch_2"": 363}",False
+rare_population,Discrete biological states with one rare population below 5% abundance.,0,6000,720,320,4,"{""rare_state"": 35, ""state_A"": 260, ""state_B"": 230, ""state_C"": 195}","{""batch_1"": 720}",False
+
+

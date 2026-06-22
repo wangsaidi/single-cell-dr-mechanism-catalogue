@@ -1,0 +1,6 @@
+claim_gate,failure_fraction,n_rows
+local_neighbourhood_gate,0.9583333333333334,24
+label_support_gate,0.4166666666666667,24
+global_geometry_gate,0.16666666666666666,24
+continuum_gate,1.0,8
+donor_aware_gate,0.5,8

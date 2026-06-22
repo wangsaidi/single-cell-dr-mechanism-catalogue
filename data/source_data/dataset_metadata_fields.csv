@@ -1,0 +1,6 @@
+﻿dataset_id,selected_label_field,selected_batch_field,label_candidates,batch_candidates,obs_columns,uns_keys
+pbmc3k,louvain,,,,n_genes;percent_mito;n_counts;louvain,draw_graph;louvain;louvain_colors;neighbors;pca;rank_genes_groups
+paul15,paul15_clusters,,paul15_clusters,,paul15_clusters,iroot
+heart_cell_atlas_subsampled,cell_type,donor,cell_type;type;cell_states,cell_source;donor;sample;source,NRP;age_group;cell_source;cell_type;donor;gender;n_counts;n_genes;percent_mito;percent_ribo;region;sample;scrublet_score;source;type;version;cell_states;Used,cell_type_colors
+
+

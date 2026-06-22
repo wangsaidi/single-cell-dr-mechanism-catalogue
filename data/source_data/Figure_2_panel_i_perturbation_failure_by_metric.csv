@@ -1,0 +1,9 @@
+metric,perturbation,failure_fraction,n_rows,source_definition
+global_rank_corr,dropout,0.25,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+global_rank_corr,noise,0,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+label_neighbor_recall,dropout,0,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+label_neighbor_recall,noise,0,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+local_retention,dropout,1,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+local_retention,noise,1,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+trustworthiness,dropout,1,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold
+trustworthiness,noise,0.5833333333,24,fraction of dropout or noise stress rows falling below the predeclared metric threshold

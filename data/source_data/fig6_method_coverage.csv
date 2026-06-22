@@ -1,0 +1,11 @@
+﻿method,family,output_dimension_response,upstream_pca_response,dropout_noise_response,known_truth_simulation,coverage_note
+PCA,factor,True,False,True,True,False means unsupported or outside the intended robustness axis; no values are imputed
+GLM-PCA,factor,False,False,False,False,False means unsupported or outside the intended robustness axis; no values are imputed
+scScope,deep,False,False,False,False,False means unsupported or outside the intended robustness axis; no values are imputed
+SAUCIE,deep,False,False,False,False,False means unsupported or outside the intended robustness axis; no values are imputed
+UMAP,graph,True,True,True,True,False means unsupported or outside the intended robustness axis; no values are imputed
+PHATE,graph,True,True,True,True,False means unsupported or outside the intended robustness axis; no values are imputed
+t-SNE,relational,False,True,False,True,False means unsupported or outside the intended robustness axis; no values are imputed
+PaCMAP,relational,True,True,True,True,False means unsupported or outside the intended robustness axis; no values are imputed
+
+

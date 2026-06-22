@@ -1,0 +1,50 @@
+﻿{
+  "suite": "mechanism_simulation",
+  "purpose": "compact mechanism stress testing for review-paper claims, not method ranking",
+  "scenarios": {
+    "linear_low_rank": "Known low-rank count model with discrete biological states and no batch shift.",
+    "nonlinear_manifold": "Known curved continuum with pseudotime and smooth nonlinear latent geometry.",
+    "branching_trajectory": "Known Y-shaped branching process with branch labels and pseudotime.",
+    "dropout_stress": "Linear biological states with elevated zero inflation applied after count generation.",
+    "batch_shift": "Discrete biological states with a technical batch shift orthogonal to biology.",
+    "rare_population": "Discrete biological states with one rare population below 5% abundance."
+  },
+  "methods_requested": [
+    "PCA",
+    "GLM-PCA",
+    "scScope",
+    "SAUCIE",
+    "UMAP",
+    "PHATE",
+    "t-SNE",
+    "PaCMAP"
+  ],
+  "methods_recomputed": [
+    "PCA",
+    "GLM-PCA",
+    "scScope",
+    "SAUCIE",
+    "UMAP",
+    "PHATE",
+    "t-SNE",
+    "PaCMAP"
+  ],
+  "legacy_methods": [
+    "SAUCIE",
+    "scScope"
+  ],
+  "replicates": [
+    0
+  ],
+  "metric_thresholds": {
+    "truth_local_retention": 0.3,
+    "truth_trustworthiness": 0.9,
+    "latent_distance_corr": 0.45,
+    "label_neighbor_recall": 0.55,
+    "pseudotime_distance_corr": 0.45,
+    "batch_entropy_norm": 0.65,
+    "rare_label_recall": 0.5
+  },
+  "random_seed_base": 0
+}
+

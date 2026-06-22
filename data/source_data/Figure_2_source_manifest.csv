@@ -1,0 +1,12 @@
+panel,source_data_file
+a,data\source_data\Figure_2_panel_a_method_evidence_layers.csv
+b,data\source_data\Figure_2_panel_b_family_evidence_layers.csv
+c,data\source_data\Figure_2_panel_c_family_gate_support.csv
+d,data\source_data\Figure_2_panel_d_dataset_gate_support.csv
+e,data\source_data\Figure_2_panel_e_biological_anchor_support.csv
+f,data\source_data\Figure_2_panel_f_simulation_claim_support_by_family.csv
+g,data\source_data\Figure_2_panel_g_cross_layer_concordance.csv
+h,data\source_data\Figure_2_panel_h_method_simulation_claim_support.csv
+i,data\source_data\Figure_2_panel_i_perturbation_failure_by_metric.csv
+integrated,data\source_data\Figure_2_integrated_method_support.csv
+j,data\source_data\Figure_2_panel_j_method_evidence_bottleneck.csv

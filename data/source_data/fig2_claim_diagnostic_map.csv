@@ -1,0 +1,38 @@
+﻿claim_type,diagnostic,requirement_level,requirement_definition,source
+Discrete identity,Local,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Discrete identity,Label,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Discrete identity,Global,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Discrete identity,Pseudotime,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Discrete identity,Donor,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Discrete identity,Marker,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Discrete identity,Stress,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Local,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Label,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Global,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Pseudotime,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Donor,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Marker,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Continuum,Stress,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Local,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Label,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Global,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Pseudotime,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Donor,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Marker,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Donor-aware tissue,Stress,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Local,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Label,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Global,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Pseudotime,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Donor,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Marker,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Rare states,Stress,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Local,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Label,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Global,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Pseudotime,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Donor,1.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Marker,0.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+Robustness,Stress,2.0,0 not primary; 1 supporting; 2 required before a main-text visual claim,predeclared manuscript v3 claim-to-evidence design matrix
+
+

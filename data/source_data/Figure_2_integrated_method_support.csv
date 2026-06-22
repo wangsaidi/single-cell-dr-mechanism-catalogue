@@ -1,0 +1,9 @@
+method,mean_support,minimum_support,n_rows,family,support_gap,source_definition
+GLM-PCA,0.7115800866,0.5454545455,55,factor,0.1661255411,integrated method support and bottleneck gap across all three evidence layers
+PCA,0.5091991342,0.375,55,factor,0.1341991342,integrated method support and bottleneck gap across all three evidence layers
+PHATE,0.6818181818,0.5,55,graph,0.1818181818,integrated method support and bottleneck gap across all three evidence layers
+PaCMAP,0.6634199134,0.4545454545,55,relational,0.2088744589,integrated method support and bottleneck gap across all three evidence layers
+SAUCIE,0.5925324675,0.5454545455,55,deep,0.04707792208,integrated method support and bottleneck gap across all three evidence layers
+UMAP,0.6331168831,0.3636363636,55,graph,0.2694805195,integrated method support and bottleneck gap across all three evidence layers
+scScope,0,0,55,deep,0,integrated method support and bottleneck gap across all three evidence layers
+t-SNE,0.6818181818,0.5,55,relational,0.1818181818,integrated method support and bottleneck gap across all three evidence layers

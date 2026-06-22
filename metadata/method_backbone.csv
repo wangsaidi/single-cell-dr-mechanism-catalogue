@@ -1,0 +1,11 @@
+﻿method,family,primary_role,required_for_main_figures,dimension_response_support,notes
+PCA,linear_count_factor,transparent variance and global-rank baseline,yes,yes,Use PCA coordinates for output dimension response
+GLM-PCA,linear_count_factor,count-aware low-rank factor baseline,yes,limited,Use where count input and runtime are acceptable
+scScope,deep_latent,recurrent reconstruction/deep latent representative,yes,limited,Use existing legacy bridge if compatible with dataset size and gene matrix
+SAUCIE,deep_latent,multitask sparse autoencoder representative,yes,limited,Use existing legacy bridge if compatible with dataset size and gene matrix
+UMAP,graph_diffusion,graph-local visualization representative,yes,yes,Run upstream PCA20/PCA50/PCA100 sensitivity
+PHATE,graph_diffusion,diffusion/continuum representative,yes,yes,Important for Paul15 trajectory/continuum panels
+t-SNE,relational_structure,local pairwise probability representative,yes,limited,Use 2D primary and upstream PCA sensitivity
+PaCMAP,relational_structure,local-global pair-constraint representative,yes,yes,Run output dimension and upstream PCA sensitivity
+
+

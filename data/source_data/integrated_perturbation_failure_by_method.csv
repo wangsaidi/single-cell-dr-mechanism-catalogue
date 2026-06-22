@@ -1,0 +1,11 @@
+﻿method,family,perturbation,failure_fraction,n_rows
+PCA,factor,dropout,0.5,24
+PCA,factor,noise,0.5,24
+PHATE,graph,dropout,0.625,24
+PHATE,graph,noise,0.41666666666666663,24
+PaCMAP,relational,dropout,0.5,24
+PaCMAP,relational,noise,0.3333333333333333,24
+UMAP,graph,dropout,0.625,24
+UMAP,graph,noise,0.3333333333333333,24
+
+

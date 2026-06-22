@@ -1,0 +1,7 @@
+﻿analysis_axis,values,methods,scientific_question,primary_metrics,main_or_supplementary
+output_embedding_dimension,"2;3;5;10;20","PCA;GLM-PCA;UMAP;PHATE;PaCMAP;scScope;SAUCIE",Does claim support improve or saturate beyond a 2D layout?,"local_retention;trustworthiness;global_rank_corr;label_recall;rare_recall",main_or_supplementary
+upstream_pca_dimension,"20;50;100","UMAP;PHATE;t-SNE;PaCMAP",Does graph or relational behaviour depend on the upstream representation?,"local_retention;trustworthiness;global_rank_corr;label_recall",main
+trajectory_dimension_response,"2;3;5;10;20","PCA;UMAP;PHATE;PaCMAP;t-SNE",Do trajectory/continuum claims require more than 2 dimensions?,"pseudotime_agreement;branch_continuity;global_rank_corr;local_retention",main
+simulation_latent_dimension,"2;5;10;20","all eight backbone methods where supported",Which mechanisms recover known latent structure under controlled geometry?,"latent_distance_corr;known_label_recall;branch_recovery;local_retention",supplementary
+
+

@@ -1,0 +1,11 @@
+﻿metric,perturbation,failure_fraction,n_rows
+global_rank_corr,dropout,0.25,24
+global_rank_corr,noise,0.0,24
+label_neighbor_recall,dropout,0.0,24
+label_neighbor_recall,noise,0.0,24
+local_retention,dropout,1.0,24
+local_retention,noise,1.0,24
+trustworthiness,dropout,1.0,24
+trustworthiness,noise,0.5833333333333333,24
+
+

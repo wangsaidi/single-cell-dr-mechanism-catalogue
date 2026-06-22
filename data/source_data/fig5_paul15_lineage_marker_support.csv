@@ -1,0 +1,8 @@
+﻿dataset_id,program,metric,value,n_cells,score_definition,n_unit
+paul15,erythroid,marker_pseudotime_spearman,0.4279481693652488,2730,Spearman correlation between Paul15 DPT pseudotime and marker-module score,Paul15 cells; values are lineage-dependent and reported descriptively
+paul15,myeloid_monocyte,marker_pseudotime_spearman,0.2740358880157501,2730,Spearman correlation between Paul15 DPT pseudotime and marker-module score,Paul15 cells; values are lineage-dependent and reported descriptively
+paul15,basophil_mast,marker_pseudotime_spearman,-0.042574630650592984,2730,Spearman correlation between Paul15 DPT pseudotime and marker-module score,Paul15 cells; values are lineage-dependent and reported descriptively
+paul15,megakaryocyte,marker_pseudotime_spearman,-0.15092056030586115,2730,Spearman correlation between Paul15 DPT pseudotime and marker-module score,Paul15 cells; values are lineage-dependent and reported descriptively
+paul15,progenitor,marker_pseudotime_spearman,-0.05123144076681438,2730,Spearman correlation between Paul15 DPT pseudotime and marker-module score,Paul15 cells; values are lineage-dependent and reported descriptively
+
+

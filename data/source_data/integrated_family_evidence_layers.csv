@@ -1,0 +1,15 @@
+﻿family,evidence_layer,support_fraction,n_rows
+deep,empirical gates,0.2727272727272727,22
+deep,biological anchors,0.3125,32
+deep,mechanism simulations,0.30357142857142855,56
+factor,empirical gates,0.5454545454545454,22
+factor,biological anchors,0.625,32
+factor,mechanism simulations,0.6607142857142857,56
+graph,empirical gates,0.45454545454545453,22
+graph,biological anchors,1.0,32
+graph,mechanism simulations,0.5178571428571428,56
+relational,empirical gates,0.5,22
+relational,biological anchors,1.0,32
+relational,mechanism simulations,0.5178571428571428,56
+
+

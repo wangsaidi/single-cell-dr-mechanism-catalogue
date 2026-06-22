@@ -1,0 +1,17 @@
+﻿{
+  "seed": 0,
+  "n_cells": 1600,
+  "n_genes": 600,
+  "labels": {
+    "state_A": 520,
+    "state_B": 500,
+    "state_C": 500,
+    "rare_state": 80
+  },
+  "batches": {
+    "batch_1": 807,
+    "batch_2": 793
+  },
+  "definition": "count-like simulation calibrated for source-data stress testing, not experimental biology"
+}
+

@@ -1,0 +1,6 @@
+﻿dataset_id,study_role,public_source,accession_or_identifier,analysis_loader,public_url,notes
+pbmc3k,Discrete immune-cell identity,10x Genomics 3k peripheral blood mononuclear cells from a healthy donor,3k PBMCs from a healthy donor,scanpy.datasets.pbmc3k_processed,https://scanpy.readthedocs.io/en/stable/api/scanpy.datasets.pbmc3k_processed.html,Processed object accessed through Scanpy; original 10x source: https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-0-0; used for discrete immune-cell identity and rare-state analyses.
+paul15,Continuum-like haematopoiesis,Paul et al. myeloid progenitor single-cell dataset,GSE72857,scanpy.datasets.paul15,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE72857,Public GEO dataset accessed through Scanpy; used for continuum and pseudotime-oriented analyses.
+heart_cell_atlas_subsampled,Donor-variable tissue organisation,Adult human heart cell atlas subset,scvi-tools heart_cell_atlas_subsampled; Nature DOI 10.1038/s41586-020-2797-4,scvi.data.heart_cell_atlas_subsampled,https://docs.scvi-tools.org/en/stable/api/datasets.html,Subsampled AnnData object from the adult human heart cell atlas; used for donor-variable tissue organisation analyses.
+
+

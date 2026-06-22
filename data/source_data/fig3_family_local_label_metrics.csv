@@ -1,0 +1,99 @@
+﻿dataset_id,method,family,seed,metric,value,k,n_cells,n_pcs_reference,n_definition
+pbmc3k,PCA,factor,0,local_retention,0.05324740965377812,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,PCA,factor,0,trustworthiness,0.805816098585608,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,PCA,factor,0,global_rank_corr,0.6516416813420612,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,PCA,factor,0,label_neighbor_recall,0.7929492039423807,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,GLM-PCA,factor,0,local_retention,0.042961839777609305,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,GLM-PCA,factor,0,trustworthiness,0.7989934047221783,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,GLM-PCA,factor,0,global_rank_corr,0.5306042453675148,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,GLM-PCA,factor,0,label_neighbor_recall,0.8631539044730857,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,scScope,deep,0,local_retention,0.014733383876674248,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,scScope,deep,0,trustworthiness,0.5799214790353857,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,scScope,deep,0,global_rank_corr,0.32894696610082597,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,scScope,deep,0,label_neighbor_recall,0.31561789234268384,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,SAUCIE,deep,0,local_retention,0.07131665403083144,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,SAUCIE,deep,0,trustworthiness,0.8415744685580313,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,SAUCIE,deep,0,global_rank_corr,0.63976366710409,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,SAUCIE,deep,0,label_neighbor_recall,0.9096790497851909,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,UMAP,graph,0,local_retention,0.10730351276219358,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,UMAP,graph,0,trustworthiness,0.8570027605555128,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,UMAP,graph,0,global_rank_corr,0.5246826842812312,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,UMAP,graph,0,label_neighbor_recall,0.9212282031842304,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,PHATE,graph,0,local_retention,0.08347232752084913,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,PHATE,graph,0,trustworthiness,0.832479518108384,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,PHATE,graph,0,global_rank_corr,0.5462702857899164,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,PHATE,graph,0,label_neighbor_recall,0.9264847106393732,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,t-SNE,relational,0,local_retention,0.16507455142784938,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,t-SNE,relational,0,trustworthiness,0.8904914832537735,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,t-SNE,relational,0,global_rank_corr,0.5875265286641682,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,t-SNE,relational,0,label_neighbor_recall,0.9134950720242608,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+pbmc3k,PaCMAP,relational,0,local_retention,0.10667172100075814,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,PaCMAP,relational,0,trustworthiness,0.8644392322630805,15.0,2638,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+pbmc3k,PaCMAP,relational,0,global_rank_corr,0.631109788993298,,2638,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+pbmc3k,PaCMAP,relational,0,label_neighbor_recall,0.9165024008086935,15.0,2638,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,PCA,factor,0,local_retention,0.0796092796092796,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,PCA,factor,0,trustworthiness,0.8511697119528667,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,PCA,factor,0,global_rank_corr,0.6974668149293255,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,PCA,factor,0,label_neighbor_recall,0.3432234432234432,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,GLM-PCA,factor,0,local_retention,0.05909645909645909,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,GLM-PCA,factor,0,trustworthiness,0.8363425713555008,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,GLM-PCA,factor,0,global_rank_corr,0.6530593230951073,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,GLM-PCA,factor,0,label_neighbor_recall,0.5454945054945056,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,scScope,deep,0,local_retention,0.018901098901098902,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,scScope,deep,0,trustworthiness,0.6016137242882718,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,scScope,deep,0,global_rank_corr,0.2581406536933845,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,scScope,deep,0,label_neighbor_recall,0.1267887667887668,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,SAUCIE,deep,0,local_retention,0.09943833943833945,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,SAUCIE,deep,0,trustworthiness,0.8692665557977712,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,SAUCIE,deep,0,global_rank_corr,0.5713198126401976,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,SAUCIE,deep,0,label_neighbor_recall,0.5000488400488401,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,UMAP,graph,0,local_retention,0.16954822954822954,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,UMAP,graph,0,trustworthiness,0.9108641504208552,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,UMAP,graph,0,global_rank_corr,0.6380401249714217,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,UMAP,graph,0,label_neighbor_recall,0.5055189255189256,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,PHATE,graph,0,local_retention,0.08253968253968254,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,PHATE,graph,0,trustworthiness,0.8578531036750467,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,PHATE,graph,0,global_rank_corr,0.6013020684379641,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,PHATE,graph,0,label_neighbor_recall,0.3736996336996337,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,t-SNE,relational,0,local_retention,0.25103785103785103,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,t-SNE,relational,0,trustworthiness,0.9395209002301725,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,t-SNE,relational,0,global_rank_corr,0.6216594588886569,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,t-SNE,relational,0,label_neighbor_recall,0.5180952380952382,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+paul15,PaCMAP,relational,0,local_retention,0.16608058608058607,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,PaCMAP,relational,0,trustworthiness,0.9181019497680007,15.0,2730,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+paul15,PaCMAP,relational,0,global_rank_corr,0.6832359127410156,,2730,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+paul15,PaCMAP,relational,0,label_neighbor_recall,0.5367765567765568,15.0,2730,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,PCA,factor,0,local_retention,0.0484,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,PCA,factor,0,trustworthiness,0.8159648959508587,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,PCA,factor,0,global_rank_corr,0.7385727892600888,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,PCA,factor,0,label_neighbor_recall,0.7063416666666666,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,GLM-PCA,factor,0,local_retention,0.047891666666666666,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,GLM-PCA,factor,0,trustworthiness,0.8365554845179892,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,GLM-PCA,factor,0,global_rank_corr,0.5173644263602442,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,GLM-PCA,factor,0,label_neighbor_recall,0.7971166666666667,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,scScope,deep,0,local_retention,0.006591666666666667,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,scScope,deep,0,trustworthiness,0.5411692470017968,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,scScope,deep,0,global_rank_corr,0.29679651310922983,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,scScope,deep,0,label_neighbor_recall,0.22282500000000002,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,SAUCIE,deep,0,local_retention,0.06259166666666667,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,SAUCIE,deep,0,trustworthiness,0.8756103516359534,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,SAUCIE,deep,0,global_rank_corr,0.4977815276070482,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,SAUCIE,deep,0,label_neighbor_recall,0.8579666666666667,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,UMAP,graph,0,local_retention,0.23546666666666666,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,UMAP,graph,0,trustworthiness,0.9669720059755129,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,UMAP,graph,0,global_rank_corr,0.30339791301304275,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,UMAP,graph,0,label_neighbor_recall,0.9503333333333334,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,PHATE,graph,0,local_retention,0.18670000000000003,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,PHATE,graph,0,trustworthiness,0.9445504742802223,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,PHATE,graph,0,global_rank_corr,0.5349083992108493,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,PHATE,graph,0,label_neighbor_recall,0.9367916666666666,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,t-SNE,relational,0,local_retention,0.3324916666666667,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,t-SNE,relational,0,trustworthiness,0.983373127951193,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,t-SNE,relational,0,global_rank_corr,0.5006703629748628,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,t-SNE,relational,0,label_neighbor_recall,0.9608666666666665,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+heart_cell_atlas_subsampled,PaCMAP,relational,0,local_retention,0.21415833333333337,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,PaCMAP,relational,0,trustworthiness,0.9666119489365258,15.0,8000,50,method-dataset-seed run; cells compute the metric but are not independent replicates
+heart_cell_atlas_subsampled,PaCMAP,relational,0,global_rank_corr,0.5628977729244395,,8000,50,5000 sampled cell pairs per method-dataset-seed run; pairs are computational subsamples
+heart_cell_atlas_subsampled,PaCMAP,relational,0,label_neighbor_recall,0.9496916666666667,15.0,8000,50,method-dataset-seed run; per-cell neighbour labels compute the metric
+
+

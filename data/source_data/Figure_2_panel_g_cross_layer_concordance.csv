@@ -1,0 +1,9 @@
+method,biological anchors,empirical gates,mechanism simulations,family,source_definition
+GLM-PCA,0.875,0.5454545455,0.7142857143,factor,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+PCA,0.375,0.5454545455,0.6071428571,factor,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+PHATE,1,0.5454545455,0.5,graph,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+PaCMAP,1,0.4545454545,0.5357142857,relational,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+SAUCIE,0.625,0.5454545455,0.6071428571,deep,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+UMAP,1,0.3636363636,0.5357142857,graph,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+scScope,0,0,0,deep,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support
+t-SNE,1,0.5454545455,0.5,relational,method-level cross-layer concordance; point size in the figure encodes mechanism-simulation support

@@ -1,0 +1,11 @@
+﻿dataset_id,family,rare_recall_mean,rare_pass_fraction,n_rare_rows
+heart_cell_atlas_subsampled,deep,0.19665339443567972,0.16666666666666666,6
+heart_cell_atlas_subsampled,factor,0.29365286855482936,0.16666666666666666,6
+heart_cell_atlas_subsampled,graph,0.9175834522825733,1.0,6
+heart_cell_atlas_subsampled,relational,0.9300207848145644,1.0,6
+pbmc3k,deep,0.3829913614913615,0.25,8
+pbmc3k,factor,0.5802133107133107,0.625,8
+pbmc3k,graph,0.8415235950235951,1.0,8
+pbmc3k,relational,0.8436431301431302,1.0,8
+
+

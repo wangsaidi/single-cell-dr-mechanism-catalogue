@@ -1,0 +1,9 @@
+metric,failure_fraction,n_rows
+cell_type_label_recall,0.125,8
+pseudotime_neighborhood_retention,0.125,8
+global_rank_corr,0.16666666666666666,24
+donor_entropy_norm,0.375,8
+label_neighbor_recall,0.4166666666666667,24
+trustworthiness,0.7083333333333334,24
+local_retention,0.9583333333333334,24
+pseudotime_rank_corr,1.0,8

@@ -1,0 +1,7 @@
+﻿figure	panel_range	main_evidence_role	data_source_class	source_data_files	plotting_code
+S3	a-c	Full embeddings for PBMC3k, Paul15 and heart atlas	D2	fig3_pbmc3k_embedding_coordinates.csv; fig3_paul15_embedding_coordinates.csv; fig3_heart_embedding_coordinates.csv	figures/plot_supplementary_figures_s3_s6.py
+S4	a-h	Diagnostic-gate support, component ratios and margins	D2	fig4_gate_pass_by_method.csv; fig4_gate_pass_by_family.csv; fig4_local_gate_metrics.csv; fig4_global_gate_metrics.csv; fig4_paul15_continuum_metrics.csv; fig4_heart_donor_gate_metrics.csv; fig4_threshold_margin_by_family_metric.csv; fig4_family_internal_gate_range.csv	figures/plot_supplementary_figures_s3_s6.py
+S5	a-h	Independent biological-anchor evidence	D2	fig5_pbmc_marker_support.csv; fig5_marker_vs_neighbour_support.csv; fig5_paul15_lineage_marker_support.csv; fig5_heart_identity_donor_support.csv; fig5_rare_state_support.csv; fig5_rare_support_by_family.csv; fig5_evidence_support_summary.csv	figures/plot_supplementary_figures_s3_s6.py
+S6	a-i	Robustness response and worst-case support	D2/D4	fig6_output_dimension_response.csv; fig6_upstream_pca_response.csv; fig6_dropout_noise_response.csv; fig6_dimension_failure_by_dataset_metric.csv; fig6_dimension_failure_by_method_metric.csv; fig6_upstream_failure_by_method_metric.csv; fig6_perturbation_failure_by_metric.csv; fig6_worst_case_support.csv	figures/plot_supplementary_figures_s3_s6.py
+
+

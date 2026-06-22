@@ -1,0 +1,35 @@
+﻿method,family,action_category,failure_fraction,n_rows
+GLM-PCA,factor,donor-aware evidence,0.0,1
+GLM-PCA,factor,global geometry check,0.0,3
+GLM-PCA,factor,local / marker support,0.6666666666666666,6
+GLM-PCA,factor,trajectory evidence,1.0,1
+PCA,factor,donor-aware evidence,0.0,1
+PCA,factor,global geometry check,0.0,3
+PCA,factor,local / marker support,0.6666666666666666,6
+PCA,factor,trajectory evidence,1.0,1
+PHATE,graph,donor-aware evidence,0.0,1
+PHATE,graph,global geometry check,0.0,3
+PHATE,graph,local / marker support,0.6666666666666666,6
+PHATE,graph,trajectory evidence,1.0,1
+PaCMAP,relational,donor-aware evidence,1.0,1
+PaCMAP,relational,global geometry check,0.0,3
+PaCMAP,relational,local / marker support,0.6666666666666666,6
+PaCMAP,relational,trajectory evidence,1.0,1
+SAUCIE,deep,donor-aware evidence,0.0,1
+SAUCIE,deep,global geometry check,0.0,3
+SAUCIE,deep,local / marker support,0.6666666666666666,6
+SAUCIE,deep,trajectory evidence,1.0,1
+UMAP,graph,donor-aware evidence,1.0,1
+UMAP,graph,global geometry check,0.3333333333333333,3
+UMAP,graph,local / marker support,0.6666666666666666,6
+UMAP,graph,trajectory evidence,1.0,1
+scScope,deep,donor-aware evidence,1.0,1
+scScope,deep,global geometry check,1.0,3
+scScope,deep,local / marker support,1.0,6
+scScope,deep,trajectory evidence,1.0,1
+t-SNE,relational,donor-aware evidence,1.0,1
+t-SNE,relational,global geometry check,0.0,3
+t-SNE,relational,local / marker support,0.5,6
+t-SNE,relational,trajectory evidence,1.0,1
+
+
