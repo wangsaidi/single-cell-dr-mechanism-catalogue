@@ -1,5 +1,5 @@
 claim_gate,failure_fraction,n_rows
-local_neighbourhood_gate,0.9583333333333334,24
+local_neighbourhood_gate,0.9166666666666666,24
 label_support_gate,0.2916666666666667,24
 global_geometry_gate,0.125,24
 continuum_gate,1.0,8

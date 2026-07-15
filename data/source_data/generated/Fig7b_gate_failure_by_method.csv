@@ -38,4 +38,4 @@ t-SNE,continuum_gate,1.0,1
 t-SNE,donor_aware_gate,1.0,1
 t-SNE,global_geometry_gate,0.0,3
 t-SNE,label_support_gate,0.3333333333333333,3
-t-SNE,local_neighbourhood_gate,0.6666666666666666,3
+t-SNE,local_neighbourhood_gate,0.3333333333333333,3

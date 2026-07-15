@@ -72,15 +72,15 @@ AXIS_COLORS = {
 def _write_claim_matrix() -> Path:
     rows = [
         ("a", "How do navigation-group support fractions change under joint boundary shifts?", "deterministic sensitivity", "SuppS7_boundary_sensitivity_family_summary.csv", "gate recomputation across five joint shifts", "pass fraction", "22 method-context-gate decisions per group and shift", "operational boundaries are not universal"),
-        ("b", "How many baseline decisions change under each joint boundary shift?", "deterministic sensitivity", "SuppS7_boundary_sensitivity_changes.csv", "comparison with shift-zero decisions", "gained and lost decisions", "88 matched gate decisions per shift", "decisions share methods and contexts"),
+        ("b", "Which claim gates account for decisions gained or lost under each joint boundary shift?", "deterministic sensitivity", "Fig7b_gate_resolved_boundary_changes.csv", "claim-resolved comparison with shift-zero decisions", "signed count of gained and lost decisions", "88 matched gate decisions per shift, resolved over five claim gates", "decisions share methods and contexts"),
         ("c", "Does the local-retention failure count depend on reference dimension and k?", "calibration", "SuppS10_boundary_count_sensitivity.csv", "20 reference-by-k definitions", "count below 0.30", "24 method-context analyses per definition", "fixed 1,000-cell calibration subset"),
         ("d", "Are local-retention method ranks stable across PCA reference definitions?", "calibration", "SuppS10_reference_rank_stability.csv", "pairwise Spearman correlations", "rank correlation", "8 methods per dataset and reference pair", "few methods limit correlation precision"),
-        ("e", "Does the Paul15 pooled continuum decision depend on DPT root definition?", "trajectory sensitivity", "SuppS11_root_sensitive_continuum_metrics.csv", "four biologically named roots", "methods meeting each boundary", "8 methods per root and metric", "root definitions are not independent replicates"),
+        ("e", "Does the Paul15 continuum margin depend on DPT root definition?", "trajectory sensitivity", "SuppS11_root_sensitive_continuum_metrics.csv", "four biologically named roots", "signed relative margin to each metric-specific boundary", "64 method-root-metric results from 8 methods, 4 roots and 2 metrics", "root definitions are alternative analyses of the same cells, not independent replicates"),
         ("f", "Is pseudotime-distance preservation consistent across Paul15 lineages?", "trajectory sensitivity", "SuppS11_lineage_restricted_metrics.csv", "lineage-restricted sampled-pair analysis", "Spearman correlation", "8 methods per lineage", "lineages differ in cell count and topology"),
         ("g", "Does specification-to-profile concordance depend on feature encoding and distance?", "coding sensitivity", "SuppS9_signature_definition_sensitivity.csv", "exact Mantel tests over alternative encodings", "Mantel Spearman rho", "8 methods and 28 method pairs", "many pair distances are tied"),
         ("h", "Is specification concordance driven by one method?", "influence analysis", "SuppS9_leave_one_method_out.csv", "leave-one-method-out exact Mantel tests", "Mantel Spearman rho", "7 methods and 21 pairs per omission", "omissions are overlapping analyses"),
         ("i", "Do random seeds affect local and global layout stability similarly?", "computational repeat", "SuppS8_multiseed_method_summary.csv", "five seeds in three contexts", "worst-context kNN overlap and distance-rank concordance", "30 seed pairs per method across contexts", "seeds are not biological replicates"),
-        ("j", "Which analytical axes convert supported baselines into unsupported conditions?", "matched robustness transition", "SuppS12_axis_loss.csv", "matched baseline-to-condition comparison", "pass-to-fail fraction", "56-96 baseline-supported comparisons per axis", "conditions are computational, not biological replicates"),
+        ("j", "Which analytical axes convert supported baselines into unsupported conditions?", "matched robustness transition", "SuppS12_robustness_transitions.csv; SuppS12_axis_loss.csv", "matched baseline-to-condition comparison", "baseline and condition signed relative margins", "416 matched comparisons; 56-96 baseline-supported comparisons per axis", "conditions are computational, not biological replicates"),
     ]
     frame = pd.DataFrame(
         rows,
@@ -104,6 +104,7 @@ def _load() -> dict[str, pd.DataFrame]:
     names = {
         "boundary_family": "SuppS7_boundary_sensitivity_family_summary.csv",
         "boundary_changes": "SuppS7_boundary_sensitivity_changes.csv",
+        "boundary_decisions": "SuppS7_boundary_sensitivity_decisions.csv",
         "local_counts": "SuppS10_boundary_count_sensitivity.csv",
         "rank_stability": "SuppS10_reference_rank_stability.csv",
         "root_metrics": "SuppS11_root_sensitive_continuum_metrics.csv",
@@ -112,6 +113,7 @@ def _load() -> dict[str, pd.DataFrame]:
         "leave_one_out": "SuppS9_leave_one_method_out.csv",
         "seed_summary": "SuppS8_multiseed_method_summary.csv",
         "robustness_loss": "SuppS12_axis_loss.csv",
+        "robustness_transitions": "SuppS12_robustness_transitions.csv",
     }
     return {key: pd.read_csv(SOURCE / filename) for key, filename in names.items()}
 
@@ -137,7 +139,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     fig = plt.figure(figsize=(7.2, 7.0), constrained_layout=False)
     gs = fig.add_gridspec(3, 1, left=0.075, right=0.985, top=0.975, bottom=0.095, hspace=0.62)
     top = gs[0].subgridspec(1, 3, wspace=0.50)
-    middle = gs[1].subgridspec(1, 4, width_ratios=[1.0, 1.0, 1.22, 1.22], wspace=0.78)
+    middle = gs[1].subgridspec(1, 4, width_ratios=[0.95, 1.30, 1.15, 1.25], wspace=0.78)
     bottom = gs[2].subgridspec(1, 3, wspace=0.50)
     axes = [
         fig.add_subplot(top[0, 0]),
@@ -165,19 +167,56 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     axa.legend(frameon=False, fontsize=5.2, ncol=2, loc="upper center", bbox_to_anchor=(0.50, -0.28))
     clean_axis(axa)
 
-    changes = data["boundary_changes"]
-    shifts = sorted(changes["boundary_shift"].unique())
-    gained = [int(changes.loc[changes["boundary_shift"].eq(shift) & changes["decision_change"].eq("gained_support"), "decision_count"].sum()) for shift in shifts]
-    lost = [int(changes.loc[changes["boundary_shift"].eq(shift) & changes["decision_change"].eq("lost_support"), "decision_count"].sum()) for shift in shifts]
-    axb.bar(np.arange(len(shifts)), gained, color=PASS_COLOR, width=0.62, label="Gained")
-    axb.bar(np.arange(len(shifts)), -np.asarray(lost), color=FAIL_COLOR, width=0.62, label="Lost")
-    axb.axhline(0, color=BORDER, linewidth=0.8)
+    decisions = data["boundary_decisions"]
+    shifts = sorted(decisions["boundary_shift"].unique())
+    gate_order = [
+        "local_neighbourhood_gate",
+        "label_support_gate",
+        "global_geometry_gate",
+        "continuum_gate",
+        "donor_aware_gate",
+    ]
+    gate_labels = ["Local", "Label", "Global", "Continuum", "Donor-aware"]
+    signed_change = np.zeros((len(gate_order), len(shifts)), dtype=float)
+    change_rows = []
+    for i, claim_gate in enumerate(gate_order):
+        for j, shift in enumerate(shifts):
+            sub = decisions.loc[
+                decisions["claim_gate"].eq(claim_gate) & decisions["boundary_shift"].eq(shift)
+            ]
+            gained = int(sub["decision_change"].eq("gained_support").sum())
+            lost = int(sub["decision_change"].eq("lost_support").sum())
+            signed_change[i, j] = gained - lost
+            change_rows.append(
+                {
+                    "claim_gate": claim_gate,
+                    "boundary_shift": float(shift),
+                    "gained_support": gained,
+                    "lost_support": lost,
+                    "net_changed_decisions": gained - lost,
+                    "n_applicable_decisions": int(sub.shape[0]),
+                }
+            )
+    pd.DataFrame(change_rows).to_csv(SOURCE / "Fig7b_gate_resolved_boundary_changes.csv", index=False)
+    limit = max(1, int(np.abs(signed_change).max()))
+    im_b = axb.imshow(
+        signed_change,
+        cmap="RdBu",
+        norm=mpl.colors.TwoSlopeNorm(vmin=-limit, vcenter=0, vmax=limit),
+        aspect="auto",
+    )
+    for i in range(signed_change.shape[0]):
+        for j in range(signed_change.shape[1]):
+            value = int(signed_change[i, j])
+            label = f"{value:+d}" if value else "0"
+            axb.text(j, i, label, ha="center", va="center", fontsize=5.1, color="white" if abs(value) >= 2 else INK)
     axb.set_xticks(np.arange(len(shifts)), [f"{value:+.3f}" if value else "0" for value in shifts], rotation=30, ha="right")
+    axb.set_yticks(np.arange(len(gate_order)), gate_labels)
     axb.set_xlabel("Joint boundary shift")
-    axb.set_ylabel("Changed decisions")
-    axb.set_title("Decision changes", loc="left")
-    axb.legend(frameon=False, fontsize=5.5, loc="upper right")
-    clean_axis(axb)
+    axb.set_title("Gate-resolved changes", loc="left")
+    cbar_b = fig.colorbar(im_b, ax=axb, fraction=0.047, pad=0.03, ticks=[-limit, 0, limit])
+    cbar_b.set_label("net changed decisions", fontsize=5.0)
+    cbar_b.ax.tick_params(labelsize=4.8, length=2)
 
     local = data["local_counts"].copy()
     pca_order = sorted(local["reference_pca_dimensions"].unique())
@@ -213,23 +252,52 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     axd.set_title("Reference-sensitive ranks", loc="left")
     clean_axis(axd)
 
-    root = data["root_metrics"]
+    root = data["root_metrics"].copy()
+    root["relative_margin"] = (root["value"] - root["boundary"]) / root["boundary"]
     root_order = list(ROOT_LABELS)
     metric_specs = [
-        ("pseudotime_distance_correlation", "Pooled distance", "#3572A5"),
-        ("local_pseudotime_retention", "Local order", "#D38A35"),
+        ("pseudotime_distance_correlation", "Pooled distance", "#3572A5", "o", -0.11),
+        ("local_pseudotime_retention", "Local order", "#D38A35", "D", 0.11),
     ]
-    width = 0.34
-    for offset, (metric, label, color) in zip([-width / 2, width / 2], metric_specs):
-        counts = [int(root.loc[root["root_definition"].eq(value) & root["metric"].eq(metric), "meets_boundary"].sum()) for value in root_order]
-        bars = axe.bar(np.arange(len(root_order)) + offset, counts, width=width, color=color, label=label)
-        for bar, count in zip(bars, counts):
-            axe.text(bar.get_x() + bar.get_width() / 2, count + 0.18, str(count), ha="center", va="bottom", fontsize=5.2)
+    for metric, label, color, marker, offset in metric_specs:
+        medians = []
+        for x, root_name in enumerate(root_order):
+            values = root.loc[
+                root["root_definition"].eq(root_name) & root["metric"].eq(metric),
+                "relative_margin",
+            ].to_numpy()
+            jitter = rng.uniform(-0.045, 0.045, len(values))
+            axe.scatter(
+                x + offset + jitter,
+                values,
+                s=10,
+                marker=marker,
+                color=color,
+                alpha=0.52,
+                edgecolor="white",
+                linewidth=0.25,
+                zorder=2,
+            )
+            q1, median, q3 = np.quantile(values, [0.25, 0.5, 0.75])
+            medians.append(median)
+            axe.vlines(x + offset, q1, q3, color=color, linewidth=1.4, zorder=3)
+            axe.scatter(
+                x + offset,
+                median,
+                s=22,
+                marker=marker,
+                facecolor="white",
+                edgecolor=color,
+                linewidth=0.8,
+                zorder=4,
+            )
+        axe.plot(np.arange(len(root_order)) + offset, medians, color=color, linewidth=0.75, alpha=0.85, label=label, zorder=1)
+    axe.axhline(0, color=BORDER, linestyle="--", linewidth=0.8)
     axe.set_xticks(range(len(root_order)), [ROOT_LABELS[value] for value in root_order], rotation=30, ha="right")
-    axe.set_ylabel("Methods meeting boundary")
-    axe.set_ylim(0, 9.4)
-    axe.set_title("DPT-root sensitivity", loc="left")
-    axe.legend(frameon=False, fontsize=5.0, loc="upper center", bbox_to_anchor=(0.50, -0.29), ncol=2)
+    axe.set_ylabel("Relative threshold margin")
+    axe.set_ylim(-0.65, 1.22)
+    axe.set_title("Root-sensitive continuum", loc="left")
+    axe.legend(frameon=False, fontsize=4.5, loc="upper left", handlelength=1.2, borderaxespad=0.2)
     clean_axis(axe)
 
     lineage = data["lineage_metrics"]
@@ -245,7 +313,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     axf.set_xticks(range(len(lineage_order)), [LINEAGE_LABELS[value] for value in lineage_order], rotation=30, ha="right")
     axf.set_ylabel("Within-lineage rank rho")
     axf.set_ylim(0.25, 1.0)
-    axf.set_title("Lineage preservation", loc="left")
+    axf.set_title("Lineage-specific continuum", loc="left")
     clean_axis(axf)
 
     signature = data["signature"].copy()
@@ -297,18 +365,58 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     axi.set_title("Five-seed stability", loc="left")
     clean_axis(axi)
 
-    loss = data["robustness_loss"].set_index("analysis_axis_resolved").reindex(list(AXIS_LABELS))
-    bars = axj.bar(range(len(loss)), loss["support_loss_fraction"], color=[AXIS_COLORS[value] for value in loss.index], width=0.65)
-    for bar, row in zip(bars, loss.itertuples()):
-        axj.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.014, f"{row.n_pass_to_fail}/{row.n_baseline_supported}", ha="center", va="bottom", fontsize=5.6)
-    axj.set_xticks(range(len(loss)), [AXIS_LABELS[value] for value in loss.index])
-    axj.set_ylabel("Pass-to-fail fraction")
-    axj.set_ylim(0, 0.24)
-    axj.set_title("Perturbation-induced support loss", loc="left")
+    transitions = data["robustness_transitions"].copy()
+    transitions["baseline_relative_margin"] = (
+        transitions["baseline_value"] - transitions["baseline_threshold"]
+    ) / transitions["baseline_threshold"]
+    transitions["condition_relative_margin"] = (
+        transitions["value"] - transitions["threshold"]
+    ) / transitions["threshold"]
+    axis_markers = {
+        "output_dimension": "o",
+        "upstream_pca": "s",
+        "expression_perturbation": "^",
+    }
+    for axis_name in AXIS_LABELS:
+        sub = transitions.loc[transitions["analysis_axis_resolved"].eq(axis_name)]
+        axj.scatter(
+            sub["baseline_relative_margin"],
+            sub["condition_relative_margin"],
+            s=10,
+            marker=axis_markers[axis_name],
+            color=AXIS_COLORS[axis_name],
+            alpha=0.30,
+            edgecolor="none",
+            zorder=2,
+        )
+    lost = transitions.loc[transitions["transition"].eq("pass_to_fail")]
+    axj.scatter(
+        lost["baseline_relative_margin"],
+        lost["condition_relative_margin"],
+        s=25,
+        facecolor="none",
+        edgecolor=FAIL_COLOR,
+        linewidth=0.7,
+        zorder=4,
+    )
+    plot_limits = (-0.95, 1.25)
+    axj.plot(plot_limits, plot_limits, color="#B9B9B9", linewidth=0.65, zorder=0)
+    axj.axhline(0, color=BORDER, linestyle="--", linewidth=0.75, zorder=1)
+    axj.axvline(0, color=BORDER, linestyle="--", linewidth=0.75, zorder=1)
+    axj.set_xlim(*plot_limits)
+    axj.set_ylim(*plot_limits)
+    axj.text(0.96, 0.96, "retained", transform=axj.transAxes, ha="right", va="top", fontsize=4.3, color=TEXT_MUTED)
+    axj.text(0.96, 0.04, "lost", transform=axj.transAxes, ha="right", va="bottom", fontsize=4.3, color=TEXT_MUTED)
+    axj.text(0.04, 0.96, "recovered", transform=axj.transAxes, ha="left", va="top", fontsize=4.3, color=TEXT_MUTED)
+    axj.text(0.04, 0.04, "unsupported", transform=axj.transAxes, ha="left", va="bottom", fontsize=4.3, color=TEXT_MUTED)
+    axj.set_xlabel("Baseline relative margin")
+    axj.set_ylabel("Condition relative margin")
+    axj.set_title("Matched support transitions", loc="left")
     clean_axis(axj)
 
     for letter, ax in zip("abcdefghij", axes):
-        panel_label(ax, letter, x=-0.16, y=1.10)
+        x_position = -0.13 if letter in {"e", "f", "g"} else -0.16
+        panel_label(ax, letter, x=x_position, y=1.10)
 
     fig.legend(
         handles=[
@@ -319,7 +427,21 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
         fontsize=5.7,
         ncol=2,
         loc="lower center",
-        bbox_to_anchor=(0.50, 0.006),
+        bbox_to_anchor=(0.31, 0.006),
+    )
+    fig.legend(
+        handles=[
+            Line2D([0], [0], marker=axis_markers[name], linestyle="none", markerfacecolor=AXIS_COLORS[name], markeredgecolor="none", markersize=4.5, label=AXIS_LABELS[name].replace("\n", " "))
+            for name in AXIS_LABELS
+        ]
+        + [Line2D([0], [0], marker="o", linestyle="none", markerfacecolor="none", markeredgecolor=FAIL_COLOR, markersize=5, label="Pass to fail")],
+        frameon=False,
+        fontsize=5.0,
+        ncol=2,
+        loc="lower center",
+        bbox_to_anchor=(0.76, 0.003),
+        columnspacing=0.9,
+        handletextpad=0.4,
     )
 
     outputs = []

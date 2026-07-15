@@ -1,0 +1,134 @@
+claim_type,evidence_unit,method,family,relative_evidence_margin,component_definition,supported
+cell identity,PCA | B cells,PCA,factor,0.7589934432039693,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PCA | CD14+ Monocytes,PCA,factor,0.5512626262626262,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PCA | CD4 T cells,PCA,factor,0.5903793176520449,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PCA | CD8 T cells,PCA,factor,-0.12082853855005757,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,PCA | Dendritic cells,PCA,factor,-0.8525798525798526,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,PCA | FCGR3A+ Monocytes,PCA,factor,-0.044040404040404095,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,PCA | Megakaryocytes,PCA,factor,-0.05454545454545459,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,PCA | NK cells,PCA,factor,0.29948839039748104,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | B cells,GLM-PCA,factor,0.7873471557682082,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | CD14+ Monocytes,GLM-PCA,factor,0.5651515151515151,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | CD4 T cells,GLM-PCA,factor,0.6788514515787242,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | CD8 T cells,GLM-PCA,factor,0.26045262754123505,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | Dendritic cells,GLM-PCA,factor,0.10401310401310396,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | FCGR3A+ Monocytes,GLM-PCA,factor,0.0036363636363634373,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | Megakaryocytes,GLM-PCA,factor,0.5838383838383838,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,GLM-PCA | NK cells,GLM-PCA,factor,0.5852026761117669,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,scScope | B cells,scScope,deep,0.2468545100124048,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,scScope | CD14+ Monocytes,scScope,deep,0.45277777777777767,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,scScope | CD4 T cells,scScope,deep,0.4229709684255138,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,scScope | CD8 T cells,scScope,deep,-0.12351361718450354,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,scScope | Dendritic cells,scScope,deep,-0.11875511875511864,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,scScope | FCGR3A+ Monocytes,scScope,deep,0.19272727272727247,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,scScope | Megakaryocytes,scScope,deep,-0.27272727272727293,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,scScope | NK cells,scScope,deep,0.19559228650137755,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,SAUCIE | B cells,SAUCIE,deep,0.7845117845117843,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,SAUCIE | CD14+ Monocytes,SAUCIE,deep,0.6868686868686869,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,SAUCIE | CD4 T cells,SAUCIE,deep,0.7237762237762235,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,SAUCIE | CD8 T cells,SAUCIE,deep,0.42922899884925186,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,SAUCIE | Dendritic cells,SAUCIE,deep,-0.1613431613431615,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,SAUCIE | FCGR3A+ Monocytes,SAUCIE,deep,0.5038383838383838,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,SAUCIE | Megakaryocytes,SAUCIE,deep,-0.1353535353535353,minimum of marker-program and same-label-neighbour relative margins,False
+cell identity,SAUCIE | NK cells,SAUCIE,deep,0.6544667453758362,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | B cells,UMAP,graph,0.790891369838738,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | CD14+ Monocytes,UMAP,graph,0.7383838383838385,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | CD4 T cells,UMAP,graph,0.7155117609663064,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | CD8 T cells,UMAP,graph,0.40698120444955865,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | Dendritic cells,UMAP,graph,0.6412776412776413,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | FCGR3A+ Monocytes,UMAP,graph,0.5410101010101012,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | Megakaryocytes,UMAP,graph,0.36565656565656585,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,UMAP | NK cells,UMAP,graph,0.6560409287682012,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | B cells,PHATE,graph,0.7916002126528442,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | CD14+ Monocytes,PHATE,graph,0.7414141414141414,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | CD4 T cells,PHATE,graph,0.7274846365755456,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | CD8 T cells,PHATE,graph,0.44955887993862675,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | Dendritic cells,PHATE,graph,0.628173628173628,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | FCGR3A+ Monocytes,PHATE,graph,0.5183838383838385,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | Megakaryocytes,PHATE,graph,0.47070707070707096,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PHATE | NK cells,PHATE,graph,0.6591892955529318,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | B cells,t-SNE,relational,0.7901825270246322,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | CD14+ Monocytes,t-SNE,relational,0.7103535353535351,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | CD4 T cells,t-SNE,relational,0.7059758423394784,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | CD8 T cells,t-SNE,relational,0.3724587648638282,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | Dendritic cells,t-SNE,relational,0.7231777231777228,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | FCGR3A+ Monocytes,t-SNE,relational,0.4836363636363634,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | Megakaryocytes,t-SNE,relational,0.46262626262626283,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,t-SNE | NK cells,t-SNE,relational,0.6867375049193227,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | B cells,PaCMAP,relational,0.7816764132553606,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | CD14+ Monocytes,PaCMAP,relational,0.7338383838383838,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | CD4 T cells,PaCMAP,relational,0.7131807586353042,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | CD8 T cells,PaCMAP,relational,0.3920214806290755,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | Dendritic cells,PaCMAP,relational,0.533169533169533,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | FCGR3A+ Monocytes,PaCMAP,relational,0.5280808080808079,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | Megakaryocytes,PaCMAP,relational,0.47070707070707096,minimum of marker-program and same-label-neighbour relative margins,True
+cell identity,PaCMAP | NK cells,PaCMAP,relational,0.6190476190476188,minimum of marker-program and same-label-neighbour relative margins,True
+continuum,erythroid,,,0.7117926774609953,absolute marker-pseudotime correlation relative to 0.25,True
+continuum,myeloid_monocyte,,,0.09614355206300029,absolute marker-pseudotime correlation relative to 0.25,True
+continuum,basophil_mast,,,-0.8297014773976283,absolute marker-pseudotime correlation relative to 0.25,False
+continuum,megakaryocyte,,,-0.3963177587765556,absolute marker-pseudotime correlation relative to 0.25,False
+continuum,progenitor,,,-0.7950742369327428,absolute marker-pseudotime correlation relative to 0.25,False
+donor tissue,PCA,PCA,factor,0.2744728458136796,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,GLM-PCA,GLM-PCA,factor,0.22109365843742212,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,scScope,scScope,deep,0.008546727205400506,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,SAUCIE,SAUCIE,deep,0.2226417815528945,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,UMAP,UMAP,graph,-0.009041424019294642,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
+donor tissue,PHATE,PHATE,graph,0.053408243156407575,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,t-SNE,t-SNE,relational,-0.0934390106272518,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
+donor tissue,PaCMAP,PaCMAP,relational,-0.013936518044270207,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
+rare state,pbmc3k | PCA | Dendritic cells,PCA,factor,-0.8525798525798526,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | PCA | FCGR3A+ Monocytes,PCA,factor,-0.044040404040404095,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | PCA | Megakaryocytes,PCA,factor,-0.05454545454545459,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | PCA | NK cells,PCA,factor,0.29948839039748104,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | GLM-PCA | Dendritic cells,GLM-PCA,factor,0.10401310401310396,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | GLM-PCA | FCGR3A+ Monocytes,GLM-PCA,factor,0.0036363636363634373,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | GLM-PCA | Megakaryocytes,GLM-PCA,factor,0.5838383838383838,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | GLM-PCA | NK cells,GLM-PCA,factor,0.5852026761117669,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | scScope | Dendritic cells,scScope,deep,-0.11875511875511864,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | scScope | FCGR3A+ Monocytes,scScope,deep,0.19272727272727247,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | scScope | Megakaryocytes,scScope,deep,-0.27272727272727293,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | scScope | NK cells,scScope,deep,0.19559228650137755,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | SAUCIE | Dendritic cells,SAUCIE,deep,-0.1613431613431615,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | SAUCIE | FCGR3A+ Monocytes,SAUCIE,deep,0.5038383838383838,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | SAUCIE | Megakaryocytes,SAUCIE,deep,-0.1353535353535353,rare-label same-neighbour fraction relative to 0.55,False
+rare state,pbmc3k | SAUCIE | NK cells,SAUCIE,deep,0.6544667453758362,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | UMAP | Dendritic cells,UMAP,graph,0.6412776412776413,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | UMAP | FCGR3A+ Monocytes,UMAP,graph,0.5410101010101012,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | UMAP | Megakaryocytes,UMAP,graph,0.36565656565656585,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | UMAP | NK cells,UMAP,graph,0.6560409287682012,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PHATE | Dendritic cells,PHATE,graph,0.628173628173628,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PHATE | FCGR3A+ Monocytes,PHATE,graph,0.5183838383838385,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PHATE | Megakaryocytes,PHATE,graph,0.47070707070707096,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PHATE | NK cells,PHATE,graph,0.6591892955529318,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | t-SNE | Dendritic cells,t-SNE,relational,0.7231777231777228,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | t-SNE | FCGR3A+ Monocytes,t-SNE,relational,0.4836363636363634,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | t-SNE | Megakaryocytes,t-SNE,relational,0.46262626262626283,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | t-SNE | NK cells,t-SNE,relational,0.6867375049193227,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PaCMAP | Dendritic cells,PaCMAP,relational,0.533169533169533,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PaCMAP | FCGR3A+ Monocytes,PaCMAP,relational,0.5280808080808079,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PaCMAP | Megakaryocytes,PaCMAP,relational,0.47070707070707096,rare-label same-neighbour fraction relative to 0.55,True
+rare state,pbmc3k | PaCMAP | NK cells,PaCMAP,relational,0.6190476190476188,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PCA | Adipocytes,PCA,factor,-0.13730407523510987,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | PCA | Mesothelial,PCA,factor,-0.9144385026737969,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | PCA | Neuronal,PCA,factor,-0.7520301049712814,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | GLM-PCA | Adipocytes,GLM-PCA,factor,0.11515151515151517,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | GLM-PCA | Mesothelial,GLM-PCA,factor,-0.9215686274509804,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | GLM-PCA | Neuronal,GLM-PCA,factor,-0.16894434541493367,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | scScope | Adipocytes,scScope,deep,0.4754440961337512,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | scScope | Mesothelial,scScope,deep,-0.4581105169340464,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | scScope | Neuronal,scScope,deep,0.20182214299861373,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | SAUCIE | Adipocytes,SAUCIE,deep,0.6058516196447228,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | SAUCIE | Mesothelial,SAUCIE,deep,-0.9572192513368986,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | SAUCIE | Neuronal,SAUCIE,deep,-0.5698158051099227,rare-label same-neighbour fraction relative to 0.55,False
+rare state,heart_cell_atlas_subsampled | UMAP | Adipocytes,UMAP,graph,0.6886102403343785,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | UMAP | Mesothelial,UMAP,graph,0.818181818181818,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | UMAP | Neuronal,UMAP,graph,0.6248762131115069,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PHATE | Adipocytes,PHATE,graph,0.6819226750261231,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PHATE | Mesothelial,PHATE,graph,0.6613190730837788,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PHATE | Neuronal,PHATE,graph,0.5353535353535355,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | t-SNE | Adipocytes,t-SNE,relational,0.7212121212121206,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | t-SNE | Mesothelial,t-SNE,relational,0.8110516934046345,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | t-SNE | Neuronal,t-SNE,relational,0.6684491978609619,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PaCMAP | Adipocytes,PaCMAP,relational,0.6802507836990596,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PaCMAP | Mesothelial,PaCMAP,relational,0.7468805704099817,rare-label same-neighbour fraction relative to 0.55,True
+rare state,heart_cell_atlas_subsampled | PaCMAP | Neuronal,PaCMAP,relational,0.5702119231530999,rare-label same-neighbour fraction relative to 0.55,True

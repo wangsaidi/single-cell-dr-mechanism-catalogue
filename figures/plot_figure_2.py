@@ -839,7 +839,7 @@ def build_figure(paths: dict[str, Path]) -> None:
     _panel_label(ax_c, "c")
 
     # d | Descriptive variance decomposition.
-    ax_d = fig.add_subplot(grid[2, 0:5])
+    ax_d = fig.add_subplot(grid[2, 0:4])
     variance_matrix = variance.pivot(index="metric", columns="source", values="fraction_total_variation").reindex(
         index=METRIC_ORDER, columns=["method", "biological_context", "residual"]
     )
@@ -867,69 +867,83 @@ def build_figure(paths: dict[str, Path]) -> None:
     ax_d.set_title("Method and context contributions", loc="left")
     _panel_label(ax_d, "d", x=-0.10, y=1.12)
 
-    # e | Encoded-specification and profile-distance concordance.
-    ax_g = fig.add_subplot(grid[2, 6:10])
-    spaces = ["Specification", "Empirical", "Known truth"]
-    concordance_matrix = np.full((3, 3), np.nan, dtype=float)
-    annotations: dict[tuple[int, int], str] = {}
-    for row in mantel.itertuples(index=False):
-        i = spaces.index(row.space_b)
-        j = spaces.index(row.space_a)
-        concordance_matrix[i, j] = float(row.mantel_spearman_rho)
-        if bool(row.primary_signature_profile_test):
-            annotations[(i, j)] = (
-                f"rho = {float(row.mantel_spearman_rho):.2f}\n"
-                f"q = {float(row.q_bh_two_signature_profile_tests):.3f}"
-            )
-        else:
-            annotations[(i, j)] = (
-                f"rho = {float(row.mantel_spearman_rho):.2f}\n"
-                f"P = {float(row.p_exact_two_sided):.3f}"
-            )
-    masked = np.ma.masked_invalid(concordance_matrix)
-    cmap = mpl.colormaps["PuOr_r"].copy()
-    cmap.set_bad("white")
-    im_g = ax_g.imshow(
-        masked,
-        aspect="auto",
-        cmap=cmap,
-        norm=mpl.colors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1),
-    )
-    for (i, j), label in annotations.items():
-        value = concordance_matrix[i, j]
-        ax_g.text(
-            j,
-            i,
-            label,
-            ha="center",
-            va="center",
-            fontsize=4.9,
-            color="white" if abs(value) > 0.55 else "#222222",
+    # e | Pair-level distance concordance. The 28 pairwise observations are
+    # displayed directly; Mantel inference still uses complete distance
+    # matrices and never treats these points as independent replicates.
+    ax_g = fig.add_subplot(grid[2, 5:10])
+    ax_g.set_axis_off()
+    ax_g.set_title("Distance concordance across method pairs", loc="left", pad=6)
+    _panel_label(ax_g, "e", x=-0.07, y=1.12)
+
+    comparison_specs = [
+        (
+            "objective_vs_empirical",
+            "objective_signature_jaccard_distance",
+            "empirical_profile_distance",
+            "Specification vs empirical",
+            "Specification distance",
+            "Empirical distance",
+            "#3572A5",
+        ),
+        (
+            "objective_vs_simulation",
+            "objective_signature_jaccard_distance",
+            "simulation_profile_distance",
+            "Specification vs known truth",
+            "Specification distance",
+            "Known-truth distance",
+            "#C56A2D",
+        ),
+        (
+            "empirical_vs_simulation",
+            "empirical_profile_distance",
+            "simulation_profile_distance",
+            "Empirical vs known truth",
+            "Empirical distance",
+            "Known-truth distance",
+            "#7A5195",
+        ),
+    ]
+    inset_positions = [
+        [0.00, 0.05, 0.285, 0.78],
+        [0.355, 0.05, 0.285, 0.78],
+        [0.710, 0.05, 0.285, 0.78],
+    ]
+    mantel_by_comparison = mantel.set_index("comparison")
+    for spec, position in zip(comparison_specs, inset_positions):
+        comparison, x_column, y_column, title, x_label, y_label, color = spec
+        inset = ax_g.inset_axes(position)
+        inset.scatter(
+            distance[x_column],
+            distance[y_column],
+            s=14,
+            color=color,
+            alpha=0.78,
+            edgecolor="white",
+            linewidth=0.35,
         )
-    ax_g.set_xticks(np.arange(3))
-    ax_g.set_xticklabels(["Specification", "Empirical", "Known truth"], rotation=18, ha="right")
-    ax_g.set_yticks(np.arange(3))
-    ax_g.set_yticklabels(spaces)
-    ax_g.set_xlim(-0.5, 2.5)
-    ax_g.set_ylim(2.5, -0.5)
-    for boundary in np.arange(-0.5, 3, 1):
-        ax_g.axhline(boundary, color="#E8E8E8", lw=0.5)
-        ax_g.axvline(boundary, color="#E8E8E8", lw=0.5)
-    colorbar_g = fig.colorbar(im_g, ax=ax_g, fraction=0.05, pad=0.04)
-    colorbar_g.ax.set_ylabel("Mantel rho", rotation=270, labelpad=8, fontsize=5.3)
-    colorbar_g.ax.tick_params(labelsize=5)
-    ax_g.text(
-        0,
-        -0.34,
-        "q = BH-adjusted for two specification-profile tests\nP = exact empirical-simulation test",
-        transform=ax_g.transAxes,
-        ha="left",
-        va="top",
-        fontsize=4.4,
-        color="#555555",
-    )
-    ax_g.set_title("Specification and profile concordance", loc="left")
-    _panel_label(ax_g, "e", x=-0.11)
+        summary = mantel_by_comparison.loc[comparison]
+        rho = float(summary["mantel_spearman_rho"])
+        if bool(summary["primary_signature_profile_test"]):
+            probability = f"q = {float(summary['q_bh_two_signature_profile_tests']):.3f}"
+        else:
+            probability = f"P = {float(summary['p_exact_two_sided']):.3f}"
+        inset.text(
+            0.04,
+            0.96,
+            f"rho = {rho:.2f}\n{probability}",
+            transform=inset.transAxes,
+            ha="left",
+            va="top",
+            fontsize=4.45,
+            color="#222222",
+        )
+        inset.set_title(title, loc="left", fontsize=5.25, pad=3)
+        inset.set_xlabel(x_label, fontsize=4.65, labelpad=2)
+        inset.set_ylabel(y_label, fontsize=4.65, labelpad=2)
+        inset.tick_params(axis="both", labelsize=4.25, length=2.0, pad=1.5)
+        inset.spines["top"].set_visible(False)
+        inset.spines["right"].set_visible(False)
 
     # f | Continuous known-truth fingerprints.
     ax_e = fig.add_subplot(grid[3, :])

@@ -263,25 +263,68 @@ def build_fig3() -> None:
     row4 = gs[4, 0:9].subgridspec(1, 3, wspace=0.72)
     ax_f = fig.add_subplot(row4[0, 0])
     ax = ax_f
-    method_metric = (
-        method_wide.groupby("method", as_index=False)[metric_order]
-        .mean()
-        .set_index("method")
-        .reindex(method_order)
-    )
-    mm = method_metric[metric_order]
-    im = ax.imshow(mm.values, vmin=0, vmax=1, cmap="viridis", aspect="auto")
-    ax.set_xticks(np.arange(len(metric_order)))
-    ax.set_xticklabels([metric_labels[m] for m in metric_order], rotation=28, ha="right")
+    profile_values = method_wide[metric_order].astype(float)
+    profile_sd = profile_values.std(axis=0, ddof=0).replace(0, np.nan)
+    profile_z = (profile_values - profile_values.mean(axis=0)) / profile_sd
+    profile_z = profile_z.fillna(0.0)
+    profile_z["method"] = method_wide["method"].to_numpy()
+    profile_z["dataset_id"] = method_wide["dataset_id"].to_numpy()
+    method_centroids = profile_z.groupby("method", as_index=True)[metric_order].mean()
+    profile_rows = []
+    for row in profile_z.itertuples(index=False):
+        values = np.asarray([getattr(row, metric) for metric in metric_order], dtype=float)
+        centroid = method_centroids.loc[row.method, metric_order].to_numpy(dtype=float)
+        profile_rows.append(
+            {
+                "method": row.method,
+                "dataset_id": row.dataset_id,
+                "rms_standardized_profile_deviation": float(np.sqrt(np.mean((values - centroid) ** 2))),
+                **{f"z_{metric}": float(getattr(row, metric)) for metric in metric_order},
+            }
+        )
+    profile_departure = pd.DataFrame(profile_rows)
+    profile_departure.to_csv(REV_SOURCE_DIR / "Fig3f_context_profile_deviation.csv", index=False)
+    dataset_markers = {"pbmc3k": "o", "paul15": "^", "heart_cell_atlas_subsampled": "s"}
+    dataset_offsets = {"pbmc3k": -0.18, "paul15": 0.0, "heart_cell_atlas_subsampled": 0.18}
+    for method_index, method in enumerate(method_order):
+        part = profile_departure[profile_departure["method"].eq(method)]
+        for row in part.itertuples(index=False):
+            ax.plot(
+                [0, row.rms_standardized_profile_deviation],
+                [method_index + dataset_offsets[row.dataset_id]] * 2,
+                color="#D8D8D8",
+                lw=0.45,
+                zorder=1,
+            )
+            ax.scatter(
+                row.rms_standardized_profile_deviation,
+                method_index + dataset_offsets[row.dataset_id],
+                s=17,
+                marker=dataset_markers[row.dataset_id],
+                color=DATASET_COLORS[row.dataset_id],
+                edgecolor="white",
+                linewidth=0.35,
+                zorder=3,
+            )
     ax.set_yticks(np.arange(len(method_order)))
     ax.set_yticklabels(method_order, fontsize=5.0)
     ax.tick_params(axis="y", pad=1)
     _color_method_labels(ax, "y")
-    for i in range(mm.shape[0]):
-        for j in range(mm.shape[1]):
-            val = mm.iloc[i, j]
-            ax.text(j, i, f"{val:.2f}", ha="center", va="center", fontsize=4.4, color="white" if val < 0.25 else "#132A13")
-    ax.set_title("Method fingerprints", loc="left", pad=7)
+    ax.invert_yaxis()
+    ax.set_xlim(left=0)
+    ax.set_xlabel("RMS profile deviation (z units)")
+    ax.set_title("Context-profile departure", loc="left", pad=7)
+    ax.legend(
+        handles=[
+            Line2D([0], [0], marker=dataset_markers[dataset_id], color="none", markerfacecolor=DATASET_COLORS[dataset_id], markeredgecolor="white", markersize=4.0, label=_short_dataset(dataset_id))
+            for dataset_id in dataset_order
+        ],
+        loc="lower left",
+        fontsize=4.1,
+        frameon=False,
+        handletextpad=0.3,
+        borderaxespad=0.2,
+    )
     _panel_label(ax, "f")
 
     ax_g = fig.add_subplot(row4[0, 1])
@@ -427,7 +470,6 @@ def build_fig4() -> None:
     continuum = pd.read_csv(SOURCE_DIR / "fig4_paul15_continuum_metrics.csv")
     donor = pd.read_csv(SOURCE_DIR / "fig4_heart_donor_gate_metrics.csv")
     gate = pd.read_csv(SOURCE_DIR / "fig4_gate_pass_matrix.csv")
-    gate_by_method = pd.read_csv(SOURCE_DIR / "fig4_gate_pass_by_method.csv")
     local_tradeoff = pd.read_csv(SOURCE_DIR / "fig4_local_metric_tradeoff.csv")
 
     fig = plt.figure(figsize=(7.6, 11.4))
@@ -537,41 +579,72 @@ def build_fig4() -> None:
     _panel_label(ax, "d")
 
     ax = fig.add_subplot(gs[1, 1:3])
-    plotted_gate = gate[gate["claim_gate"].isin(["local_neighbourhood_gate", "global_geometry_gate", "continuum_gate", "donor_aware_gate", "label_support_gate"])].copy()
-    plotted_gate["pass"] = plotted_gate["support"].eq("pass").astype(float)
-    summary_counts = plotted_gate.groupby(["method", "dataset_id"], as_index=False).agg(
-        pass_fraction=("pass", "mean"),
-        pass_count=("pass", "sum"),
-        n_cases=("pass", "size"),
-    )
-    summary_counts.to_csv(REV_SOURCE_DIR / "Fig4e_method_context_gate_breadth.csv", index=False)
-    dataset_order = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
-    summary = summary_counts.pivot(index="method", columns="dataset_id", values="pass_fraction").reindex(index=config.ANCHOR_METHODS, columns=dataset_order)
-    summary_pass = summary_counts.pivot(index="method", columns="dataset_id", values="pass_count").reindex(index=config.ANCHOR_METHODS, columns=dataset_order)
-    summary_n = summary_counts.pivot(index="method", columns="dataset_id", values="n_cases").reindex(index=config.ANCHOR_METHODS, columns=dataset_order)
-    im = ax.imshow(summary.values, vmin=0, vmax=1, cmap="YlGnBu", aspect="auto")
-    ax.set_xticks(np.arange(len(dataset_order)))
-    ax.set_xticklabels([_short_dataset(x) for x in dataset_order], rotation=25, ha="right")
-    ax.set_yticks(np.arange(len(config.ANCHOR_METHODS)))
-    ax.set_yticklabels(config.ANCHOR_METHODS)
-    _color_method_labels(ax, "y")
-    for i in range(summary.shape[0]):
-        for j in range(summary.shape[1]):
-            passed = int(round(float(summary_pass.iloc[i, j])))
-            total = int(summary_n.iloc[i, j])
-            frac = float(summary.iloc[i, j])
-            ax.text(
-                j,
-                i,
-                f"{passed}/{total}",
-                ha="center",
-                va="center",
-                fontsize=5.7,
-                color="white" if frac > 0.72 else "#17213A",
+    component_frames = [
+        local[pd.notna(local["threshold"])].copy(),
+        global_df[pd.notna(global_df["threshold"])].copy(),
+        continuum[pd.notna(continuum["threshold"])].copy(),
+        donor[pd.notna(donor["threshold"])].copy(),
+    ]
+    component_values = pd.concat(component_frames, ignore_index=True)
+    component_values["relative_margin"] = (
+        component_values["value"].astype(float) - component_values["threshold"].astype(float)
+    ) / component_values["threshold"].astype(float)
+    gate_margin_rows = []
+    for gate_row in gate.itertuples(index=False):
+        components = str(gate_row.components).split(";")
+        matches = component_values[
+            component_values["dataset_id"].eq(gate_row.dataset_id)
+            & component_values["method"].eq(gate_row.method)
+            & component_values["metric"].isin(components)
+        ].copy()
+        if matches.shape[0] != len(components):
+            raise ValueError(
+                f"Incomplete gate components for {gate_row.dataset_id}, {gate_row.method}, {gate_row.claim_gate}."
             )
-    ax.set_title("Method-context gate breadth")
-    cbar = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.02)
-    cbar.ax.set_ylabel("pass fraction", rotation=270, labelpad=9, fontsize=5)
+        limiting = matches.loc[matches["relative_margin"].idxmin()]
+        gate_margin_rows.append(
+            {
+                "dataset_id": gate_row.dataset_id,
+                "method": gate_row.method,
+                "family": gate_row.family,
+                "claim_gate": gate_row.claim_gate,
+                "support": gate_row.support,
+                "limiting_component": limiting["metric"],
+                "limiting_relative_margin": float(limiting["relative_margin"]),
+                "n_components": len(components),
+            }
+        )
+    gate_margins = pd.DataFrame(gate_margin_rows)
+    predicted_support = gate_margins["limiting_relative_margin"].ge(-1e-12)
+    if not np.array_equal(predicted_support.to_numpy(), gate_margins["support"].eq("pass").to_numpy()):
+        raise ValueError("Gate limiting margins do not reproduce the predeclared support decisions.")
+    gate_margins.to_csv(REV_SOURCE_DIR / "Fig4e_gate_limiting_margins.csv", index=False)
+    gate_order = ["local_neighbourhood_gate", "label_support_gate", "global_geometry_gate", "continuum_gate", "donor_aware_gate"]
+    gate_labels = ["local", "label", "global", "continuum", "donor"]
+    method_offsets = {method: (index - 3.5) * 0.025 for index, method in enumerate(config.ANCHOR_METHODS)}
+    dataset_offsets = {"pbmc3k": -0.008, "paul15": 0.0, "heart_cell_atlas_subsampled": 0.008}
+    for gate_index, claim_gate in enumerate(gate_order):
+        part = gate_margins[gate_margins["claim_gate"].eq(claim_gate)]
+        for row in part.itertuples(index=False):
+            ax.scatter(
+                row.limiting_relative_margin,
+                gate_index + method_offsets[row.method] + dataset_offsets[row.dataset_id],
+                s=15,
+                color=_method_color(row.method),
+                edgecolor="white",
+                linewidth=0.3,
+                alpha=0.82,
+                zorder=2,
+            )
+        q1, median, q3 = part["limiting_relative_margin"].quantile([0.25, 0.50, 0.75]).to_numpy(dtype=float)
+        ax.plot([q1, q3], [gate_index, gate_index], color="#202020", lw=1.6, solid_capstyle="round", zorder=3)
+        ax.scatter(median, gate_index, marker="D", s=18, facecolor="white", edgecolor="#202020", linewidth=0.65, zorder=4)
+    ax.axvline(0, color="#555555", lw=0.75, ls="--")
+    ax.set_yticks(np.arange(len(gate_order)))
+    ax.set_yticklabels(gate_labels)
+    ax.invert_yaxis()
+    ax.set_xlabel("limiting relative margin")
+    ax.set_title("Gate limiting margins")
     _panel_label(ax, "e")
 
     ax = fig.add_subplot(gs[2, 0])
@@ -604,26 +677,83 @@ def build_fig4() -> None:
     _panel_label(ax, "f")
 
     ax = fig.add_subplot(gs[2, 1])
-    gate_order = ["label_support_gate", "local_neighbourhood_gate", "global_geometry_gate", "continuum_gate", "donor_aware_gate"]
-    gate_labels = ["label", "local", "global", "continuum", "donor"]
-    method_gate = (
-        gate_by_method.pivot(index="method", columns="claim_gate", values="pass_fraction")
-        .reindex(index=config.ANCHOR_METHODS, columns=gate_order)
+    local_components = (
+        local[local["metric"].isin(["local_retention", "trustworthiness"])]
+        .pivot_table(index=["dataset_id", "method", "family"], columns="metric", values=["value", "threshold"], aggfunc="first")
     )
-    im = ax.imshow(method_gate.values, vmin=0, vmax=1, cmap="YlGnBu", aspect="auto")
-    ax.set_xticks(np.arange(len(gate_order)))
-    ax.set_xticklabels(gate_labels, rotation=35, ha="right")
-    ax.set_yticks(np.arange(len(config.ANCHOR_METHODS)))
-    ax.set_yticklabels(config.ANCHOR_METHODS, fontsize=5.0)
-    ax.tick_params(axis="y", pad=1)
-    _color_method_labels(ax, "y")
-    for i in range(method_gate.shape[0]):
-        for j in range(method_gate.shape[1]):
-            val = method_gate.iloc[i, j]
-            ax.text(j, i, f"{val:.2f}", ha="center", va="center", fontsize=4.4, color="white" if val > 0.72 else "#17213A")
-    ax.set_title("Method gate support", loc="left")
-    cbar = fig.colorbar(im, ax=ax, fraction=0.050, pad=0.025)
-    cbar.ax.set_ylabel("pass fraction", rotation=270, labelpad=8, fontsize=5)
+    local_plane = pd.DataFrame(
+        {
+            "local_relative_margin": (
+                local_components[("value", "local_retention")] - local_components[("threshold", "local_retention")]
+            ) / local_components[("threshold", "local_retention")],
+            "trust_relative_margin": (
+                local_components[("value", "trustworthiness")] - local_components[("threshold", "trustworthiness")]
+            ) / local_components[("threshold", "trustworthiness")],
+        }
+    ).reset_index()
+    local_plane.to_csv(REV_SOURCE_DIR / "Fig4g_local_gate_component_plane.csv", index=False)
+    marker_map = {"pbmc3k": "o", "paul15": "^", "heart_cell_atlas_subsampled": "s"}
+    for row in local_plane.itertuples(index=False):
+        ax.scatter(
+            row.local_relative_margin,
+            row.trust_relative_margin,
+            s=25,
+            marker=marker_map[row.dataset_id],
+            color=_method_color(row.method),
+            edgecolor="white",
+            linewidth=0.35,
+            alpha=0.82,
+        )
+    method_centroids = local_plane.groupby("method", as_index=False)[["local_relative_margin", "trust_relative_margin"]].mean()
+    label_positions = {
+        "GLM-PCA": (-0.99, -0.145),
+        "PCA": (-0.99, -0.115),
+        "scScope": (-0.99, -0.085),
+        "SAUCIE": (-0.99, -0.052),
+        "PHATE": (-0.70, -0.020),
+        "PaCMAP": (-0.55, 0.064),
+        "UMAP": (-0.35, 0.052),
+        "t-SNE": (0.050, 0.067),
+    }
+    for row in method_centroids.itertuples(index=False):
+        ax.scatter(
+            row.local_relative_margin,
+            row.trust_relative_margin,
+            s=31,
+            facecolor="white",
+            edgecolor=_method_color(row.method),
+            linewidth=0.8,
+            zorder=4,
+        )
+        ax.annotate(
+            row.method,
+            (row.local_relative_margin, row.trust_relative_margin),
+            xytext=label_positions[row.method],
+            textcoords="data",
+            fontsize=4.2,
+            color=_method_color(row.method),
+            ha="left",
+            va="center",
+            arrowprops={"arrowstyle": "-", "lw": 0.30, "color": "#888888", "shrinkA": 1.0, "shrinkB": 2.0},
+        )
+    ax.axvline(0, color="#777777", lw=0.7, ls="--")
+    ax.axhline(0, color="#777777", lw=0.7, ls="--")
+    ax.set_xlabel("local-retention relative margin")
+    ax.set_ylabel("trustworthiness relative margin")
+    ax.set_xlim(-1.10, 0.40)
+    ax.set_ylim(-0.17, 0.105)
+    ax.set_title("Local-gate component plane", loc="left")
+    ax.legend(
+        handles=[
+            Line2D([0], [0], marker=marker_map[dataset_id], color="none", markerfacecolor="#777777", markeredgecolor="white", markersize=4.0, label=_short_dataset(dataset_id))
+            for dataset_id in ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
+        ],
+        loc="lower right",
+        fontsize=3.9,
+        frameon=False,
+        handletextpad=0.25,
+        borderaxespad=0.2,
+    )
     _panel_label(ax, "g")
 
     ax = fig.add_subplot(gs[2, 2])
@@ -655,7 +785,7 @@ def build_fig4() -> None:
     ax.legend(handles=handles, loc="lower right", fontsize=4.4, frameon=False)
     _panel_label(ax, "h")
 
-    ax = fig.add_subplot(gs[3, 0:2])
+    ax = fig.add_subplot(gs[3, 0])
     threshold_frames = []
     for source_name, frame in [
         ("local", local),
@@ -714,32 +844,72 @@ def build_fig4() -> None:
             if pd.notna(val):
                 ax.text(j, i, f"{val:+.2f}", ha="center", va="center", fontsize=4.4, color="white" if abs(val) > 0.45 * max_abs else "#222222")
     ax.set_title("Boundary margins", loc="left")
-    cbar = fig.colorbar(im, ax=ax, fraction=0.026, pad=0.018, ticks=[-round(max_abs, 2), 0, round(max_abs, 2)])
+    cbar = fig.colorbar(im, ax=ax, fraction=0.040, pad=0.018, ticks=[-round(max_abs, 2), 0, round(max_abs, 2)])
     cbar.ax.set_ylabel("value - boundary", rotation=270, labelpad=10, fontsize=5)
     cbar.ax.tick_params(labelsize=4.8, pad=1)
-    _panel_label(ax, "i", x=-0.055)
+    _panel_label(ax, "i", x=-0.10)
 
-    ax = fig.add_subplot(gs[3, 2])
-    method_range = gate_by_method.groupby("method", as_index=False).agg(
-        minimum_gate_support=("pass_fraction", "min"),
-        maximum_gate_support=("pass_fraction", "max"),
-        n_gates=("claim_gate", "nunique"),
+    ax = fig.add_subplot(gs[3, 1:3])
+    gate_labels_short = {
+        "local_neighbourhood_gate": "local",
+        "label_support_gate": "label",
+        "global_geometry_gate": "global",
+        "continuum_gate": "continuum",
+        "donor_aware_gate": "donor",
+    }
+    dataset_labels_short = {
+        "pbmc3k": "PBMC3k",
+        "paul15": "Paul15",
+        "heart_cell_atlas_subsampled": "Heart",
+    }
+    gate_order_by_dataset = {
+        "pbmc3k": ["local_neighbourhood_gate", "label_support_gate", "global_geometry_gate"],
+        "paul15": ["local_neighbourhood_gate", "label_support_gate", "global_geometry_gate", "continuum_gate"],
+        "heart_cell_atlas_subsampled": ["local_neighbourhood_gate", "label_support_gate", "global_geometry_gate", "donor_aware_gate"],
+    }
+    ordered_columns = [
+        (dataset_id, claim_gate)
+        for dataset_id, claims in gate_order_by_dataset.items()
+        for claim_gate in claims
+    ]
+    gate_plot = gate.copy()
+    gate_plot["supported"] = gate_plot["support"].eq("pass").astype(int)
+    gate_plot["column_key"] = list(zip(gate_plot["dataset_id"], gate_plot["claim_gate"]))
+    outcome = (
+        gate_plot.pivot(index="method", columns="column_key", values="supported")
+        .reindex(index=config.ANCHOR_METHODS, columns=ordered_columns)
     )
-    method_range["gate_support_range"] = method_range["maximum_gate_support"] - method_range["minimum_gate_support"]
-    method_range = method_range.set_index("method").reindex(config.ANCHOR_METHODS).reset_index()
-    method_range.to_csv(REV_SOURCE_DIR / "Fig4j_method_gate_inconsistency.csv", index=False)
-    y = np.arange(len(method_range))
-    ax.barh(y, method_range["gate_support_range"], color=[_method_color(m) for m in method_range["method"]], alpha=0.82)
-    for yi, row in enumerate(method_range.itertuples(index=False)):
-        ax.text(float(row.gate_support_range) + 0.02, yi, f"{float(row.gate_support_range):.2f}", va="center", fontsize=4.7)
-    ax.set_yticks(y)
-    ax.set_yticklabels(method_range["method"], fontsize=5.0)
+    if outcome.isna().any().any():
+        raise ValueError("Fig. 4j gate-outcome matrix is incomplete.")
+    gate_plot.to_csv(REV_SOURCE_DIR / "Fig4j_method_context_gate_outcomes.csv", index=False)
+    im = ax.imshow(outcome.values, vmin=0, vmax=1, cmap=ListedColormap(["#D9D9D9", "#2C7FB8"]), aspect="auto")
+    labels = [
+        f"{dataset_labels_short[dataset_id]} | {gate_labels_short[claim_gate]}"
+        for dataset_id, claim_gate in ordered_columns
+    ]
+    ax.set_xticks(np.arange(len(labels)))
+    ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=4.7)
+    ax.set_yticks(np.arange(len(config.ANCHOR_METHODS)))
+    ax.set_yticklabels(config.ANCHOR_METHODS, fontsize=5.0)
     _color_method_labels(ax, "y")
-    ax.invert_yaxis()
-    ax.set_xlim(0, 1.08)
-    ax.set_xlabel("max-min gate support")
-    ax.set_title("Within-method gate inconsistency", loc="left")
-    _panel_label(ax, "j")
+    for boundary in [2.5, 6.5]:
+        ax.axvline(boundary, color="white", linewidth=1.2)
+    for i in range(outcome.shape[0]):
+        for j in range(outcome.shape[1]):
+            ax.text(j, i, "pass" if outcome.iloc[i, j] == 1 else "fail", ha="center", va="center", fontsize=3.9, color="white" if outcome.iloc[i, j] == 1 else "#555555")
+    ax.set_title("Method-context gate outcomes", loc="left")
+    ax.legend(
+        handles=[
+            Patch(facecolor="#2C7FB8", edgecolor="none", label="supported"),
+            Patch(facecolor="#D9D9D9", edgecolor="none", label="unsupported"),
+        ],
+        loc="upper center",
+        bbox_to_anchor=(0.50, -0.34),
+        ncol=2,
+        frameon=False,
+        fontsize=4.8,
+    )
+    _panel_label(ax, "j", x=-0.065)
     _save(fig, "Figure_4", aliases=("Figure_4",))
 
 

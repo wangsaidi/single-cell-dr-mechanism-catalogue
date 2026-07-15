@@ -1,6 +1,6 @@
 # Mathematical catalogue and diagnostic stress tests for single-cell dimensionality reduction
 
-This repository release contains the figure-reproduction materials for the manuscript *Mathematical objectives do not uniquely determine preservation behaviour in single-cell embeddings*.
+This repository release contains the figure-reproduction materials for the manuscript *Mathematical objectives constrain but do not validate biological interpretation of single-cell embeddings*.
 
 ## Contents
 

@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.colors import ListedColormap, TwoSlopeNorm
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Patch, Rectangle
+from sklearn.neighbors import NearestNeighbors
 
 from . import config, style
 
@@ -229,23 +230,102 @@ def build_fig5() -> None:
     _panel_label(ax, "c")
 
     ax = fig.add_subplot(gs[1, 2])
-    audit_order = [
-        "discrete_cell_identity",
-        "trajectory_continuum",
-        "donor_variable_tissue_identity",
-        "rare_state_support",
-    ]
-    audit_labels = ["cell identity", "continuum", "donor tissue", "rare state"]
-    audit = audit.set_index("claim_type").reindex(audit_order).reset_index()
-    y = np.arange(audit.shape[0])
-    ax.barh(y, audit["support_summary"], color=["#4C78A8", "#59A14F", "#B07AA1", "#D98CB7"], alpha=0.86)
-    for yi, row in enumerate(audit.itertuples()):
-        ax.text(row.support_summary + 0.02, yi, f"{row.support_summary:.2f}\nn={int(row.n_method_label_rows)}", va="center", fontsize=4.9)
-    ax.set_yticks(y)
-    ax.set_yticklabels(audit_labels)
-    ax.set_xlim(0, 1.08)
-    ax.set_xlabel("support fraction")
-    ax.set_title("Evidence audit", loc="left")
+    evidence_rows = []
+    for row in pbmc_support.itertuples(index=False):
+        marker_margin = (float(row.max_marker_z) - 0.50) / 0.50
+        neighbour_margin = (float(row.label_knn_recall) - 0.55) / 0.55
+        evidence_rows.append(
+            {
+                "claim_type": "cell identity",
+                "evidence_unit": f"{row.method} | {row.label}",
+                "method": row.method,
+                "family": row.family,
+                "relative_evidence_margin": min(marker_margin, neighbour_margin),
+                "component_definition": "minimum of marker-program and same-label-neighbour relative margins",
+            }
+        )
+    for row in paul_lineage.itertuples(index=False):
+        evidence_rows.append(
+            {
+                "claim_type": "continuum",
+                "evidence_unit": row.program,
+                "method": "",
+                "family": "",
+                "relative_evidence_margin": abs(float(row.value)) / 0.25 - 1.0,
+                "component_definition": "absolute marker-pseudotime correlation relative to 0.25",
+            }
+        )
+    for row in heart_donor.itertuples(index=False):
+        identity_margin = (float(row.cell_type_label_recall) - 0.55) / 0.55
+        donor_margin = (float(row.donor_entropy_norm) - 0.50) / 0.50
+        evidence_rows.append(
+            {
+                "claim_type": "donor tissue",
+                "evidence_unit": row.method,
+                "method": row.method,
+                "family": row.family,
+                "relative_evidence_margin": min(identity_margin, donor_margin),
+                "component_definition": "minimum of same-cell-type-neighbour and donor-entropy relative margins",
+            }
+        )
+    for row in rare.itertuples(index=False):
+        evidence_rows.append(
+            {
+                "claim_type": "rare state",
+                "evidence_unit": f"{row.dataset_id} | {row.method} | {row.label}",
+                "method": row.method,
+                "family": row.family,
+                "relative_evidence_margin": (float(row.label_knn_recall) - 0.55) / 0.55,
+                "component_definition": "rare-label same-neighbour fraction relative to 0.55",
+            }
+        )
+    evidence_units = pd.DataFrame(evidence_rows)
+    evidence_units["supported"] = evidence_units["relative_evidence_margin"].ge(0)
+    evidence_units.to_csv(REV_SOURCE_DIR / "Fig5d_evidence_unit_margins.csv", index=False)
+
+    audit_order = ["cell identity", "continuum", "donor tissue", "rare state"]
+    audit_colours = {
+        "cell identity": "#4C78A8",
+        "continuum": "#59A14F",
+        "donor tissue": "#B07AA1",
+        "rare state": "#D98CB7",
+    }
+    expected_support = {
+        "cell identity": 0.859375,
+        "continuum": 0.4,
+        "donor tissue": 0.625,
+        "rare state": 0.7321428571428571,
+    }
+    rng = np.random.default_rng(config.SEED)
+    for x, claim in enumerate(audit_order):
+        values = evidence_units.loc[evidence_units["claim_type"].eq(claim), "relative_evidence_margin"].to_numpy()
+        observed_support = float(np.mean(values >= 0))
+        if not np.isclose(observed_support, expected_support[claim]):
+            raise ValueError(f"Fig. 5d support fraction changed for {claim}: {observed_support}")
+        jitter = rng.uniform(-0.16, 0.16, len(values))
+        ax.scatter(
+            x + jitter,
+            values,
+            s=10,
+            color=audit_colours[claim],
+            alpha=0.42,
+            edgecolor="white",
+            linewidth=0.25,
+        )
+        q1, median, q3 = np.quantile(values, [0.25, 0.5, 0.75])
+        ax.vlines(x, q1, q3, color="#1F2937", linewidth=1.8)
+        ax.scatter(x, median, s=25, facecolor="white", edgecolor="#1F2937", linewidth=0.8, zorder=4)
+    counts = evidence_units.groupby("claim_type").size()
+    ax.axhline(0, color="#777777", lw=0.8, ls="--")
+    ax.set_xticks(
+        np.arange(len(audit_order)),
+        [f"{claim}\nn={int(counts[claim])}" for claim in audit_order],
+        rotation=28,
+        ha="right",
+    )
+    ax.set_ylim(-1.05, 1.02)
+    ax.set_ylabel("Relative evidence margin")
+    ax.set_title("Evidence-unit margins", loc="left")
     _panel_label(ax, "d")
 
     ax = fig.add_subplot(gs[2, 0:3])
@@ -373,45 +453,73 @@ def build_fig5() -> None:
     _panel_label(ax, "i")
 
     ax = fig.add_subplot(gs[4, 2])
-    label_positions = {
-        "PCA": (0.635, 0.700),
-        "GLM-PCA": (0.620, 0.790),
-        "scScope": (0.735, 0.235),
-        "SAUCIE": (0.625, 0.865),
-        "UMAP": (0.525, 0.980),
-        "PHATE": (0.545, 0.925),
-        "t-SNE": (0.438, 1.000),
-        "PaCMAP": (0.400, 0.895),
-    }
-    for method, row in heart_donor.set_index("method").reindex(METHOD_ORDER).iterrows():
+    heart_coordinates = pd.read_csv(
+        SOURCE_DIR / "fig3_heart_embedding_coordinates.csv",
+        usecols=["method", "x", "y", "label"],
+    )
+    heart_label_marker = (
+        heart_marker.groupby("label", as_index=False)
+        .agg(max_marker_z=("z_score", "max"), n_cells_label=("n_cells", "max"))
+    )
+    heart_neighbour_rows = []
+    for method in METHOD_ORDER:
+        part = heart_coordinates[heart_coordinates["method"].eq(method)].reset_index(drop=True)
+        coordinates = part[["x", "y"]].to_numpy(dtype=float)
+        labels = part["label"].astype(str).to_numpy()
+        neighbour_indices = NearestNeighbors(n_neighbors=16).fit(coordinates).kneighbors(return_distance=False)[:, 1:]
+        same_label_fraction = (labels[neighbour_indices] == labels[:, None]).mean(axis=1)
+        method_rows = pd.DataFrame({"label": labels, "same_label_fraction": same_label_fraction})
+        method_summary = method_rows.groupby("label", as_index=False).agg(
+            label_knn_recall=("same_label_fraction", "mean"),
+            n_cells_coordinate=("same_label_fraction", "size"),
+        )
+        method_summary["method"] = method
+        heart_neighbour_rows.append(method_summary)
+    heart_marker_neighbour = pd.concat(heart_neighbour_rows, ignore_index=True).merge(
+        heart_label_marker,
+        on="label",
+        how="left",
+        validate="many_to_one",
+    )
+    if heart_marker_neighbour[["max_marker_z", "n_cells_label"]].isna().any().any():
+        raise ValueError("Heart marker-neighbour analysis has unmatched labels.")
+    heart_marker_neighbour["mean_label_knn_recall"] = heart_marker_neighbour.groupby("label")["label_knn_recall"].transform("mean")
+    label_means = heart_marker_neighbour.drop_duplicates("label")[["label", "max_marker_z", "mean_label_knn_recall", "n_cells_label"]]
+    marker_neighbour_rho = float(label_means["max_marker_z"].corr(label_means["mean_label_knn_recall"], method="spearman"))
+    heart_marker_neighbour["descriptive_label_level_spearman_rho"] = marker_neighbour_rho
+    heart_marker_neighbour.to_csv(REV_SOURCE_DIR / "Fig5j_heart_marker_neighbour_concordance.csv", index=False)
+    for method, part in heart_marker_neighbour.groupby("method", sort=False):
         ax.scatter(
-            row["donor_entropy_norm"],
-            row["cell_type_label_recall"],
-            s=42,
+            part["max_marker_z"],
+            part["label_knn_recall"],
+            s=np.clip(part["n_cells_label"].to_numpy(dtype=float) / 28.0, 10, 55),
             color=_method_color(method),
             edgecolor="white",
-            linewidth=0.35,
-            alpha=0.86,
+            linewidth=0.3,
+            alpha=0.55,
         )
-        tx, ty = label_positions.get(method, (row["donor_entropy_norm"] + 0.010, row["cell_type_label_recall"]))
-        ax.annotate(
-            method,
-            xy=(row["donor_entropy_norm"], row["cell_type_label_recall"]),
-            xytext=(tx, ty),
-            textcoords="data",
-            fontsize=4.3,
-            color=_method_color(method),
-            va="center",
-            ha="right" if tx < row["donor_entropy_norm"] else "left",
-            arrowprops={"arrowstyle": "-", "lw": 0.35, "color": "#777777", "shrinkA": 1.5, "shrinkB": 2.0},
-        )
+    ax.scatter(
+        label_means["max_marker_z"],
+        label_means["mean_label_knn_recall"],
+        s=23,
+        facecolor="white",
+        edgecolor="#222222",
+        linewidth=0.65,
+        zorder=4,
+    )
     ax.axhline(0.55, color="#777777", lw=0.7, ls="--")
-    ax.axvline(0.50, color="#777777", lw=0.7, ls="--")
-    ax.set_xlim(0.38, 0.78)
-    ax.set_ylim(0.15, 1.02)
-    ax.set_xlabel("donor entropy")
-    ax.set_ylabel("cell-type neighbour fraction")
-    ax.set_title("Donor-aware identity", loc="left")
+    ax.set_ylim(0, 1.02)
+    ax.set_xlabel("max marker z-score")
+    ax.set_ylabel("same-label neighbour fraction")
+    ax.set_title("Heart marker-neighbour concordance", loc="left")
+    ax.text(
+        0.02,
+        0.05,
+        f"descriptive rho={marker_neighbour_rho:.2f}; n=11 labels",
+        transform=ax.transAxes,
+        fontsize=4.2,
+        color="#555555",
+    )
     _panel_label(ax, "j", x=-0.20, y=1.14)
 
     fig.legend(
@@ -580,7 +688,6 @@ def build_fig6() -> None:
     ax.set_title("Worst-case support", loc="left")
     cbar = fig.colorbar(im, ax=ax, fraction=0.035, pad=0.020)
     cbar.ax.set_ylabel("worst score", rotation=270, labelpad=8, fontsize=5)
-    ax.text(1.0, -0.28, "* below fixed operational boundary", transform=ax.transAxes, ha="right", fontsize=4.8, color="#555555")
     _panel_label(ax, "f")
 
     ax = fig.add_subplot(gs[2, 0])
@@ -654,15 +761,78 @@ def build_fig6() -> None:
     _panel_label(ax, "i")
 
     ax = fig.add_subplot(gs[3, 1:3])
-    perturb_metric_failure = (
-        _failure_summary(perturb, ["metric", "perturbation"])
-        .pivot(index="metric", columns="perturbation", values="failure_fraction")
-        .reindex(index=metric_order_robust, columns=["dropout", "noise"])
+    perturb_nonbaseline = perturb.loc[perturb["level"].astype(float).gt(0)].copy()
+    perturb_nonbaseline["relative_threshold_margin"] = (
+        perturb_nonbaseline["value"].astype(float) - perturb_nonbaseline["threshold"].astype(float)
+    ) / perturb_nonbaseline["threshold"].astype(float)
+    perturb_summary = (
+        perturb_nonbaseline.groupby(["method", "perturbation", "level", "metric"], as_index=False)
+        .agg(
+            mean_relative_margin=("relative_threshold_margin", "mean"),
+            minimum_relative_margin=("relative_threshold_margin", "min"),
+            maximum_relative_margin=("relative_threshold_margin", "max"),
+            n_replicates=("relative_threshold_margin", "size"),
+        )
     )
-    perturb_metric_failure.index = [METRIC_LABELS[m] for m in metric_order_robust]
-    _failure_summary(perturb, ["metric", "perturbation"]).to_csv(REV_SOURCE_DIR / "Fig6j_perturbation_failure_by_metric.csv", index=False)
-    _draw_failure_heatmap(ax, perturb_metric_failure, "Metric stress failure", xrot=20)
-    _panel_label(ax, "j")
+    perturb_summary.to_csv(REV_SOURCE_DIR / "Fig6j_perturbation_condition_margins.csv", index=False)
+    condition_order = [
+        ("dropout", 0.2),
+        ("dropout", 0.4),
+        ("noise", 0.2),
+        ("noise", 0.4),
+    ]
+    column_order = [
+        (perturbation_name, level, metric)
+        for perturbation_name, level in condition_order
+        for metric in metric_order_robust
+    ]
+    perturb_summary["column_key"] = list(
+        zip(perturb_summary["perturbation"], perturb_summary["level"].astype(float), perturb_summary["metric"])
+    )
+    margin_matrix = (
+        perturb_summary.pivot(index="method", columns="column_key", values="mean_relative_margin")
+        .reindex(index=["PCA", "UMAP", "PHATE", "PaCMAP"], columns=column_order)
+    )
+    if margin_matrix.isna().any().any():
+        raise ValueError("Fig. 6j perturbation-margin matrix is incomplete.")
+    display_matrix = np.clip(margin_matrix.values.astype(float), -1, 1)
+    im = ax.imshow(
+        display_matrix,
+        cmap="RdBu_r",
+        norm=mpl.colors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1),
+        aspect="auto",
+    )
+    ax.set_xticks(np.arange(len(column_order)))
+    ax.set_xticklabels(
+        [METRIC_LABELS[metric] for _perturbation, _level, metric in column_order],
+        rotation=90,
+        ha="center",
+        va="top",
+        fontsize=4.8,
+    )
+    ax.set_yticks(np.arange(margin_matrix.shape[0]))
+    ax.set_yticklabels(margin_matrix.index)
+    _color_method_labels(ax, "y")
+    for condition_index, (perturbation_name, level) in enumerate(condition_order):
+        start = condition_index * len(metric_order_robust)
+        centre = start + (len(metric_order_robust) - 1) / 2
+        ax.text(
+            centre,
+            -0.68,
+            f"{perturbation_name.title()} {level:.1f}",
+            ha="center",
+            va="bottom",
+            fontsize=5.0,
+            fontweight="bold",
+            clip_on=False,
+        )
+        if condition_index:
+            ax.axvline(start - 0.5, color="white", linewidth=1.2)
+    ax.set_title("Perturbation-specific margins", loc="left", pad=20)
+    cbar = fig.colorbar(im, ax=ax, fraction=0.022, pad=0.015)
+    cbar.ax.set_ylabel("relative threshold margin", rotation=270, labelpad=9, fontsize=5)
+    cbar.ax.tick_params(labelsize=5)
+    _panel_label(ax, "j", y=1.24)
 
     _save(fig, "Figure_6", aliases=("Figure_6",))
 

@@ -6,7 +6,7 @@ heart_cell_atlas_subsampled,local_neighbourhood_gate,0.875,8
 paul15,continuum_gate,1.0,8
 paul15,global_geometry_gate,0.0,8
 paul15,label_support_gate,0.875,8
-paul15,local_neighbourhood_gate,1.0,8
+paul15,local_neighbourhood_gate,0.875,8
 pbmc3k,global_geometry_gate,0.125,8
 pbmc3k,label_support_gate,0.0,8
 pbmc3k,local_neighbourhood_gate,1.0,8
