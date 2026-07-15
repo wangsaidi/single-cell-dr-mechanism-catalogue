@@ -40,3 +40,7 @@ See `TUTORIAL.md` for standalone figure commands, output checks and the boundary
 ## Scope
 
 The specification records describe terms traceable to published mathematical formulations. They are multi-component records rather than mutually exclusive method classes or performance rankings. The empirical and simulation files reproduce the focused eight-method analyses and do not estimate performance for the remaining catalogue methods.
+
+## License
+
+The figure-generation code is released under the MIT License. The underlying public biological datasets remain subject to the terms of their source repositories.
