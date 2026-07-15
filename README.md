@@ -1,6 +1,6 @@
 # Mathematical catalogue and diagnostic stress tests for single-cell dimensionality reduction
 
-This repository release contains the figure-reproduction materials for the manuscript *Mathematical objectives constrain but do not validate biological interpretation of single-cell embeddings*.
+This repository release contains the figure-reproduction materials for the manuscript *A 26-method mathematical catalogue for evidence-aware interpretation of single-cell embeddings*.
 
 ## Contents
 
