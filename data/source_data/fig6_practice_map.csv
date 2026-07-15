@@ -1,7 +1,0 @@
-﻿analysis_axis,source_data,n_metric_rows,fraction_below_threshold,practice_check
-output_dimension,fig6_output_dimension_response.csv,240,0.4041666666666667,Check whether the conclusion changes when the output dimension is increased beyond two.
-upstream_pca,fig6_upstream_pca_response.csv,144,0.4583333333333333,Check whether graph or relational layouts depend on the supplied PCA reference space.
-perturbation,fig6_dropout_noise_response.csv,192,0.4791666666666667,Check whether dropout or noise stress changes the claim-support diagnostics.
-mechanism_simulation,fig6_mechanism_simulation_suite.csv,224,0.5,"Use the mechanism simulation suite as a ground-truth stress test, not as a universal method ranking."
-
-

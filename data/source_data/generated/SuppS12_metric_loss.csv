@@ -1,0 +1,13 @@
+analysis_axis_resolved,metric,n_conditions,n_baseline_supported,n_pass_to_fail,support_loss_fraction,n_baseline_unsupported,n_fail_to_pass,support_recovery_fraction,n_definition
+expression_perturbation,global_rank_corr,32,32,6,0.1875,0,0,,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+expression_perturbation,label_neighbor_recall,32,32,0,0,0,0,,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+expression_perturbation,local_retention,32,0,0,,32,0,0,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+expression_perturbation,trustworthiness,32,0,0,,32,10,0.3125,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,global_rank_corr,48,44,0,0,4,1,0.25,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,label_neighbor_recall,48,32,0,0,16,6,0.375,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,local_retention,48,0,0,,48,13,0.2708333333,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,trustworthiness,48,20,0,0,28,12,0.4285714286,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,global_rank_corr,24,22,5,0.2272727273,2,1,0.5,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,label_neighbor_recall,24,16,0,0,8,1,0.125,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,local_retention,24,4,1,0.25,20,1,0.05,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,trustworthiness,24,14,3,0.2142857143,10,4,0.4,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates

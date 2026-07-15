@@ -1,0 +1,9 @@
+method,minimum_gate_support,maximum_gate_support,n_gates,gate_support_range
+PCA,0.0,1.0,5,1.0
+GLM-PCA,0.0,1.0,5,1.0
+scScope,0.0,1.0,5,1.0
+SAUCIE,0.0,1.0,5,1.0
+UMAP,0.0,0.6666666666666666,5,0.6666666666666666
+PHATE,0.0,1.0,5,1.0
+t-SNE,0.0,1.0,5,1.0
+PaCMAP,0.0,1.0,5,1.0

@@ -1,0 +1,13 @@
+metric,source,sum_squares,fraction_total_variation,n_method_context_values,residual_definition
+local_retention,method,0.1558952948,0.7805113284,24,method-by-context structure plus run-level residual; one run per method-context cell
+local_retention,biological_context,0.02278062919,0.1140543669,24,method-by-context structure plus run-level residual; one run per method-context cell
+local_retention,residual,0.02105890254,0.1054343046,24,method-by-context structure plus run-level residual; one run per method-context cell
+trustworthiness,method,0.04090578825,0.5282630898,24,method-by-context structure plus run-level residual; one run per method-context cell
+trustworthiness,biological_context,0.02643556662,0.3413926171,24,method-by-context structure plus run-level residual; one run per method-context cell
+trustworthiness,residual,0.01009314517,0.1303442931,24,method-by-context structure plus run-level residual; one run per method-context cell
+global_rank_corr,method,0.1823545453,0.5590481739,24,method-by-context structure plus run-level residual; one run per method-context cell
+global_rank_corr,biological_context,0.06713991751,0.2058322606,24,method-by-context structure plus run-level residual; one run per method-context cell
+global_rank_corr,residual,0.07669307128,0.2351195655,24,method-by-context structure plus run-level residual; one run per method-context cell
+label_neighbor_recall,method,0.07780179761,0.08419153878,24,method-by-context structure plus run-level residual; one run per method-context cell
+label_neighbor_recall,biological_context,0.7703526002,0.8336204665,24,method-by-context structure plus run-level residual; one run per method-context cell
+label_neighbor_recall,residual,0.07595031313,0.08218799474,24,method-by-context structure plus run-level residual; one run per method-context cell

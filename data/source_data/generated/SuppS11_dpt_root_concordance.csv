@@ -1,0 +1,17 @@
+root_a,root_b,pseudotime_spearman_rho,n_cells
+stored_8Mk_root,stored_8Mk_root,1,2730
+stored_8Mk_root,7MEP_centroid,0.9982544118,2730
+stored_8Mk_root,9GMP_centroid,0.6705228218,2730
+stored_8Mk_root,1Ery_centroid,-0.1382198513,2730
+7MEP_centroid,stored_8Mk_root,0.9982544118,2730
+7MEP_centroid,7MEP_centroid,1,2730
+7MEP_centroid,9GMP_centroid,0.6820095912,2730
+7MEP_centroid,1Ery_centroid,-0.1532656635,2730
+9GMP_centroid,stored_8Mk_root,0.6705228218,2730
+9GMP_centroid,7MEP_centroid,0.6820095912,2730
+9GMP_centroid,9GMP_centroid,1,2730
+9GMP_centroid,1Ery_centroid,-0.6053503706,2730
+1Ery_centroid,stored_8Mk_root,-0.1382198513,2730
+1Ery_centroid,7MEP_centroid,-0.1532656635,2730
+1Ery_centroid,9GMP_centroid,-0.6053503706,2730
+1Ery_centroid,1Ery_centroid,1,2730

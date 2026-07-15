@@ -1,0 +1,8 @@
+metric,claim_axis,median_value_range,mean_value_range,maximum_value_range,mean_decision_agreement,minimum_decision_agreement,n_method_scenario_metrics,n_definition
+batch_entropy_norm,batch_biology_tradeoff,0.006185364155,0.08244050494,0.365275457,0.925,0.4,8,"method-scenario-metric combinations, each evaluated in five generated datasets"
+label_neighbor_recall,cell_state_support,0.009537037037,0.02917824074,0.1221296296,1,1,48,"method-scenario-metric combinations, each evaluated in five generated datasets"
+latent_distance_corr,truth_geometry,0.05479481515,0.09560872401,0.3771853048,0.9833333333,0.6,48,"method-scenario-metric combinations, each evaluated in five generated datasets"
+pseudotime_distance_corr,continuum_support,0.2059721955,0.2034261535,0.45799372,0.7625,0.4,16,"method-scenario-metric combinations, each evaluated in five generated datasets"
+rare_label_recall,rare_state_support,0.06476190476,0.09547619048,0.3295238095,1,1,8,"method-scenario-metric combinations, each evaluated in five generated datasets"
+truth_local_retention,truth_geometry,0.01546296296,0.0172820216,0.04222222222,1,1,48,"method-scenario-metric combinations, each evaluated in five generated datasets"
+truth_trustworthiness,truth_geometry,0.01182455231,0.01666773496,0.05928768797,0.95,0.4,48,"method-scenario-metric combinations, each evaluated in five generated datasets"

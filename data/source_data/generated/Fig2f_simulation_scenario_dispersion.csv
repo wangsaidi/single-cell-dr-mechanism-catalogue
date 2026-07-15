@@ -1,0 +1,6 @@
+claim_axis,minimum_support,maximum_support,mean_support,n_methods,method_dispersion,source_definition
+batch_biology_tradeoff,0,1,0.125,8,1,between-method range of known-truth support for each simulated claim axis
+cell_state_support,0,1,0.875,8,1,between-method range of known-truth support for each simulated claim axis
+continuum_support,0,1,0.625,8,1,between-method range of known-truth support for each simulated claim axis
+rare_state_support,0,1,0.875,8,1,between-method range of known-truth support for each simulated claim axis
+truth_geometry,0,0.6111111111,0.3611111111,8,0.6111111111,between-method range of known-truth support for each simulated claim axis

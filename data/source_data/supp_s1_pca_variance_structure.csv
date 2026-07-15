@@ -1,0 +1,4 @@
+dataset_id,pc1_variance_ratio,pc5_cumulative_variance,pc10_cumulative_variance,pc20_cumulative_variance,n_pcs_for_50pct,n_pcs_for_80pct,source_definition
+pbmc3k,0.0197102752557898,0.0531659933604884,0.0641284658735327,0.0822171186645576,50,50,computed from Scanpy PCA variance_ratio in fixed analysis object
+paul15,0.0519968681037426,0.0976960523985326,0.1162417272571474,0.1369961877353489,50,50,computed from Scanpy PCA variance_ratio in fixed analysis object
+heart_cell_atlas_subsampled,0.0368988856644642,0.1193107667855184,0.166858215685214,0.2067801320950215,50,50,computed from Scanpy PCA variance_ratio in fixed analysis object

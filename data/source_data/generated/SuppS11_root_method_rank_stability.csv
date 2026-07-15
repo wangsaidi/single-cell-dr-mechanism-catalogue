@@ -1,0 +1,7 @@
+root_a,root_b,method_rank_spearman_rho,n_methods
+stored_8Mk_root,7MEP_centroid,1,8
+stored_8Mk_root,9GMP_centroid,0.3571428571,8
+stored_8Mk_root,1Ery_centroid,0.3095238095,8
+7MEP_centroid,9GMP_centroid,0.3571428571,8
+7MEP_centroid,1Ery_centroid,0.3095238095,8
+9GMP_centroid,1Ery_centroid,0.9523809524,8

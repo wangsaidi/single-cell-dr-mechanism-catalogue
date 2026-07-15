@@ -1,0 +1,4 @@
+,pbmc3k,paul15,heart_cell_atlas_subsampled
+pbmc3k,1.0,0.48214285714285715,0.75
+paul15,0.48214285714285715,1.0,0.619047619047619
+heart_cell_atlas_subsampled,0.75,0.619047619047619,1.0

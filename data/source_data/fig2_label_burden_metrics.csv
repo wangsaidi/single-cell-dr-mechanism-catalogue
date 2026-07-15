@@ -1,6 +1,0 @@
-﻿dataset_id,n_label_levels,label_imbalance_index,largest_label_fraction,rare_cell_fraction,rare_label_fraction,minimum_label_fraction,source_definition
-pbmc3k,8,0.22597775229463368,0.4336618650492798,0.1349507202426078,0.5,0.0056861258529188,computed from locked label-level cell counts in dataset_composition.csv
-paul15,19,0.0963252638295592,0.1366300366300366,0.542857142857142,0.7894736842105263,0.0032967032967032,computed from locked label-level cell counts in dataset_composition.csv
-heart_cell_atlas_subsampled,11,0.21292204702988993,0.2846950270908213,0.0168982350732256,0.2727272727272727,0.0009119682420471,computed from locked label-level cell counts in dataset_composition.csv
-
-

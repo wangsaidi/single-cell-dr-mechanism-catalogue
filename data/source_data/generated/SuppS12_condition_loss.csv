@@ -1,0 +1,11 @@
+analysis_axis_resolved,condition_label,condition_numeric,n_conditions,n_baseline_supported,n_pass_to_fail,support_loss_fraction,n_baseline_unsupported,n_fail_to_pass,support_recovery_fraction,n_definition
+expression_perturbation,Dropout 0.2,0.2,32,16,2,0.125,16,0,0,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+expression_perturbation,Dropout 0.4,0.4,32,16,4,0.25,16,0,0,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+expression_perturbation,Noise 0.2,0.2,32,16,0,0,16,4,0.25,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+expression_perturbation,Noise 0.4,0.4,32,16,0,0,16,6,0.375,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,d=10,10,48,24,0,0,24,10,0.4166666667,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,d=20,20,48,24,0,0,24,12,0.5,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,d=3,3,48,24,0,0,24,3,0.125,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,d=5,5,48,24,0,0,24,7,0.2916666667,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,PCA100,100,48,28,9,0.3214285714,20,1,0.05,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,PCA20,20,48,28,0,0,20,6,0.3,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates

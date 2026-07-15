@@ -1,0 +1,17 @@
+method,dataset_id,rare_pass_fraction,pass_count,n_labels
+GLM-PCA,heart_cell_atlas_subsampled,0.3333333333333333,1.0,3
+GLM-PCA,pbmc3k,1.0,4.0,4
+PCA,heart_cell_atlas_subsampled,0.0,0.0,3
+PCA,pbmc3k,0.25,1.0,4
+PHATE,heart_cell_atlas_subsampled,1.0,3.0,3
+PHATE,pbmc3k,1.0,4.0,4
+PaCMAP,heart_cell_atlas_subsampled,1.0,3.0,3
+PaCMAP,pbmc3k,1.0,4.0,4
+SAUCIE,heart_cell_atlas_subsampled,0.3333333333333333,1.0,3
+SAUCIE,pbmc3k,0.5,2.0,4
+UMAP,heart_cell_atlas_subsampled,1.0,3.0,3
+UMAP,pbmc3k,1.0,4.0,4
+scScope,heart_cell_atlas_subsampled,0.6666666666666666,2.0,3
+scScope,pbmc3k,0.5,2.0,4
+t-SNE,heart_cell_atlas_subsampled,1.0,3.0,3
+t-SNE,pbmc3k,1.0,4.0,4

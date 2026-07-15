@@ -1,4 +1,4 @@
-﻿"""Shared Nature-class plotting style, colours, source-data export, and saving."""
+"""Shared Nature-class plotting style, colours, source-data export, and saving."""
 
 from __future__ import annotations
 
@@ -232,5 +232,3 @@ def heatmap(ax, matrix, title: str, cmap: str = "viridis", vmin=None, vmax=None)
 
 def family_color(method: str) -> str:
     return METHOD_COLORS.get(method, FAMILY_COLORS[config.METHOD_FAMILY.get(method, "factor")])
-
-

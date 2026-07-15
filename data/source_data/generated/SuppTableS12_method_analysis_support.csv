@@ -1,0 +1,25 @@
+method,support fraction,supported rows,valid rows,analysis
+PCA,0.5454545454545454,6,11,empirical gates
+PCA,0.375,6,16,biological consistency
+PCA,0.6,84,140,known-truth simulations
+GLM-PCA,0.5454545454545454,6,11,empirical gates
+GLM-PCA,0.875,14,16,biological consistency
+GLM-PCA,0.7071428571428572,99,140,known-truth simulations
+scScope,0.45454545454545453,5,11,empirical gates
+scScope,0.625,10,16,biological consistency
+scScope,0.5,70,140,known-truth simulations
+SAUCIE,0.5454545454545454,6,11,empirical gates
+SAUCIE,0.625,10,16,biological consistency
+SAUCIE,0.5857142857142857,82,140,known-truth simulations
+UMAP,0.36363636363636365,4,11,empirical gates
+UMAP,0.9375,15,16,biological consistency
+UMAP,0.5357142857142857,75,140,known-truth simulations
+PHATE,0.5454545454545454,6,11,empirical gates
+PHATE,1.0,16,16,biological consistency
+PHATE,0.5071428571428571,71,140,known-truth simulations
+t-SNE,0.6363636363636364,7,11,empirical gates
+t-SNE,0.9375,15,16,biological consistency
+t-SNE,0.4928571428571429,69,140,known-truth simulations
+PaCMAP,0.45454545454545453,5,11,empirical gates
+PaCMAP,0.9375,15,16,biological consistency
+PaCMAP,0.5428571428571428,76,140,known-truth simulations

@@ -1,0 +1,9 @@
+method,navigation_group,same_branch_neighbor_fraction,n_cells,k,branch_definition
+PCA,factor,0.734041514,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+GLM-PCA,factor,0.8486935287,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+scScope,deep,0.8578998779,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+SAUCIE,deep,0.8113553114,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+UMAP,graph,0.7912576313,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+PHATE,graph,0.7484004884,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+t-SNE,relational,0.8094505495,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor
+PaCMAP,relational,0.8074236874,2730,15,coarse Paul15 annotation branch; 7MEP retained as progenitor

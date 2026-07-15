@@ -1,0 +1,13 @@
+metric,metric_label,context_a,context_b,context_pair,spearman_rho,p_exact_two_sided,n_methods,n_label_permutations,q_bh_12_tests
+local_retention,Local,pbmc3k,paul15,PBMC3k vs Paul15,0.9523809524,0.001140873016,8,40320,0.01369047619
+local_retention,Local,pbmc3k,heart_cell_atlas_subsampled,PBMC3k vs Heart atlas,0.8571428571,0.01071428571,8,40320,0.02571428571
+local_retention,Local,paul15,heart_cell_atlas_subsampled,Paul15 vs Heart atlas,0.880952381,0.007242063492,8,40320,0.02571428571
+trustworthiness,Trust,pbmc3k,paul15,PBMC3k vs Paul15,0.8571428571,0.01071428571,8,40320,0.02571428571
+trustworthiness,Trust,pbmc3k,heart_cell_atlas_subsampled,PBMC3k vs Heart atlas,0.7619047619,0.03675595238,8,40320,0.07351190476
+trustworthiness,Trust,paul15,heart_cell_atlas_subsampled,Paul15 vs Heart atlas,0.8571428571,0.01071428571,8,40320,0.02571428571
+global_rank_corr,Global,pbmc3k,paul15,PBMC3k vs Paul15,0.4523809524,0.2674603175,8,40320,0.320952381
+global_rank_corr,Global,pbmc3k,heart_cell_atlas_subsampled,PBMC3k vs Heart atlas,0.6666666667,0.08308531746,8,40320,0.1107804233
+global_rank_corr,Global,paul15,heart_cell_atlas_subsampled,Paul15 vs Heart atlas,0.6666666667,0.08308531746,8,40320,0.1107804233
+label_neighbor_recall,Same-label,pbmc3k,paul15,PBMC3k vs Paul15,-0.3333333333,0.4278769841,8,40320,0.4667748918
+label_neighbor_recall,Same-label,pbmc3k,heart_cell_atlas_subsampled,PBMC3k vs Heart atlas,0.7142857143,0.05758928571,8,40320,0.0987244898
+label_neighbor_recall,Same-label,paul15,heart_cell_atlas_subsampled,Paul15 vs Heart atlas,0.07142857143,0.8819940476,8,40320,0.8819940476

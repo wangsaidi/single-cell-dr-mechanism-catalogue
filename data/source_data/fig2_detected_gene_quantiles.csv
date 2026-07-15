@@ -1,6 +1,0 @@
-﻿dataset_id,q10_detected_genes_per_cell,median_detected_genes_per_cell,q90_detected_genes_per_cell,source_definition
-pbmc3k,95.0,146.0,229.0,computed directly from locked analysis count matrix
-paul15,220.90000000000003,460.0,669.0,computed directly from locked analysis count matrix
-heart_cell_atlas_subsampled,36.0,68.0,128.0,computed directly from locked analysis count matrix
-
-

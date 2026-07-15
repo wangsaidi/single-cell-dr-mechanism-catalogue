@@ -1,0 +1,4 @@
+analysis_axis_resolved,n_conditions,n_baseline_supported,n_pass_to_fail,support_loss_fraction,n_baseline_unsupported,n_fail_to_pass,support_recovery_fraction,n_definition
+expression_perturbation,128,64,6,0.09375,64,10,0.15625,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+output_dimension,192,96,0,0,96,32,0.3333333333,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates
+upstream_pca,96,56,9,0.1607142857,40,7,0.175,non-baseline computational conditions matched to the corresponding baseline; conditions are not independent biological replicates

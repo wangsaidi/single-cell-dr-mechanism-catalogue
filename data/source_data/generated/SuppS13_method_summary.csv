@@ -1,0 +1,9 @@
+method,family,mean_run_support,worst_run_support,best_run_support,run_support_range,n_method_scenario_generated_dataset_runs,n_definition
+GLM-PCA,factor,0.71,0.4,0.8,0.4,30,30 method-scenario-generated-dataset runs per method
+PCA,factor,0.6066666667,0.4,0.8,0.4,30,30 method-scenario-generated-dataset runs per method
+PHATE,graph,0.5066666667,0.4,0.6,0.2,30,30 method-scenario-generated-dataset runs per method
+PaCMAP,relational,0.54,0.4,0.8,0.4,30,30 method-scenario-generated-dataset runs per method
+SAUCIE,deep,0.59,0.2,0.8,0.6,30,30 method-scenario-generated-dataset runs per method
+UMAP,graph,0.5333333333,0.4,0.6,0.2,30,30 method-scenario-generated-dataset runs per method
+scScope,deep,0.5,0.4,0.6,0.2,30,30 method-scenario-generated-dataset runs per method
+t-SNE,relational,0.4933333333,0.2,0.6,0.4,30,30 method-scenario-generated-dataset runs per method

@@ -1,6 +1,0 @@
-﻿"dataset_id","subset_strategy","n_obs","n_vars","n_pcs","label_field","batch_field","counts_integer_fraction"
-"pbmc3k","full matched PBMC3k cells and processed genes","2638","1838","50","louvain","","1.0"
-"paul15","full dataset","2730","2000","50","paul15_clusters","","1.0"
-"heart_cell_atlas_subsampled","deterministic stratified subset, target_n=8000, all cell_type levels with <= 200 cells retained, remaining cells sampled by cell_type x donor","8000","2000","50","cell_type","donor","1.0"
-
-

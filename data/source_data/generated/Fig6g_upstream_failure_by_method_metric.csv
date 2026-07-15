@@ -1,0 +1,17 @@
+method,metric,failure_fraction,n_rows
+PHATE,global_rank_corr,0.2222222222222222,9
+PHATE,label_neighbor_recall,0.3333333333333333,9
+PHATE,local_retention,1.0,9
+PHATE,trustworthiness,0.5555555555555556,9
+PaCMAP,global_rank_corr,0.0,9
+PaCMAP,label_neighbor_recall,0.3333333333333333,9
+PaCMAP,local_retention,1.0,9
+PaCMAP,trustworthiness,0.3333333333333333,9
+UMAP,global_rank_corr,0.4444444444444444,9
+UMAP,label_neighbor_recall,0.3333333333333333,9
+UMAP,local_retention,1.0,9
+UMAP,trustworthiness,0.3333333333333333,9
+t-SNE,global_rank_corr,0.1111111111111111,9
+t-SNE,label_neighbor_recall,0.2222222222222222,9
+t-SNE,local_retention,0.3333333333333333,9
+t-SNE,trustworthiness,0.3333333333333333,9

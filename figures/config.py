@@ -1,4 +1,4 @@
-﻿"""Global configuration for the manuscript figure pipeline."""
+"""Global configuration for the manuscript figure pipeline."""
 
 from __future__ import annotations
 
@@ -133,5 +133,3 @@ def set_seeds(seed: int = SEED) -> None:
         sc.settings.verbosity = 1
     except ImportError:
         pass
-
-

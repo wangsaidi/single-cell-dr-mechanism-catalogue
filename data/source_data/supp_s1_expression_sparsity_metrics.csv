@@ -1,0 +1,4 @@
+dataset_id,n_cells,n_genes,zero_fraction,mean_detected_genes_per_cell,median_detected_genes_per_cell,mean_total_counts_per_cell,source_definition
+pbmc3k,2638,1838,0.915699523413144,154.94427596664138,146.0,281.9954528808594,computed directly from fixed analysis count matrices
+paul15,2730,2000,0.7718459706959707,456.3080586080586,460.0,1130.0721435546875,computed directly from fixed analysis count matrices
+heart_cell_atlas_subsampled,8000,2000,0.9615205625,76.958875,68.0,210.8352508544922,computed directly from fixed analysis count matrices

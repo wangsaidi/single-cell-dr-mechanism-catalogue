@@ -1,4 +1,4 @@
-﻿"""Generate source-data-backed Supplementary Figs. S3-S6 for publication."""
+"""Generate source-data-backed Supplementary Figs. S3-S6 for the manuscript."""
 
 from __future__ import annotations
 
@@ -13,17 +13,22 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
 from . import config
-from . import final_figure_style as fs
+from . import figure_style as fs
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIR = ROOT / "data" / "source_data"
+REV_SOURCE_DIR = SOURCE_DIR / "generated"
 OUT_DIR = ROOT / "outputs" / "supplementary_figures"
 META_DIR = ROOT / "metadata"
 EXPORT_DPI = 600
 
 METHOD_ORDER = config.ANCHOR_METHODS
 FAMILY_ORDER = config.FAMILY_ORDER
+METHOD_COLORS = {
+    method: mpl.colors.to_hex(mpl.colormaps["tab10"](i))
+    for i, method in enumerate(METHOD_ORDER)
+}
 DATASET_ORDER = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
 DATASET_LABELS = {
     "pbmc3k": "PBMC3k",
@@ -43,7 +48,7 @@ GATE_ORDER = [
     "donor_aware_gate",
 ]
 GATE_LABELS = {
-    "label_support_gate": "label",
+    "label_support_gate": "identity",
     "local_neighbourhood_gate": "local",
     "global_geometry_gate": "global",
     "continuum_gate": "continuum",
@@ -53,19 +58,20 @@ METRIC_LABELS = {
     "local_retention": "local",
     "trustworthiness": "trust",
     "global_rank_corr": "global",
-    "label_neighbor_recall": "label",
+    "label_neighbor_recall": "same-label",
     "pseudotime_rank_corr": "pseudo rank",
     "pseudotime_neighborhood_retention": "pseudo local",
-    "cell_type_label_recall": "cell recall",
+    "cell_type_label_recall": "cell identity",
     "donor_entropy_norm": "donor entropy",
     "donor_dominance": "donor dominance",
     "latent_distance_corr": "latent dist.",
-    "rare_label_recall": "rare recall",
+    "rare_label_recall": "rare-state",
 }
 
 
 def _read(name: str) -> pd.DataFrame:
-    path = SOURCE_DIR / name
+    revision_path = REV_SOURCE_DIR / name
+    path = revision_path if revision_path.exists() else SOURCE_DIR / name
     if not path.exists():
         raise FileNotFoundError(path)
     return pd.read_csv(path)
@@ -99,7 +105,7 @@ def _panel_label(ax: plt.Axes, letter: str, x: float = -0.10, y: float = 1.06) -
 
 
 def _family_color_for_method(method: str) -> str:
-    return fs.FAMILY_COLORS[config.METHOD_FAMILY[method]]
+    return METHOD_COLORS.get(method, "#3B6F95")
 
 
 def _short_label(value: str) -> str:
@@ -122,7 +128,7 @@ def _ratio_heatmap(
     vmin: float = 0,
     vmax: float = 1.6,
     cbar: bool = False,
-    cbar_label: str = "value / threshold",
+    cbar_label: str = "value / boundary",
     annotate: bool = True,
 ):
     masked = np.ma.masked_invalid(data.to_numpy(dtype=float))
@@ -154,7 +160,14 @@ def _ratio_heatmap(
     return im
 
 
-def _fraction_heatmap(ax: plt.Axes, data: pd.DataFrame, *, title: str, cbar: bool = False):
+def _fraction_heatmap(
+    ax: plt.Axes,
+    data: pd.DataFrame,
+    *,
+    title: str,
+    cbar: bool = False,
+    cbar_label: str = "support fraction",
+):
     im = _ratio_heatmap(
         ax,
         data,
@@ -163,7 +176,7 @@ def _fraction_heatmap(ax: plt.Axes, data: pd.DataFrame, *, title: str, cbar: boo
         vmin=0,
         vmax=1,
         cbar=cbar,
-        cbar_label="support fraction",
+        cbar_label=cbar_label,
         annotate=True,
     )
     return im
@@ -235,10 +248,10 @@ def supplementary_fig_s3() -> None:
         leg_ax.set_xlim(0, 1)
         leg_ax.set_ylim(0, 1)
 
-    family_handles = [
-        Line2D([0], [0], color=fs.FAMILY_COLORS[fam], lw=2.5, label=fs.family_label(fam)) for fam in FAMILY_ORDER
+    method_handles = [
+        Line2D([0], [0], color=METHOD_COLORS[method], lw=2.5, label=method) for method in METHOD_ORDER
     ]
-    fig.legend(handles=family_handles, loc="lower center", ncol=4, frameon=False, bbox_to_anchor=(0.49, 0.005), title="method family", title_fontsize=7.2, fontsize=6.8)
+    fig.legend(handles=method_handles, loc="lower center", ncol=8, frameon=False, bbox_to_anchor=(0.49, 0.005), title="method", title_fontsize=7.2, fontsize=6.8)
     _save(fig, "Supplementary_Figure_S3_full_embedding_atlas")
 
 
@@ -246,19 +259,18 @@ def supplementary_fig_s4() -> None:
     """Diagnostic-gate support and metric-margin atlas."""
     _apply_hq_style()
     method_gate = _read("fig4_gate_pass_by_method.csv")
-    family_gate = _read("fig4_gate_pass_by_family.csv")
+    method_context = _read("Fig4e_method_context_gate_breadth.csv")
     local = _read("fig4_local_gate_metrics.csv")
     global_df = _read("fig4_global_gate_metrics.csv")
     continuum = _read("fig4_paul15_continuum_metrics.csv")
     donor = _read("fig4_heart_donor_gate_metrics.csv")
-    margins = _read("fig4_threshold_margin_by_family_metric.csv")
-    spread = _read("fig4_family_internal_gate_range.csv")
+    margins = _read("Fig4i_method_component_threshold_margins.csv")
+    spread = _read("Fig4j_method_gate_inconsistency.csv")
 
     method_gate_mat = method_gate.pivot(index="method", columns="claim_gate", values="pass_fraction").reindex(index=METHOD_ORDER, columns=GATE_ORDER)
     method_gate_mat.columns = [GATE_LABELS[c] for c in method_gate_mat.columns]
-    family_gate_mat = family_gate.pivot(index="family", columns="claim_gate", values="pass_fraction").reindex(index=FAMILY_ORDER, columns=GATE_ORDER)
-    family_gate_mat.index = [fs.family_label(i) for i in family_gate_mat.index]
-    family_gate_mat.columns = [GATE_LABELS[c] for c in family_gate_mat.columns]
+    context_gate_mat = method_context.pivot(index="method", columns="dataset_id", values="pass_fraction").reindex(index=METHOD_ORDER, columns=DATASET_ORDER)
+    context_gate_mat.columns = [DATASET_LABELS[c] for c in context_gate_mat.columns]
 
     local_ratio = local.assign(ratio=lambda d: d["value"] / d["threshold"]).pivot_table(index="method", columns="metric", values="ratio", aggfunc="mean").reindex(METHOD_ORDER)
     local_ratio = local_ratio[[c for c in ["local_retention", "trustworthiness", "label_neighbor_recall"] if c in local_ratio.columns]]
@@ -273,64 +285,61 @@ def supplementary_fig_s4() -> None:
     donor_ratio = donor[donor["metric"].isin(["cell_type_label_recall", "donor_entropy_norm"])].assign(ratio=lambda d: d["value"] / d["threshold"]).pivot(index="method", columns="metric", values="ratio").reindex(METHOD_ORDER)
     donor_ratio.columns = [METRIC_LABELS[c] for c in donor_ratio.columns]
 
-    margin_mat = margins.pivot(index="family", columns="metric", values="mean_threshold_margin").reindex(FAMILY_ORDER)
-    margin_mat.index = [fs.family_label(i) for i in margin_mat.index]
+    margin_mat = margins.pivot(index="method", columns="metric", values="mean_threshold_margin").reindex(METHOD_ORDER)
     margin_mat = margin_mat[[c for c in ["local_retention", "trustworthiness", "label_neighbor_recall", "global_rank_corr", "pseudotime_rank_corr", "pseudotime_neighborhood_retention", "cell_type_label_recall", "donor_entropy_norm"] if c in margin_mat.columns]]
     margin_mat.columns = [METRIC_LABELS[c] for c in margin_mat.columns]
 
-    spread_mat = spread.pivot(index="family", columns="claim_gate", values="pass_fraction_range").reindex(index=FAMILY_ORDER, columns=GATE_ORDER)
-    spread_mat.index = [fs.family_label(i) for i in spread_mat.index]
-    spread_mat.columns = [GATE_LABELS[c] for c in spread_mat.columns]
+    spread_mat = spread.set_index("method").reindex(METHOD_ORDER)[["gate_support_range"]]
+    spread_mat.columns = ["gate range"]
 
     fig, axes = plt.subplots(2, 4, figsize=(17.2, 9.4), gridspec_kw={"width_ratios": [1.36, 1.04, 0.90, 0.90]}, constrained_layout=False)
     plt.subplots_adjust(left=0.07, right=0.985, top=0.96, bottom=0.10, wspace=0.56, hspace=0.62)
     panels = [
         (axes[0, 0], method_gate_mat, "Method gate support", "fraction", True, "fraction"),
-        (axes[0, 1], family_gate_mat, "Family gate support", "fraction", False, "fraction"),
+        (axes[0, 1], context_gate_mat, "Method-context gate breadth", "fraction", False, "fraction"),
         (axes[0, 2], local_ratio, "Local-gate ratios", "ratio", False, "ratio"),
         (axes[0, 3], global_ratio, "Global-rank ratios", "ratio", False, "ratio"),
         (axes[1, 0], continuum_ratio, "Paul15 continuum ratios", "ratio", False, "ratio"),
         (axes[1, 1], donor_ratio, "Heart donor-aware ratios", "ratio", False, "ratio"),
-        (axes[1, 2], margin_mat, "Family threshold margins", "margin", True, "margin"),
-        (axes[1, 3], spread_mat, "Within-family gate spread", "fraction", True, "fraction"),
+        (axes[1, 2], margin_mat, "Method boundary margins", "margin", True, "margin"),
+        (axes[1, 3], spread_mat, "Within-method gate range", "fraction", True, "fraction"),
     ]
     for idx, (ax, mat, title, mode, cbar, _) in enumerate(panels):
         if mode == "fraction":
             _fraction_heatmap(ax, mat, title=title, cbar=cbar)
         elif mode == "margin":
-            _ratio_heatmap(ax, mat, title=title, cmap="RdBu_r", vmin=-0.45, vmax=0.45, cbar=cbar, cbar_label="mean value - threshold")
+            _ratio_heatmap(ax, mat, title=title, cmap="RdBu_r", vmin=-0.45, vmax=0.45, cbar=cbar, cbar_label="mean value - boundary")
         else:
-            _ratio_heatmap(ax, mat, title=title, cbar=cbar, cbar_label="value / threshold")
+            _ratio_heatmap(ax, mat, title=title, cbar=cbar, cbar_label="value / boundary")
         _panel_label(ax, ascii_lowercase[idx])
     _save(fig, "Supplementary_Figure_S4_diagnostic_gate_metric_atlas")
 
 
 def supplementary_fig_s5() -> None:
-    """Biological-anchor evidence atlas."""
+    """Biological-consistency evidence atlas."""
     _apply_hq_style()
     pbmc = _read("fig5_pbmc_marker_support.csv")
     marker_vs = _read("fig5_marker_vs_neighbour_support.csv")
-    family_marker = _read("fig5_family_marker_support_summary.csv")
     paul = _read("fig5_paul15_lineage_marker_support.csv")
     heart = _read("fig5_heart_identity_donor_support.csv")
     rare = _read("fig5_rare_state_support.csv")
-    rare_family = _read("fig5_rare_support_by_family.csv")
     summary = _read("fig5_evidence_support_summary.csv")
 
     labels = pbmc.drop_duplicates("label").sort_values("max_marker_z", ascending=False)
     recall_mat = marker_vs.pivot(index="method", columns="label", values="label_knn_recall").reindex(index=METHOD_ORDER, columns=labels["label"])
     recall_mat.columns = [_short_label(c) for c in recall_mat.columns]
-    dual_mat = family_marker.pivot(index="family", columns="label", values="dual_support_fraction").reindex(index=FAMILY_ORDER, columns=labels["label"])
-    dual_mat.index = [fs.family_label(i) for i in dual_mat.index]
+    marker_vs["dual_supported_numeric"] = marker_vs["dual_supported"].astype(str).str.lower().eq("true").astype(float)
+    dual_mat = marker_vs.pivot(index="method", columns="label", values="dual_supported_numeric").reindex(index=METHOD_ORDER, columns=labels["label"])
     dual_mat.columns = [_short_label(c) for c in dual_mat.columns]
 
     rare["dataset_label"] = rare["dataset_id"].map(DATASET_LABELS).fillna(rare["dataset_id"])
     rare["rare_axis"] = rare["dataset_label"] + "\n" + rare["label"].map(_short_label)
     rare_order = rare.groupby("rare_axis")["rare_label_fraction"].mean().sort_values(ascending=False).index.tolist()
     rare_mat = rare.pivot_table(index="method", columns="rare_axis", values="label_knn_recall", aggfunc="mean").reindex(index=METHOD_ORDER, columns=rare_order)
-    rare_family_mat = rare_family.pivot(index="family", columns="dataset_id", values="rare_pass_fraction").reindex(FAMILY_ORDER)
-    rare_family_mat.index = [fs.family_label(i) for i in rare_family_mat.index]
-    rare_family_mat.columns = [DATASET_LABELS.get(c, c) for c in rare_family_mat.columns]
+    rare["rare_pass"] = rare["label_knn_recall"].astype(float).ge(0.55).astype(float)
+    rare_method = rare.groupby(["method", "dataset_id"], as_index=False).agg(rare_pass_fraction=("rare_pass", "mean"))
+    rare_method_mat = rare_method.pivot(index="method", columns="dataset_id", values="rare_pass_fraction").reindex(index=METHOD_ORDER, columns=["pbmc3k", "heart_cell_atlas_subsampled"])
+    rare_method_mat.columns = [DATASET_LABELS.get(c, c) for c in rare_method_mat.columns]
 
     fig = plt.figure(figsize=(17.5, 9.8))
     gs = fig.add_gridspec(2, 4, width_ratios=[1.08, 1.50, 1.18, 1.18], hspace=0.56, wspace=0.72)
@@ -346,10 +355,10 @@ def supplementary_fig_s5() -> None:
     _style_axes(ax, grid=True)
     _panel_label(ax, "a")
 
-    _ratio_heatmap(axes[1], recall_mat, title="PBMC label-neighbour recall", cmap="YlGnBu", vmin=0, vmax=1, cbar=True, cbar_label="label kNN recall", annotate=False)
+    _ratio_heatmap(axes[1], recall_mat, title="PBMC same-label neighbourhoods", cmap="YlGnBu", vmin=0, vmax=1, cbar=True, cbar_label="same-label neighbour fraction", annotate=False)
     _panel_label(axes[1], "b")
 
-    _fraction_heatmap(axes[2], dual_mat, title="Family dual support", cbar=True)
+    _fraction_heatmap(axes[2], dual_mat, title="Method-label dual support", cbar=True)
     _panel_label(axes[2], "c")
 
     ax = axes[3]
@@ -362,38 +371,51 @@ def supplementary_fig_s5() -> None:
     ax.set_yticks(np.arange(len(paul_sorted)))
     ax.set_yticklabels(paul_sorted["program_label"])
     ax.set_xlabel("Spearman rho")
-    ax.set_title("Paul15 lineage-anchor trend", loc="left")
+    ax.set_title("Paul15 lineage-program trend", loc="left")
     _style_axes(ax, grid=True)
     _panel_label(ax, "d")
 
     ax = axes[4]
-    offsets = {
-        "PCA": (0.010, 0.014),
-        "GLM-PCA": (0.012, 0.016),
-        "SAUCIE": (0.006, -0.018),
-        "scScope": (0.010, 0.012),
-        "UMAP": (-0.075, 0.012),
-        "PHATE": (0.010, 0.012),
-        "t-SNE": (0.010, -0.020),
-        "PaCMAP": (0.010, -0.020),
+    label_positions = {
+        "PCA": (0.675, 0.648),
+        "GLM-PCA": (0.765, 0.625),
+        "SAUCIE": (0.868, 0.603),
+        "scScope": (0.815, 0.517),
+        "UMAP": (0.910, 0.515),
+        "PHATE": (0.905, 0.542),
+        "t-SNE": (0.938, 0.444),
+        "PaCMAP": (0.915, 0.484),
     }
     for _, row in heart.iterrows():
-        ax.scatter(row["cell_type_label_recall"], row["donor_entropy_norm"], s=42, color=_family_color_for_method(row["method"]), edgecolor="white", lw=0.4)
-        dx, dy = offsets.get(row["method"], (0.01, 0.006))
-        ax.text(row["cell_type_label_recall"] + dx, row["donor_entropy_norm"] + dy, row["method"], fontsize=5.8)
+        method = row["method"]
+        color = _family_color_for_method(method)
+        ax.scatter(row["cell_type_label_recall"], row["donor_entropy_norm"], s=42, color=color, edgecolor="white", lw=0.4)
+        tx, ty = label_positions[method]
+        ax.annotate(
+            method,
+            xy=(row["cell_type_label_recall"], row["donor_entropy_norm"]),
+            xytext=(tx, ty),
+            fontsize=5.5,
+            color=color,
+            ha="right" if tx < row["cell_type_label_recall"] else "left",
+            va="center",
+            arrowprops={"arrowstyle": "-", "lw": 0.35, "color": fs.TEXT_MUTED},
+        )
     ax.axvline(0.55, color=fs.THRESHOLD_COLOR, lw=0.8, ls="--")
     ax.axhline(0.50, color=fs.THRESHOLD_COLOR, lw=0.8, ls="--")
-    ax.set_xlabel("cell-type recall")
+    ax.set_xlim(0.54, 0.99)
+    ax.set_ylim(0.44, 0.66)
+    ax.set_xlabel("cell-type neighbour fraction")
     ax.set_ylabel("donor entropy")
     ax.set_title("Heart identity versus donor mixing", loc="left")
     _style_axes(ax, grid=True)
     _panel_label(ax, "e")
 
-    _ratio_heatmap(axes[5], rare_mat, title="Rare-state recall by method", cmap="YlGnBu", vmin=0, vmax=1, cbar=True, cbar_label="rare-label recall", annotate=False)
+    _ratio_heatmap(axes[5], rare_mat, title="Rare-state neighbourhoods by method", cmap="YlGnBu", vmin=0, vmax=1, cbar=True, cbar_label="rare-label neighbour fraction", annotate=False)
     axes[5].tick_params(axis="x", labelsize=5.4)
     _panel_label(axes[5], "f")
 
-    _fraction_heatmap(axes[6], rare_family_mat, title="Rare support by family", cbar=True)
+    _fraction_heatmap(axes[6], rare_method_mat, title="Rare support by method", cbar=True)
     _panel_label(axes[6], "g")
 
     ax = axes[7]
@@ -403,13 +425,13 @@ def supplementary_fig_s5() -> None:
     ax.set_yticklabels([_short_label(x) for x in summary_order["claim_type"]])
     ax.set_xlim(0, 1)
     ax.set_xlabel("support fraction")
-    ax.set_title("Independent-anchor synthesis", loc="left")
+    ax.set_title("Biological-consistency synthesis", loc="left")
     for bar, val in zip(bars, summary_order["support_summary"]):
         ax.text(val + 0.02, bar.get_y() + bar.get_height() / 2, f"{val:.2f}", va="center", fontsize=6.2)
     _style_axes(ax, grid=True)
     _panel_label(ax, "h")
 
-    _save(fig, "Supplementary_Figure_S5_biological_anchor_evidence_atlas")
+    _save(fig, "Supplementary_Figure_S5_biological_consistency_atlas")
 
 
 def supplementary_fig_s6() -> None:
@@ -451,12 +473,12 @@ def supplementary_fig_s6() -> None:
     mat = dim_dataset.pivot(index="dataset_id", columns="metric", values="failure_fraction").reindex(index=DATASET_ORDER, columns=metrics)
     mat.index = [DATASET_LABELS[i] for i in mat.index]
     mat.columns = [METRIC_LABELS[c] for c in mat.columns]
-    _fraction_heatmap(axes[1], mat, title="Dimension failure by dataset", cbar=True)
+    _fraction_heatmap(axes[1], mat, title="Dimension failure by dataset", cbar=True, cbar_label="fraction below boundary")
     _panel_label(axes[1], "b")
 
     mat = dim_method.pivot(index="method", columns="metric", values="failure_fraction").reindex(index=[m for m in METHOD_ORDER if m in dim_method["method"].unique()], columns=metrics)
     mat.columns = [METRIC_LABELS[c] for c in mat.columns]
-    _fraction_heatmap(axes[2], mat, title="Dimension failure by method", cbar=True)
+    _fraction_heatmap(axes[2], mat, title="Dimension failure by method", cbar=True, cbar_label="fraction below boundary")
     _panel_label(axes[2], "c")
 
     ax = axes[3]
@@ -472,7 +494,7 @@ def supplementary_fig_s6() -> None:
 
     mat = upstream_fail.pivot(index="method", columns="metric", values="failure_fraction").reindex(index=[m for m in METHOD_ORDER if m in upstream_fail["method"].unique()], columns=metrics)
     mat.columns = [METRIC_LABELS[c] for c in mat.columns]
-    _fraction_heatmap(axes[4], mat, title="Upstream-PCA failure by method", cbar=True)
+    _fraction_heatmap(axes[4], mat, title="Upstream-PCA failure by method", cbar=True, cbar_label="fraction below boundary")
     _panel_label(axes[4], "e")
 
     ax = axes[5]
@@ -490,7 +512,7 @@ def supplementary_fig_s6() -> None:
 
     mat = pert_fail.pivot(index="metric", columns="perturbation", values="failure_fraction").reindex(metrics)
     mat.index = [METRIC_LABELS[i] for i in mat.index]
-    _fraction_heatmap(axes[6], mat, title="Perturbation failure by metric", cbar=True)
+    _fraction_heatmap(axes[6], mat, title="Perturbation failure by metric", cbar=True, cbar_label="fraction below boundary")
     _panel_label(axes[6], "g")
 
     worst_ratio = worst[worst["metric"].isin(metrics + ["latent_distance_corr", "rare_label_recall"])].assign(ratio=lambda d: d["worst_value"] / d["threshold"])
@@ -502,7 +524,7 @@ def supplementary_fig_s6() -> None:
     ]
     mat = worst_ratio.pivot(index="method", columns="metric", values="ratio").reindex(index=available_worst_methods, columns=metric_order)
     mat.columns = [METRIC_LABELS.get(c, c) for c in mat.columns]
-    _ratio_heatmap(axes[7], mat, title="Worst-case support ratio", cbar=True, cbar_label="worst value / threshold")
+    _ratio_heatmap(axes[7], mat, title="Worst-case support ratio", cbar=True, cbar_label="worst value / boundary")
     _panel_label(axes[7], "h")
 
     ax = axes[8]
@@ -511,7 +533,7 @@ def supplementary_fig_s6() -> None:
     failed = support_counts.get("below_threshold", pd.Series(0, index=support_counts.index))
     y = np.arange(len(support_counts))
     ax.barh(y, passed, color="#238B68", label="pass")
-    ax.barh(y, failed, left=passed, color="#D1495B", label="below threshold")
+    ax.barh(y, failed, left=passed, color="#D1495B", label="below boundary")
     ax.set_yticks(y)
     ax.set_yticklabels(support_counts.index)
     for tick in ax.get_yticklabels():
@@ -529,8 +551,8 @@ def supplementary_fig_s6() -> None:
 def build_supplementary_matrix() -> None:
     rows = [
         ("S3", "a-c", "Full embeddings for PBMC3k, Paul15 and heart atlas", "D2", "fig3_pbmc3k_embedding_coordinates.csv; fig3_paul15_embedding_coordinates.csv; fig3_heart_embedding_coordinates.csv", "figures/plot_supplementary_figures_s3_s6.py"),
-        ("S4", "a-h", "Diagnostic-gate support, component ratios and margins", "D2", "fig4_gate_pass_by_method.csv; fig4_gate_pass_by_family.csv; fig4_local_gate_metrics.csv; fig4_global_gate_metrics.csv; fig4_paul15_continuum_metrics.csv; fig4_heart_donor_gate_metrics.csv; fig4_threshold_margin_by_family_metric.csv; fig4_family_internal_gate_range.csv", "figures/plot_supplementary_figures_s3_s6.py"),
-        ("S5", "a-h", "Independent biological-anchor evidence", "D2", "fig5_pbmc_marker_support.csv; fig5_marker_vs_neighbour_support.csv; fig5_paul15_lineage_marker_support.csv; fig5_heart_identity_donor_support.csv; fig5_rare_state_support.csv; fig5_rare_support_by_family.csv; fig5_evidence_support_summary.csv", "figures/plot_supplementary_figures_s3_s6.py"),
+        ("S4", "a-h", "Diagnostic-gate support, component ratios and margins", "D2", "fig4_gate_pass_by_method.csv; Fig4e_method_context_gate_breadth.csv; fig4_local_gate_metrics.csv; fig4_global_gate_metrics.csv; fig4_paul15_continuum_metrics.csv; fig4_heart_donor_gate_metrics.csv; Fig4i_method_component_threshold_margins.csv; Fig4j_method_gate_inconsistency.csv", "figures/plot_supplementary_figures_s3_s6.py"),
+        ("S5", "a-h", "Biological-consistency evidence", "D2", "fig5_pbmc_marker_support.csv; fig5_marker_vs_neighbour_support.csv; fig5_paul15_lineage_marker_support.csv; fig5_heart_identity_donor_support.csv; fig5_rare_state_support.csv; fig5_evidence_support_summary.csv", "figures/plot_supplementary_figures_s3_s6.py"),
         ("S6", "a-i", "Robustness response and worst-case support", "D2/D4", "fig6_output_dimension_response.csv; fig6_upstream_pca_response.csv; fig6_dropout_noise_response.csv; fig6_dimension_failure_by_dataset_metric.csv; fig6_dimension_failure_by_method_metric.csv; fig6_upstream_failure_by_method_metric.csv; fig6_perturbation_failure_by_metric.csv; fig6_worst_case_support.csv", "figures/plot_supplementary_figures_s3_s6.py"),
     ]
     META_DIR.mkdir(parents=True, exist_ok=True)
@@ -548,5 +570,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

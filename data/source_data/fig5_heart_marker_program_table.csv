@@ -1,4 +1,4 @@
-﻿dataset_id,program,label,n_cells,genes_present,genes_missing,mean_score,fraction_detected,score_definition,z_score
+dataset_id,program,label,n_cells,genes_present,genes_missing,mean_score,fraction_detected,score_definition,z_score
 heart_cell_atlas_subsampled,cardiomyocyte,Adipocytes,145,TNNT2;MYH6;MYH7;ACTC1;TTN,,0.2600383758544922,0.2593103448275862,mean log1p expression of marker genes present in the source expression matrix,-0.32713804647642974
 heart_cell_atlas_subsampled,cardiomyocyte,Atrial_Cardiomyocyte,471,TNNT2;MYH6;MYH7;ACTC1;TTN,,1.6095359325408936,0.7579617834394905,mean log1p expression of marker genes present in the source expression matrix,1.9813405701236946
 heart_cell_atlas_subsampled,cardiomyocyte,Endothelial,1717,TNNT2;MYH6;MYH7;ACTC1;TTN,,0.09504882246255875,0.1100757134536983,mean log1p expression of marker genes present in the source expression matrix,-0.6093726115414417
@@ -109,5 +109,3 @@ heart_cell_atlas_subsampled,mesothelial,Neuronal,153,MSLN;WT1;UPK3B,,0.0,0.0,mea
 heart_cell_atlas_subsampled,mesothelial,Pericytes,1336,MSLN;WT1;UPK3B,,0.001902350108139217,0.0027445109780439123,mean log1p expression of marker genes present in the source expression matrix,-0.3248614560252361
 heart_cell_atlas_subsampled,mesothelial,Smooth_muscle_cells,261,MSLN;WT1;UPK3B,,0.0,0.0,mean log1p expression of marker genes present in the source expression matrix,-0.33559162115215707
 heart_cell_atlas_subsampled,mesothelial,Ventricular_Cardiomyocyte,2219,MSLN;WT1;UPK3B,,0.0004164922283962369,0.0006008712633318312,mean log1p expression of marker genes present in the source expression matrix,-0.3332424056393815
-
-

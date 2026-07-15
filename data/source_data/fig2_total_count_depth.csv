@@ -1,6 +1,0 @@
-﻿dataset_id,mean_total_counts_per_cell,median_total_counts_per_cell,source_definition
-pbmc3k,281.9954510993177,231.0,computed directly from locked analysis count matrix
-paul15,1130.0721611721613,1040.0,computed directly from locked analysis count matrix
-heart_cell_atlas_subsampled,210.83525,123.0,computed directly from locked analysis count matrix
-
-

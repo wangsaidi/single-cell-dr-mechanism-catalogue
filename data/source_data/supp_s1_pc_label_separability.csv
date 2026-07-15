@@ -1,0 +1,4 @@
+dataset_id,pc_label_neighbor_recall,pc20_label_silhouette,n_cells,n_labels,source_definition
+pbmc3k,0.9195855446044984,0.2178967173079871,2638,8,computed in PCA-reference space before low-dimensional embedding
+paul15,0.5526007326007326,0.0361856409542054,2730,19,computed in PCA-reference space before low-dimensional embedding
+heart_cell_atlas_subsampled,0.9625333333333334,0.3179269351242982,8000,11,computed in PCA-reference space before low-dimensional embedding

@@ -1,6 +1,0 @@
-﻿"dataset_id","role","status","loader","n_obs","n_vars","label_candidates","batch_candidates","selected_label_field","selected_batch_field","min_label_count","n_label_levels","n_batch_levels","notes"
-"pbmc3k","discrete_cell_identity","locked","scanpy.datasets.pbmc3k_processed","2638","1838","","","louvain","","15","8","","Discrete immune-cell anchor retained from ; not used as the only real dataset."
-"paul15","trajectory_continuum","locked","scanpy.datasets.paul15","2730","3451","paul15_clusters","","paul15_clusters","","9","19","","Trajectory/continuum context; iroot and Paul15 clusters are retained for pseudotime-oriented diagnostics."
-"heart_cell_atlas_subsampled","batch_or_donor_variable","locked","scvi.data.heart_cell_atlas_subsampled","18641","26662","cell_type;type;cell_states","cell_source;donor;sample;source","cell_type","donor","17","11","14.0","Preferred tissue-level batch/donor-variable context from scvi-tools public data."
-
-

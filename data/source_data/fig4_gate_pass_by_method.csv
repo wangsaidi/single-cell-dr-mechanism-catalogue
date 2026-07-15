@@ -1,4 +1,4 @@
-﻿method,family,claim_gate,pass_fraction,n_cases
+method,family,claim_gate,pass_fraction,n_cases
 GLM-PCA,factor,continuum_gate,0.0,1
 GLM-PCA,factor,donor_aware_gate,1.0,1
 GLM-PCA,factor,global_geometry_gate,1.0,3
@@ -30,14 +30,12 @@ UMAP,graph,global_geometry_gate,0.6666666666666666,3
 UMAP,graph,label_support_gate,0.6666666666666666,3
 UMAP,graph,local_neighbourhood_gate,0.0,3
 scScope,deep,continuum_gate,0.0,1
-scScope,deep,donor_aware_gate,0.0,1
-scScope,deep,global_geometry_gate,0.0,3
-scScope,deep,label_support_gate,0.0,3
+scScope,deep,donor_aware_gate,1.0,1
+scScope,deep,global_geometry_gate,0.3333333333333333,3
+scScope,deep,label_support_gate,1.0,3
 scScope,deep,local_neighbourhood_gate,0.0,3
 t-SNE,relational,continuum_gate,0.0,1
 t-SNE,relational,donor_aware_gate,0.0,1
 t-SNE,relational,global_geometry_gate,1.0,3
 t-SNE,relational,label_support_gate,0.6666666666666666,3
-t-SNE,relational,local_neighbourhood_gate,0.3333333333333333,3
-
-
+t-SNE,relational,local_neighbourhood_gate,0.6666666666666666,3

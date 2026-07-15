@@ -1,4 +1,4 @@
-﻿dataset_id,program,group,genes_present,genes_missing,mean_score,fraction_detected,z_score,score_definition
+dataset_id,program,group,genes_present,genes_missing,mean_score,fraction_detected,z_score,score_definition
 pbmc3k,T cells (CD4/CD8),B cells,CD3D;CD3E;IL7R,,0.07407452166080475,0.0935672514619883,-0.7056825859660621,mean log1p marker expression and detection fraction among cells in each PBMC label
 pbmc3k,T cells (CD4/CD8),CD14+ Monocytes,CD3D;CD3E;IL7R,,0.07489194720983505,0.10069444444444443,-0.7031721744574503,mean log1p marker expression and detection fraction among cells in each PBMC label
 pbmc3k,T cells (CD4/CD8),CD4 T cells,CD3D;CD3E;IL7R,,0.885352611541748,0.7660256410256411,1.7858493412385443,mean log1p marker expression and detection fraction among cells in each PBMC label
@@ -55,5 +55,3 @@ pbmc3k,Megakaryocytes,Dendritic cells,PPBP,,0.018733708187937737,0.0270270270270
 pbmc3k,Megakaryocytes,FCGR3A+ Monocytes,PPBP,,0.04891291260719299,0.06,-0.3535691053414815,mean log1p marker expression and detection fraction among cells in each PBMC label
 pbmc3k,Megakaryocytes,Megakaryocytes,PPBP,,3.5940585136413574,1.0,2.645504882252236,mean log1p marker expression and detection fraction among cells in each PBMC label
 pbmc3k,Megakaryocytes,NK cells,PPBP,,0.0,0.0,-0.3949477849124658,mean log1p marker expression and detection fraction among cells in each PBMC label
-
-

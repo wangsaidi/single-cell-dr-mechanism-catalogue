@@ -1,0 +1,9 @@
+method,family,mean_knn_overlap,worst_context_knn_overlap,mean_distance_rank_concordance,worst_context_distance_rank,decision_agreement,n_definition
+GLM-PCA,factor,0.3446680036,0.074685,0.8789764479,0.8087918402,1,"three dataset contexts, five seeds and ten seed pairs per context"
+PCA,factor,1,1,1,1,1,"three dataset contexts, five seeds and ten seed pairs per context"
+PHATE,graph,0.5159639842,0.4152615618,0.9966718314,0.9940707799,1,"three dataset contexts, five seeds and ten seed pairs per context"
+PaCMAP,relational,0.4278109387,0.3103891837,0.9506446091,0.8763629918,1,"three dataset contexts, five seeds and ten seed pairs per context"
+SAUCIE,deep,0.4598853506,0.3028583333,0.9742370386,0.9502389515,1,"three dataset contexts, five seeds and ten seed pairs per context"
+UMAP,graph,0.4553056149,0.33895628,0.8875365292,0.8245206324,0.9666666667,"three dataset contexts, five seeds and ten seed pairs per context"
+scScope,deep,0.265572358,0.1567829164,0.8560554278,0.7705163831,1,"three dataset contexts, five seeds and ten seed pairs per context"
+t-SNE,relational,1,1,1,1,1,"three dataset contexts, five seeds and ten seed pairs per context"

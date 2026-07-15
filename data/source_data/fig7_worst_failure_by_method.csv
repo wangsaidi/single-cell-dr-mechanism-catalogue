@@ -1,8 +1,0 @@
-﻿method,failed_cases,n_cases,weighted_failure_fraction
-PCA,84.0,84,1.0
-PHATE,148.0,148,1.0
-PaCMAP,111.0,111,1.0
-UMAP,148.0,148,1.0
-t-SNE,40.0,40,1.0
-
-

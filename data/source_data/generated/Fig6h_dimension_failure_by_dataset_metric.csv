@@ -1,0 +1,13 @@
+dataset_id,metric,failure_fraction,n_rows
+heart_cell_atlas_subsampled,global_rank_corr,0.2,20
+heart_cell_atlas_subsampled,label_neighbor_recall,0.0,20
+heart_cell_atlas_subsampled,local_retention,0.6,20
+heart_cell_atlas_subsampled,trustworthiness,0.1,20
+paul15,global_rank_corr,0.0,20
+paul15,label_neighbor_recall,0.7,20
+paul15,local_retention,0.75,20
+paul15,trustworthiness,0.35,20
+pbmc3k,global_rank_corr,0.0,20
+pbmc3k,label_neighbor_recall,0.0,20
+pbmc3k,local_retention,1.0,20
+pbmc3k,trustworthiness,0.7,20

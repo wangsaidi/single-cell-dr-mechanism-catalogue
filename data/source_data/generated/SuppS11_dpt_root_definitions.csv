@@ -1,0 +1,5 @@
+root_definition,root_index,root_cell_id,root_cluster,n_cells,n_dcs,neighbourhood_k
+stored_8Mk_root,840,W37022,8Mk,2730,10,15
+7MEP_centroid,1790,W38152,7MEP,2730,10,15
+9GMP_centroid,2204,W38596,9GMP,2730,10,15
+1Ery_centroid,1796,W38158,1Ery,2730,10,15

@@ -1,7 +1,0 @@
-﻿metric,failed_cases,n_cases,weighted_failure_fraction
-global_rank_corr,84.0,84,1.0
-label_neighbor_recall,149.0,149,1.0
-local_retention,149.0,149,1.0
-trustworthiness,149.0,149,1.0
-
-

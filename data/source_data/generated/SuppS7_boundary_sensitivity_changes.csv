@@ -1,0 +1,10 @@
+boundary_shift,decision_change,decision_count
+-0.05,gained_support,8
+-0.05,unchanged,80
+-0.025,gained_support,4
+-0.025,unchanged,84
+0,unchanged,88
+0.025,lost_support,2
+0.025,unchanged,86
+0.05,lost_support,4
+0.05,unchanged,84

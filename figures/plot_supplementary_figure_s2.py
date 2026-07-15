@@ -1,4 +1,4 @@
-﻿"""Plot source-data-backed supplementary figures for the publication package."""
+"""Plot source-data-backed supplementary figures for the manuscript."""
 
 from __future__ import annotations
 
@@ -46,10 +46,10 @@ METRIC_LABELS = {
     "truth_local_retention": "local\nretention",
     "truth_trustworthiness": "trust",
     "latent_distance_corr": "latent\ndist.",
-    "label_neighbor_recall": "label\nrecall",
+    "label_neighbor_recall": "same-label\nfraction",
     "pseudotime_distance_corr": "pseudo-\ntime",
     "batch_entropy_norm": "batch\nentropy",
-    "rare_label_recall": "rare\nrecall",
+    "rare_label_recall": "rare-state\nfraction",
 }
 
 
@@ -87,7 +87,7 @@ def build_supp_fig_s2() -> None:
     sim["threshold_ratio"] = (sim["value"].astype(float) / sim["threshold"].astype(float)).clip(lower=-0.25, upper=1.6)
 
     fig, axes = plt.subplots(2, 3, figsize=(9.5, 7.2), constrained_layout=False)
-    plt.subplots_adjust(left=0.075, right=0.91, top=0.96, bottom=0.13, wspace=0.36, hspace=0.50)
+    plt.subplots_adjust(left=0.075, right=0.91, top=0.96, bottom=0.08, wspace=0.36, hspace=0.50)
     cmap = mpl.colormaps["YlGnBu"].copy()
     norm = mpl.colors.Normalize(vmin=0, vmax=1.6)
 
@@ -100,7 +100,8 @@ def build_supp_fig_s2() -> None:
             .reindex(index=METHOD_ORDER, columns=metric_order)
         )
         support = (
-            sub.pivot_table(index="method", columns="metric", values="support", aggfunc="first")
+            sub.assign(pass_flag=sub["support"].eq("pass").astype(float))
+            .pivot_table(index="method", columns="metric", values="pass_flag", aggfunc="mean")
             .reindex(index=METHOD_ORDER, columns=metric_order)
         )
         values = ratio.values.astype(float)
@@ -118,23 +119,15 @@ def build_supp_fig_s2() -> None:
         for i in range(ratio.shape[0]):
             for j in range(ratio.shape[1]):
                 val = ratio.iloc[i, j]
-                mark = "P" if support.iloc[i, j] == "pass" else "F"
+                mark = f"{support.iloc[i, j]:.1f}"
                 color = "white" if val > 1.05 else "#172A3A"
-                ax.text(j, i, mark, ha="center", va="center", fontsize=5.8, fontweight="bold", color=color)
+                ax.text(j, i, mark, ha="center", va="center", fontsize=5.2, fontweight="bold", color=color)
         _panel_label(ax, chr(ord("a") + idx))
 
     cax = fig.add_axes([0.93, 0.20, 0.018, 0.62])
     cb = fig.colorbar(im, cax=cax)
-    cb.set_label("metric / threshold", fontsize=7)
+    cb.set_label("value / operational boundary", fontsize=7)
     cb.ax.tick_params(labelsize=6)
-    fig.text(
-        0.075,
-        0.045,
-        "Each cell shows whether a method-scenario metric passed (P) or fell below (F) its predeclared threshold. "
-        "Colour shows metric/threshold ratio; each panel displays only metrics actually defined and calculated for that scenario.",
-        fontsize=6.4,
-        color="#555555",
-    )
     _save(fig, "Supplementary_Figure_S2_mechanism_simulation_metric_summary")
 
 
@@ -144,5 +137,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

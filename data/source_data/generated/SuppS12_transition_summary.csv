@@ -1,0 +1,12 @@
+analysis_axis_resolved,transition,n_comparisons,fraction
+expression_perturbation,fail_to_fail,54,0.421875
+expression_perturbation,fail_to_pass,10,0.078125
+expression_perturbation,pass_to_fail,6,0.046875
+expression_perturbation,pass_to_pass,58,0.453125
+output_dimension,fail_to_fail,64,0.3333333333
+output_dimension,fail_to_pass,32,0.1666666667
+output_dimension,pass_to_pass,96,0.5
+upstream_pca,fail_to_fail,33,0.34375
+upstream_pca,fail_to_pass,7,0.07291666667
+upstream_pca,pass_to_fail,9,0.09375
+upstream_pca,pass_to_pass,47,0.4895833333

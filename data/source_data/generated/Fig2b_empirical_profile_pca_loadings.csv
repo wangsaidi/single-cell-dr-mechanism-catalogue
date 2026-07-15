@@ -1,0 +1,25 @@
+component,dataset_id,dataset_label,metric,metric_label,loading,variance_fraction
+PC1,pbmc3k,PBMC3k,local_retention,Local,0.3673401312,0.5498538705
+PC1,pbmc3k,PBMC3k,trustworthiness,Trust,0.3536820802,0.5498538705
+PC1,pbmc3k,PBMC3k,global_rank_corr,Global,0.1175257497,0.5498538705
+PC1,pbmc3k,PBMC3k,label_neighbor_recall,Same-label,0.2783079368,0.5498538705
+PC1,paul15,Paul15,local_retention,Local,0.3628185334,0.5498538705
+PC1,paul15,Paul15,trustworthiness,Trust,0.3648775494,0.5498538705
+PC1,paul15,Paul15,global_rank_corr,Global,0.03557529982,0.5498538705
+PC1,paul15,Paul15,label_neighbor_recall,Same-label,0.05329713108,0.5498538705
+PC1,heart_cell_atlas_subsampled,Heart atlas,local_retention,Local,0.3705637272,0.5498538705
+PC1,heart_cell_atlas_subsampled,Heart atlas,trustworthiness,Trust,0.3498453544,0.5498538705
+PC1,heart_cell_atlas_subsampled,Heart atlas,global_rank_corr,Global,-0.08937014059,0.5498538705
+PC1,heart_cell_atlas_subsampled,Heart atlas,label_neighbor_recall,Same-label,0.3348540494,0.5498538705
+PC2,pbmc3k,PBMC3k,local_retention,Local,0.05554072038,0.2760267242
+PC2,pbmc3k,PBMC3k,trustworthiness,Trust,0.2024016305,0.2760267242
+PC2,pbmc3k,PBMC3k,global_rank_corr,Global,0.4938368024,0.2760267242
+PC2,pbmc3k,PBMC3k,label_neighbor_recall,Same-label,0.2018437922,0.2760267242
+PC2,paul15,Paul15,local_retention,Local,0.00857630175,0.2760267242
+PC2,paul15,Paul15,trustworthiness,Trust,-0.03606667776,0.2760267242
+PC2,paul15,Paul15,global_rank_corr,Global,0.4252656217,0.2760267242
+PC2,paul15,Paul15,label_neighbor_recall,Same-label,-0.4231809854,0.2760267242
+PC2,heart_cell_atlas_subsampled,Heart atlas,local_retention,Local,-0.05101391729,0.2760267242
+PC2,heart_cell_atlas_subsampled,Heart atlas,trustworthiness,Trust,-0.1719091581,0.2760267242
+PC2,heart_cell_atlas_subsampled,Heart atlas,global_rank_corr,Global,0.4889130281,0.2760267242
+PC2,heart_cell_atlas_subsampled,Heart atlas,label_neighbor_recall,Same-label,-0.1970650233,0.2760267242

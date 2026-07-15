@@ -1,0 +1,9 @@
+method,minimum_support,maximum_support,mean_support,n_layers,support_range,source_definition
+GLM-PCA,0.5454545455,0.875,0.7115800866,3,0.3295454545,"minimum, maximum, mean and range across the three separately reported evidence layers"
+PCA,0.375,0.6071428571,0.5091991342,3,0.2321428571,"minimum, maximum, mean and range across the three separately reported evidence layers"
+PHATE,0.5,1,0.6818181818,3,0.5,"minimum, maximum, mean and range across the three separately reported evidence layers"
+PaCMAP,0.4545454545,1,0.6634199134,3,0.5454545455,"minimum, maximum, mean and range across the three separately reported evidence layers"
+SAUCIE,0.5454545455,0.625,0.5925324675,3,0.07954545455,"minimum, maximum, mean and range across the three separately reported evidence layers"
+UMAP,0.3636363636,1,0.6331168831,3,0.6363636364,"minimum, maximum, mean and range across the three separately reported evidence layers"
+scScope,0,0,0,3,0,"minimum, maximum, mean and range across the three separately reported evidence layers"
+t-SNE,0.5,1,0.6818181818,3,0.5,"minimum, maximum, mean and range across the three separately reported evidence layers"
