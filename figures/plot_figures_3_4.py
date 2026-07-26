@@ -496,7 +496,7 @@ def build_fig4() -> None:
     ax.set_yticks(np.arange(len(labels)))
     ax.set_yticklabels(labels)
     _color_method_labels(ax, "y")
-    ax.set_title("Local gate")
+    ax.set_title("Local-neighbourhood criterion")
     cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.025)
     cbar.ax.set_ylabel("score", rotation=270, labelpad=8, fontsize=5)
     _panel_label(ax, "a")
@@ -512,7 +512,7 @@ def build_fig4() -> None:
     ax.set_yticks(np.arange(len(config.ANCHOR_METHODS)))
     ax.set_yticklabels(config.ANCHOR_METHODS, fontsize=5.2)
     _color_method_labels(ax, "y")
-    ax.set_title("Global gate")
+    ax.set_title("Global-geometry criterion")
     cbar = fig.colorbar(im, ax=ax, fraction=0.05, pad=0.025)
     cbar.ax.set_ylabel("Spearman rho", rotation=270, labelpad=9, fontsize=5)
     _panel_label(ax, "b")
@@ -530,7 +530,7 @@ def build_fig4() -> None:
     _color_method_labels(ax, "x")
     ax.set_ylim(0, 1.0)
     ax.set_ylabel("Paul15 continuum score")
-    ax.set_title("Continuum gate")
+    ax.set_title("Continuum criterion")
     ax.legend(loc="upper left", fontsize=4.9, frameon=False, title="bars; lines = cutoffs", title_fontsize=4.6)
     _panel_label(ax, "c")
 
@@ -575,7 +575,7 @@ def build_fig4() -> None:
     ax.set_ylim(0.15, 1.04)
     ax.set_xlabel("donor entropy (local kNN)")
     ax.set_ylabel("cell-type neighbour fraction")
-    ax.set_title("Donor-aware gate")
+    ax.set_title("Donor-aware criterion")
     _panel_label(ax, "d")
 
     ax = fig.add_subplot(gs[1, 1:3])
@@ -644,7 +644,7 @@ def build_fig4() -> None:
     ax.set_yticklabels(gate_labels)
     ax.invert_yaxis()
     ax.set_xlabel("limiting relative margin")
-    ax.set_title("Gate limiting margins")
+    ax.set_title("Limiting criterion margins")
     _panel_label(ax, "e")
 
     ax = fig.add_subplot(gs[2, 0])
@@ -673,7 +673,7 @@ def build_fig4() -> None:
     ax.set_yticklabels(dataset_gate["label"], fontsize=4.8)
     ax.set_xlim(0, 1.12)
     ax.set_xlabel("pass fraction")
-    ax.set_title("Dataset gate support", loc="left")
+    ax.set_title("Criterion support by dataset", loc="left")
     _panel_label(ax, "f")
 
     ax = fig.add_subplot(gs[2, 1])
@@ -742,7 +742,7 @@ def build_fig4() -> None:
     ax.set_ylabel("trustworthiness relative margin")
     ax.set_xlim(-1.10, 0.40)
     ax.set_ylim(-0.17, 0.105)
-    ax.set_title("Local-gate component plane", loc="left")
+    ax.set_title("Local-criterion components", loc="left")
     ax.legend(
         handles=[
             Line2D([0], [0], marker=marker_map[dataset_id], color="none", markerfacecolor="#777777", markeredgecolor="white", markersize=4.0, label=_short_dataset(dataset_id))
@@ -897,7 +897,7 @@ def build_fig4() -> None:
     for i in range(outcome.shape[0]):
         for j in range(outcome.shape[1]):
             ax.text(j, i, "pass" if outcome.iloc[i, j] == 1 else "fail", ha="center", va="center", fontsize=3.9, color="white" if outcome.iloc[i, j] == 1 else "#555555")
-    ax.set_title("Method-context gate outcomes", loc="left")
+    ax.set_title("Method-context outcomes", loc="left")
     ax.legend(
         handles=[
             Patch(facecolor="#2C7FB8", edgecolor="none", label="supported"),

@@ -1,6 +1,6 @@
 # Mathematical catalogue and diagnostic stress tests for single-cell dimensionality reduction
 
-This repository release contains the figure-reproduction materials for the manuscript *A 26-method mathematical catalogue for evidence-aware interpretation of single-cell embeddings*.
+This repository release contains the figure-reproduction materials for the manuscript *Mathematical characterization and empirical evaluation of single-cell transcriptomic dimensionality-reduction methods*.
 
 ## Contents
 
@@ -9,7 +9,7 @@ This repository release contains the figure-reproduction materials for the manus
 - `metadata/`: mathematical specification records, public dataset sources and panel-level evidence mapping.
 - `outputs/main_figures/`: final Figures 1-7 in publication formats.
 - `outputs/supplementary_figures/`: final Supplementary Figs. S1-S13 as individual files and a combined 14-page PDF.
-- `outputs/tables/`: Table 1 source and the combined Supplementary Tables workbook.
+- `outputs/tables/`: Table 1 source and the submission-ready Supplementary Tables S1-S14 workbook.
 
 The release contains plotting inputs rather than raw or processed AnnData objects. Raw-data reanalysis should begin from the public dataset access routes listed in `metadata/public_data_sources.csv`.
 
@@ -33,7 +33,7 @@ python -m pip install -r requirements.txt
 python make_figures.py
 ```
 
-Figure 1 is supplied as final conceptual artwork. The wrapper rebuilds Figures 2-7 and Supplementary Figs. S1-S13 from the included source-data tables. Generated panel tables are written to `data/source_data/generated/`.
+Figure 1 is supplied as final conceptual artwork. The wrapper rebuilds Figures 2-7 and Supplementary Figs. S1-S13 from the included source-data tables. Generated panel tables are written to `data/source_data/generated/`. The curated Supplementary Tables S1-S14 workbook is supplied as a publication-facing output and is not rebuilt by the figure wrapper.
 
 See `TUTORIAL.md` for standalone figure commands, output checks and the boundary between figure reproduction and raw-data reanalysis.
 
