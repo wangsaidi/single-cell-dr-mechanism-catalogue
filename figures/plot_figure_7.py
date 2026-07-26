@@ -418,7 +418,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
         x_position = -0.13 if letter in {"e", "f", "g"} else -0.16
         panel_label(ax, letter, x=x_position, y=1.10)
 
-    fig.legend(
+    axh.legend(
         handles=[
             Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PROFILE_COLORS["empirical"], markeredgecolor="white", markersize=5, label="Empirical profile"),
             Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PROFILE_COLORS["simulation"], markeredgecolor="white", markersize=5, label="Simulation profile"),
@@ -426,10 +426,13 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
         frameon=False,
         fontsize=5.7,
         ncol=2,
-        loc="lower center",
-        bbox_to_anchor=(0.31, 0.006),
+        loc="upper center",
+        bbox_to_anchor=(0.50, -0.30),
+        borderaxespad=0,
+        columnspacing=0.9,
+        handletextpad=0.4,
     )
-    fig.legend(
+    axj.legend(
         handles=[
             Line2D([0], [0], marker=axis_markers[name], linestyle="none", markerfacecolor=AXIS_COLORS[name], markeredgecolor="none", markersize=4.5, label=AXIS_LABELS[name].replace("\n", " "))
             for name in AXIS_LABELS
@@ -438,8 +441,9 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
         frameon=False,
         fontsize=5.0,
         ncol=2,
-        loc="lower center",
-        bbox_to_anchor=(0.76, 0.003),
+        loc="upper center",
+        bbox_to_anchor=(0.50, -0.30),
+        borderaxespad=0,
         columnspacing=0.9,
         handletextpad=0.4,
     )
