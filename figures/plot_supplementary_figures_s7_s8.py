@@ -90,7 +90,7 @@ def plot_s7() -> None:
         axa.plot(sub["boundary_shift"], sub["pass_fraction"], marker="o", ms=3.8,
                  color=FAMILY_COLORS[family], label=FAMILY_LABELS[family])
     axa.axvline(0, color=TEXT_MUTED, lw=0.8, ls="--")
-    axa.set(xlabel="Boundary shift", ylabel="Gate pass fraction", title="Navigation-group support", ylim=(-0.02, 1.02))
+    axa.set(xlabel="Boundary shift", ylabel="Criterion support fraction", title="Navigation-group support", ylim=(-0.02, 1.02))
     axa.legend(frameon=False, loc="upper right", handlelength=1.5)
     clean_axis(axa)
 
@@ -99,7 +99,7 @@ def plot_s7() -> None:
         axb.plot(sub["boundary_shift"], sub["pass_fraction"], marker=marker, ms=3.2,
                  color=FAMILY_COLORS[method_family(method)], alpha=0.92, label=method)
     axb.axvline(0, color=TEXT_MUTED, lw=0.8, ls="--")
-    axb.set(xlabel="Boundary shift", ylabel="Gate pass fraction", title="Method support", ylim=(-0.02, 1.02))
+    axb.set(xlabel="Boundary shift", ylabel="Criterion support fraction", title="Method support", ylim=(-0.02, 1.02))
     axb.legend(frameon=False, ncol=2, loc="upper right", columnspacing=0.8, handletextpad=0.4)
     clean_axis(axb)
 
@@ -118,7 +118,7 @@ def plot_s7() -> None:
     im = axc.imshow(arr, cmap="RdBu", vmin=-vmax, vmax=vmax, aspect="auto", interpolation="nearest")
     axc.set_xticks(range(len(METHODS)), METHODS, rotation=45, ha="right")
     axc.set_yticks(range(len(row_order)), [f"{DATASET_LABELS[d]}  {GATE_LABELS[g]}" for d, g in row_order])
-    axc.set(xlabel="Method", ylabel="Dataset and claim gate", title="Baseline margins")
+    axc.set(xlabel="Method", ylabel="Dataset and claim criterion", title="Baseline margins")
     cbar = fig.colorbar(im, ax=axc, fraction=0.045, pad=0.025)
     cbar.set_label("Limiting value minus boundary")
     cbar.ax.tick_params(labelsize=5.8)
@@ -140,7 +140,7 @@ def plot_s7() -> None:
         axd.plot(sub["boundary_shift"], sub["unchanged_fraction"], marker="o", ms=3.2,
                  color=gate_colors[gate], label=GATE_LABELS[gate])
     axd.axvline(0, color=TEXT_MUTED, lw=0.8, ls="--")
-    axd.set(xlabel="Boundary shift", ylabel="Decisions unchanged", title="Gate stability", ylim=(-0.02, 1.02))
+    axd.set(xlabel="Boundary shift", ylabel="Decisions unchanged", title="Decision stability", ylim=(-0.02, 1.02))
     axd.legend(frameon=False, loc="lower right", ncol=2, columnspacing=0.8)
     clean_axis(axd)
 

@@ -256,7 +256,7 @@ def supplementary_fig_s3() -> None:
 
 
 def supplementary_fig_s4() -> None:
-    """Diagnostic-gate support and metric-margin atlas."""
+    """Diagnostic-criterion support and metric-margin atlas."""
     _apply_hq_style()
     method_gate = _read("fig4_gate_pass_by_method.csv")
     method_context = _read("Fig4e_method_context_gate_breadth.csv")
@@ -290,19 +290,19 @@ def supplementary_fig_s4() -> None:
     margin_mat.columns = [METRIC_LABELS[c] for c in margin_mat.columns]
 
     spread_mat = spread.set_index("method").reindex(METHOD_ORDER)[["gate_support_range"]]
-    spread_mat.columns = ["gate range"]
+    spread_mat.columns = ["criterion range"]
 
     fig, axes = plt.subplots(2, 4, figsize=(17.2, 9.4), gridspec_kw={"width_ratios": [1.36, 1.04, 0.90, 0.90]}, constrained_layout=False)
     plt.subplots_adjust(left=0.07, right=0.985, top=0.96, bottom=0.10, wspace=0.56, hspace=0.62)
     panels = [
-        (axes[0, 0], method_gate_mat, "Method gate support", "fraction", True, "fraction"),
-        (axes[0, 1], context_gate_mat, "Method-context gate breadth", "fraction", False, "fraction"),
-        (axes[0, 2], local_ratio, "Local-gate ratios", "ratio", False, "ratio"),
+        (axes[0, 0], method_gate_mat, "Method criterion support", "fraction", True, "fraction"),
+        (axes[0, 1], context_gate_mat, "Criterion breadth by context", "fraction", False, "fraction"),
+        (axes[0, 2], local_ratio, "Local-criterion ratios", "ratio", False, "ratio"),
         (axes[0, 3], global_ratio, "Global-rank ratios", "ratio", False, "ratio"),
         (axes[1, 0], continuum_ratio, "Paul15 continuum ratios", "ratio", False, "ratio"),
         (axes[1, 1], donor_ratio, "Heart donor-aware ratios", "ratio", False, "ratio"),
         (axes[1, 2], margin_mat, "Method boundary margins", "margin", True, "margin"),
-        (axes[1, 3], spread_mat, "Within-method gate range", "fraction", True, "fraction"),
+        (axes[1, 3], spread_mat, "Within-method criterion range", "fraction", True, "fraction"),
     ]
     for idx, (ax, mat, title, mode, cbar, _) in enumerate(panels):
         if mode == "fraction":
@@ -551,7 +551,7 @@ def supplementary_fig_s6() -> None:
 def build_supplementary_matrix() -> None:
     rows = [
         ("S3", "a-c", "Full embeddings for PBMC3k, Paul15 and heart atlas", "D2", "fig3_pbmc3k_embedding_coordinates.csv; fig3_paul15_embedding_coordinates.csv; fig3_heart_embedding_coordinates.csv", "figures/plot_supplementary_figures_s3_s6.py"),
-        ("S4", "a-h", "Diagnostic-gate support, component ratios and margins", "D2", "fig4_gate_pass_by_method.csv; Fig4e_method_context_gate_breadth.csv; fig4_local_gate_metrics.csv; fig4_global_gate_metrics.csv; fig4_paul15_continuum_metrics.csv; fig4_heart_donor_gate_metrics.csv; Fig4i_method_component_threshold_margins.csv; Fig4j_method_gate_inconsistency.csv", "figures/plot_supplementary_figures_s3_s6.py"),
+        ("S4", "a-h", "Diagnostic-criterion support, component ratios and margins", "D2", "fig4_gate_pass_by_method.csv; Fig4e_method_context_gate_breadth.csv; fig4_local_gate_metrics.csv; fig4_global_gate_metrics.csv; fig4_paul15_continuum_metrics.csv; fig4_heart_donor_gate_metrics.csv; Fig4i_method_component_threshold_margins.csv; Fig4j_method_gate_inconsistency.csv", "figures/plot_supplementary_figures_s3_s6.py"),
         ("S5", "a-h", "Biological-consistency evidence", "D2", "fig5_pbmc_marker_support.csv; fig5_marker_vs_neighbour_support.csv; fig5_paul15_lineage_marker_support.csv; fig5_heart_identity_donor_support.csv; fig5_rare_state_support.csv; fig5_evidence_support_summary.csv", "figures/plot_supplementary_figures_s3_s6.py"),
         ("S6", "a-i", "Robustness response and worst-case support", "D2/D4", "fig6_output_dimension_response.csv; fig6_upstream_pca_response.csv; fig6_dropout_noise_response.csv; fig6_dimension_failure_by_dataset_metric.csv; fig6_dimension_failure_by_method_metric.csv; fig6_upstream_failure_by_method_metric.csv; fig6_perturbation_failure_by_metric.csv; fig6_worst_case_support.csv", "figures/plot_supplementary_figures_s3_s6.py"),
     ]

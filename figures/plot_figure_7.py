@@ -71,8 +71,8 @@ AXIS_COLORS = {
 
 def _write_claim_matrix() -> Path:
     rows = [
-        ("a", "How do navigation-group support fractions change under joint boundary shifts?", "deterministic sensitivity", "SuppS7_boundary_sensitivity_family_summary.csv", "gate recomputation across five joint shifts", "pass fraction", "22 method-context-gate decisions per group and shift", "operational boundaries are not universal"),
-        ("b", "Which claim gates account for decisions gained or lost under each joint boundary shift?", "deterministic sensitivity", "Fig7b_gate_resolved_boundary_changes.csv", "claim-resolved comparison with shift-zero decisions", "signed count of gained and lost decisions", "88 matched gate decisions per shift, resolved over five claim gates", "decisions share methods and contexts"),
+        ("a", "How do navigation-group support fractions change under joint boundary shifts?", "deterministic sensitivity", "SuppS7_boundary_sensitivity_family_summary.csv", "criterion recomputation across five joint shifts", "support fraction", "22 method-context-criterion decisions per group and shift", "operational boundaries are not universal"),
+        ("b", "Which claim criteria account for decisions gained or lost under each joint boundary shift?", "deterministic sensitivity", "Fig7b_gate_resolved_boundary_changes.csv", "claim-resolved comparison with shift-zero decisions", "signed count of gained and lost decisions", "88 matched criterion decisions per shift, resolved over five claim criteria", "decisions share methods and contexts"),
         ("c", "Does the local-retention failure count depend on reference dimension and k?", "calibration", "SuppS10_boundary_count_sensitivity.csv", "20 reference-by-k definitions", "count below 0.30", "24 method-context analyses per definition", "fixed 1,000-cell calibration subset"),
         ("d", "Are local-retention method ranks stable across PCA reference definitions?", "calibration", "SuppS10_reference_rank_stability.csv", "pairwise Spearman correlations", "rank correlation", "8 methods per dataset and reference pair", "few methods limit correlation precision"),
         ("e", "Does the Paul15 continuum margin depend on DPT root definition?", "trajectory sensitivity", "SuppS11_root_sensitive_continuum_metrics.csv", "four biologically named roots", "signed relative margin to each metric-specific boundary", "64 method-root-metric results from 8 methods, 4 roots and 2 metrics", "root definitions are alternative analyses of the same cells, not independent replicates"),
@@ -161,7 +161,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
         axa.plot(sub["boundary_shift"], sub["pass_fraction"], marker="o", markersize=3.5, linewidth=1.1, color=FAMILY_COLORS[family], label=FAMILY_LABELS[family])
     axa.axvline(0, color=BORDER, linestyle="--", linewidth=0.8)
     axa.set_xlabel("Joint boundary shift")
-    axa.set_ylabel("Gate pass fraction")
+    axa.set_ylabel("Criterion support fraction")
     axa.set_ylim(0.35, 0.75)
     axa.set_title("Boundary-dependent support", loc="left")
     axa.legend(frameon=False, fontsize=5.2, ncol=2, loc="upper center", bbox_to_anchor=(0.50, -0.28))
@@ -213,7 +213,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     axb.set_xticks(np.arange(len(shifts)), [f"{value:+.3f}" if value else "0" for value in shifts], rotation=30, ha="right")
     axb.set_yticks(np.arange(len(gate_order)), gate_labels)
     axb.set_xlabel("Joint boundary shift")
-    axb.set_title("Gate-resolved changes", loc="left")
+    axb.set_title("Criterion-specific changes", loc="left")
     cbar_b = fig.colorbar(im_b, ax=axb, fraction=0.047, pad=0.03, ticks=[-limit, 0, limit])
     cbar_b.set_label("net changed decisions", fontsize=5.0)
     cbar_b.ax.tick_params(labelsize=4.8, length=2)
