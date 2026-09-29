@@ -7,6 +7,7 @@ import sys
 MODULES = (
     "figures.plot_figure_2",
     "figures.plot_figures_3_4",
+    "figures.plot_figure_4_downstream",
     "figures.plot_figures_5_6",
     "figures.plot_figure_7",
     "figures.plot_supplementary_figure_s1",
