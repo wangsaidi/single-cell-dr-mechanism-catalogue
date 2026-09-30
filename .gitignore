@@ -4,3 +4,11 @@ __pycache__/
 .env
 .DS_Store
 Thumbs.db
+analysis/data/*
+!analysis/data/README.md
+analysis/results/*
+!analysis/results/.gitkeep
+analysis/logs/*
+!analysis/logs/.gitkeep
+analysis/external/
+analysis/.downloads/

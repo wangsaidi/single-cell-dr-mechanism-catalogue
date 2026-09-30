@@ -1,6 +1,6 @@
 # Mathematical catalogue and diagnostic stress tests for single-cell dimensionality reduction
 
-This repository release contains the figure-reproduction materials for the manuscript *Mathematical characterization and empirical evaluation of single-cell transcriptomic dimensionality-reduction methods*.
+This repository contains the figure and analysis-reproduction materials for the manuscript *Mathematical characterization and empirical evaluation of single-cell transcriptomic dimensionality-reduction methods*.
 
 ## Contents
 
@@ -10,8 +10,9 @@ This repository release contains the figure-reproduction materials for the manus
 - `outputs/main_figures/`: final Figures 1-7 in publication formats.
 - `outputs/supplementary_figures/`: final Supplementary Figs. S1-S14 as individual files and a combined 15-page PDF.
 - `outputs/tables/`: Table 1 source and the submission-ready Supplementary Tables S1-S14 workbook.
+- `analysis/`: executable preprocessing, representation, downstream-analysis and verification workflow.
 
-The release contains plotting inputs rather than raw or processed AnnData objects. Raw-data reanalysis should begin from the public dataset access routes listed in `metadata/public_data_sources.csv`.
+The lightweight repository checkout contains the plotting inputs. The larger checksum-locked analysis objects and evaluated representation arrays are distributed through the [`analysis-reproducibility-v1.0.0` GitHub Release](https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue/releases/tag/analysis-reproducibility-v1.0.0) and are installed by `python -m analysis.download_inputs`. Raw-data refitting can begin from the public access routes listed in `metadata/public_data_sources.csv`.
 
 ## Reproducing the figures
 
@@ -37,10 +38,23 @@ Figure 1 is supplied as final conceptual artwork. The wrapper rebuilds Figures 2
 
 See `TUTORIAL.md` for standalone figure commands, output checks and the boundary between figure reproduction and raw-data reanalysis.
 
+## Reproducing the analysis
+
+The reviewer-facing archived-input profile recomputes all diagnostics and downstream results from the exact processed objects and evaluated representations used in the manuscript, then checks the generated tables against read-only references.
+
+```bash
+conda env create -f analysis/environment/analysis-environment.yml
+conda activate single-cell-dr-analysis
+python -m analysis.download_inputs
+python -m analysis.workflow.run_analysis --profile archived
+```
+
+Optional `refit-scvi` and `full-refit` profiles are documented in `analysis/README.md`. The full profile includes public-data acquisition and all model-fitting code; scScope and SAUCIE use the separately recorded Python 3.7 environment.
+
 ## Scope
 
 The specification records describe terms traceable to published mathematical formulations. They are multi-component records rather than mutually exclusive method classes or performance rankings. Figures 2, 3 and 5-7 reproduce the focused eight-anchor analyses. Revised Figure 4 adds scVI as a ninth implementation for direct clustering, population-recovery, trajectory and donor-information outcomes. Neither panel estimates performance for catalogue methods that were not executed.
 
 ## License
 
-The figure-generation code is released under the MIT License. The underlying public biological datasets remain subject to the terms of their source repositories.
+The analysis and figure-generation code is released under the MIT License. The underlying public biological datasets remain subject to the terms of their source repositories.

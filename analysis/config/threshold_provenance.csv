@@ -1,0 +1,18 @@
+metric,submitted_boundary,direction,submitted_role,documented_external_or_null_basis,verified_pre_result_status,revision_primary_status,revision_action
+local_retention,0.30,greater_or_equal,local_neighbourhood screening,partial label-preserving permutation analysis available,not documented,false,report continuous value and observed-minus-null effect; retain 0.30 only in supplementary sensitivity analysis
+trustworthiness,0.90,greater_or_equal,local_neighbourhood screening,no,not documented,false,report continuous value and variation over k and reference dimension
+global_rank_correlation,0.45,greater_or_equal,global_geometry screening,no,not documented,false,report continuous correlation and computational stability
+same_label_neighbour_fraction,0.55,greater_or_equal,label-support screening,no,not documented,false,report continuous value and class-size-preserving label-permutation excess
+pseudotime_rank_correlation,0.45,greater_or_equal,continuum screening,no,not documented,false,report continuous Spearman and Kendall agreement across biologically plausible roots
+local_pseudotime_retention,0.50,greater_or_equal,continuum screening,no,not documented,false,report continuous value across root and neighbourhood definitions
+normalised_donor_entropy,0.50,greater_or_equal,donor-aware screening,no,not documented,false,replace primary binary use with separate cross-validated cell-type and donor predictability
+maximum_marker_program_z,0.50,greater_or_equal,marker consistency screening,no,not documented,false,replace with continuous cluster-level marker-program effect size and rank
+absolute_marker_pseudotime_correlation,0.25,greater_or_equal,lineage consistency screening,no,not documented,false,report signed lineage and progenitor marker correlations
+rare_state_cell_count,200,less_or_equal,low-frequency inclusion rule,no,not documented,false,report all per-label endpoints against prevalence and retain the 200-cell flag only as a descriptive annotation
+truth_local_retention,0.30,greater_or_equal,controlled stress-test screening,inherits empirical operational cutoff,not documented,false,report continuous known-truth metric and generated-dataset variation
+truth_trustworthiness,0.90,greater_or_equal,controlled stress-test screening,inherits empirical operational cutoff,not documented,false,report continuous known-truth metric and generated-dataset variation
+latent_distance_correlation,0.45,greater_or_equal,controlled stress-test screening,no,not documented,false,report continuous known-truth rank correlation
+known_label_neighbour_fraction,0.55,greater_or_equal,controlled stress-test screening,inherits empirical operational cutoff,not documented,false,report continuous known-label agreement
+known_continuum_distance_correlation,0.45,greater_or_equal,controlled stress-test screening,no,not documented,false,report continuous known-continuum agreement
+normalised_batch_entropy,0.65,greater_or_equal,controlled stress-test screening,no,not documented,false,report batch entropy and biological-state recovery separately
+rare_label_neighbour_fraction,0.50,greater_or_equal,controlled stress-test screening,no,not documented,false,report per-run continuous rare-label agreement

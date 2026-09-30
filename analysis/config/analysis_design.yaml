@@ -1,0 +1,145 @@
+protocol_version: 1.0
+frozen_on: 2026-09-29
+status: design_frozen_before_revision_runs
+
+primary_question: >-
+  Under which dataset, reference-definition and analytical conditions do
+  dimensionality-reduction representations alter downstream single-cell
+  transcriptomic conclusions?
+
+catalogue:
+  entry_count: 26
+  role: mathematical_reference
+  empirical_extrapolation: prohibited
+  scvi_handling: replace_generic_vae_entry_after_equation_audit
+
+empirical_methods:
+  - PCA
+  - GLM-PCA
+  - scScope
+  - SAUCIE
+  - UMAP
+  - PHATE
+  - t-SNE
+  - PaCMAP
+  - scVI
+
+excluded_from_primary_panel:
+  scANVI: label_supervised_and_not_comparable_to_unsupervised_fits
+
+downstream_operator:
+  clustering: Leiden
+  role: common_operator_not_dimensionality_reduction_method
+  graph_metric: euclidean
+  graph_k: 15
+  graph_seed: 0
+  leiden_iterations: -1
+  resolution_grid:
+    - 0.2
+    - 0.4
+    - 0.6
+    - 0.8
+    - 1.0
+    - 1.2
+    - 1.5
+    - 2.0
+
+empirical_datasets:
+  PBMC3k:
+    role: discrete_identity_and_rare_population
+    cells: 2638
+  Paul15:
+    role: continuum_branch_and_root_sensitivity
+    cells: 2730
+  heart_atlas_subset:
+    role: cell_type_and_donor_associated_structure
+    cells: 8000
+
+contingency_dataset:
+  preferred: pancreatic_endocrinogenesis
+  default_inclusion: false
+  trigger: paul15_reference_is_circular_or_branch_endpoint_is_not_defensible
+  required_audit:
+    - public_accession
+    - raw_counts
+    - licence
+    - stage_or_lineage_metadata
+    - marker_programs
+    - primary_citation
+
+primary_downstream_endpoints:
+  discrete_identity:
+    - adjusted_rand_index_across_resolution_grid
+    - normalized_mutual_information_across_resolution_grid
+    - per_label_precision_recall_f1
+    - cluster_marker_program_concordance
+  rare_population:
+    - rare_label_precision
+    - rare_label_recall
+    - rare_label_f1
+  continuum:
+    - spearman_reference_order_agreement
+    - kendall_reference_order_agreement
+    - same_lineage_neighbour_fraction
+    - lineage_marker_monotonicity
+    - root_sensitivity
+  donor_variable_tissue:
+    - cross_validated_cell_type_predictability
+    - cross_validated_donor_predictability
+    - donor_stratified_marker_concordance
+
+primary_evidence_policy:
+  continuous_metrics_are_primary: true
+  binary_cutoffs_are_primary: false
+  labels_used_during_embedding_fit: false
+  labels_used_during_leiden_fit: false
+  best_resolution_selected_by_label_agreement: false
+  two_dimensional_map_is_biological_evidence: false
+  simulations_are_biological_validation: false
+
+representation_dimensions:
+  primary_downstream: 2
+  scvi_native_sensitivity: 10
+  existing_recomputed_subset:
+    - 2
+    - 5
+    - 10
+    - 20
+
+graph_sensitivity:
+  primary_k: 15
+  additional_k:
+    - 5
+    - 30
+    - 50
+
+computational_repeats:
+  seeds:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+
+statistical_units:
+  cells: observational_not_biological_replicates
+  donors: independent_only_for_donor_level_analyses
+  seeds: computational_repeats
+  subsamples: computational_stability_repeats
+  generated_datasets: independent_computational_replicates
+
+threshold_policy:
+  prespecified_term_requires_documentary_evidence: true
+  unexplained_fixed_cutoffs_in_primary_results: prohibited
+  calibration_options:
+    - literature_precedent
+    - label_preserving_permutation
+    - matched_random_graph_null
+    - reference_or_root_permutation
+  report_sensitivity_for_retained_cutoffs: true
+
+scope_controls:
+  full_26_method_benchmark: false
+  universal_method_ranking: false
+  empirical_claims_limited_to_executed_implementations: true
+  dataset_generalisation_beyond_evaluated_contexts: false

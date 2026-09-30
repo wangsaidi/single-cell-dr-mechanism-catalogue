@@ -2,9 +2,11 @@
 
 ## Reproduction scope
 
-This release rebuilds Figures 2-7 and Supplementary Figs. S1-S14 from the included figure-level source tables. Figure 1 is conceptual artwork and is supplied as a final file. The release does not claim to reconstruct every processed analysis object from raw sequencing files.
+The lightweight workflow rebuilds Figures 2-7 and Supplementary Figs. S1-S14 from the included figure-level source tables. Figure 1 is conceptual artwork and is supplied as a final file. The separate workflow in `analysis/` recomputes the empirical diagnostics and downstream results from checksum-locked processed objects and evaluated representations. Its optional full-refit profile reacquires the public datasets and reruns model fitting.
 
 Public dataset identifiers, retrieval routes and preprocessing decisions are listed in `metadata/public_data_sources.csv`, `metadata/empirical_dataset_registry.csv` and `metadata/preprocessing_and_analysis_inputs.csv`. Evaluated software settings and robustness-axis coverage are listed in `metadata/evaluated_method_settings.csv` and `metadata/method_axis_coverage.csv`.
+
+For the analysis workflow, follow `analysis/README.md`. The exact-input profile is the recommended verification route because it isolates the reported downstream calculations from platform-sensitive refitting of legacy neural implementations.
 
 ## Create the tested environment
 
