@@ -1,4 +1,4 @@
 dataset_id,n_labels,n_rare_labels,rare_label_fraction,rare_cell_fraction,min_label_count,max_label_count,source_definition
-pbmc3k,8,4,0.5,0.1349507202426078,15,1144,computed from fixed label counts; rare labels are <=200 cells
-paul15,19,15,0.7894736842105263,0.542857142857142,9,373,computed from fixed label counts; rare labels are <=200 cells
-heart_cell_atlas_subsampled,11,3,0.2727272727272727,0.0168982350732256,17,5307,computed from fixed label counts; rare labels are <=200 cells
+pbmc3k,8,4,0.5,0.13495072024260804,15,1144,pbmc3k_proc.h5ad: fitted-cell obs[louvain]; rare labels <=200 cells
+paul15,19,15,0.7894736842105263,0.5428571428571428,9,373,paul15_proc.h5ad: fitted-cell obs[paul15_clusters]; rare labels <=200 cells
+heart_cell_atlas_subsampled,11,3,0.2727272727272727,0.039375,17,2219,heart_cell_atlas_subsampled_proc.h5ad: fitted-cell obs[cell_type]; rare labels <=200 cells

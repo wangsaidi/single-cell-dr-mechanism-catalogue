@@ -12,7 +12,7 @@ This repository contains the figure and analysis-reproduction materials for the 
 - `outputs/tables/`: Table 1 source and the submission-ready Supplementary Tables S1-S16 workbook.
 - `analysis/`: executable preprocessing, representation, downstream-analysis and verification workflow.
 
-The lightweight repository checkout contains the plotting inputs. The larger checksum-locked analysis objects and evaluated representation arrays are distributed through the [`analysis-reproducibility-v1.0.0` GitHub Release](https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue/releases/tag/analysis-reproducibility-v1.0.0) and are installed by `python -m analysis.download_inputs`. Raw-data refitting can begin from the public access routes listed in `metadata/public_data_sources.csv`.
+The lightweight repository checkout contains the plotting inputs. The larger checksum-locked analysis objects and evaluated representation arrays are distributed through the [`analysis-reproducibility-v1.0.1` GitHub Release](https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue/releases/tag/analysis-reproducibility-v1.0.1) and are installed by `python -m analysis.download_inputs`. Raw-data refitting can begin from the public access routes listed in `metadata/public_data_sources.csv`.
 
 ## Reproducing the figures
 

@@ -162,8 +162,17 @@ def summarize_trajectory() -> pd.DataFrame:
             dpt_kendall_median=("reference_pseudotime_kendall", "median"),
             branch_neighbour_fraction_median=("branch_neighbour_fraction", "median"),
             n_embedding_seeds=("embedding_seed", "nunique"),
+            dpt_spearman_finite_only_median=("reference_pseudotime_spearman_finite_only", "median"),
+            dpt_spearman_finite_only_min=("reference_pseudotime_spearman_finite_only", "min"),
+            dpt_spearman_finite_only_max=("reference_pseudotime_spearman_finite_only", "max"),
+            n_total=("n_total", "first"), n_finite_min=("n_finite", "min"),
+            n_finite_max=("n_finite", "max"), n_common_min=("n_common", "min"),
+            n_common_max=("n_common", "max"), coverage_min=("coverage", "min"),
+            coverage_max=("coverage", "max"), n_disconnected_min=("n_disconnected", "min"),
+            n_disconnected_max=("n_disconnected", "max"),
         )
     )
+    summary["correlation_mask_definition"] = "nine-method common finite cells within each embedding seed"
     summary.to_csv(OUT / "trajectory_seed_summary.csv", index=False)
 
     markers = pd.read_csv(TRAJECTORY_DIR / "lineage_marker_monotonicity.csv")
@@ -175,8 +184,14 @@ def summarize_trajectory() -> pd.DataFrame:
             lineage_program_spearman_max=("lineage_program_spearman", "max"),
             progenitor_program_spearman_median=("progenitor_program_spearman", "median"),
             n_embedding_seeds=("embedding_seed", "nunique"),
+            lineage_program_spearman_finite_only_median=("lineage_program_spearman_finite_only", "median"),
+            progenitor_program_spearman_finite_only_median=("progenitor_program_spearman_finite_only", "median"),
+            n_lineage_cells=("n_lineage_cells", "first"),
+            n_lineage_finite_min=("n_lineage_finite", "min"), n_lineage_finite_max=("n_lineage_finite", "max"),
+            n_lineage_common_min=("n_lineage_common", "min"), n_lineage_common_max=("n_lineage_common", "max"),
         )
     )
+    marker_summary["correlation_mask_definition"] = "lineage cells in nine-method common finite mask and finite marker scores"
     marker_summary.to_csv(OUT / "lineage_marker_seed_summary.csv", index=False)
     return summary
 
@@ -219,20 +234,30 @@ def benjamini_hochberg(p_values: np.ndarray) -> np.ndarray:
     return np.clip(adjusted, 0.0, 1.0)
 
 
+def matched_seed_zero(frame: pd.DataFrame, seed_column: str, keys: list[str]) -> pd.DataFrame:
+    selected = frame[frame[seed_column].eq(0)].copy()
+    if selected.empty or selected.duplicated(keys).any():
+        raise ValueError(f"Missing or duplicate seed-zero association inputs: {keys}")
+    return selected
+
+
+def validate_association_panel(frame: pd.DataFrame, columns: list[str]) -> None:
+    expected = {"PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"}
+    if len(frame) != 9 or set(frame.method) != expected or not np.isfinite(frame[columns].to_numpy()).all():
+        raise ValueError("Association must have one finite matched seed-zero value per each of nine methods")
+
+
 def diagnostic_outcome_links(
     cluster_primary_seed: pd.DataFrame,
     marker_summary: pd.DataFrame,
     trajectory_summary: pd.DataFrame,
 ) -> None:
     geometry = pd.read_csv(DIAGNOSTIC_DIR / "geometry_metrics_all_methods.csv")
-    geometry = geometry[
-        geometry["output_dimension"].eq(2) & geometry["seed"].eq(0)
-    ].copy()
-    geometry = geometry.groupby(["dataset_id", "method", "metric"], as_index=False)["value"].mean()
+    geometry = matched_seed_zero(geometry[geometry["output_dimension"].eq(2)], "seed", ["dataset_id", "method", "metric"])
     geometry_wide = geometry.pivot(index=["dataset_id", "method"], columns="metric", values="value").reset_index()
 
-    cluster = cluster_primary_seed.copy()
-    marker = marker_summary.copy()
+    cluster = matched_seed_zero(cluster_primary_seed, "embedding_seed", ["dataset_id", "method"])
+    marker = matched_seed_zero(marker_summary, "embedding_seed", ["dataset_id", "method"])
     links: list[dict[str, object]] = []
     scatter_rows: list[pd.DataFrame] = []
 
@@ -250,6 +275,7 @@ def diagnostic_outcome_links(
             merged = geometry_wide[geometry_wide["dataset_id"].eq(dataset_id)].merge(
                 cluster[cluster["dataset_id"].eq(dataset_id)], on=["dataset_id", "method"], how="inner"
             )
+            validate_association_panel(merged, [diagnostic, outcome])
             coefficient, p_value, permutations = exact_spearman_permutation(
                 merged[diagnostic].to_numpy(), merged[outcome].to_numpy()
             )
@@ -277,6 +303,7 @@ def diagnostic_outcome_links(
         )
         diagnostic = "cluster_weighted_marker_concordance_resolution_auc"
         outcome = "macro_f1_resolution_auc"
+        validate_association_panel(merged, [diagnostic, outcome])
         coefficient, p_value, permutations = exact_spearman_permutation(
             merged[diagnostic].to_numpy(), merged[outcome].to_numpy()
         )
@@ -303,46 +330,62 @@ def diagnostic_outcome_links(
         )
 
     trajectory_geometry = pd.read_csv(DIAGNOSTIC_DIR / "trajectory_geometry_metrics_all_methods.csv")
-    trajectory_geometry = (
-        trajectory_geometry[trajectory_geometry["metric"].eq("pseudotime_rank_corr")]
-        .groupby("method", as_index=False)["value"]
-        .mean()
-        .rename(columns={"value": "pseudotime_rank_corr"})
+    trajectory_geometry = matched_seed_zero(
+        trajectory_geometry[trajectory_geometry["metric"].eq("pseudotime_rank_corr")], "seed", ["method"]
+    ).rename(columns={"value": "pseudotime_rank_corr"})
+    trajectory_detail = matched_seed_zero(
+        pd.read_csv(TRAJECTORY_DIR / "trajectory_outcomes.csv"), "embedding_seed", ["method"]
     )
-    merged = trajectory_geometry.merge(trajectory_summary, on="method", how="inner")
+    if trajectory_detail["n_common"].nunique() != 1 or not trajectory_detail["n_comparison_methods"].eq(9).all():
+        raise ValueError("Paul15 association requires the same nine-method common-cell comparison")
+    outcome = "dpt_spearman_seed0_common"
+    trajectory_detail = trajectory_detail.rename(columns={"reference_pseudotime_spearman_common": outcome})
+    merged = trajectory_geometry[["method", "pseudotime_rank_corr"]].merge(
+        trajectory_detail[["method", outcome, "n_common"]], on="method", how="inner", validate="one_to_one"
+    )
+    validate_association_panel(merged, ["pseudotime_rank_corr", outcome])
     coefficient, p_value, permutations = exact_spearman_permutation(
-        merged["pseudotime_rank_corr"].to_numpy(), merged["dpt_spearman_median"].to_numpy()
+        merged["pseudotime_rank_corr"].to_numpy(), merged[outcome].to_numpy()
     )
     links.append(
         {
             "comparison": "trajectory_geometry_vs_dpt_order",
             "dataset_id": "paul15",
             "diagnostic": "pseudotime_rank_corr",
-            "outcome": "dpt_spearman_median",
+            "outcome": outcome,
             "spearman_rho": coefficient,
             "exact_two_sided_permutation_p": p_value,
             "n_methods": int(merged.shape[0]),
             "n_exact_permutations": permutations,
+            "n_outcome_common_cells": int(merged.n_common.iloc[0]),
+            "outcome_mask_definition": "finite intersection across all nine seed-zero methods and reference",
         }
     )
     scatter_rows.append(
-        merged[["method", "pseudotime_rank_corr", "dpt_spearman_median"]]
-        .rename(columns={"pseudotime_rank_corr": "diagnostic_value", "dpt_spearman_median": "outcome_value"})
+        merged[["method", "pseudotime_rank_corr", outcome, "n_common"]]
+        .rename(columns={"pseudotime_rank_corr": "diagnostic_value", outcome: "outcome_value"})
         .assign(
             dataset_id="paul15",
             comparison="trajectory_geometry_vs_dpt_order",
             diagnostic="pseudotime_rank_corr",
-            outcome="dpt_spearman_median",
+            outcome=outcome,
         )
     )
 
     link_table = pd.DataFrame(links)
+    if len(link_table) != 7:
+        raise ValueError("Expected exactly seven planned association tests")
+    link_table["embedding_seed"] = 0
+    link_table["diagnostic_seed"] = 0
+    link_table["outcome_seed"] = 0
     link_table["q_bh_7_planned_tests"] = benjamini_hochberg(
         link_table["exact_two_sided_permutation_p"].to_numpy()
     )
     link_table["inference_scope"] = "descriptive alignment within the nine evaluated implementations"
     link_table.to_csv(OUT / "diagnostic_outcome_associations.csv", index=False)
-    pd.concat(scatter_rows, ignore_index=True).to_csv(OUT / "diagnostic_outcome_scatter_data.csv", index=False)
+    pd.concat(scatter_rows, ignore_index=True).assign(embedding_seed=0, diagnostic_seed=0, outcome_seed=0).to_csv(
+        OUT / "diagnostic_outcome_scatter_data.csv", index=False
+    )
 
 
 def copy_direct_summaries() -> None:
@@ -373,6 +416,8 @@ def run() -> None:
         "marker_rows": int(marker.shape[0]),
         "association_family": "seven planned diagnostic-to-outcome comparisons",
         "association_multiplicity": "Benjamini-Hochberg correction across seven exact permutation tests",
+        "association_embedding_seed": 0,
+        "trajectory_correlation_mask": "finite common-cell intersection across nine methods per seed/root; finite-only sensitivity retained",
     }
     (OUT / "panel_source_data_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 

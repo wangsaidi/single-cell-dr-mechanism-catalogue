@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import argparse
 from pathlib import Path
 
 import matplotlib as mpl
@@ -123,6 +124,146 @@ def _hash(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+S1_DATASETS = {
+    "pbmc3k": (2638, 1838, "louvain", ""),
+    "paul15": (2730, 2000, "paul15_clusters", ""),
+    "heart_cell_atlas_subsampled": (8000, 2000, "cell_type", "donor"),
+}
+
+
+def derive_s1_sources(analysis_objects: Path) -> tuple[dict[str, pd.DataFrame], dict]:
+    """Summarise the exact fitted subset, without loading parent cohorts or refitting PCA."""
+    import anndata
+    from scipy import sparse
+    from sklearn import config_context
+    from sklearn.metrics import silhouette_score
+    from sklearn.neighbors import NearestNeighbors
+
+    summaries = pd.read_csv(SOURCE_DIR / "supp_s1_dataset_summary.csv").set_index("dataset_id")
+    rows = {name: [] for name in [
+        "dataset_summary", "dataset_composition", "label_burden_metrics",
+        "expression_sparsity_metrics", "rare_label_burden", "pca_variance_structure",
+        "pc_label_separability", "cell_complexity_metrics", "detected_gene_quantiles",
+        "total_count_depth",
+    ]}
+    provenance = {}
+    for dataset, (n_cells, n_features, label_field, batch_field) in S1_DATASETS.items():
+        count_path = analysis_objects / f"{dataset}_counts_hvg.h5ad"
+        proc_path = analysis_objects / f"{dataset}_proc.h5ad"
+        counts = anndata.read_h5ad(count_path)
+        proc = anndata.read_h5ad(proc_path)
+        if counts.shape != (n_cells, n_features) or proc.shape != counts.shape:
+            raise ValueError(f"Unexpected fitted subset shape for {dataset}")
+        if not counts.obs_names.equals(proc.obs_names) or not counts.var_names.equals(proc.var_names):
+            raise ValueError(f"Count/PCA cell or feature order mismatch for {dataset}")
+        matrix = counts.X
+        values = matrix.data if sparse.issparse(matrix) else np.asarray(matrix)
+        if not np.isfinite(values).all() or (values < 0).any() or (values != np.floor(values)).any():
+            raise ValueError(f"Selected-feature matrix is not finite nonnegative counts: {dataset}")
+        fitted_counts = proc.layers["counts"]
+        difference = sparse.csr_matrix(matrix) - sparse.csr_matrix(fitted_counts)
+        difference.eliminate_zeros()
+        if difference.nnz:
+            raise ValueError(f"Saved count matrix differs from fitted counts layer: {dataset}")
+        detected = np.asarray((matrix > 0).sum(axis=1)).ravel().astype(float)
+        totals = np.asarray(matrix.sum(axis=1, dtype=np.float64)).ravel()
+        labels = proc.obs[label_field]
+        if labels.isna().any() or not labels.astype(str).equals(counts.obs[label_field].astype(str)):
+            raise ValueError(f"Missing or inconsistent fitted labels: {dataset}")
+        label_counts = labels.astype(str).value_counts()
+        fractions = label_counts.to_numpy(dtype=float) / n_cells
+        rare = label_counts <= 200
+        rare_cells = float(label_counts[rare].sum() / n_cells)
+        rare_labels = float(rare.mean())
+        base = {"dataset_id": dataset}
+        count_definition = (
+            f"{count_path.name}: X of exact fitted selected-feature raw-count matrix; "
+            "counts are restricted to selected features, not full-library totals"
+        )
+        label_definition = f"{proc_path.name}: fitted-cell obs[{label_field}]; rare labels <=200 cells"
+        for role, field in [("label", label_field), ("batch_or_donor", batch_field)]:
+            if not field:
+                continue
+            if proc.obs[field].isna().any():
+                raise ValueError(f"Missing fitted {field}: {dataset}")
+            for level, number in proc.obs[field].astype(str).value_counts().items():
+                rows["dataset_composition"].append({**base, "field_role": role, "field": field,
+                    "level": level, "n_cells": int(number), "fraction": float(number / n_cells),
+                    "source_definition": f"{proc_path.name}: exact fitted-cell obs[{field}]"})
+        original = summaries.loc[dataset]
+        rows["dataset_summary"].append({**base, "role": original.role, "loader": original.loader,
+            "n_obs": n_cells, "n_vars": n_features, "selected_label_field": label_field,
+            "selected_batch_field": batch_field, "min_label_count": int(label_counts.min()),
+            "n_label_levels": len(label_counts),
+            "n_batch_levels": int(proc.obs[batch_field].nunique()) if batch_field else 0,
+            "source_definition": count_definition})
+        rows["label_burden_metrics"].append({**base, "n_label_levels": len(label_counts),
+            "label_imbalance_index": float(1 + np.sum(fractions * np.log(fractions)) / np.log(len(fractions))),
+            "largest_label_fraction": float(fractions.max()), "rare_cell_fraction": rare_cells,
+            "rare_label_fraction": rare_labels, "minimum_label_fraction": float(fractions.min()),
+            "source_definition": label_definition})
+        rows["rare_label_burden"].append({**base, "n_labels": len(label_counts),
+            "n_rare_labels": int(rare.sum()), "rare_label_fraction": rare_labels,
+            "rare_cell_fraction": rare_cells, "min_label_count": int(label_counts.min()),
+            "max_label_count": int(label_counts.max()), "source_definition": label_definition})
+        complexity = {**base, "zero_fraction": float(1 - detected.sum() / (n_cells * n_features)),
+            "mean_detected_genes_per_cell": float(detected.mean()),
+            "median_detected_genes_per_cell": float(np.median(detected)),
+            "q10_detected_genes_per_cell": float(np.quantile(detected, .1)),
+            "q90_detected_genes_per_cell": float(np.quantile(detected, .9)),
+            "mean_total_counts_per_cell": float(totals.mean()),
+            "median_total_counts_per_cell": float(np.median(totals)),
+            "source_definition": count_definition}
+        rows["cell_complexity_metrics"].append(complexity)
+        rows["expression_sparsity_metrics"].append({**base, "n_cells": n_cells, "n_genes": n_features,
+            **{key: complexity[key] for key in ["zero_fraction", "mean_detected_genes_per_cell",
+                "median_detected_genes_per_cell", "mean_total_counts_per_cell", "source_definition"]}})
+        rows["detected_gene_quantiles"].append({key: complexity[key] for key in ["dataset_id",
+            "q10_detected_genes_per_cell", "median_detected_genes_per_cell",
+            "q90_detected_genes_per_cell", "source_definition"]})
+        rows["total_count_depth"].append({key: complexity[key] for key in ["dataset_id",
+            "mean_total_counts_per_cell", "median_total_counts_per_cell", "source_definition"]})
+        variance = np.asarray(proc.uns["pca"]["variance_ratio"], dtype=float)
+        reference_variance = np.asarray(proc.uns["pca_ref_variance_ratio"], dtype=float)
+        pca = np.asarray(proc.obsm["X_pca_ref"])
+        if not np.allclose(variance, reference_variance, rtol=1e-7, atol=1e-12) or not np.isfinite(pca).all():
+            raise ValueError(f"Inconsistent saved PCA reference: {dataset}")
+        if variance.shape != (pca.shape[1],) or (variance < 0).any() or not np.isfinite(variance).all():
+            raise ValueError(f"Invalid saved PCA variance: {dataset}")
+        cumulative = np.cumsum(variance)
+        def pcs_to_reach(target: float):
+            reached = np.flatnonzero(cumulative >= target)
+            return int(reached[0] + 1) if len(reached) else np.nan
+        rows["pca_variance_structure"].append({**base, "pc1_variance_ratio": float(variance[0]),
+            "pc5_cumulative_variance": float(cumulative[4]),
+            "pc10_cumulative_variance": float(cumulative[9]),
+            "pc20_cumulative_variance": float(cumulative[19]),
+            "n_pcs_for_50pct": pcs_to_reach(.5), "n_pcs_for_80pct": pcs_to_reach(.8),
+            "n_saved_pcs": len(variance), "saved_pcs_cumulative_variance": float(cumulative[-1]),
+            "source_definition": f"{proc_path.name}: saved PCA variance_ratio; blank threshold counts mean not reached within saved PCs"})
+        neighbors = NearestNeighbors(n_neighbors=15).fit(pca[:, :20]).kneighbors(return_distance=False)
+        label_values = labels.astype(str).to_numpy()
+        same_label = float((label_values[neighbors] == label_values[:, None]).mean())
+        with config_context(working_memory=128):
+            silhouette = float(silhouette_score(pca[:, :20], label_values))
+        rows["pc_label_separability"].append({**base, "pc_label_neighbor_recall": same_label,
+            "pc20_label_silhouette": silhouette, "n_cells": n_cells, "n_labels": len(label_counts),
+            "source_definition": f"{proc_path.name}: first 20 saved X_pca_ref PCs; k=15 non-self Euclidean neighbours; full-cell silhouette; no refit"})
+        provenance[dataset] = {"shape": [n_cells, n_features], "counts_file": str(count_path.resolve()),
+            "counts_sha256": _hash(count_path), "proc_file": str(proc_path.resolve()),
+            "proc_sha256": _hash(proc_path), "label_field": label_field, "batch_field": batch_field,
+            "n_saved_pcs": len(variance), "counts_layer_equal": True, "cell_feature_order_equal": True}
+    tables = {f"supp_s1_{name}.csv": pd.DataFrame(records) for name, records in rows.items()}
+    return tables, provenance
+
+
+def write_s1_sources(analysis_objects: Path) -> dict:
+    tables, provenance = derive_s1_sources(analysis_objects)
+    for name, table in tables.items():
+        table.to_csv(SOURCE_DIR / name, index=False)
+    return provenance
+
+
 
 def build_fig2() -> None:
     """Figure 2: data contexts and diagnostic burden."""
@@ -169,15 +310,14 @@ def build_fig2() -> None:
         ox, oy, ha = label_offsets[row.dataset_id]
         ax.text(row.n_obs * ox, row.n_vars * oy, _short_dataset(row.dataset_id), color=DATASET_COLORS[row.dataset_id], fontsize=5.3, ha=ha)
     ax.set_xscale("log")
-    ax.set_yscale("log")
-    ax.set_xlim(2300, 25000)
-    ax.set_ylim(1100, 35000)
-    ax.set_xticks([3000, 5000, 10000, 20000])
-    ax.set_xticklabels(["3k", "5k", "10k", "20k"])
-    ax.set_yticks([2000, 10000, 30000])
-    ax.set_yticklabels(["2k", "10k", "30k"])
+    ax.set_xlim(2300, 9500)
+    ax.set_ylim(1600, 2450)
+    ax.set_xticks([3000, 5000, 8000])
+    ax.set_xticklabels(["3k", "5k", "8k"])
+    ax.xaxis.set_minor_formatter(mpl.ticker.NullFormatter())
+    ax.set_yticks([1838, 2000, 2400])
     ax.set_xlabel("analysed cells")
-    ax.set_ylabel("analysed genes")
+    ax.set_ylabel("selected features")
     ax.set_title("Dataset scale", loc="left", pad=4)
     ax.text(0.56, 0.07, "size: label levels", transform=ax.transAxes, fontsize=4.7, color="#555555")
     _panel_label(ax, "a")
@@ -268,7 +408,7 @@ def build_fig2() -> None:
             fontsize=5.0,
             color=DATASET_COLORS[row.dataset_id],
         )
-    ax.set_xlabel("mean detected HVGs per cell")
+    ax.set_xlabel("mean detected selected features / cell")
     ax.set_ylabel("zero fraction")
     ax.set_ylim(max(0, expr["zero_fraction"].min() - 0.06), min(1, expr["zero_fraction"].max() + 0.08))
     ax.set_title("Expression sparsity", loc="left", pad=6)
@@ -328,7 +468,7 @@ def build_fig2() -> None:
     )
     ax.set_xticks(np.arange(len(order)))
     ax.set_xticklabels([_short_dataset(i) for i in order], rotation=25, ha="right")
-    ax.set_ylabel("detected HVGs per cell")
+    ax.set_ylabel("detected selected features / cell")
     ax.set_title("Detection-depth spread", loc="left", pad=5)
     ax.text(
         0.00,
@@ -350,8 +490,8 @@ def build_fig2() -> None:
     ax.bar(x + width / 2, cd["mean_total_counts_per_cell"], width, color="#F28E2B", alpha=0.82, label="mean")
     ax.set_xticks(x)
     ax.set_xticklabels([_short_dataset(i) for i in order], rotation=25, ha="right")
-    ax.set_ylabel("total counts per cell")
-    ax.set_title("Library-size depth", loc="left", pad=5)
+    ax.set_ylabel("selected-feature counts / cell")
+    ax.set_title("Selected-feature count depth", loc="left", pad=5)
     ax.legend(loc="upper right", fontsize=4.7, frameon=False)
     _panel_label(ax, "i")
 
@@ -387,6 +527,12 @@ def build_fig2() -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--recompute-sources", action="store_true")
+    parser.add_argument("--analysis-objects", type=Path, default=ROOT / "analysis/data/analysis_objects")
+    args = parser.parse_args()
+    if args.recompute_sources:
+        write_s1_sources(args.analysis_objects)
     build_fig2()
 
 

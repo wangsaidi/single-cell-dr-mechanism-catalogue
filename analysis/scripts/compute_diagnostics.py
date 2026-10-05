@@ -21,6 +21,7 @@ import scanpy as sc
 from sklearn.neighbors import NearestNeighbors
 from sklearn.manifold import trustworthiness
 from scipy.stats import spearmanr
+from analysis.scripts.compute_trajectory import PRIMARY_ROOT, reference_dpt, root_definitions
 
 from analysis.paths import (
     ANALYSIS_OBJECTS_DIR,
@@ -115,19 +116,8 @@ def one_dimensional_rank(reference: np.ndarray, coords: np.ndarray, seed: int) -
 
 
 def paul15_reference_pseudotime(proc) -> tuple[np.ndarray, int]:
-    labels = proc.obs["paul15_clusters"].astype(str).to_numpy()
-    candidates = np.where(labels == "7MEP")[0]
-    reference = np.asarray(proc.obsm["X_pca_ref"][candidates, :20], dtype=float)
-    centroid = reference.mean(axis=0)
-    root = int(candidates[np.argmin(np.linalg.norm(reference - centroid, axis=1))])
-    work = proc.copy()
-    sc.pp.neighbors(work, n_neighbors=K, use_rep="X_pca_ref", random_state=0)
-    sc.tl.diffmap(work, n_comps=15)
-    work.uns["iroot"] = root
-    sc.tl.dpt(work, n_dcs=10)
-    pseudotime = work.obs["dpt_pseudotime"].to_numpy(dtype=float)
-    pseudotime = np.nan_to_num(pseudotime, nan=np.nanmedian(pseudotime), posinf=1.0, neginf=0.0)
-    return pseudotime, root
+    root = root_definitions(proc)[PRIMARY_ROOT]
+    return reference_dpt(proc, root), root
 
 
 def write_trajectory_geometry(methods: list[str], seeds: list[int]) -> None:
@@ -158,6 +148,8 @@ def write_trajectory_geometry(methods: list[str], seeds: list[int]) -> None:
                         "reference_root_cell": str(proc.obs_names[root]),
                         "reference_root_definition": "7MEP centroid in the expression-derived PCA reference",
                         "n_cells": int(proc.n_obs),
+                        "n_reference_finite": int(np.isfinite(pseudotime).sum()),
+                        "reference_missingness_policy": "non-finite reference raises an error; no imputation",
                     },
                     {
                         "dataset_id": "paul15",
@@ -168,6 +160,8 @@ def write_trajectory_geometry(methods: list[str], seeds: list[int]) -> None:
                         "reference_root_cell": str(proc.obs_names[root]),
                         "reference_root_definition": "7MEP centroid in the expression-derived PCA reference",
                         "n_cells": int(proc.n_obs),
+                        "n_reference_finite": int(np.isfinite(pseudotime).sum()),
+                        "reference_missingness_policy": "non-finite reference raises an error; no imputation",
                     },
                 ]
             )

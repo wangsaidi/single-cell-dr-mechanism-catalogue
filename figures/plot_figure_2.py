@@ -1013,7 +1013,7 @@ def build_figure(paths: dict[str, Path]) -> None:
     ]
     ax_f.legend(handles=scenario_handles, loc="lower right", bbox_to_anchor=(1.0, 1.01), ncol=6, frameon=False, fontsize=4.8, handletextpad=0.3, columnspacing=0.8)
     ax_f.set_xlabel("relative margin, truth local retention")
-    ax_f.set_ylabel("relative margin, same-label neighbour fraction")
+    ax_f.set_ylabel("same-label relative margin")
     ax_f.set_xlim(-0.83, 0.04)
     ax_f.set_ylim(-0.04, 0.88)
     ax_f.set_title("Geometry-identity decoupling under known truth", loc="left")

@@ -220,7 +220,7 @@ def build() -> Path:
     ax_d.set_xlabel("Same-lineage neighbour fraction")
     ax_d.set_ylabel("DPT order agreement, Spearman rho")
     clean(ax_d)
-    panel_label(ax_d, "d", x=-0.16)
+    panel_label(ax_d, "d", x=-0.10, y=1.12)
 
     ax_e = fig.add_subplot(outer[2, 1])
     heart = pd.read_csv(SOURCE / "Figure4_panel_e.csv")
@@ -277,7 +277,7 @@ def build() -> Path:
     ax_f.set_yticks(positions, associations["label"])
     ax_f.set_xlim(-1.0, 1.16)
     ax_f.set_xlabel("Spearman correlation across nine evaluated implementations")
-    ax_f.set_title("Geometric diagnostics predict some downstream outcomes but not others", pad=4)
+    ax_f.set_title("Diagnostic associations depend on the downstream endpoint", pad=4)
     clean(ax_f)
     panel_label(ax_f, "f", x=-0.055, y=1.10)
 

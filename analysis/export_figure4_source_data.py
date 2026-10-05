@@ -53,11 +53,18 @@ def main() -> None:
             lineage_min=("branch_neighbour_fraction", "min"),
             lineage_max=("branch_neighbour_fraction", "max"),
             n_embedding_seeds=("embedding_seed", "nunique"),
+            n_total=("n_total", "first"),
+            n_finite_min=("n_finite", "min"),
+            n_finite_max=("n_finite", "max"),
+            n_common_min=("n_common", "min"),
+            n_common_max=("n_common", "max"),
+            n_lineage_focal=("n_branch_evaluable_cells", "first"),
         )
         .set_index("method")
         .reindex(METHODS)
         .reset_index()
     )
+    trajectory_summary["order_mask_definition"] = "nine-method finite intersection within each seed and root"
     write_panel("d", trajectory_summary)
 
     heart = pd.read_csv(RESULTS_DIR / "panel_source_data" / "heart_predictability_seed_summary.csv")

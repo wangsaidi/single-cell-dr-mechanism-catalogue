@@ -77,6 +77,66 @@ def _read(name: str) -> pd.DataFrame:
     return pd.read_csv(path)
 
 
+FAILURE_SPECS = {
+    "fig6_dimension_failure_by_method_metric.csv": (
+        "fig6_output_dimension_response.csv", ["method", "metric"],
+        "Fig6e_dimension_failure_by_method_metric.csv", "output_dimension"),
+    "fig6_dimension_failure_by_dataset_metric.csv": (
+        "fig6_output_dimension_response.csv", ["dataset_id", "metric"],
+        "Fig6h_dimension_failure_by_dataset_metric.csv", "output_dimension"),
+    "fig6_upstream_failure_by_method_metric.csv": (
+        "fig6_upstream_pca_response.csv", ["method", "metric"],
+        "Fig6g_upstream_failure_by_method_metric.csv", "upstream_pca_dimension"),
+}
+
+
+def failure_summary(frame: pd.DataFrame, groups: list[str], dimension: str) -> pd.DataFrame:
+    """Count canonical experiment rows, not rounded values or obsolete aggregates."""
+    keys = ["dataset_id", "method", dimension, "metric"]
+    if frame[keys].isna().any().any() or frame.duplicated(keys).any():
+        raise ValueError("Missing or duplicated robustness experiment keys")
+    if not np.isfinite(frame[["value", "threshold"]].to_numpy(dtype=float)).all():
+        raise ValueError("Nonfinite robustness value or boundary")
+    if not frame["support"].isin(["pass", "below_threshold"]).all():
+        raise ValueError("Unknown robustness support flag")
+    failure = frame["support"].eq("below_threshold")
+    if not failure.equals(frame["value"].lt(frame["threshold"])):
+        raise ValueError("Robustness support flags disagree with numeric boundaries")
+    return frame.assign(failure=failure).groupby(groups, as_index=False).agg(
+        failure_fraction=("failure", "mean"), n_rows=("failure", "size"))
+
+
+def validate_failure_summary(actual: pd.DataFrame, expected: pd.DataFrame, groups: list[str]) -> None:
+    columns = groups + ["failure_fraction", "n_rows"]
+    if actual.duplicated(groups).any():
+        raise ValueError("Duplicated aggregate keys")
+    try:
+        pd.testing.assert_frame_equal(
+            actual[columns].sort_values(groups).reset_index(drop=True),
+            expected[columns].sort_values(groups).reset_index(drop=True),
+            check_dtype=False, check_exact=False, rtol=0, atol=1e-14)
+    except (AssertionError, KeyError) as exc:
+        raise ValueError("Stale failure aggregate; rebuild from canonical support flags") from exc
+
+
+def derive_failure_summaries(*, write: bool = False) -> dict[str, pd.DataFrame]:
+    tables = {}
+    for name, (source, groups, main_source, dimension) in FAILURE_SPECS.items():
+        frame = pd.read_csv(SOURCE_DIR / source)
+        summary = failure_summary(frame, groups, dimension)
+        # Main Fig6 is a second consumer of the same experiment rows.
+        main_path = REV_SOURCE_DIR / main_source
+        if not main_path.exists():
+            raise FileNotFoundError(f"Main Fig6 reconciliation source missing: {main_path}")
+        validate_failure_summary(pd.read_csv(main_path), summary, groups)
+        tables[name] = summary
+    for name, summary in tables.items():
+        if write:
+            summary.to_csv(SOURCE_DIR / name, index=False)
+        validate_failure_summary(pd.read_csv(SOURCE_DIR / name), summary, FAILURE_SPECS[name][1])
+    return tables
+
+
 def _save(fig: plt.Figure, stem: str) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for ext in ["pdf", "svg", "png", "jpg"]:
@@ -130,6 +190,7 @@ def _ratio_heatmap(
     cbar: bool = False,
     cbar_label: str = "value / boundary",
     annotate: bool = True,
+    annotation_size: float = 5.6,
 ):
     masked = np.ma.masked_invalid(data.to_numpy(dtype=float))
     cmap_obj = mpl.colormaps[cmap].copy()
@@ -149,10 +210,10 @@ def _ratio_heatmap(
             for j in range(data.shape[1]):
                 value = data.iloc[i, j]
                 if pd.isna(value):
-                    ax.text(j, i, "n.a.", ha="center", va="center", fontsize=5.3, color="#6B7280")
+                    ax.text(j, i, "n.a.", ha="center", va="center", fontsize=annotation_size, color="#6B7280")
                 else:
                     color = "white" if value >= (vmax * 0.66) else fs.INK
-                    ax.text(j, i, f"{value:.2f}", ha="center", va="center", fontsize=5.6, color=color)
+                    ax.text(j, i, f"{value:.2f}", ha="center", va="center", fontsize=annotation_size, color=color)
     if cbar:
         cb = plt.colorbar(im, ax=ax, fraction=0.045, pad=0.02)
         cb.set_label(cbar_label, fontsize=7)
@@ -167,6 +228,7 @@ def _fraction_heatmap(
     title: str,
     cbar: bool = False,
     cbar_label: str = "support fraction",
+    annotation_size: float = 5.6,
 ):
     im = _ratio_heatmap(
         ax,
@@ -178,6 +240,7 @@ def _fraction_heatmap(
         cbar=cbar,
         cbar_label=cbar_label,
         annotate=True,
+        annotation_size=annotation_size,
     )
     return im
 
@@ -292,25 +355,26 @@ def supplementary_fig_s4() -> None:
     spread_mat = spread.set_index("method").reindex(METHOD_ORDER)[["gate_support_range"]]
     spread_mat.columns = ["criterion range"]
 
-    fig, axes = plt.subplots(2, 4, figsize=(17.2, 9.4), gridspec_kw={"width_ratios": [1.36, 1.04, 0.90, 0.90]}, constrained_layout=False)
-    plt.subplots_adjust(left=0.07, right=0.985, top=0.96, bottom=0.10, wspace=0.56, hspace=0.62)
+    fig, axes = plt.subplots(4, 2, figsize=(9.6, 12.8), constrained_layout=False)
+    plt.subplots_adjust(left=0.10, right=0.975, top=0.965, bottom=0.095, wspace=0.42, hspace=0.72)
+    axes = axes.ravel()
     panels = [
-        (axes[0, 0], method_gate_mat, "Method criterion support", "fraction", True, "fraction"),
-        (axes[0, 1], context_gate_mat, "Criterion breadth by context", "fraction", False, "fraction"),
-        (axes[0, 2], local_ratio, "Local-criterion ratios", "ratio", False, "ratio"),
-        (axes[0, 3], global_ratio, "Global-rank ratios", "ratio", False, "ratio"),
-        (axes[1, 0], continuum_ratio, "Paul15 continuum ratios", "ratio", False, "ratio"),
-        (axes[1, 1], donor_ratio, "Heart donor-aware ratios", "ratio", False, "ratio"),
-        (axes[1, 2], margin_mat, "Method boundary margins", "margin", True, "margin"),
-        (axes[1, 3], spread_mat, "Within-method criterion range", "fraction", True, "fraction"),
+        (axes[0], method_gate_mat, "Method criterion support", "fraction", True, "fraction"),
+        (axes[1], context_gate_mat, "Criterion breadth by context", "fraction", False, "fraction"),
+        (axes[2], local_ratio, "Local-criterion ratios", "ratio", False, "ratio"),
+        (axes[3], global_ratio, "Global-rank ratios", "ratio", False, "ratio"),
+        (axes[4], continuum_ratio, "Paul15 continuum ratios", "ratio", False, "ratio"),
+        (axes[5], donor_ratio, "Heart donor-aware ratios", "ratio", False, "ratio"),
+        (axes[6], margin_mat, "Method boundary margins", "margin", True, "margin"),
+        (axes[7], spread_mat, "Within-method criterion range", "fraction", True, "fraction"),
     ]
     for idx, (ax, mat, title, mode, cbar, _) in enumerate(panels):
         if mode == "fraction":
-            _fraction_heatmap(ax, mat, title=title, cbar=cbar)
+            _fraction_heatmap(ax, mat, title=title, cbar=cbar, annotation_size=7.2)
         elif mode == "margin":
-            _ratio_heatmap(ax, mat, title=title, cmap="RdBu_r", vmin=-0.45, vmax=0.45, cbar=cbar, cbar_label="mean value - boundary")
+            _ratio_heatmap(ax, mat, title=title, cmap="RdBu_r", vmin=-0.45, vmax=0.45, cbar=cbar, cbar_label="mean value - boundary", annotation_size=7.2)
         else:
-            _ratio_heatmap(ax, mat, title=title, cbar=cbar, cbar_label="value / boundary")
+            _ratio_heatmap(ax, mat, title=title, cbar=cbar, cbar_label="value / boundary", annotation_size=7.2)
         _panel_label(ax, ascii_lowercase[idx])
     _save(fig, "Supplementary_Figure_S4_diagnostic_gate_metric_atlas")
 
@@ -437,12 +501,13 @@ def supplementary_fig_s5() -> None:
 def supplementary_fig_s6() -> None:
     """Robustness response atlas."""
     _apply_hq_style()
-    output_dim = _read("fig6_output_dimension_response.csv")
-    upstream = _read("fig6_upstream_pca_response.csv")
+    output_dim = pd.read_csv(SOURCE_DIR / "fig6_output_dimension_response.csv")
+    upstream = pd.read_csv(SOURCE_DIR / "fig6_upstream_pca_response.csv")
     dropout_noise = _read("fig6_dropout_noise_response.csv")
-    dim_dataset = _read("fig6_dimension_failure_by_dataset_metric.csv")
-    dim_method = _read("fig6_dimension_failure_by_method_metric.csv")
-    upstream_fail = _read("fig6_upstream_failure_by_method_metric.csv")
+    failures = derive_failure_summaries()
+    dim_dataset = failures["fig6_dimension_failure_by_dataset_metric.csv"]
+    dim_method = failures["fig6_dimension_failure_by_method_metric.csv"]
+    upstream_fail = failures["fig6_upstream_failure_by_method_metric.csv"]
     pert_fail = _read("fig6_perturbation_failure_by_metric.csv")
     worst = _read("fig6_worst_case_support.csv")
 

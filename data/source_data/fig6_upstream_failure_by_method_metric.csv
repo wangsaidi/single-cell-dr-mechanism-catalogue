@@ -12,6 +12,6 @@ UMAP,label_neighbor_recall,0.3333333333333333,9
 UMAP,local_retention,1.0,9
 UMAP,trustworthiness,0.3333333333333333,9
 t-SNE,global_rank_corr,0.1111111111111111,9
-t-SNE,label_neighbor_recall,0.3333333333333333,9
-t-SNE,local_retention,0.6666666666666666,9
+t-SNE,label_neighbor_recall,0.2222222222222222,9
+t-SNE,local_retention,0.3333333333333333,9
 t-SNE,trustworthiness,0.3333333333333333,9

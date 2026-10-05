@@ -12,13 +12,13 @@ from pathlib import Path
 from analysis.paths import MANIFEST_PATH, REPO_ROOT
 
 
-RELEASE_TAG = "analysis-reproducibility-v1.0.0"
-ARCHIVE_NAME = "single-cell-dr-analysis-inputs-v1.0.0.zip"
+RELEASE_TAG = "analysis-reproducibility-v1.0.1"
+ARCHIVE_NAME = "single-cell-dr-analysis-inputs-v1.0.1.zip"
 ARCHIVE_URL = (
     "https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue/"
     f"releases/download/{RELEASE_TAG}/{ARCHIVE_NAME}"
 )
-ARCHIVE_SHA256 = "5e615ad3a43b5be273bbaf48739bd138574989d6f99ad3c80b44ebfd7cb2051c"
+ARCHIVE_SHA256 = "f0b16690759d26235a8a2103ccc951b973e2d13e621464864626a7d5f6cad797"
 
 
 def sha256(path: Path) -> str:

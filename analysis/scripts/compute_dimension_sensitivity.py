@@ -24,9 +24,11 @@ from analysis.scripts.compute_trajectory import (
     PROC_PATH,
     branch_neighbour_fraction,
     coarse_branches,
+    common_finite_mask,
+    coverage_fields,
     reference_dpt,
     root_definitions,
-    run_dpt,
+    run_dpt_roots,
     safe_kendall,
     safe_spearman,
 )
@@ -141,45 +143,64 @@ def run_clustering(datasets: list[str], methods: list[str], dimensions: list[int
 
 
 def run_trajectory(methods: list[str], dimensions: list[int], seeds: list[int]) -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     proc = sc.read_h5ad(PROC_PATH)
     labels = proc.obs["paul15_clusters"].astype(str).to_numpy()
     branches = coarse_branches(labels)
     roots = root_definitions(proc)
     reference = reference_dpt(proc, roots[PRIMARY_ROOT])
     evaluable = ~np.isin(branches, ["other", "progenitor"])
-    rows = []
-    failures = []
+    rows, fitted, coordinates = [], {}, {}
     for method in methods:
         for dimension in dimensions:
             for seed in available_seeds(method, dimension, seeds):
                 coords = np.load(embedding_path("paul15", method, dimension, seed)).astype(np.float32)
-                try:
-                    pseudotime, _ = run_dpt(coords, roots[PRIMARY_ROOT])
-                except Exception as exc:
-                    failures.append(
-                        {"method": method, "output_dimension": dimension, "seed": seed, "error": repr(exc)}
-                    )
-                    continue
-                rows.append(
-                    {
-                        "dataset_id": "paul15",
-                        "method": method,
-                        "output_dimension": dimension,
-                        "embedding_seed": seed,
-                        "root_definition": PRIMARY_ROOT,
-                        "reference_pseudotime_spearman": safe_spearman(reference, pseudotime),
-                        "reference_pseudotime_kendall": safe_kendall(reference, pseudotime),
-                        "branch_neighbour_fraction": branch_neighbour_fraction(coords, branches, K),
-                        "n_cells": int(proc.n_obs),
-                        "n_branch_evaluable_cells": int(evaluable.sum()),
-                    }
-                )
+                if coords.shape != (proc.n_obs, dimension):
+                    raise ValueError(f"Invalid dimension trajectory input: {method}, {dimension}, {seed}")
+                key = (method, dimension, seed)
+                fitted[key] = run_dpt_roots(coords, {PRIMARY_ROOT: roots[PRIMARY_ROOT]})[PRIMARY_ROOT]
+                coordinates[key] = coords
                 print(
                     f"completed dimension trajectory {method} dim={dimension} seed={seed}", flush=True
                 )
+    common_by_seed = {
+        seed: common_finite_mask(reference, {
+            f"{method}_dim{dimension}": result[0]
+            for (method, dimension, run_seed), result in fitted.items() if run_seed == seed
+        }, f"dimension sensitivity seed {seed}")
+        for seed in sorted({key[2] for key in fitted})
+    }
+    membership_rows = []
+    for seed, common in common_by_seed.items():
+        membership_rows.append(pd.DataFrame({
+            "cell_id": proc.obs_names.astype(str), "embedding_seed": seed,
+            "root_definition": PRIMARY_ROOT, "root_cell_id": str(proc.obs_names[roots[PRIMARY_ROOT]]),
+            "in_common_finite_mask": common,
+            "n_comparison_representations": sum(key[2] == seed for key in fitted),
+        }))
+    for (method, dimension, seed), (pseudotime, _, metadata) in fitted.items():
+        common = common_by_seed[seed]
+        finite = np.isfinite(pseudotime)
+        rows.append({
+            "dataset_id": "paul15", "method": method, "output_dimension": dimension,
+            "embedding_seed": seed, "root_definition": PRIMARY_ROOT,
+            "root_cell_id": str(proc.obs_names[roots[PRIMARY_ROOT]]),
+            "reference_pseudotime_spearman": safe_spearman(reference[common], pseudotime[common]),
+            "reference_pseudotime_kendall": safe_kendall(reference[common], pseudotime[common]),
+            "reference_pseudotime_spearman_finite_only": safe_spearman(reference[finite], pseudotime[finite]),
+            "reference_pseudotime_kendall_finite_only": safe_kendall(reference[finite], pseudotime[finite]),
+            "branch_neighbour_fraction": branch_neighbour_fraction(coordinates[method, dimension, seed], branches, K),
+            "n_cells": int(proc.n_obs), "n_branch_evaluable_cells": int(evaluable.sum()),
+            "correlation_mask_definition": "finite intersection across available method/dimension representations within seed; unequal design",
+            "n_comparison_representations": sum(key[2] == seed for key in fitted),
+            **coverage_fields(pseudotime, common, metadata),
+        })
     pd.DataFrame(rows).to_csv(OUT_DIR / "output_dimension_trajectory_outcomes.csv", index=False)
     (OUT_DIR / "output_dimension_trajectory_failures.json").write_text(
-        json.dumps(failures, indent=2), encoding="utf-8"
+        json.dumps([], indent=2), encoding="utf-8"
+    )
+    pd.concat(membership_rows, ignore_index=True).to_csv(
+        OUT_DIR / "output_dimension_trajectory_common_cell_membership.csv.gz", index=False, compression="gzip"
     )
 
 

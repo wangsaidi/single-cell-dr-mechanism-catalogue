@@ -33,6 +33,17 @@ def save(fig, name):
     plt.close(fig)
 
 
+def geometry_xlim(frame, metric):
+    """Include every displayed null interval and observation, including negative rho."""
+    rows = frame[frame.metric.eq(metric)]
+    values = rows[["null_q025", "null_q975", "null_mean", "observed"]].to_numpy(dtype=float)
+    if not values.size or not np.isfinite(values).all():
+        raise ValueError(f"Missing or nonfinite calibration bounds for {metric}")
+    lower, upper = float(values.min()), float(values.max())
+    padding = max(.01, .02 * (upper - lower))
+    return min(-.05 if metric == METRICS[2] else 0, lower - padding), max(1.02, upper + padding)
+
+
 def geometry_panel(ax, frame, metric, letter, title):
     for di, ds in enumerate(DATASETS):
         data = frame[frame.dataset_id.eq(ds) & frame.metric.eq(metric)]
@@ -52,7 +63,7 @@ def geometry_panel(ax, frame, metric, letter, title):
     ax.axvline(cutoff, color="#222222", ls="--", lw=.7)
     ax.set_yticks(range(9), METHODS)
     ax.set_ylim(8.65, -.65)
-    ax.set_xlim(-.05 if metric == METRICS[2] else 0, 1.02)
+    ax.set_xlim(*geometry_xlim(frame, metric))
     ax.set_xlabel({METRICS[0]: "Neighbour overlap (fraction)", METRICS[1]: "Trustworthiness (score)", METRICS[2]: "Distance-rank correlation (rho)", METRICS[3]: "Same-label neighbours (fraction)"}[metric])
     decorate(ax, letter, title)
 
