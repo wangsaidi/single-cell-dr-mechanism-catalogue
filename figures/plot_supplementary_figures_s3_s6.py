@@ -266,14 +266,23 @@ def supplementary_fig_s3() -> None:
     data = {dataset: _read(path) for dataset, path in files.items()}
     colors = {dataset: _embedding_colors(df["label"]) for dataset, df in data.items()}
 
-    fig = plt.figure(figsize=(18.5, 9.4))
-    gs = fig.add_gridspec(3, 9, width_ratios=[1, 1, 1, 1, 1, 1, 1, 1, 1.52], hspace=0.26, wspace=0.055)
-    axes = []
+    fig = plt.figure(figsize=(9.1, 10.5))
+    gs = fig.add_gridspec(
+        3, 1, left=0.045, right=0.985, top=0.98, bottom=0.025, hspace=0.18)
     for row, dataset in enumerate(DATASET_ORDER):
         df = data[dataset]
-        row_axes = []
+        # Taller rows leave room for full-size annotation keys beside the eight maps.
+        row_gs = gs[row].subgridspec(
+            2, 9, width_ratios=[1] * 8 + [2.15], height_ratios=[0.16, 1],
+            hspace=0.15, wspace=0.10)
+        header_ax = fig.add_subplot(row_gs[0, :])
+        header_ax.axis("off")
+        header_ax.text(0, 0.75, ascii_lowercase[row], fontsize=12.5, fontweight="bold", va="center")
+        header_ax.text(
+            0.035, 0.75, DATASET_LABELS[dataset], fontsize=10.2, fontweight="bold",
+            color=DATASET_COLORS[dataset], va="center")
         for col, method in enumerate(METHOD_ORDER):
-            ax = fig.add_subplot(gs[row, col])
+            ax = fig.add_subplot(row_gs[1, col])
             sub = df[df["method"].eq(method)]
             if sub.empty:
                 raise ValueError(f"No embedding rows for {dataset} {method}")
@@ -283,38 +292,25 @@ def supplementary_fig_s3() -> None:
             ax.set_yticks([])
             ax.set_xlabel("")
             ax.set_ylabel("")
-            ax.set_title(method if row == 0 else "", color=_family_color_for_method(method), fontsize=8.6, pad=2)
-            if col == 0:
-                ax.set_ylabel(DATASET_LABELS[dataset], fontsize=9.2, fontweight="bold", color=DATASET_COLORS[dataset], labelpad=9)
-                _panel_label(ax, ascii_lowercase[row], x=-0.23, y=1.04)
+            ax.set_title(method, color=_family_color_for_method(method), fontsize=8.8, pad=3)
             for spine in ax.spines.values():
                 spine.set_linewidth(0.35)
                 spine.set_color("#C8CDD4")
-            row_axes.append(ax)
-        axes.append(row_axes)
 
-        leg_ax = fig.add_subplot(gs[row, 8])
+        leg_ax = fig.add_subplot(row_gs[1, 8])
         leg_ax.axis("off")
-        leg_ax.text(0, 1.0, f"{DATASET_LABELS[dataset]} labels", ha="left", va="top", fontsize=7.2, fontweight="bold")
+        leg_ax.set_title("labels", loc="left", fontsize=8.8, pad=3)
         labels = list(colors[dataset].keys())
-        ncol = 1 if len(labels) <= 12 else 2
-        y0 = 0.90
-        step = 0.072 if len(labels) <= 12 else 0.095
+        ncol = 2 if len(labels) > 12 else 1
         per_col = int(np.ceil(len(labels) / ncol))
         for idx, label in enumerate(labels):
-            c = idx // per_col
-            r = idx % per_col
-            x = c * 0.48
-            y = y0 - r * step
+            col, label_row = divmod(idx, per_col)
+            x, y = col * 0.51, 0.95 - label_row * 0.083
             leg_ax.scatter([x], [y], s=16, color=colors[dataset][label], lw=0)
-            leg_ax.text(x + 0.035, y, _short_label(label), fontsize=5.6, va="center", ha="left")
-        leg_ax.set_xlim(0, 1)
+            leg_ax.text(x + 0.045, y, _short_label(label), fontsize=8.2,
+                        va="center", ha="left")
+        leg_ax.set_xlim(-0.02, 1)
         leg_ax.set_ylim(0, 1)
-
-    method_handles = [
-        Line2D([0], [0], color=METHOD_COLORS[method], lw=2.5, label=method) for method in METHOD_ORDER
-    ]
-    fig.legend(handles=method_handles, loc="lower center", ncol=8, frameon=False, bbox_to_anchor=(0.49, 0.005), title="method", title_fontsize=7.2, fontsize=6.8)
     _save(fig, "Supplementary_Figure_S3_full_embedding_atlas")
 
 
@@ -501,6 +497,10 @@ def supplementary_fig_s5() -> None:
 def supplementary_fig_s6() -> None:
     """Robustness response atlas."""
     _apply_hq_style()
+    mpl.rcParams.update({
+        "axes.labelsize": 9.2, "axes.titlesize": 9.5,
+        "xtick.labelsize": 8.4, "ytick.labelsize": 8.4, "legend.fontsize": 8.2,
+    })
     output_dim = pd.read_csv(SOURCE_DIR / "fig6_output_dimension_response.csv")
     upstream = pd.read_csv(SOURCE_DIR / "fig6_upstream_pca_response.csv")
     dropout_noise = _read("fig6_dropout_noise_response.csv")
@@ -519,8 +519,10 @@ def supplementary_fig_s6() -> None:
         "label_neighbor_recall": "#B279A2",
     }
 
-    fig = plt.figure(figsize=(17.2, 9.8))
-    gs = fig.add_gridspec(3, 3, hspace=0.68, wspace=0.50)
+    fig = plt.figure(figsize=(9.5, 11.3))
+    gs = fig.add_gridspec(
+        3, 3, left=0.085, right=0.965, top=0.93, bottom=0.10,
+        hspace=0.78, wspace=0.75)
     axes = [fig.add_subplot(gs[i, j]) for i in range(3) for j in range(3)]
 
     ax = axes[0]
@@ -529,21 +531,24 @@ def supplementary_fig_s6() -> None:
         sub = od[od["metric"].eq(metric)]
         ax.plot(sub["output_dimension"], sub["value"], marker="o", ms=3.5, color=metric_colors[metric], label=METRIC_LABELS[metric])
     ax.set_xlabel("output dimension")
+    ax.set_xticks(sorted(od["output_dimension"].unique()))
     ax.set_ylabel("mean diagnostic score")
-    ax.set_title("Output-dimension response", loc="left")
-    ax.legend(frameon=False, fontsize=6.2, ncol=2)
+    ax.set_title("Output-dimension\nresponse", loc="left")
+    ax.legend(frameon=False, fontsize=8.2, ncol=2, loc="upper left",
+              bbox_to_anchor=(0, -0.28), borderaxespad=0, handlelength=1.0,
+              columnspacing=0.8)
     _style_axes(ax, grid=True)
     _panel_label(ax, "a")
 
     mat = dim_dataset.pivot(index="dataset_id", columns="metric", values="failure_fraction").reindex(index=DATASET_ORDER, columns=metrics)
     mat.index = [DATASET_LABELS[i] for i in mat.index]
     mat.columns = [METRIC_LABELS[c] for c in mat.columns]
-    _fraction_heatmap(axes[1], mat, title="Dimension failure by dataset", cbar=True, cbar_label="fraction below boundary")
+    _fraction_heatmap(axes[1], mat, title="Dimension failure\nby dataset", cbar=True, cbar_label="fraction below boundary", annotation_size=8.6)
     _panel_label(axes[1], "b")
 
     mat = dim_method.pivot(index="method", columns="metric", values="failure_fraction").reindex(index=[m for m in METHOD_ORDER if m in dim_method["method"].unique()], columns=metrics)
     mat.columns = [METRIC_LABELS[c] for c in mat.columns]
-    _fraction_heatmap(axes[2], mat, title="Dimension failure by method", cbar=True, cbar_label="fraction below boundary")
+    _fraction_heatmap(axes[2], mat, title="Dimension failure\nby method", cbar=True, cbar_label="fraction below boundary", annotation_size=8.6)
     _panel_label(axes[2], "c")
 
     ax = axes[3]
@@ -552,14 +557,15 @@ def supplementary_fig_s6() -> None:
         sub = up[up["metric"].eq(metric)]
         ax.plot(sub["upstream_pca_dimension"], sub["value"], marker="o", ms=3.5, color=metric_colors[metric], label=METRIC_LABELS[metric])
     ax.set_xlabel("upstream PCA dimension")
+    ax.set_xticks(sorted(up["upstream_pca_dimension"].unique()))
     ax.set_ylabel("mean diagnostic score")
-    ax.set_title("Upstream-representation response", loc="left")
+    ax.set_title("Upstream-representation\nresponse", loc="left")
     _style_axes(ax, grid=True)
     _panel_label(ax, "d")
 
     mat = upstream_fail.pivot(index="method", columns="metric", values="failure_fraction").reindex(index=[m for m in METHOD_ORDER if m in upstream_fail["method"].unique()], columns=metrics)
     mat.columns = [METRIC_LABELS[c] for c in mat.columns]
-    _fraction_heatmap(axes[4], mat, title="Upstream-PCA failure by method", cbar=True, cbar_label="fraction below boundary")
+    _fraction_heatmap(axes[4], mat, title="Upstream-PCA failure\nby method", cbar=True, cbar_label="fraction below boundary", annotation_size=8.6)
     _panel_label(axes[4], "e")
 
     ax = axes[5]
@@ -570,14 +576,20 @@ def supplementary_fig_s6() -> None:
             label = f"{METRIC_LABELS[metric]} ({perturbation})"
             ax.plot(sub["level"], sub["value"], marker="o", ms=2.8, lw=0.8, ls=ls, color=metric_colors[metric], label=label)
     ax.set_xlabel("perturbation level")
+    ax.set_xticks(sorted(dn["level"].unique()))
     ax.set_ylabel("mean diagnostic score")
     ax.set_title("Dropout/noise response", loc="left")
+    ax.legend(handles=[
+        Line2D([0], [0], color=fs.INK, lw=1.0, linestyle=style, label=label)
+        for label, style in [("dropout", "-"), ("noise", "--")]
+    ], frameon=False, fontsize=8.2, loc="upper left", bbox_to_anchor=(0, -0.28),
+       borderaxespad=0, handlelength=1.0, ncol=2, columnspacing=0.8)
     _style_axes(ax, grid=True)
     _panel_label(ax, "f")
 
     mat = pert_fail.pivot(index="metric", columns="perturbation", values="failure_fraction").reindex(metrics)
     mat.index = [METRIC_LABELS[i] for i in mat.index]
-    _fraction_heatmap(axes[6], mat, title="Perturbation failure by metric", cbar=True, cbar_label="fraction below boundary")
+    _fraction_heatmap(axes[6], mat, title="Perturbation failure\nby metric", cbar=True, cbar_label="fraction below boundary", annotation_size=8.6)
     _panel_label(axes[6], "g")
 
     worst_ratio = worst[worst["metric"].isin(metrics + ["latent_distance_corr", "rare_label_recall"])].assign(ratio=lambda d: d["worst_value"] / d["threshold"])
@@ -589,7 +601,7 @@ def supplementary_fig_s6() -> None:
     ]
     mat = worst_ratio.pivot(index="method", columns="metric", values="ratio").reindex(index=available_worst_methods, columns=metric_order)
     mat.columns = [METRIC_LABELS.get(c, c) for c in mat.columns]
-    _ratio_heatmap(axes[7], mat, title="Worst-case support ratio", cbar=True, cbar_label="worst value / boundary")
+    _ratio_heatmap(axes[7], mat, title="Worst-case support ratio", cbar=True, cbar_label="worst value / boundary", annotation_size=8.6)
     _panel_label(axes[7], "h")
 
     ax = axes[8]
@@ -604,12 +616,20 @@ def supplementary_fig_s6() -> None:
     for tick in ax.get_yticklabels():
         tick.set_color(_family_color_for_method(tick.get_text()))
     ax.invert_yaxis()
+    total_metrics = int((passed + failed).max())
+    ax.set_xticks(np.arange(total_metrics + 1))
+    ax.set_xlim(0, total_metrics * 1.04)
     ax.set_xlabel("worst-case metrics")
-    ax.set_title("Worst-case pass/fail burden", loc="left")
-    ax.legend(frameon=False, fontsize=6.2, loc="upper right", bbox_to_anchor=(1.02, 1.18), ncol=2)
+    ax.set_title("Worst-case pass/fail\nburden", loc="left")
+    ax.legend(frameon=False, fontsize=8.2, loc="upper left", bbox_to_anchor=(0, -0.34),
+              ncol=2, borderaxespad=0, columnspacing=0.8, handlelength=1.0)
     _style_axes(ax, grid=True)
     _panel_label(ax, "i")
 
+    for cbar_ax in fig.axes:
+        if cbar_ax not in axes:
+            cbar_ax.tick_params(labelsize=8.0)
+            cbar_ax.yaxis.label.set_fontsize(8.6)
     _save(fig, "Supplementary_Figure_S6_robustness_response_atlas")
 
 

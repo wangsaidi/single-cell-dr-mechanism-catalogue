@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+from itertools import product
 from pathlib import Path
 
 import numpy as np
@@ -15,6 +16,24 @@ BASE = RESULTS_DIR
 LOGS = LOGS_DIR
 METHODS = {"PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"}
 DATASETS = {"pbmc3k", "paul15", "heart_cell_atlas_subsampled"}
+ROOTS = {"7MEP_centroid", "9GMP_centroid", "1Ery_centroid", "stored_8Mk_root"}
+SEEDS = set(range(5))
+
+
+def root_grid_errors(frame: pd.DataFrame) -> list[str]:
+    columns = ["method", "embedding_seed", "root_definition"]
+    if not set(columns).issubset(frame.columns):
+        return ["root sensitivity: missing method/seed/root key columns"]
+    expected = set(product(METHODS, SEEDS, ROOTS))
+    observed = set(frame[columns].itertuples(index=False, name=None))
+    errors = []
+    if len(frame) != len(expected):
+        errors.append(f"root sensitivity rows {len(frame)} != {len(expected)}")
+    if frame.duplicated(columns).any():
+        errors.append("root sensitivity: duplicate method/seed/root keys")
+    if observed != expected:
+        errors.append(f"root sensitivity: {len(expected-observed)} missing and {len(observed-expected)} unexpected keys")
+    return errors
 
 
 def read(relative: str) -> pd.DataFrame:
@@ -126,8 +145,7 @@ def main() -> None:
 
     roots = read("trajectory/trajectory_root_sensitivity.csv")
     checks["root_sensitivity_rows"] = int(roots.shape[0])
-    if roots.shape[0] != 36:
-        errors.append(f"root sensitivity rows {roots.shape[0]} != 36")
+    errors.extend(root_grid_errors(roots))
     finite_columns(
         roots,
         ["reference_pseudotime_spearman", "primary_root_pseudotime_concordance"],
