@@ -145,8 +145,8 @@ def _write_csv(df: pd.DataFrame, name: str) -> Path:
 
 def _write_claim_matrix() -> Path:
     main_claim = (
-        "The 17-feature pipeline record is associated with known-truth, but not empirical, profile distance "
-        "under the primary coding."
+        "The 17-feature pipeline record has a detected association with known-truth profile distance; "
+        "the empirical association was not detected under the primary coding."
     )
     claim_type = "empirical and known-truth quantitative analysis"
     code = "figures/plot_figure_2.py"
@@ -1040,7 +1040,7 @@ def build_figure(paths: dict[str, Path]) -> None:
 def write_run_metadata(paths: dict[str, Path]) -> Path:
     metadata = {
         "figure": "Figure_2",
-        "main_claim": "The 17-feature pipeline record is associated with known-truth, but not empirical, profile distance under the primary coding.",
+        "main_claim": "The 17-feature pipeline record has a detected association with known-truth profile distance; the empirical association was not detected under the primary coding.",
         "seed": config.SEED,
         "methods": METHOD_ORDER,
         "datasets": DATASET_ORDER,
