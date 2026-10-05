@@ -18,6 +18,7 @@ MODULES = (
     "figures.plot_supplementary_figures_s10_s11",
     "figures.plot_supplementary_figure_s12",
     "figures.plot_supplementary_figure_s13",
+    "figures.plot_supplementary_figures_s15_s16",
 )
 
 

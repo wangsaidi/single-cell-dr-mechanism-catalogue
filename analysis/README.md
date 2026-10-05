@@ -16,6 +16,18 @@ python make_figures.py
 
 `analysis/verify_reproducibility.py` checks every installed input against `analysis/ARCHIVE_SHA256SUMS.txt` and compares recomputed CSV tables with the read-only reference results. The plotting wrapper then rebuilds the final figures from the publication source tables.
 
+## Matched null calibration and scVI geometry
+
+The archived profile also runs `threshold_calibration` using the same numerical inputs, then `verify_calibration` compares all eight generated record tables with the publication references without overwriting them. It draws 1,999 whole-cell or reference-label permutations on a fixed label-stratified 1,000-cell subset of each dataset. Unrestricted and annotation-conditioned geometry, donor-conditioned annotation recovery, root-resolved pseudotime and cell-type-conditioned donor mixing are tested separately. The null tests address random correspondence, not universal biological fidelity. All original operational cutoffs remain unchanged. Their crossing decisions are reported alongside the null effects and separately BH-adjusted one-sided probabilities.
+
+```bash
+python -m analysis.scripts.calibrate_operational_thresholds
+python -m analysis.verify_calibration
+python -m figures.plot_supplementary_figures_s15_s16
+```
+
+Complete summaries and the sequential raw permutation arrays are included in `data/source_data/calibration/`. Seed repeats and cell pairs are computational comparisons, not biological replicates. Supplementary Table S15 contains the 351 calibrated diagnostic rows. Supplementary Table S16 contains 216 full-object geometric values, 150 reference-dimensionality values and 120 seed-pair values. scVI is evaluated without labels or donor covariates and is not presented as a batch-corrected model. The specification-distance and controlled-simulation panels retain their original eight-method scope.
+
 ## Optional refitting profiles
 
 `--profile refit-scvi` refits all two- and ten-dimensional scVI models over five seeds before rerunning the downstream workflow. `--profile full-refit` also reacquires the three public datasets, reconstructs the analysis objects, fits the eight anchor implementations over five seeds, recomputes dimension and perturbation inputs, reruns the six controlled stress-test scenarios and refits scVI.

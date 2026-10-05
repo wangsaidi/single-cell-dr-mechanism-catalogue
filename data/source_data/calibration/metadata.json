@@ -1,0 +1,437 @@
+{
+  "design": {
+    "purpose": "Separate evidence above random correspondence from sufficient fidelity under the original operational cutoffs.",
+    "seed": 20261005,
+    "subset_seed": 20260714,
+    "subset_cells_per_dataset": 1000,
+    "neighbours": 15,
+    "reference_pca_dimensions": 50,
+    "sampled_nonself_pairs": 5000,
+    "permutations": 1999,
+    "unit": "A complete method-by-dataset embedding or reference vector, not an independent cell or cell pair.",
+    "hypotheses": {
+      "geometry_unrestricted": "Whole-cell correspondence is exchangeable under the null.",
+      "geometry_within_annotation": "Correspondence within each recorded annotation is exchangeable, conditioning on coarse labelled population structure.",
+      "annotation_unrestricted": "Annotation assignments are exchangeable while preserving their frequencies.",
+      "annotation_within_donor": "Heart cell-type assignments are exchangeable within donors, preserving donor-specific label composition.",
+      "continuum_unrestricted": "Reference pseudotime is exchangeable across cells.",
+      "continuum_within_lineage": "Reference pseudotime is exchangeable within coarse annotated lineages.",
+      "donor_within_cell_type": "Donor assignments are exchangeable within cell types. A lower-tail test detects a mixing deficit, not affirmative biological validity."
+    },
+    "statistics": "One-sided Monte Carlo p=(1+extreme draws)/(B+1), BH adjustment separately for each null family. Central 95% null intervals are not confidence intervals. No inference of universal cutoff validity.",
+    "missingness": "No zero substitution or pseudotime imputation. Non-finite observations stop geometry analysis; non-finite pseudotime cells are excluded consistently and counted.",
+    "panel_matrix": [
+      {
+        "figure": "S15",
+        "panel": "a",
+        "question": "Does local overlap exceed random and annotation-conditioned correspondence?",
+        "metric": "local_retention",
+        "source": "calibration_geometry.csv",
+        "risk": "Above-null overlap need not meet useful fidelity."
+      },
+      {
+        "figure": "S15",
+        "panel": "b",
+        "question": "Is trustworthiness beyond the correspondence null?",
+        "metric": "trustworthiness",
+        "source": "calibration_geometry.csv",
+        "risk": "Random trustworthiness has a nonzero baseline."
+      },
+      {
+        "figure": "S15",
+        "panel": "c",
+        "question": "Does global distance-rank agreement exceed matched null geometry?",
+        "metric": "global_rank_corr",
+        "source": "calibration_geometry.csv",
+        "risk": "Sampled pairs are dependent; the permutation unit is the full cell assignment."
+      },
+      {
+        "figure": "S15",
+        "panel": "d",
+        "question": "Does neighbourhood annotation recovery exceed label-frequency and donor-composition expectations?",
+        "metric": "label_neighbor_recall",
+        "source": "calibration_geometry.csv",
+        "risk": "Annotations are not independent biological validation."
+      },
+      {
+        "figure": "S15",
+        "panel": "e",
+        "question": "Does Paul15 distance-to-pseudotime agreement persist across root and lineage-conditioned references?",
+        "metric": "pseudotime_distance_correlation",
+        "source": "calibration_continuum.csv",
+        "risk": "Expression-derived DPT is not a ground-truth temporal ordering."
+      },
+      {
+        "figure": "S15",
+        "panel": "f",
+        "question": "Does local pseudotime smoothness exceed the lineage-conditioned reference?",
+        "metric": "local_pseudotime_retention",
+        "source": "calibration_continuum.csv",
+        "risk": "A smooth map alone is not proof of developmental continuity."
+      },
+      {
+        "figure": "S15",
+        "panel": "g",
+        "question": "Is observed donor mixing below the attainable cell-type-conditioned random reference?",
+        "metric": "donor_entropy",
+        "source": "calibration_donor.csv",
+        "risk": "Failure to detect a deficit does not establish equivalence."
+      },
+      {
+        "figure": "S16",
+        "panel": "a",
+        "question": "How does scVI compare with the eight anchors for PBMC geometry?",
+        "source": "scvi_geometry_full.csv",
+        "risk": "Descriptive fixed-dataset comparison."
+      },
+      {
+        "figure": "S16",
+        "panel": "b",
+        "question": "How does scVI compare for Paul15 geometry?",
+        "source": "scvi_geometry_full.csv",
+        "risk": "No substitution for trajectory validation."
+      },
+      {
+        "figure": "S16",
+        "panel": "c",
+        "question": "How does scVI compare for heart geometry?",
+        "source": "scvi_geometry_full.csv",
+        "risk": "Unsupervised model without donor correction."
+      },
+      {
+        "figure": "S16",
+        "panel": "d",
+        "question": "Which scVI geometric properties change between two and ten latent dimensions?",
+        "source": "scvi_geometry_full.csv",
+        "risk": "Five seeds are computational repeats, not biological replicates."
+      },
+      {
+        "figure": "S16",
+        "panel": "e",
+        "question": "Does scVI local overlap depend on reference PCA dimensionality?",
+        "source": "scvi_reference_sensitivity.csv",
+        "risk": "Reference dependence is not model superiority."
+      },
+      {
+        "figure": "S16",
+        "panel": "f",
+        "question": "Are local neighbourhoods and global distance ranks equally reproducible across scVI seeds?",
+        "source": "scvi_seed_stability.csv",
+        "risk": "Ten pairs share five seeds and are not independent replicates."
+      }
+    ]
+  },
+  "versions": {
+    "python": "3.14.4",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "sklearn": "1.8.0",
+    "scanpy": "1.12.1",
+    "anndata": "0.12.16"
+  },
+  "inputs": [
+    {
+      "input": "analysis_objects/pbmc3k_proc.h5ad",
+      "sha256": "22259e2e4042b458e39968131048ab95ab5a8b5b8c55153173bde0e0954d846d",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_pca_seed0.npy",
+      "sha256": "fcc08a11f76c45f379d65a35e2894c4e4b77f69795a9db9812aa71f6cdd23077",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_glmpca_seed0.npy",
+      "sha256": "392423341f22d6d3c2b5cc54dd7d31cb52168ee4b1b3c06f249f82de4cacb81b",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_scscope_seed0.npy",
+      "sha256": "164cf26b840828c7afa53cf2202cb7f079ddaa34af17e24556da370b7236b05f",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_saucie_seed0.npy",
+      "sha256": "e328b6d0bb5329571a0313a0b7b846344a6336d50d59d93ab52dd912f0bf9f1d",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_umap_seed0.npy",
+      "sha256": "a6c8b34746d1833ca344a27b8bb6277842931a93cdc13c16cf24899e608c44f0",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_phate_seed0.npy",
+      "sha256": "09315bf3c7f69ee6cc1fd28754fd12d1ca2a177ffdcd7ec3f927a3ccd0f3a119",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_tsne_seed0.npy",
+      "sha256": "08486da8ab9c1d6f279f259099ebcbb371cb8e2b7e05d12fe90202e32516e25a",
+      "n_cells": 2638
+    },
+    {
+      "input": "anchor_embeddings/pbmc3k_pacmap_seed0.npy",
+      "sha256": "f5d826e02498091cc199d622614afd5cbb6f249dc236055b29782c7fbee80a32",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim2_seed0.npy",
+      "sha256": "7b5f7da9991af4e7cfdc0dc4d770817fef1d1c83e79d4097905ad9d90b68f389",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim2_seed0.npy",
+      "sha256": "7b5f7da9991af4e7cfdc0dc4d770817fef1d1c83e79d4097905ad9d90b68f389",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim2_seed1.npy",
+      "sha256": "088b25f413d7305eb7027c87a14d26822df8614c6d81859317120385a605c180",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim2_seed2.npy",
+      "sha256": "10bf813617610eb6c82117012193ef0ba538b7a70302ad9b2defe7c3e710e98f",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim2_seed3.npy",
+      "sha256": "12c62eeaed5488607e5b40a0ebb0f26c48462636cc1fb2fd0ae93a80258bf15b",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim2_seed4.npy",
+      "sha256": "d609078d60320c5e06e6a8572396ec3aac0d837e492cf00bab7377d578968b2d",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim10_seed0.npy",
+      "sha256": "b95e6f31f45f549e27631fbe1c4db3434ed67252e4f0bdd73bc32681e697ae6c",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim10_seed1.npy",
+      "sha256": "f6ca308240e9e1fd8fa35e93f51b47e787c628c127459543e4aec7cf9d55e9f9",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim10_seed2.npy",
+      "sha256": "29c8cbdf312fe34ace08ad0665a6ffd6e99539cf4061483d2b192d392071b883",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim10_seed3.npy",
+      "sha256": "6bf32c5637b9ad491d09bd0fa22459439b62c9a0f5e6d6b4de1daed9d5ba3811",
+      "n_cells": 2638
+    },
+    {
+      "input": "scvi_outputs/pbmc3k_scvi_dim10_seed4.npy",
+      "sha256": "0e1ceb5febfa343f99268a2ef7322430ad827b1dad88da526082e8ba5f2f24d1",
+      "n_cells": 2638
+    },
+    {
+      "input": "analysis_objects/paul15_proc.h5ad",
+      "sha256": "6c42c7ab15c0d88725a947298d21648b5d9f9fbc6d11cf2bc83834e9ad1faeab",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_pca_seed0.npy",
+      "sha256": "7ebf90647644774f0e1ad849450a87f0925e64f1734722f525d738d79b108ae3",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_glmpca_seed0.npy",
+      "sha256": "c1580209a8d6c2da56e367826a48e11e421e4cd3e15c5e3287c011276d23c6c5",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_scscope_seed0.npy",
+      "sha256": "2492f4bb92ba52705f33cdc6b2b5bbd89e7e4accdc0d1f374c7f2b4d3c8ef12a",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_saucie_seed0.npy",
+      "sha256": "6b242e84cab784c0e3168eb76285207db68a4cea5dfa433a72e810d2fe88ce43",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_umap_seed0.npy",
+      "sha256": "55b6904cdcfc4a056b1fb97cec507066e35a6fdec1cfac29d8865e326bb95528",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_phate_seed0.npy",
+      "sha256": "b4141b8142a6d5d4d6d5f528909205683b36e24e4078ea63f851614fcd0a5b5a",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_tsne_seed0.npy",
+      "sha256": "7e213fb231b5178da3301fb3be25c3175ac6b979d45e3c78ae86bd770670c3bc",
+      "n_cells": 2730
+    },
+    {
+      "input": "anchor_embeddings/paul15_pacmap_seed0.npy",
+      "sha256": "15ab10876375829f5f57debe14475ab89f43e44fe7fcfe6f77f5016237224549",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim2_seed0.npy",
+      "sha256": "3b1de839f7f6c30ff4ae7a76a70a722e7d5219d6357098c5918f6b0c2757da9b",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim2_seed0.npy",
+      "sha256": "3b1de839f7f6c30ff4ae7a76a70a722e7d5219d6357098c5918f6b0c2757da9b",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim2_seed1.npy",
+      "sha256": "d8069537203ee0d11954e58aff8753d427ffcbb299ab9580cc8d675de110a3f9",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim2_seed2.npy",
+      "sha256": "dd64566c58430265bb96e021fddccc8b3d90fc7f4d0fe1381fee981a45535a0a",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim2_seed3.npy",
+      "sha256": "5f41544bf7191487a7ba7bfd6a9d8dc2f05569b3386ada23a4c34b5300ab7cb3",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim2_seed4.npy",
+      "sha256": "6ec31c3bc1bbe27a88234392d0da283717ccbc5d0e4be1507a61182a43e652ab",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim10_seed0.npy",
+      "sha256": "dbc7ee798f4232adfdf64772a63ab29d5b6f2581515c20fa1516628edfbdba4e",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim10_seed1.npy",
+      "sha256": "d9e2707afcf3ca8b8e34fb3d7738e0383ecf7ec39c1c672c72481e4f62be69cf",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim10_seed2.npy",
+      "sha256": "f4a68b0b2947b7b7c6cb66ed68914f5661e7859df3411204919743340b63b98c",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim10_seed3.npy",
+      "sha256": "79cee983052cb17a6be523f0c6745437a04ee24d6150149da489a95eb8cbc988",
+      "n_cells": 2730
+    },
+    {
+      "input": "scvi_outputs/paul15_scvi_dim10_seed4.npy",
+      "sha256": "402496b6bf64b8b0b7b36689a0f98ee43584f02b2ecea6831a0d9c70449c7b06",
+      "n_cells": 2730
+    },
+    {
+      "input": "analysis_objects/heart_cell_atlas_subsampled_proc.h5ad",
+      "sha256": "8c9efe695ce7ef775092b45906189bda38ba255089fe90846f70b8474437a313",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_pca_seed0.npy",
+      "sha256": "99a126114a65b1dda2297d5009f87aec765c4e7c618ec984188d3cb21127fa04",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_glmpca_seed0.npy",
+      "sha256": "ddd026cd6040a89ee77aba0e15daabbf9b6e32af990c510b5d38d6090e846123",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_scscope_seed0.npy",
+      "sha256": "598c0e15d9423001341c0d273966967d951cf683a7de85e1ac5a2ed2bf4f8419",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_saucie_seed0.npy",
+      "sha256": "9b89119007eab22f242112d95d3f14be390c15bacc654d3f2fc211655eb75593",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_umap_seed0.npy",
+      "sha256": "268c5af09129653b14ca8942f09aa0920637e9181ba3990bb5213ef2f9dd25d3",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_phate_seed0.npy",
+      "sha256": "2f786d7e666ca56494ef275d399e5d96c607517d0e37268d671a456d382f5745",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_tsne_seed0.npy",
+      "sha256": "65b8731467a137181da24ae41960328ef4bb2c172156685d86600f411bc3aa9a",
+      "n_cells": 8000
+    },
+    {
+      "input": "anchor_embeddings/heart_cell_atlas_subsampled_pacmap_seed0.npy",
+      "sha256": "21419062584f04006ae9e4c5dc42d086e79b9c9486a3dd1dfffd44dfb0bb204c",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim2_seed0.npy",
+      "sha256": "80ee703ded19075a7c98066bb4fc0123ae2f550747bd142e26d2ead394255c69",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim2_seed0.npy",
+      "sha256": "80ee703ded19075a7c98066bb4fc0123ae2f550747bd142e26d2ead394255c69",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim2_seed1.npy",
+      "sha256": "d22d8a8ea880b86f44de29e8e1733fb38e1e5937f994f2a4d027d4de7e14a9c8",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim2_seed2.npy",
+      "sha256": "de80900aa0f6fab697f8cc05d3487f91064fcf641c6cc6641a03232c3424c6ac",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim2_seed3.npy",
+      "sha256": "fe1b2b1ce727a120f4bc80edc850a14de47e69e4cc406578a8f597234156fcd0",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim2_seed4.npy",
+      "sha256": "6fd72c8683786a5274260479b34ec5c2cde5a90e52c64e4ea4b6223157f593e3",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim10_seed0.npy",
+      "sha256": "9aa67b87f56e0974ffbd809ae88f9516ec70eb461b2dc1796f9590cf17d70cff",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim10_seed1.npy",
+      "sha256": "2425fa2015bd41f48041f86509a0169e972debc3aa01d78bd7c9a5602dd69017",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim10_seed2.npy",
+      "sha256": "53a7ed894476aa33c08fedbb3bbd3b362cef8beaefb72dab6774237e69112a2a",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim10_seed3.npy",
+      "sha256": "94b24ae4736427dc3070abf87e14ff7e3cdcbe63619a2a32e80ced4681626517",
+      "n_cells": 8000
+    },
+    {
+      "input": "scvi_outputs/heart_cell_atlas_subsampled_scvi_dim10_seed4.npy",
+      "sha256": "6cc0ae88f4a90739fe338f6fb7e845145a130e58f7fba9fa3c458a4644f1bb15",
+      "n_cells": 8000
+    }
+  ],
+  "draw_array_order": "Dataset, method, unrestricted geometry, annotation-conditioned geometry, annotation null, optional within-donor annotation, optional donor null; Paul15 root/method/unrestricted/lineage-conditioned continuum follows Paul15 geometry, before heart geometry. Arrays are stored sequentially in this loop order.",
+  "missing_values": 0,
+  "interpretation": "No biological replication or universal cutoff validation is inferred from computational permutation or seed repeats."
+}

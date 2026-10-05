@@ -22,6 +22,8 @@ ARCHIVED_STEPS = [
     ("audit_results", ["-m", "analysis.scripts.audit_results"]),
     ("verify_results", ["-m", "analysis.verify_reproducibility"]),
     ("export_figure4", ["-m", "analysis.export_figure4_source_data"]),
+    ("threshold_calibration", ["-m", "analysis.scripts.calibrate_operational_thresholds"]),
+    ("verify_calibration", ["-m", "analysis.verify_calibration"]),
 ]
 
 

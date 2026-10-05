@@ -2,7 +2,7 @@
 
 ## Reproduction scope
 
-The lightweight workflow rebuilds Figures 2-7 and Supplementary Figs. S1-S14 from the included figure-level source tables. Figure 1 is conceptual artwork and is supplied as a final file. The separate workflow in `analysis/` recomputes the empirical diagnostics and downstream results from checksum-locked processed objects and evaluated representations. Its optional full-refit profile reacquires the public datasets and reruns model fitting.
+The lightweight workflow rebuilds Figures 2-7 and Supplementary Figs. S1-S16 from the included figure-level source tables. Figure 1 is conceptual artwork and is supplied as a final file. The separate workflow in `analysis/` recomputes the empirical diagnostics, downstream results and matched permutation calibration from checksum-locked processed objects and evaluated representations. Its optional full-refit profile reacquires the public datasets and reruns model fitting.
 
 Public dataset identifiers, retrieval routes and preprocessing decisions are listed in `metadata/public_data_sources.csv`, `metadata/empirical_dataset_registry.csv` and `metadata/preprocessing_and_analysis_inputs.csv`. Evaluated software settings and robustness-axis coverage are listed in `metadata/evaluated_method_settings.csv` and `metadata/method_axis_coverage.csv`.
 

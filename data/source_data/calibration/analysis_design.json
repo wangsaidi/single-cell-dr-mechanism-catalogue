@@ -1,0 +1,122 @@
+{
+  "purpose": "Separate evidence above random correspondence from sufficient fidelity under the original operational cutoffs.",
+  "seed": 20261005,
+  "subset_seed": 20260714,
+  "subset_cells_per_dataset": 1000,
+  "neighbours": 15,
+  "reference_pca_dimensions": 50,
+  "sampled_nonself_pairs": 5000,
+  "permutations": 1999,
+  "unit": "A complete method-by-dataset embedding or reference vector, not an independent cell or cell pair.",
+  "hypotheses": {
+    "geometry_unrestricted": "Whole-cell correspondence is exchangeable under the null.",
+    "geometry_within_annotation": "Correspondence within each recorded annotation is exchangeable, conditioning on coarse labelled population structure.",
+    "annotation_unrestricted": "Annotation assignments are exchangeable while preserving their frequencies.",
+    "annotation_within_donor": "Heart cell-type assignments are exchangeable within donors, preserving donor-specific label composition.",
+    "continuum_unrestricted": "Reference pseudotime is exchangeable across cells.",
+    "continuum_within_lineage": "Reference pseudotime is exchangeable within coarse annotated lineages.",
+    "donor_within_cell_type": "Donor assignments are exchangeable within cell types. A lower-tail test detects a mixing deficit, not affirmative biological validity."
+  },
+  "statistics": "One-sided Monte Carlo p=(1+extreme draws)/(B+1), BH adjustment separately for each null family. Central 95% null intervals are not confidence intervals. No inference of universal cutoff validity.",
+  "missingness": "No zero substitution or pseudotime imputation. Non-finite observations stop geometry analysis; non-finite pseudotime cells are excluded consistently and counted.",
+  "panel_matrix": [
+    {
+      "figure": "S15",
+      "panel": "a",
+      "question": "Does local overlap exceed random and annotation-conditioned correspondence?",
+      "metric": "local_retention",
+      "source": "calibration_geometry.csv",
+      "risk": "Above-null overlap need not meet useful fidelity."
+    },
+    {
+      "figure": "S15",
+      "panel": "b",
+      "question": "Is trustworthiness beyond the correspondence null?",
+      "metric": "trustworthiness",
+      "source": "calibration_geometry.csv",
+      "risk": "Random trustworthiness has a nonzero baseline."
+    },
+    {
+      "figure": "S15",
+      "panel": "c",
+      "question": "Does global distance-rank agreement exceed matched null geometry?",
+      "metric": "global_rank_corr",
+      "source": "calibration_geometry.csv",
+      "risk": "Sampled pairs are dependent; the permutation unit is the full cell assignment."
+    },
+    {
+      "figure": "S15",
+      "panel": "d",
+      "question": "Does neighbourhood annotation recovery exceed label-frequency and donor-composition expectations?",
+      "metric": "label_neighbor_recall",
+      "source": "calibration_geometry.csv",
+      "risk": "Annotations are not independent biological validation."
+    },
+    {
+      "figure": "S15",
+      "panel": "e",
+      "question": "Does Paul15 distance-to-pseudotime agreement persist across root and lineage-conditioned references?",
+      "metric": "pseudotime_distance_correlation",
+      "source": "calibration_continuum.csv",
+      "risk": "Expression-derived DPT is not a ground-truth temporal ordering."
+    },
+    {
+      "figure": "S15",
+      "panel": "f",
+      "question": "Does local pseudotime smoothness exceed the lineage-conditioned reference?",
+      "metric": "local_pseudotime_retention",
+      "source": "calibration_continuum.csv",
+      "risk": "A smooth map alone is not proof of developmental continuity."
+    },
+    {
+      "figure": "S15",
+      "panel": "g",
+      "question": "Is observed donor mixing below the attainable cell-type-conditioned random reference?",
+      "metric": "donor_entropy",
+      "source": "calibration_donor.csv",
+      "risk": "Failure to detect a deficit does not establish equivalence."
+    },
+    {
+      "figure": "S16",
+      "panel": "a",
+      "question": "How does scVI compare with the eight anchors for PBMC geometry?",
+      "source": "scvi_geometry_full.csv",
+      "risk": "Descriptive fixed-dataset comparison."
+    },
+    {
+      "figure": "S16",
+      "panel": "b",
+      "question": "How does scVI compare for Paul15 geometry?",
+      "source": "scvi_geometry_full.csv",
+      "risk": "No substitution for trajectory validation."
+    },
+    {
+      "figure": "S16",
+      "panel": "c",
+      "question": "How does scVI compare for heart geometry?",
+      "source": "scvi_geometry_full.csv",
+      "risk": "Unsupervised model without donor correction."
+    },
+    {
+      "figure": "S16",
+      "panel": "d",
+      "question": "Which scVI geometric properties change between two and ten latent dimensions?",
+      "source": "scvi_geometry_full.csv",
+      "risk": "Five seeds are computational repeats, not biological replicates."
+    },
+    {
+      "figure": "S16",
+      "panel": "e",
+      "question": "Does scVI local overlap depend on reference PCA dimensionality?",
+      "source": "scvi_reference_sensitivity.csv",
+      "risk": "Reference dependence is not model superiority."
+    },
+    {
+      "figure": "S16",
+      "panel": "f",
+      "question": "Are local neighbourhoods and global distance ranks equally reproducible across scVI seeds?",
+      "source": "scvi_seed_stability.csv",
+      "risk": "Ten pairs share five seeds and are not independent replicates."
+    }
+  ]
+}
