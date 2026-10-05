@@ -68,7 +68,8 @@ def compare_frames(observed_path: Path, reference_path: Path) -> str | None:
 
 def verify_results() -> list[str]:
     errors = []
-    reference_files = sorted(REFERENCE_RESULTS_DIR.rglob("*.csv"))
+    reference_files = sorted([*REFERENCE_RESULTS_DIR.rglob("*.csv"),
+                              *REFERENCE_RESULTS_DIR.rglob("*.csv.gz")])
     for reference in reference_files:
         relative = reference.relative_to(REFERENCE_RESULTS_DIR)
         observed = RESULTS_DIR / relative
@@ -92,6 +93,8 @@ def main() -> None:
     report = {
         "inputs_checked": True,
         "results_checked": not args.inputs_only,
+        "reference_tables_compared": 0 if args.inputs_only else len([
+            *REFERENCE_RESULTS_DIR.rglob("*.csv"), *REFERENCE_RESULTS_DIR.rglob("*.csv.gz")]),
         "errors": errors,
         "passed": not errors,
     }

@@ -1,0 +1,34 @@
+{
+  "figure": "Figure_2",
+  "main_claim": "The 17-feature pipeline record is associated with known-truth, but not empirical, profile distance under the primary coding.",
+  "seed": 0,
+  "methods": [
+    "PCA",
+    "GLM-PCA",
+    "scScope",
+    "SAUCIE",
+    "UMAP",
+    "PHATE",
+    "t-SNE",
+    "PaCMAP"
+  ],
+  "datasets": [
+    "pbmc3k",
+    "paul15",
+    "heart_cell_atlas_subsampled"
+  ],
+  "simulation_scenarios": [
+    "linear_low_rank",
+    "nonlinear_manifold",
+    "branching_trajectory",
+    "dropout_stress",
+    "batch_shift",
+    "rare_population"
+  ],
+  "source_manifest": "data/source_data/generated/Fig2_source_manifest.csv",
+  "claim_to_evidence_matrix": "metadata/claim_to_evidence_matrix_Fig2.tsv",
+  "exact_permutations": 40320,
+  "objective_signature_features": 17,
+  "objective_distance": "Jaccard distance over binary observation-model, latent-parameterisation and active-objective features; navigation-group labels excluded",
+  "missing_value_policy": "No values are imputed; generation fails if a required empirical or simulation profile is incomplete."
+}
