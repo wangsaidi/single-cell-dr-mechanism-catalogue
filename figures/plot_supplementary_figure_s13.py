@@ -73,10 +73,10 @@ METRIC_LABELS = {
     "truth_local_retention": "Truth local",
     "truth_trustworthiness": "Truth trust",
     "latent_distance_corr": "Latent distance",
-    "label_neighbor_recall": "Label recall",
+    "label_neighbor_recall": "Same-label fraction",
     "pseudotime_distance_corr": "Pseudotime",
     "batch_entropy_norm": "Batch entropy",
-    "rare_label_recall": "Rare recall",
+    "rare_label_recall": "Rare-label fraction",
 }
 
 

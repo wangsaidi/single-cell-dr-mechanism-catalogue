@@ -1,0 +1,24 @@
+{
+  "figure": "Fig. 7",
+  "core_conclusion": "Sensitivity analyses delimit which embedding interpretations are stable and which depend on diagnostic definition or analytical choice.",
+  "archetype": "asymmetric quantitative grid",
+  "panels": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j"
+  ],
+  "claim_to_evidence_matrix": "claim_to_evidence_matrix_Fig7.tsv",
+  "outputs": [
+    "Figure_7.pdf",
+    "Figure_7.svg",
+    "Figure_7.png",
+    "Figure_7.jpg"
+  ]
+}

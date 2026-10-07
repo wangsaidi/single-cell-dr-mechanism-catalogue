@@ -62,7 +62,7 @@ METRIC_LABELS = {
     "global_rank_corr": "global",
     "label_neighbor_recall": "label",
     "latent_distance_corr": "latent",
-    "pseudotime_rank_corr": "pseudo rank",
+    "pseudotime_rank_corr": "time-distance",
     "pseudotime_neighborhood_retention": "pseudo local",
     "cell_type_label_recall": "cell label",
     "donor_entropy_norm": "donor entropy",

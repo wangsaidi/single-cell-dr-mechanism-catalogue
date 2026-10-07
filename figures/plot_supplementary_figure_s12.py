@@ -64,7 +64,7 @@ METRIC_LABELS = {
     "local_retention": "Local retention",
     "trustworthiness": "Trustworthiness",
     "global_rank_corr": "Global rank",
-    "label_neighbor_recall": "Label recall",
+    "label_neighbor_recall": "Same-label fraction",
 }
 METHOD_ORDER = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP"]
 

@@ -46,8 +46,8 @@ METRIC_LABELS = {
     "global_rank_corr": "global",
     "label_neighbor_recall": "same-label",
     "latent_distance_corr": "latent",
-    "pseudotime_rank_corr": "pseudo rank",
-    "pseudotime_neighborhood_retention": "pseudo local",
+    "pseudotime_rank_corr": "time-distance",
+    "pseudotime_neighborhood_retention": "time smoothness",
     "cell_type_label_recall": "cell identity",
     "donor_entropy_norm": "donor entropy",
 }
@@ -135,6 +135,39 @@ def _heatmap_with_values(ax, matrix: pd.DataFrame, *, cmap, vmin=None, vmax=None
                 if matrix.shape[0] * matrix.shape[1] <= 75:
                     ax.text(j, i, format(float(val), fmt), ha="center", va="center", fontsize=fontsize, color=color)
     return im
+
+
+def heart_marker_neighbour_results(coordinates: pd.DataFrame, markers: pd.DataFrame, k: int = 15) -> pd.DataFrame:
+    """Score the k nearest non-self neighbours, then aggregate by annotation."""
+    marker_summary = markers.groupby("label", as_index=False).agg(
+        max_marker_z=("z_score", "max"), n_cells_label=("n_cells", "max")
+    )
+    rows = []
+    for method, part in coordinates.groupby("method", sort=False):
+        values = part[["x", "y"]].to_numpy(dtype=float)
+        labels = part["label"].astype(str).to_numpy()
+        if len(values) <= k or not np.isfinite(values).all():
+            raise ValueError("Heart marker-neighbour coordinates are insufficient or non-finite.")
+        # X=None already excludes the query cell; do not drop the closest neighbour.
+        indices = NearestNeighbors(n_neighbors=k).fit(values).kneighbors(X=None, return_distance=False)
+        if (indices == np.arange(len(values))[:, None]).any():
+            raise ValueError("Self-neighbours entered the heart marker-neighbour calculation.")
+        fractions = (labels[indices] == labels[:, None]).mean(axis=1)
+        summary = pd.DataFrame({"label": labels, "same_label_fraction": fractions}).groupby(
+            "label", as_index=False
+        ).agg(label_knn_recall=("same_label_fraction", "mean"),
+              n_cells_coordinate=("same_label_fraction", "size"))
+        summary["method"] = method
+        rows.append(summary)
+    result = pd.concat(rows, ignore_index=True).merge(marker_summary, on="label", how="left", validate="many_to_one")
+    if result[["max_marker_z", "n_cells_label"]].isna().any().any():
+        raise ValueError("Heart marker-neighbour analysis has unmatched labels.")
+    result["mean_label_knn_recall"] = result.groupby("label")["label_knn_recall"].transform("mean")
+    means = result.drop_duplicates("label")
+    result["descriptive_label_level_spearman_rho"] = float(
+        means["max_marker_z"].corr(means["mean_label_knn_recall"], method="spearman")
+    )
+    return result
 
 
 def build_fig5() -> None:
@@ -457,33 +490,7 @@ def build_fig5() -> None:
         SOURCE_DIR / "fig3_heart_embedding_coordinates.csv",
         usecols=["method", "x", "y", "label"],
     )
-    heart_label_marker = (
-        heart_marker.groupby("label", as_index=False)
-        .agg(max_marker_z=("z_score", "max"), n_cells_label=("n_cells", "max"))
-    )
-    heart_neighbour_rows = []
-    for method in METHOD_ORDER:
-        part = heart_coordinates[heart_coordinates["method"].eq(method)].reset_index(drop=True)
-        coordinates = part[["x", "y"]].to_numpy(dtype=float)
-        labels = part["label"].astype(str).to_numpy()
-        neighbour_indices = NearestNeighbors(n_neighbors=16).fit(coordinates).kneighbors(return_distance=False)[:, 1:]
-        same_label_fraction = (labels[neighbour_indices] == labels[:, None]).mean(axis=1)
-        method_rows = pd.DataFrame({"label": labels, "same_label_fraction": same_label_fraction})
-        method_summary = method_rows.groupby("label", as_index=False).agg(
-            label_knn_recall=("same_label_fraction", "mean"),
-            n_cells_coordinate=("same_label_fraction", "size"),
-        )
-        method_summary["method"] = method
-        heart_neighbour_rows.append(method_summary)
-    heart_marker_neighbour = pd.concat(heart_neighbour_rows, ignore_index=True).merge(
-        heart_label_marker,
-        on="label",
-        how="left",
-        validate="many_to_one",
-    )
-    if heart_marker_neighbour[["max_marker_z", "n_cells_label"]].isna().any().any():
-        raise ValueError("Heart marker-neighbour analysis has unmatched labels.")
-    heart_marker_neighbour["mean_label_knn_recall"] = heart_marker_neighbour.groupby("label")["label_knn_recall"].transform("mean")
+    heart_marker_neighbour = heart_marker_neighbour_results(heart_coordinates, heart_marker)
     label_means = heart_marker_neighbour.drop_duplicates("label")[["label", "max_marker_z", "mean_label_knn_recall", "n_cells_label"]]
     marker_neighbour_rho = float(label_means["max_marker_z"].corr(label_means["mean_label_knn_recall"], method="spearman"))
     heart_marker_neighbour["descriptive_label_level_spearman_rho"] = marker_neighbour_rho

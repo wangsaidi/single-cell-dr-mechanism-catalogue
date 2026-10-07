@@ -257,7 +257,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     root_order = list(ROOT_LABELS)
     metric_specs = [
         ("pseudotime_distance_correlation", "Pooled distance", "#3572A5", "o", -0.11),
-        ("local_pseudotime_retention", "Local order", "#D38A35", "D", 0.11),
+        ("local_pseudotime_retention", "Local smoothness", "#D38A35", "D", 0.11),
     ]
     for metric, label, color, marker, offset in metric_specs:
         medians = []

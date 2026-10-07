@@ -521,8 +521,8 @@ def build_fig4() -> None:
     cwide = continuum.pivot(index="method", columns="metric", values="value").reindex(config.ANCHOR_METHODS)
     x = np.arange(len(cwide.index))
     width = 0.36
-    ax.bar(x - width / 2, cwide["pseudotime_rank_corr"], width, color="#7A9CC6", label="rank corr.")
-    ax.bar(x + width / 2, cwide["pseudotime_neighborhood_retention"], width, color="#59A14F", label="local retention")
+    ax.bar(x - width / 2, cwide["pseudotime_rank_corr"], width, color="#7A9CC6", label="time-distance")
+    ax.bar(x + width / 2, cwide["pseudotime_neighborhood_retention"], width, color="#59A14F", label="time smoothness")
     ax.axhline(0.45, color="#7A9CC6", lw=0.7, ls="--")
     ax.axhline(0.50, color="#59A14F", lw=0.7, ls=":")
     ax.set_xticks(x)
@@ -802,8 +802,8 @@ def build_fig4() -> None:
         "trustworthiness": "trust",
         "label_neighbor_recall": "same-label",
         "global_rank_corr": "global",
-        "pseudotime_rank_corr": "pseudo rank",
-        "pseudotime_neighborhood_retention": "pseudo local",
+        "pseudotime_rank_corr": "time-distance",
+        "pseudotime_neighborhood_retention": "time smoothness",
         "cell_type_label_recall": "cell identity",
         "donor_entropy_norm": "donor entropy",
     }
