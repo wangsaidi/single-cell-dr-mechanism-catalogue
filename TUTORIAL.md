@@ -2,7 +2,7 @@
 
 ## Reproduction scope
 
-The lightweight workflow rebuilds Figures 2-7 and Supplementary Figs. S1-S16 from the included figure-level source tables. Figure 1 is conceptual artwork and is supplied as a final file. The separate workflow in `analysis/` recomputes the empirical diagnostics, downstream results and matched permutation calibration from checksum-locked processed objects and evaluated representations. Its optional full-refit profile reacquires the public datasets and reruns model fitting.
+The lightweight workflow rebuilds Figures 2-7 and Supplementary Figs. S1-S17 from the included figure-level source tables. Figure 1 is conceptual artwork and is supplied as a final file. S17 also recomputes its exact sensitivity tests from the matched S16 scores and mathematical records. The separate workflow in `analysis/` recomputes the empirical diagnostics, downstream results and matched permutation calibration from checksum-locked processed objects and evaluated representations. Its optional full-refit profile reacquires the public datasets and reruns model fitting.
 
 Public dataset identifiers, retrieval routes and preprocessing decisions are listed in `metadata/public_data_sources.csv`, `metadata/empirical_dataset_registry.csv` and `metadata/preprocessing_and_analysis_inputs.csv`. Evaluated software settings and robustness-axis coverage are listed in `metadata/evaluated_method_settings.csv` and `metadata/method_axis_coverage.csv`.
 
@@ -41,6 +41,8 @@ python -m figures.plot_supplementary_figure_s9
 python -m figures.plot_supplementary_figures_s10_s11
 python -m figures.plot_supplementary_figure_s12
 python -m figures.plot_supplementary_figure_s13
+python -m figures.plot_supplementary_figures_s15_s16
+python -m figures.plot_supplementary_figure_s17
 ```
 
 `figures.plot_figures_3_4` rebuilds Figure 3 and the original threshold-gate composite. `figures.plot_figure_4_downstream` then retains that composite as Supplementary Fig. S14 and writes the revised downstream-outcome Figure 4. The top-level wrapper runs the modules in this order.
@@ -51,4 +53,4 @@ python -m figures.plot_supplementary_figure_s13
 
 ## Interpretation boundary
 
-The 26-method catalogue records published mathematical specifications. Figure 2 uses a 17-feature binary record of each of the eight anchor pipelines, so optional objective terms that were inactive in a reported execution are not attributed to its observed behaviour. Figure 4 adds scVI only for the expanded downstream comparisons. The robustness analyses are explicit method subsets; omitted method-axis combinations are not interpreted as passes or failures.
+The 26-method catalogue records published mathematical specifications. Figure 2 uses a 17-feature binary record of each of the eight anchor pipelines, so optional objective terms that were inactive in a reported execution are not attributed to its observed behaviour. Figure 4 adds scVI to the expanded downstream comparisons; S15 and S16 include it in empirical calibration and geometry. S17 adds a separate post hoc nine-method empirical specification sensitivity with a 20-feature union, leaving the original eight-method distances and primary tests unchanged. Whole method labels are permuted; dependent pair dots are not independent observations. Omissions describe influence and are not used to select significant subsets. The robustness analyses are explicit method subsets; omitted method-axis combinations are not interpreted as passes or failures.

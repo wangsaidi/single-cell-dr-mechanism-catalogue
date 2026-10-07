@@ -8,8 +8,8 @@ This repository contains the figure and analysis-reproduction materials for the 
 - `data/source_data/`: figure-level source-data tables used by the scripts.
 - `metadata/`: mathematical specification records, public dataset sources and panel-level evidence mapping.
 - `outputs/main_figures/`: final Figures 1-7 in publication formats.
-- `outputs/supplementary_figures/`: final Supplementary Figs. S1-S16 as individual files and a combined 17-page PDF.
-- `outputs/tables/`: Table 1 source and the submission-ready Supplementary Tables S1-S16 workbook.
+- `outputs/supplementary_figures/`: final Supplementary Figs. S1-S17 as individual files and a combined 18-page A4 PDF.
+- `outputs/tables/`: Table 1 source and the submission-ready Supplementary Tables S1-S17 workbook.
 - `analysis/`: executable preprocessing, representation, downstream-analysis and verification workflow.
 
 The lightweight repository checkout contains the plotting inputs. The larger checksum-locked analysis objects and evaluated representation arrays are distributed through the [`analysis-reproducibility-v1.0.1` GitHub Release](https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue/releases/tag/analysis-reproducibility-v1.0.1) and are installed by `python -m analysis.download_inputs`. Raw-data refitting can begin from the public access routes listed in `metadata/public_data_sources.csv`.
@@ -36,7 +36,9 @@ python -m pip install -r requirements.txt
 python make_figures.py
 ```
 
-Figure 1 is supplied as final conceptual artwork. The wrapper rebuilds Figures 2-7 and Supplementary Figs. S1-S16 from the included source-data tables. Generated panel tables are written to `data/source_data/generated/`. Figure 4 reports direct downstream outcomes for the eight anchor implementations plus scVI. The previous threshold-gate Figure 4 is retained as Supplementary Fig. S14. Supplementary Fig. S15 separates random correspondence from the original operational cutoffs; Supplementary Fig. S16 reports scVI geometry, reference sensitivity and computational stability. The curated Supplementary Tables S1-S16 workbook is supplied as a publication-facing output and is not rebuilt by the figure wrapper.
+Figure 1 is supplied as final conceptual artwork. The wrapper rebuilds Figures 2-7 and Supplementary Figs. S1-S17 from the included source-data tables. Generated panel tables are written to `data/source_data/generated/`. Figure 4 reports direct downstream outcomes for the eight anchor implementations plus scVI. The previous threshold-gate Figure 4 is retained as Supplementary Fig. S14. Supplementary Fig. S15 separates random correspondence from the original operational cutoffs; Supplementary Fig. S16 reports scVI geometry, reference sensitivity and computational stability. Supplementary Fig. S17 recomputes the post hoc nine-method empirical specification sensitivity from the matched full-object scores and published coding records. The curated Supplementary Tables S1-S17 workbook and combined supplementary PDF are supplied as publication-facing outputs and are not rebuilt by the figure wrapper.
+
+The S17 script uses the original three coding fields, retaining scVI-specific features in a 20-feature union without changing the original eight-anchor Jaccard submatrix. It separates the original eight-method result, uniformly rescored eight-method control and nine-method extension. Exact tests permute whole method labels, not the dependent pair dots. The pooled and three context tests form a four-test BH family; six alternate encodings form a separate exploratory family. Method and endpoint omissions are descriptive. The primary eight-method Mantel tests and six-scenario simulation outputs remain unchanged. Run S17 alone with `python -m figures.plot_supplementary_figure_s17`; its results, complete control/context permutation vectors and design records are included under `data/source_data/generated/s17_*` and `metadata/s17_*`.
 
 See `TUTORIAL.md` for standalone figure commands, output checks and the boundary between figure reproduction and raw-data reanalysis.
 
@@ -46,7 +48,7 @@ Expression perturbations in Figure 6c-d,j and Supplementary Figure S6f-g use PBM
 
 Figure 6f and Supplementary Figure S6h-i include one auxiliary generated count dataset with 1,600 cells and 600 genes at seed zero. Its generator is `analysis/scripts/generate_robustness_embeddings.py`, and its scores and design are supplied as `fig6_known_truth_simulation.csv` and `fig6_known_truth_simulation_design.json`. It is distinct from the independently replicated six-scenario suite. The four non-latent minima pool 28 conditions for PCA, 37 each for UMAP, PHATE and PaCMAP, and 10 for t-SNE; latent-distance correlation has one condition per method. `fig6_worst_case_condition_manifest.json` identifies the four input tables and per-component counts. Unequal pools describe the worst evaluated condition, not an equal-coverage method ranking.
 
-Run the focused figure-source regressions with `python -m unittest discover -s tests -p 'test_panel_sources.py'`.
+Run the focused figure-source and exact-test regressions with `python -m unittest discover -s tests -v`.
 
 ## Reproducing the analysis
 
@@ -63,7 +65,7 @@ Optional `refit-scvi` and `full-refit` profiles are documented in `analysis/READ
 
 ## Scope
 
-The specification records describe terms traceable to published mathematical formulations. They are multi-component records rather than mutually exclusive method classes or performance rankings. Figures 2, 3 and 5-7 reproduce the focused eight-anchor analyses. Figure 4 adds scVI as a ninth implementation for direct clustering, population-recovery, trajectory and donor-information outcomes. Supplementary Figs. S15 and S16 additionally include scVI in matched empirical permutation calibration and geometric analysis, but not in the eight-anchor specification or controlled-simulation comparisons. No panel estimates performance for catalogue methods that were not executed.
+The specification records describe terms traceable to published mathematical formulations. They are multi-component records rather than mutually exclusive method classes or performance rankings. Figures 2, 3 and 5-7 reproduce the focused eight-anchor analyses. Figure 4 adds scVI as a ninth implementation for direct clustering, population-recovery, trajectory and donor-information outcomes. Supplementary Figs. S15-S17 additionally include scVI in matched empirical permutation calibration, geometry and a separate empirical specification sensitivity. scVI does not enter the original eight-anchor primary specification test or controlled-simulation comparisons. No panel estimates performance for catalogue methods that were not executed.
 
 ## License
 

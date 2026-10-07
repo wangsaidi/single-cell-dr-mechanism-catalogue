@@ -1,0 +1,10 @@
+method,explicit_objective_terms:diffusion_distance,explicit_objective_terms:latent_prior,explicit_objective_terms:likelihood,explicit_objective_terms:metric_stress,explicit_objective_terms:pairwise_attraction_repulsion,explicit_objective_terms:pairwise_probability,explicit_objective_terms:reconstruction,explicit_objective_terms:zero_model_or_imputation,latent_parameterization:diffusion_then_metric_embedding,latent_parameterization:directly_optimized_coordinates,latent_parameterization:linear_generalized_factor,latent_parameterization:linear_orthogonal_factor,latent_parameterization:neural_encoder_decoder,latent_parameterization:recurrent_neural_encoder_decoder,latent_parameterization:variational_encoder_neural_decoder,observation_model:exponential_family_count,observation_model:least_squares,observation_model:least_squares_autoencoder,observation_model:negative_binomial_count,observation_model:not_explicit
+PCA,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0
+GLM-PCA,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0
+scScope,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0,1,0,0
+SAUCIE,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0
+UMAP,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1
+PHATE,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1
+t-SNE,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1
+PaCMAP,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1
+scVI,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0

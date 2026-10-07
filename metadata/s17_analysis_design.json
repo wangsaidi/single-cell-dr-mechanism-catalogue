@@ -1,0 +1,67 @@
+{
+  "status": "post hoc revision sensitivity",
+  "methods": [
+    "PCA",
+    "GLM-PCA",
+    "scScope",
+    "SAUCIE",
+    "UMAP",
+    "PHATE",
+    "t-SNE",
+    "PaCMAP",
+    "scVI"
+  ],
+  "datasets": [
+    "pbmc3k",
+    "paul15",
+    "heart_cell_atlas_subsampled"
+  ],
+  "metrics": [
+    "local_retention",
+    "trustworthiness",
+    "global_rank_corr",
+    "label_neighbor_recall"
+  ],
+  "n_features": 20,
+  "original_features": 17,
+  "new_features": [
+    "explicit_objective_terms:latent_prior",
+    "latent_parameterization:variational_encoder_neural_decoder",
+    "observation_model:negative_binomial_count"
+  ],
+  "eight_method_jaccard_submatrix_unchanged": true,
+  "profile_scaling": "StandardScaler across evaluated methods, Euclidean distance divided by sqrt(number of profile variables)",
+  "matching": "full objects, output dimension 2, seed 0, k=15, PCA50, 5000 fixed valid pairs with seed 20261005",
+  "exact_test": "two-sided Mantel Spearman; average ties; all method-label assignments including identity; abs tail tolerance 1e-12; no plus-one correction",
+  "intervals": "central 95% exact permutation reference intervals, not confidence intervals",
+  "multiplicity": [
+    "four pooled/context tests",
+    "six alternative encoding tests"
+  ],
+  "influence_scope": "descriptive overlapping method and endpoint omissions; raw probabilities not independent confirmatory tests",
+  "unchanged_scope": "original main figures, original eight-method specification analysis and six-scenario simulations",
+  "hash_basis": "input_sha256 and code_sha256 use LF-normalised UTF-8 text matching canonical Git blobs; executed_input_sha256 retains actual input bytes",
+  "input_sha256": {
+    "metadata/method_mathematical_specifications.csv": "9848eaa67944de47b0a4a8279ecb02b7865db74873f3fef291bd8051ecf6dcf5",
+    "data/source_data/calibration/scvi_geometry_full.csv": "52473d6020d144a872deb073dfa7011cea2a4abfe55a24401a1412ed02b8d374",
+    "data/source_data/fig3_family_local_label_metrics.csv": "5fe595e45c778f40def372b90eba783d33437cc1202b9a7eaf1a0fd317e54602"
+  },
+  "executed_input_sha256": {
+    "metadata/method_mathematical_specifications.csv": "c3b7e8285647a157c83857f3b68a752a5e6de13cc884d18c54ebadfa602a56d7",
+    "data/source_data/calibration/scvi_geometry_full.csv": "472be815830057718fd3dc1ff19925d461c3f7eda2ed1072dd48cc14d1abc771",
+    "data/source_data/fig3_family_local_label_metrics.csv": "6a2f1a90c01ccdb52ca8b8ce97f9dc6763e6b6c7a364ce2e264d3819487cc960"
+  },
+  "code_sha256": {
+    "figures/plot_supplementary_figure_s17.py": "bf0984e48e801cc71e58f05e0d8d9ecba155b8476e28b1065ee1db35104ad68f",
+    "figures/plot_figure_2.py": "dfd7ddf95dbc4e1a398dae879cac77d7e6b25c388e0fb8eba2c3621555d473b7"
+  },
+  "conditional_null": "Whole empirical profiles are exchangeably reassigned to fixed specification records of the evaluated methods; this is not a randomly sampled method population",
+  "software": {
+    "python": "3.14.4",
+    "numpy": "2.4.4",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.8.0",
+    "matplotlib": "3.10.9"
+  }
+}
