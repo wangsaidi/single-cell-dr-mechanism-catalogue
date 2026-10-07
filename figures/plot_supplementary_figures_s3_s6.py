@@ -250,9 +250,8 @@ def _style_axes(ax: plt.Axes, grid: bool = False) -> None:
 
 
 def _embedding_colors(labels: pd.Series) -> dict[str, str]:
-    categories = labels.astype(str).value_counts().index.tolist()
-    palette = list(mpl.colormaps["tab20"].colors) + list(mpl.colormaps["tab20b"].colors)
-    return {cat: mpl.colors.to_hex(palette[i % len(palette)]) for i, cat in enumerate(categories)}
+    from .style import annotation_colors
+    return annotation_colors(labels)
 
 
 def supplementary_fig_s3() -> None:
@@ -357,10 +356,10 @@ def supplementary_fig_s4() -> None:
     panels = [
         (axes[0], method_gate_mat, "Method criterion support", "fraction", True, "fraction"),
         (axes[1], context_gate_mat, "Criterion breadth by context", "fraction", False, "fraction"),
-        (axes[2], local_ratio, "Local-criterion ratios", "ratio", False, "ratio"),
-        (axes[3], global_ratio, "Global-rank ratios", "ratio", False, "ratio"),
-        (axes[4], continuum_ratio, "Paul15 continuum ratios", "ratio", False, "ratio"),
-        (axes[5], donor_ratio, "Heart donor-aware ratios", "ratio", False, "ratio"),
+        (axes[2], local_ratio, "Local-criterion ratios", "ratio", True, "ratio"),
+        (axes[3], global_ratio, "Global-rank ratios", "ratio", True, "ratio"),
+        (axes[4], continuum_ratio, "Paul15 continuum ratios", "ratio", True, "ratio"),
+        (axes[5], donor_ratio, "Heart donor-aware ratios", "ratio", True, "ratio"),
         (axes[6], margin_mat, "Method boundary margins", "margin", True, "margin"),
         (axes[7], spread_mat, "Within-method criterion range", "fraction", True, "fraction"),
     ]
@@ -370,7 +369,8 @@ def supplementary_fig_s4() -> None:
         elif mode == "margin":
             _ratio_heatmap(ax, mat, title=title, cmap="RdBu_r", vmin=-0.45, vmax=0.45, cbar=cbar, cbar_label="mean value - boundary", annotation_size=7.2)
         else:
-            _ratio_heatmap(ax, mat, title=title, cbar=cbar, cbar_label="value / boundary", annotation_size=7.2)
+            _ratio_heatmap(ax, mat, title=title, vmax=1.8, cbar=cbar,
+                           cbar_label="value / boundary", annotation_size=7.2)
         _panel_label(ax, ascii_lowercase[idx])
     _save(fig, "Supplementary_Figure_S4_diagnostic_gate_metric_atlas")
 
@@ -601,7 +601,8 @@ def supplementary_fig_s6() -> None:
     ]
     mat = worst_ratio.pivot(index="method", columns="metric", values="ratio").reindex(index=available_worst_methods, columns=metric_order)
     mat.columns = [METRIC_LABELS.get(c, c) for c in mat.columns]
-    _ratio_heatmap(axes[7], mat, title="Worst-case support ratio", cbar=True, cbar_label="worst value / boundary", annotation_size=8.6)
+    _ratio_heatmap(axes[7], mat, title="Worst-case support ratio", vmax=2.2,
+                   cbar=True, cbar_label="worst value / boundary", annotation_size=8.6)
     _panel_label(axes[7], "h")
 
     ax = axes[8]

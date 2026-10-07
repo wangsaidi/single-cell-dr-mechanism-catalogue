@@ -126,7 +126,7 @@ def _short_signature(value: str) -> str:
         "observation_model_only": "Observation model",
         "latent_parameterisation_only": "Latent model",
         "observation_plus_parameterisation": "Observation + latent",
-        "without_not_explicit": "Explicit terms only",
+        "without_not_explicit": "Not-explicit flags omitted",
         "legacy_scscope_stage_omitted": "scScope stage omitted",
         "execution_input_baseline": "Execution inputs",
         "navigation_group_baseline": "Navigation groups",
@@ -312,7 +312,7 @@ def plot(data: dict[str, pd.DataFrame]) -> list[Path]:
     axf.axhline(0.45, color=BORDER, linestyle="--", linewidth=0.8)
     axf.set_xticks(range(len(lineage_order)), [LINEAGE_LABELS[value] for value in lineage_order], rotation=30, ha="right")
     axf.set_ylabel("Within-lineage rank rho")
-    axf.set_ylim(0.25, 1.0)
+    axf.set_ylim(0, 1.0)
     axf.set_title("Lineage-specific continuum", loc="left")
     clean_axis(axf)
 

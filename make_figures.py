@@ -23,6 +23,7 @@ MODULES = (
 
 
 def main() -> None:
+    subprocess.run([sys.executable, "-m", "analysis.scripts.refresh_biological_plot_inputs"], check=True)
     # Matplotlib configuration is process-global. Running each figure group in
     # a fresh interpreter prevents one script's rcParams from affecting later
     # layouts and makes the combined entry point match standalone execution.

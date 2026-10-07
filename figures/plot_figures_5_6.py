@@ -359,7 +359,7 @@ def build_fig5() -> None:
     ax.set_ylim(-1.05, 1.02)
     ax.set_ylabel("Relative evidence margin")
     ax.set_title("Evidence-unit margins", loc="left")
-    _panel_label(ax, "d")
+    _panel_label(ax, "d", y=1.17)
 
     ax = fig.add_subplot(gs[2, 0:3])
     heart_program_order = [
@@ -391,7 +391,7 @@ def build_fig5() -> None:
         heart_marker.pivot(index="program", columns="label", values="z_score")
         .reindex(index=heart_program_order, columns=heart_label_order)
     )
-    norm = TwoSlopeNorm(vcenter=0, vmin=-1.4, vmax=2.4)
+    norm = TwoSlopeNorm(vcenter=0, vmin=-1.4, vmax=3.2)
     im = _heatmap_with_values(ax, hmat, cmap="RdBu_r", norm=norm, fmt=".1f", fontsize=4.2)
     ax.set_title("Heart marker support", loc="left")
     cbar = fig.colorbar(im, ax=ax, fraction=0.012, pad=0.010)

@@ -1,0 +1,48 @@
+{
+  "summary": "fig6_worst_case_support.csv",
+  "methods": {
+    "PCA": {
+      "global_rank_corr": 28,
+      "label_neighbor_recall": 28,
+      "latent_distance_corr": 1,
+      "local_retention": 28,
+      "trustworthiness": 28
+    },
+    "PHATE": {
+      "global_rank_corr": 37,
+      "label_neighbor_recall": 37,
+      "latent_distance_corr": 1,
+      "local_retention": 37,
+      "trustworthiness": 37
+    },
+    "PaCMAP": {
+      "global_rank_corr": 37,
+      "label_neighbor_recall": 37,
+      "latent_distance_corr": 1,
+      "local_retention": 37,
+      "trustworthiness": 37
+    },
+    "UMAP": {
+      "global_rank_corr": 37,
+      "label_neighbor_recall": 37,
+      "latent_distance_corr": 1,
+      "local_retention": 37,
+      "trustworthiness": 37
+    },
+    "t-SNE": {
+      "global_rank_corr": 10,
+      "label_neighbor_recall": 10,
+      "latent_distance_corr": 1,
+      "local_retention": 10,
+      "trustworthiness": 10
+    }
+  },
+  "inputs": [
+    "fig6_output_dimension_response.csv",
+    "fig6_upstream_pca_response.csv",
+    "fig6_dropout_noise_response.csv",
+    "fig6_known_truth_simulation.csv"
+  ],
+  "latent_reference": "single 1600-cell generated dataset, seed zero; not the replicated six-scenario suite",
+  "latent_distance_boundary": 0.45
+}

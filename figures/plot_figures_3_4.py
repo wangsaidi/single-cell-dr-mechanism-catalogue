@@ -125,9 +125,7 @@ def _hash(path: Path) -> str:
 
 
 def _label_palette(labels: pd.Series) -> dict[str, str]:
-    cats = [str(x) for x in pd.Categorical(labels.astype(str)).categories]
-    cmap = plt.get_cmap("tab20")
-    return {cat: mpl.colors.to_hex(cmap(i % 20)) for i, cat in enumerate(cats)}
+    return style.annotation_colors(labels)
 
 
 def _paul_group(label: str) -> str:
@@ -141,7 +139,7 @@ def _paul_group(label: str) -> str:
         return "MEP/Mk"
     if "Neu" in label:
         return "Neutrophil"
-    return "Progenitor"
+    return "Other annotations"
 
 
 def _embedding_source(dataset_id: str) -> pd.DataFrame:
@@ -530,8 +528,10 @@ def build_fig4() -> None:
     _color_method_labels(ax, "x")
     ax.set_ylim(0, 1.0)
     ax.set_ylabel("Paul15 continuum score")
-    ax.set_title("Continuum criterion")
-    ax.legend(loc="upper left", fontsize=4.9, frameon=False, title="bars; lines = cutoffs", title_fontsize=4.6)
+    ax.set_title("Continuum criterion", pad=30)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.02), fontsize=4.9,
+              frameon=False, title="bars; lines = cutoffs", title_fontsize=4.6,
+              borderaxespad=0)
     _panel_label(ax, "c")
 
     ax = fig.add_subplot(gs[1, 0])
@@ -668,10 +668,10 @@ def build_fig4() -> None:
     colors = [DATASET_COLORS[x] for x in dataset_gate["dataset_id"]]
     ax.barh(y, dataset_gate["pass_fraction"], color=colors, alpha=0.82)
     for yi, row in enumerate(dataset_gate.itertuples(index=False)):
-        ax.text(row.pass_fraction + 0.025, yi, f"{row.pass_fraction:.2f}\nn={int(row.n_cases)}", va="center", fontsize=4.5)
+        ax.text(row.pass_fraction + 0.025, yi, f"{row.pass_fraction:.2f} (n={int(row.n_cases)})", va="center", fontsize=4.3)
     ax.set_yticks(y)
     ax.set_yticklabels(dataset_gate["label"], fontsize=4.8)
-    ax.set_xlim(0, 1.12)
+    ax.set_xlim(0, 1.42)
     ax.set_xlabel("pass fraction")
     ax.set_title("Criterion support by dataset", loc="left")
     _panel_label(ax, "f")

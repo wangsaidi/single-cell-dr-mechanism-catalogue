@@ -55,7 +55,7 @@ METRIC_LABELS = {
     "local_retention": "Local retention",
     "trustworthiness": "Trustworthiness",
     "global_rank_corr": "Global rank",
-    "label_neighbor_recall": "Label recall",
+    "label_neighbor_recall": "Same-label fraction",
 }
 
 
@@ -251,7 +251,7 @@ def plot_s8() -> None:
                      elinewidth=0.8, capsize=2, label=DATASET_LABELS[dataset])
     axe.set_xticks(x, [FAMILY_LABELS[f] for f in FAMILY_ORDER], rotation=30, ha="right")
     axe.set(xlabel="Navigation group", ylabel="Mean pairwise kNN overlap", title="Context dependence", ylim=(-0.02, 1.02))
-    axe.legend(frameon=False, loc="lower left")
+    # Dataset colours and symbols share the unobstructed legend in panel b.
     clean_axis(axe, grid=True)
 
     label_offsets = {

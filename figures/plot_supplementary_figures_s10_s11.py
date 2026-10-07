@@ -415,7 +415,10 @@ def _heatmap(ax, matrix: pd.DataFrame, *, vmin: float, vmax: float, cmap: str, f
     for row in range(matrix.shape[0]):
         for column in range(matrix.shape[1]):
             value = float(matrix.iloc[row, column])
-            ax.text(column, row, format(value, fmt), ha="center", va="center", fontsize=4.7, color="white" if abs(value) > (vmax - vmin) * 0.62 + vmin else INK)
+            rgb = image.cmap(image.norm(value))[:3]
+            luminance = sum(weight * channel for weight, channel in zip((.2126, .7152, .0722), rgb))
+            ax.text(column, row, format(value, fmt), ha="center", va="center", fontsize=4.7,
+                    color="white" if luminance < .50 else INK)
     ax.tick_params(length=0)
     for spine in ax.spines.values():
         spine.set_visible(False)
@@ -480,13 +483,14 @@ def plot_local(paths: dict[str, Path]) -> None:
         sub = calibrated[calibrated["method"].eq(method)]
         x = np.full(len(sub), index) + np.linspace(-0.12, 0.12, len(sub))
         ax.vlines(x, sub["null_q025"], sub["null_q975"], color="#BDBDBD", lw=1.0)
+        ax.scatter(x, sub["null_mean"], marker="_", s=14, color="#858585", zorder=2)
         ax.scatter(x, sub["local_retention"], s=20, color=METHOD_COLORS[method], zorder=3)
     ax.set_xticks(np.arange(len(METHODS)))
     ax.set_xticklabels(METHODS, rotation=45, ha="right")
     ax.set_ylabel("local retention")
     ax.set_title("Observed overlap exceeds permutation null", loc="left")
     clean_axis(ax, grid=True)
-    panel_label(ax, "d")
+    panel_label(ax, "d", x=-0.18, y=1.10)
 
     ax = fig.add_subplot(grid[2, 0])
     matrix = threshold.pivot(index="reference_pca_dimensions", columns="k", values="below_boundary").reindex(index=PCA_DIMS, columns=K_VALUES)
@@ -522,7 +526,7 @@ def plot_local(paths: dict[str, Path]) -> None:
     ax.set_title("Context remains visible at fixed settings", loc="left")
     ax.legend(frameon=False, fontsize=5.2, loc="upper left")
     clean_axis(ax, grid=True)
-    panel_label(ax, "g")
+    panel_label(ax, "g", x=-0.18, y=1.10)
 
     ax = fig.add_subplot(grid[3, 1])
     excess = baseline.groupby("method")["normalised_excess_overlap"].agg(["mean", "min", "max"]).reindex(METHODS)
@@ -534,7 +538,7 @@ def plot_local(paths: dict[str, Path]) -> None:
     ax.set_ylabel("overlap above random expectation")
     ax.set_title("Random-normalised overlap remains continuous", loc="left")
     clean_axis(ax, grid=True)
-    panel_label(ax, "h")
+    panel_label(ax, "h", x=-0.18, y=1.10)
 
     fig.subplots_adjust(left=0.12, right=0.98, top=0.98, bottom=0.07)
     _save(fig, "Supplementary_Figure_S10_local_calibration")
@@ -619,7 +623,7 @@ def plot_continuum(paths: dict[str, Path]) -> None:
     ax.set_ylim(0, 1.05)
     ax.set_title("Continuum calls vary with the root", loc="left")
     clean_axis(ax, grid=True)
-    panel_label(ax, "g")
+    panel_label(ax, "g", x=-0.18, y=1.10)
 
     ax = fig.add_subplot(grid[3, 1])
     rank_values = rank["method_rank_spearman_rho"].to_numpy(dtype=float)
@@ -631,7 +635,7 @@ def plot_continuum(paths: dict[str, Path]) -> None:
     ax.set_ylim(-1.05, 1.05)
     ax.set_title("Method ordering is root-sensitive", loc="left")
     clean_axis(ax, grid=True)
-    panel_label(ax, "h")
+    panel_label(ax, "h", x=-0.18, y=1.10)
 
     fig.subplots_adjust(left=0.12, right=0.98, top=0.98, bottom=0.07)
     _save(fig, "Supplementary_Figure_S11_continuum_calibration")

@@ -68,14 +68,14 @@ continuum,myeloid_monocyte,,,0.09614355206300029,absolute marker-pseudotime corr
 continuum,basophil_mast,,,-0.8297014773976283,absolute marker-pseudotime correlation relative to 0.25,False
 continuum,megakaryocyte,,,-0.3963177587765556,absolute marker-pseudotime correlation relative to 0.25,False
 continuum,progenitor,,,-0.7950742369327428,absolute marker-pseudotime correlation relative to 0.25,False
-donor tissue,PCA,PCA,factor,0.2744728458136796,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
-donor tissue,GLM-PCA,GLM-PCA,factor,0.22109365843742212,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
-donor tissue,scScope,scScope,deep,0.008546727205400506,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
-donor tissue,SAUCIE,SAUCIE,deep,0.2226417815528945,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
-donor tissue,UMAP,UMAP,graph,-0.009041424019294642,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
-donor tissue,PHATE,PHATE,graph,0.053408243156407575,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
-donor tissue,t-SNE,t-SNE,relational,-0.0934390106272518,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
-donor tissue,PaCMAP,PaCMAP,relational,-0.013936518044270207,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
+donor tissue,PCA,PCA,factor,0.2732569395483593,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,GLM-PCA,GLM-PCA,factor,0.2207364557343794,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,scScope,scScope,deep,0.0016026348855546768,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,SAUCIE,SAUCIE,deep,0.22148442510405952,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,UMAP,UMAP,graph,-0.011655388987835247,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
+donor tissue,PHATE,PHATE,graph,0.05157950339710782,minimum of same-cell-type-neighbour and donor-entropy relative margins,True
+donor tissue,t-SNE,t-SNE,relational,-0.10005348256207003,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
+donor tissue,PaCMAP,PaCMAP,relational,-0.01621661627818316,minimum of same-cell-type-neighbour and donor-entropy relative margins,False
 rare state,pbmc3k | PCA | Dendritic cells,PCA,factor,-0.8525798525798526,rare-label same-neighbour fraction relative to 0.55,False
 rare state,pbmc3k | PCA | FCGR3A+ Monocytes,PCA,factor,-0.044040404040404095,rare-label same-neighbour fraction relative to 0.55,False
 rare state,pbmc3k | PCA | Megakaryocytes,PCA,factor,-0.05454545454545459,rare-label same-neighbour fraction relative to 0.55,False

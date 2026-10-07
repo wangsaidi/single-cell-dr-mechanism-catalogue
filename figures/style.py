@@ -48,6 +48,13 @@ OKABE_ITO = [
 CELLTYPE_COLORS: dict[str, str] = {}
 
 
+def annotation_colors(labels: Iterable[str]) -> dict[str, str]:
+    """Keep the same named annotation colour in matched main and atlas maps."""
+    categories = sorted({str(label) for label in labels})
+    cmap = mpl.colormaps["tab20"]
+    return {label: mpl.colors.to_hex(cmap(i % 20)) for i, label in enumerate(categories)}
+
+
 def apply_style() -> None:
     mpl.rcParams.update(
         {

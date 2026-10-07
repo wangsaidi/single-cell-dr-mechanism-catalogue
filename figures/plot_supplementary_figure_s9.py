@@ -329,8 +329,8 @@ def build_figure(paths: dict[str, Path]) -> None:
     ax.set_xticks(np.arange(len(variant_order)))
     ax.set_xticklabels([variant_labels[value] for value in variant_order], rotation=55, ha="right")
     ax.set_ylabel("Mantel Spearman rho")
-    ax.set_title("Concordance depends on specification encoding", loc="left")
-    ax.legend(frameon=False, fontsize=5.4, loc="lower left")
+    ax.set_title("Concordance depends on specification encoding", loc="left", pad=28)
+    ax.legend(frameon=False, fontsize=5.4, loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=2)
     clean_axis(ax, grid=True)
     panel_label(ax, "a")
 
