@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import pandas as pd
 
-from analysis.paths import PUBLIC_SOURCE_DATA_DIR, RESULTS_DIR
+from analysis.paths import RESULTS_DIR
 
 
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "scVI", "UMAP", "PHATE", "t-SNE", "PaCMAP"]
-OUTPUT_DIR = PUBLIC_SOURCE_DATA_DIR / "figure4_downstream"
+OUTPUT_DIR = RESULTS_DIR / "figure4_downstream"
 
 
 def write_panel(letter: str, frame: pd.DataFrame) -> None:

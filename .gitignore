@@ -12,3 +12,4 @@ analysis/logs/*
 !analysis/logs/.gitkeep
 analysis/external/
 analysis/.downloads/
+/analysis/runs/

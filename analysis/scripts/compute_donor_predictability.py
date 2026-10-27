@@ -6,6 +6,8 @@ import argparse
 from pathlib import Path
 
 import numpy as np
+from analysis.paths import SCVI_EMBEDDINGS_DIR
+from analysis.execution import SMOKE, SEEDS
 import pandas as pd
 import scanpy as sc
 from sklearn.linear_model import LogisticRegression
@@ -18,13 +20,12 @@ from analysis.paths import ANALYSIS_OBJECTS_DIR, ANCHOR_EMBEDDINGS_DIR, RESULTS_
 
 PROC_PATH = ANALYSIS_OBJECTS_DIR / "heart_cell_atlas_subsampled_proc.h5ad"
 EXISTING_EMBEDDINGS = ANCHOR_EMBEDDINGS_DIR
-SCVI_EMBEDDINGS = RESULTS_DIR / "embeddings"
+SCVI_EMBEDDINGS = SCVI_EMBEDDINGS_DIR
 OUT_DIR = RESULTS_DIR / "donor_predictability"
 
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"]
-SEEDS = [0, 1, 2, 3, 4]
 CV_SEED = 0
-BOOTSTRAP_REPLICATES = 10000
+BOOTSTRAP_REPLICATES = 20 if SMOKE else 10000
 
 
 def stem(method: str) -> str:

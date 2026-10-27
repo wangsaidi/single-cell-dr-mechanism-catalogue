@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "execution_verification_not_publication_score_data",
+  "profile": "smoke",
+  "validation_mode": "full-refit",
+  "execution_scale": "smoke_not_publication",
+  "outcome": "all_required_stage_types_passed_across_resumed_attempts",
+  "run_metadata": {
+    "status": "partial",
+    "complete_workflow": false,
+    "initially_empty": true,
+    "resumed": true,
+    "resume_from_stage": "anchor_embeddings_seed_0",
+    "uninterrupted_fresh_run": false,
+    "workflow_finished_utc": "2026-10-27T12:58:27.673863+00:00",
+    "initial_failure": {
+      "stage": "anchor_embeddings_seed_0",
+      "exception": "ModuleNotFoundError",
+      "module": "SAUCIE",
+      "retained_import_tracebacks": 3,
+      "interrupted_before_terminal_stage_event": true,
+      "failure_logs_retained": true,
+      "correction": "Use the SAUCIE checkout containing directory on PYTHONPATH and verify imports in the fitting context."
+    },
+    "resume_forced_refits": true
+  },
+  "stage_coverage": {
+    "required_unique": 21,
+    "successful_unique": 21,
+    "recorded_starts": 22,
+    "successful_finishes": 21,
+    "interrupted_initial_starts": 1,
+    "validation_only_metadata_correction_reruns": 1,
+    "successful_stages": [
+      "record_environment",
+      "legacy_preflight",
+      "prepare_objects",
+      "anchor_embeddings_seed_0",
+      "anchor_embeddings_seed_1",
+      "known_truth_stress_tests",
+      "robustness_embeddings",
+      "fit_scvi",
+      "audit_inputs",
+      "audit_scvi",
+      "diagnostics",
+      "dimension_sensitivity",
+      "clustering",
+      "marker_concordance",
+      "trajectory",
+      "donor_predictability",
+      "summarise",
+      "audit_results",
+      "export_figure4",
+      "threshold_calibration",
+      "validate_refit"
+    ]
+  },
+  "coverage": {
+    "analysis_cells": {
+      "pbmc3k": 2638,
+      "paul15": 2730,
+      "heart_cell_atlas_subsampled": 8000
+    },
+    "anchor_methods": [
+      "GLM-PCA",
+      "PCA",
+      "PHATE",
+      "PaCMAP",
+      "SAUCIE",
+      "UMAP",
+      "scScope",
+      "t-SNE"
+    ],
+    "anchor_seeds": [
+      0,
+      1
+    ],
+    "anchor_dataset_method_seed_arrays": 48,
+    "simulation_scenarios": [
+      "batch_shift",
+      "branching_trajectory",
+      "dropout_stress",
+      "linear_low_rank",
+      "nonlinear_manifold",
+      "rare_population"
+    ],
+    "generated_replicates_per_scenario": 1,
+    "simulation_method_scenario_replicate_combinations": 48,
+    "scvi_dimensions": [
+      2,
+      10
+    ],
+    "scvi_seeds": [
+      0,
+      1
+    ],
+    "scvi_arrays": 12,
+    "figure4_export_tables": 6
+  },
+  "reduced_budgets": {
+    "scscope_epochs": 3,
+    "saucie_updates": 10,
+    "scvi_epochs": 2,
+    "glmpca_iterations": 3,
+    "umap_epochs": 20,
+    "leiden_resolutions": [
+      0.4,
+      1
+    ],
+    "calibration_permutations": 19,
+    "calibration_max_cells_per_dataset": 200,
+    "calibration_pairs": 500
+  },
+  "preprocessing_comparison": {
+    "cell_ids_identical": true,
+    "gene_ids_identical": true,
+    "count_and_processed_X_exact": true,
+    "annotation_labels_identical": true,
+    "heart_donor_ids_identical": true,
+    "PCA_coordinates_exact_claimed": false
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "historical_fitted_binary_comparison": false,
+    "publication_scale_full_refit_completed": false,
+    "convergence_established": false,
+    "stochastic_equivalence_established": false,
+    "fresh_environment_build_performed": false
+  },
+  "environment": {
+    "python": "3.14.4",
+    "operating_system": "Windows",
+    "modern_packages": {
+      "anndata": "0.12.16",
+      "glmpca": "0.1.0",
+      "igraph": "1.0.0",
+      "leidenalg": "0.12.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.4.4",
+      "pacmap": "0.9.1",
+      "pandas": "2.3.3",
+      "phate": "2.0.0",
+      "scanpy": "1.12.1",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.1",
+      "scvi-tools": "1.4.3",
+      "seaborn": "0.13.2",
+      "torch": "2.12.0+cpu",
+      "umap-learn": "0.5.12"
+    },
+    "legacy": {
+      "python": "3.7.16",
+      "numpy": "1.18.5",
+      "tensorflow": "1.15.0",
+      "scscope": "0.1.5",
+      "h5py": "2.10.0",
+      "scikit-learn": "0.23.2",
+      "pandas": "1.1.5"
+    }
+  },
+  "source_versions": {
+    "SAUCIE_commit": "5ab7976fc8d19a3823b6005f51736dc70f2017fb",
+    "sha256": {
+      "analysis/execution.py": "7974f751c1f468e8fbd5d56ba28df445345b599d60f8872dfdcf0920c7714979",
+      "analysis/legacy_deep_runner.py": "09e8fd211176a4b8be133449c2bf676f3c0157dd1521c7a8b31d757f19f05024",
+      "analysis/legacy_runtime.py_after_import_fix": "49ab71b0203ce311cdfa030da55c1a2fee92a37b2ce795b15d8db4e4daecc11b",
+      "analysis/legacy_import_probe.py": "77a39ebbf726c8fd61e387fd96bec1a113da15c3abb76a057408703e4b76dde4",
+      "analysis/workflow/validate_refit.py_at_original_finish": "2662ac77d38ba6998f8a39aad3ebb147486efb3503404c8090531519ccb134d6",
+      "analysis/workflow/validate_refit.py_after_metadata_fix": "d4942ad00b96b8ccbb1b29d0d8660af1d762472086352bc16de97050efef42c4"
+    },
+    "snapshot_note": "Initial environment manifest predates the import-path fix; these are explicitly separated source versions, not one immutable whole-run snapshot."
+  },
+  "evidence_sha256": {
+    "stage_ledger": "d3ed0061a72f533cb09556e20601eee8637e045d61a7f5c4614e12f17060345a",
+    "original_validation": "89d555cf52f34076f11073a741724eb5403314f7a3e9ca17d90aa30e0c39aadb",
+    "corrected_validation": "65396a846956b9850b8a4a5efc8ac1f8d7e4565e46d1ff422fc9f576b76c9cd5",
+    "preprocessing_comparison": "eab4dc94e7d119a909e5d803ad948bc384ee4a4da654cc4e13f12362cff6337e"
+  }
+}

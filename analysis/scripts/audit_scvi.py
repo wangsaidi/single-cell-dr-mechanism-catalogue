@@ -16,8 +16,10 @@ import numpy as np
 import pandas as pd
 
 from analysis.paths import LOGS_DIR as ANALYSIS_LOGS_DIR, RESULTS_DIR
+from analysis.paths import SCVI_EMBEDDINGS_DIR
+from analysis.execution import SMOKE, SEEDS
 
-OUT_DIR = RESULTS_DIR / "embeddings"
+OUT_DIR = SCVI_EMBEDDINGS_DIR
 LOG_DIR = ANALYSIS_LOGS_DIR
 DATASETS = {
     "pbmc3k": 2638,
@@ -25,8 +27,7 @@ DATASETS = {
     "heart_cell_atlas_subsampled": 8000,
 }
 DIMENSIONS = [2, 10]
-SEEDS = [0, 1, 2, 3, 4]
-MAX_EPOCHS = 200
+MAX_EPOCHS = 2 if SMOKE else 200
 
 
 def sha256_file(path: Path) -> str:
@@ -71,7 +72,7 @@ def main() -> None:
                         "Capped at the configured maximum because this Lightning version reports "
                         "current_epoch as the next epoch after a max-epoch stop."
                     )
-                    metadata_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+                    # Normalise only the audit view; supplied fit metadata is immutable.
 
                 rows.append(
                     {

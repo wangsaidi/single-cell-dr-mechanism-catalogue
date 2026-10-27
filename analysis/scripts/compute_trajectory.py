@@ -15,6 +15,8 @@ from pathlib import Path
 
 import anndata as ad
 import numpy as np
+from analysis.paths import SCVI_EMBEDDINGS_DIR
+from analysis.execution import SEEDS
 import pandas as pd
 import scanpy as sc
 from scipy import sparse
@@ -32,11 +34,10 @@ from analysis.paths import (
 PROC_PATH = ANALYSIS_OBJECTS_DIR / "paul15_proc.h5ad"
 EXPRESSION_PATH = EXPRESSION_OBJECTS_DIR / "paul15_expression.h5ad"
 EXISTING_EMBEDDINGS = ANCHOR_EMBEDDINGS_DIR
-SCVI_EMBEDDINGS = RESULTS_DIR / "embeddings"
+SCVI_EMBEDDINGS = SCVI_EMBEDDINGS_DIR
 OUT_DIR = RESULTS_DIR / "trajectory"
 
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"]
-SEEDS = [0, 1, 2, 3, 4]
 K = 15
 N_DCS = 10
 PRIMARY_ROOT = "7MEP_centroid"

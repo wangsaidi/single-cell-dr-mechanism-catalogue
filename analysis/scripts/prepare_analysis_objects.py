@@ -17,6 +17,7 @@ import scanpy as sc
 from scipy import sparse
 
 from analysis import config
+from analysis.paths import EXPRESSION_OBJECTS_DIR, RAW_CACHE_DIR, display_path
 from analysis.data_loader import load_heart_atlas, load_paul15, load_pbmc3k
 from analysis.paths import (
     ANALYSIS_OBJECTS_DIR,
@@ -160,8 +161,8 @@ def _write_pair(dataset_id: str, proc, counts, source_cache: str, subset_strateg
     return {
         "dataset_id": dataset_id,
         "source_cache": source_cache,
-        "analysis_proc_path": str(proc_path.relative_to(ROOT)),
-        "analysis_counts_path": str(counts_path.relative_to(ROOT)),
+        "analysis_proc_path": display_path(proc_path),
+        "analysis_counts_path": display_path(counts_path),
         "subset_strategy": subset_strategy,
         "n_obs": summary["n_obs"],
         "n_vars": summary["n_vars"],
@@ -176,6 +177,15 @@ def _write_pair(dataset_id: str, proc, counts, source_cache: str, subset_strateg
 
 def prepare_pbmc3k() -> dict[str, object]:
     adata_proc, adata_counts = load_pbmc3k()
+    full_counts_path = RAW_CACHE_DIR / "pbmc3k_full_counts.h5ad"
+    if full_counts_path.exists():
+        full_counts = sc.read_h5ad(full_counts_path)
+    else:
+        full_counts = sc.datasets.pbmc3k().copy()
+        full_counts.var_names_make_unique()
+        full_counts.write_h5ad(full_counts_path, compression="gzip")
+    expression = full_counts[adata_counts.obs_names, :].copy()
+    expression.write_h5ad(EXPRESSION_OBJECTS_DIR / "pbmc3k_expression.h5ad", compression="gzip")
     adata_counts = adata_counts.copy()
     adata_counts.obs["louvain"] = adata_proc.obs["louvain"].astype(str).values
     proc, counts, summary = _preprocess_counts(adata_counts, "pbmc3k", "louvain")
@@ -220,6 +230,8 @@ def prepare_public_dataset(
             "remaining cells sampled by cell_type x donor"
         )
 
+    expression_name = "heart_cell_atlas_expression.h5ad" if dataset_id == "heart_cell_atlas_subsampled" else f"{dataset_id}_expression.h5ad"
+    adata.write_h5ad(EXPRESSION_OBJECTS_DIR / expression_name, compression="gzip")
     proc, counts, summary = _preprocess_counts(
         adata,
         dataset_id,

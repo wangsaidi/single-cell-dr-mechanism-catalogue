@@ -10,7 +10,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import platform
 import subprocess
 import sys
@@ -24,6 +23,9 @@ from scipy import sparse
 from sklearn.manifold import TSNE
 
 from analysis import config, diagnostics
+from analysis.execution import SMOKE
+from analysis.legacy_runtime import require_legacy_python, legacy_environment, legacy_source
+from analysis.paths import display_path, analysis_input_path
 from analysis.paths import (
     ANALYSIS_OBJECTS_DIR,
     ANALYSIS_ROOT,
@@ -139,6 +141,7 @@ def _umap(proc, seed: int) -> np.ndarray:
         min_dist=0.5,
         random_state=seed,
         n_components=2,
+        n_epochs=20 if SMOKE else None,
     )
     return np.asarray(reducer.fit_transform(proc.obsm["X_pca_ref"]), dtype=np.float32)
 
@@ -232,9 +235,9 @@ def _legacy_output_path(dataset_id: str, method: str, seed: int) -> Path:
     return LEGACY_DIR / f"{_stem(method)}_seed{seed}_{tag}.npy"
 
 
-def _project_scscope_latent(dataset_id: str, latent: np.ndarray, seed: int) -> np.ndarray:
+def _project_scscope_latent(dataset_id: str, latent: np.ndarray, seed: int, force: bool = False) -> np.ndarray:
     output = LEGACY_DIR / f"scscope_seed{seed}_analysis_{dataset_id}_recommended_v1_tsne2.npy"
-    cached = _load_or_none(output)
+    cached = None if force else _load_or_none(output)
     if cached is not None:
         return cached
     coords = TSNE(
@@ -267,23 +270,16 @@ def _project_scscope_latent(dataset_id: str, latent: np.ndarray, seed: int) -> n
     return coords
 
 
-def _run_legacy(dataset_id: str, method: str, counts, label_field: str, seed: int) -> np.ndarray:
+def _run_legacy(dataset_id: str, method: str, counts, label_field: str, seed: int, force: bool = False) -> np.ndarray:
     out = _legacy_output_path(dataset_id, method, seed)
-    latent = _load_or_none(out)
+    latent = None if force else _load_or_none(out)
 
     if latent is None:
-        configured_python = os.environ.get("SCDR_LEGACY_PYTHON", "")
-        python_exe = Path(configured_python) if configured_python else Path()
-        if not python_exe.exists():
-            raise FileNotFoundError(
-                "Set SCDR_LEGACY_PYTHON to the Python executable in the recorded Python 3.7 environment."
-            )
+        python_exe = require_legacy_python()
 
         input_path = _prepare_legacy_input(dataset_id, method, counts, label_field)
         runner = ANALYSIS_ROOT / "legacy_deep_runner.py"
-        saucie_parent = Path(
-            os.environ.get("SCDR_SAUCIE_SOURCE", ANALYSIS_ROOT / "external" / "SAUCIE")
-        )
+        saucie_parent = legacy_source()
         tag = f"analysis_{dataset_id}_recommended_v1" if method == "scScope" else f"analysis_{dataset_id}"
         cmd = [
             str(python_exe),
@@ -303,34 +299,22 @@ def _run_legacy(dataset_id: str, method: str, counts, label_field: str, seed: in
             "--latent-dim",
             "50" if method == "scScope" else "2",
             "--scscope-epochs",
-            "300" if method == "scScope" else "20",
+            str(3 if SMOKE else 300) if method == "scScope" else "20",
             "--scscope-recurrence",
             "2" if method == "scScope" else "1",
             "--saucie-steps",
-            "300",
+            "10" if SMOKE else "300",
             "--saucie-parent",
             str(saucie_parent),
         ]
-        env = os.environ.copy()
-        env["PATH"] = os.pathsep.join(
-            [
-                str(python_exe.parent),
-                str(python_exe.parent / "Library" / "bin"),
-                str(python_exe.parent / "Library" / "mingw-w64" / "bin"),
-                str(python_exe.parent / "DLLs"),
-                str(python_exe.parent / "Scripts"),
-                env.get("PATH", ""),
-            ]
-        )
-        env["PYTHONPATH"] = str(saucie_parent)
-        env.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
+        env = legacy_environment(python_exe, saucie_parent)
         subprocess.run(cmd, check=True, env=env)
         latent = _load_or_none(out)
         if latent is None:
             raise FileNotFoundError(f"Legacy runner did not create {out}")
 
     if method == "scScope":
-        return _project_scscope_latent(dataset_id, latent, seed)
+        return _project_scscope_latent(dataset_id, latent, seed, force=force)
     return latent
 
 
@@ -353,11 +337,13 @@ def compute_embedding(dataset_id: str, method: str, proc, counts, label_field: s
     elif method == "PaCMAP":
         coords = _pacmap(proc, seed)
     elif method in DEEP_METHODS:
-        coords = _run_legacy(dataset_id, method, counts, label_field, seed)
+        coords = _run_legacy(dataset_id, method, counts, label_field, seed, force=force)
     else:
         raise KeyError(method)
     if coords.shape != (proc.n_obs, 2):
         raise ValueError(f"{dataset_id} {method} expected {(proc.n_obs, 2)}, got {coords.shape}")
+    if not np.isfinite(coords).all():
+        raise ValueError(f"{dataset_id} {method} produced non-finite coordinates")
     return _save(path, coords)
 
 
@@ -494,8 +480,8 @@ def _write_dataset_coordinates(dataset_id: str, proc, labels, batch_field: str, 
 
 
 def _load_dataset(record) -> tuple[object, object]:
-    proc = sc.read_h5ad(ROOT / record.analysis_proc_path)
-    counts = sc.read_h5ad(ROOT / record.analysis_counts_path)
+    proc = sc.read_h5ad(analysis_input_path(record.analysis_proc_path))
+    counts = sc.read_h5ad(analysis_input_path(record.analysis_counts_path))
     return proc, counts
 
 
@@ -536,16 +522,17 @@ def run(methods: list[str], datasets: list[str], seed: int, force: bool = False)
             coordinate_files.append(_write_dataset_coordinates(record.dataset_id, proc, labels, batch_field, embeddings, seed))
 
     metrics = pd.DataFrame(all_metric_rows)
-    metrics_out = SOURCE_DIR / "fig3_family_local_label_metrics.csv"
+    failures_out = LOG_DIR / f"anchor_embedding_failures_seed{seed}.json"
+    failures_out.write_text(json.dumps(failures, indent=2, ensure_ascii=False), encoding="utf-8")
+    if metrics.empty:
+        raise RuntimeError(f"No anchor metrics completed; inspect {failures_out}")
+    metrics_out = SOURCE_DIR / f"fig3_family_local_label_metrics_seed{seed}.csv"
     metrics.to_csv(metrics_out, index=False)
 
-    support_out = SOURCE_DIR / "fig3_cross_context_support_matrix.csv"
+    support_out = SOURCE_DIR / f"fig3_cross_context_support_matrix_seed{seed}.csv"
     _support_rows(metrics).to_csv(support_out, index=False)
 
-    failures_out = LOG_DIR / "anchor_embedding_failures.json"
-    failures_out.write_text(json.dumps(failures, indent=2, ensure_ascii=False), encoding="utf-8")
-
-    versions_out = LOG_DIR / "anchor_embedding_run_metadata.json"
+    versions_out = LOG_DIR / f"anchor_embedding_run_metadata_seed{seed}.json"
     versions_out.write_text(
         json.dumps(
             {
@@ -556,6 +543,10 @@ def run(methods: list[str], datasets: list[str], seed: int, force: bool = False)
                 "platform": platform.platform(),
                 "scanpy": sc.__version__,
                 "numpy": np.__version__,
+                "force_refit": force,
+                "legacy_batch_sizes": {"scScope": 64, "SAUCIE_effective_default": 256},
+                "scScope_latent": "layer width 50, recurrence depth 2; official predict concatenates to 100 columns; see projection latent_shape",
+                "SAUCIE_note": "runner omits train(batch_size); optional lambda_c also changes activation architecture",
                 "config": {
                     "n_neighbors": config.N_NEIGHBORS,
                     "n_pcs": config.N_PCS,
@@ -571,12 +562,14 @@ def run(methods: list[str], datasets: list[str], seed: int, force: bool = False)
 
     hash_lines = []
     for path in [*coordinate_files, metrics_out, support_out, failures_out, versions_out]:
-        hash_lines.append(f"{_sha256(path)}  {path.relative_to(ROOT)}")
-    (SOURCE_DIR / "fig3_embedding_source_data.sha256.txt").write_text("\n".join(hash_lines) + "\n", encoding="utf-8")
+        hash_lines.append(f"{_sha256(path)}  {display_path(path)}")
+    (SOURCE_DIR / f"fig3_embedding_source_data_seed{seed}.sha256.txt").write_text("\n".join(hash_lines) + "\n", encoding="utf-8")
 
     print(f"wrote {metrics_out}")
     print(f"wrote {support_out}")
     print(f"failures: {len(failures)} recorded in {failures_out}")
+    if failures:
+        raise RuntimeError(f"{len(failures)} anchor fit(s) failed; see {failures_out}")
 
 
 def main() -> None:

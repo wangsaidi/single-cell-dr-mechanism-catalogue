@@ -1,0 +1,4643 @@
+{
+  "exporter": "round2_public_plot_data_v1",
+  "file_schemas": {
+    "data/source_data/deep_controls/checkpoint_representation_stability.csv": {
+      "columns": [
+        {
+          "name": "dataset",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "start_epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "final_epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_pairs",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "pairwise_neighbor_overlap",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "pairwise_distance_rank_rho",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "budget_extension",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "n_biological_replicates",
+          "observed_types": [
+            "integer"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 12
+    },
+    "data/source_data/deep_controls/endpoint_design.json": {
+      "format": "json",
+      "object_keys": [
+        "cell_ids",
+        "clustering",
+        "k",
+        "ranges",
+        "reference",
+        "subset_and_pair_seed",
+        "trustworthiness_only_subset_n"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed0_longer_budget/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_budget_extension",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed0_longer_budget/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 200
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_reconstruction_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_enabled_seed0_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_enabled_seed0_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_enabled_seed1_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_enabled_seed1_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_enabled_seed2_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_SAUCIE_task_enabled_seed2_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "kmp_affinity",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed0_longer_budget/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "kmp_affinity",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_budget_extension",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed0_longer_budget/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 80
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "kmp_affinity",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "kmp_affinity",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/heart_cell_atlas_subsampled_scScope_recurrent_latent_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/matched_endpoint_scores.csv": {
+      "columns": [
+        {
+          "name": "dataset",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "configuration",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "stage",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "representation_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "local_retention",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "same_label_neighbor_fraction",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "trustworthiness_fixed_subset",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "trust_subset_n",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "global_rank_correlation",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "n_distance_pairs",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "resolution_integrated_ari",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "resolution_integrated_macro_f1",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "array_sha256",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed_is_biological_replicate",
+          "observed_types": [
+            "boolean"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 162
+    },
+    "data/source_data/deep_controls/matched_population_scores.csv": {
+      "columns": [
+        {
+          "name": "dataset",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "configuration",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "stage",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "label",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_label",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "resolution_integrated_f1",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 2052
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed0_longer_budget/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_budget_extension",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed0_longer_budget/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 200
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_reconstruction_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_architecture_reconstruction_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_architecture_reconstruction_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_architecture_reconstruction_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_architecture_reconstruction_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_architecture_reconstruction_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_architecture_reconstruction_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_enabled_seed0_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_enabled_seed0_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_enabled_seed1_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_enabled_seed1_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_enabled_seed2_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_SAUCIE_task_enabled_seed2_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed0_longer_budget/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "kmp_affinity",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_budget_extension",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed0_longer_budget/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 80
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/paul15_scScope_recurrent_latent_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed0_longer_budget/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "kmp_affinity",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_budget_extension",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed0_longer_budget/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 200
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_reconstruction_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_architecture_reconstruction_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_architecture_reconstruction_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_architecture_reconstruction_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_architecture_reconstruction_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_architecture_reconstruction_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_architecture_reconstruction_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_enabled_seed0_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_enabled_seed0_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_enabled_seed1_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_enabled_seed1_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_enabled_seed2_nonnegative_distance/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "active_clustering_penalties",
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "diagnostic_subset_n",
+        "diagnostic_subset_seed",
+        "elapsed_seconds",
+        "final_diagnostic_loss",
+        "final_step",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "lambda_b",
+        "lambda_c",
+        "lambda_d",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_steps",
+        "method",
+        "numerical_implementation_sensitivity",
+        "numerical_instrumentation",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "pairwise_distance_implementation",
+        "portable_input_file_sha256",
+        "pre_update_trace_steps",
+        "python",
+        "saucie_distance_stabilization",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "task_architecture",
+        "tensorflow",
+        "training_flag_consumers"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_SAUCIE_task_enabled_seed2_nonnegative_distance/training_history.csv": {
+      "columns": [
+        {
+          "name": "step",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "total_diagnostic_loss",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "effective_data_passes",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "reconstruction_loss_recon",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "clustering_loss_c",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "intracluster_distances_loss_d",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 100
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed0/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed0/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed0_longer_budget/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "attempt",
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "kmp_affinity",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_budget_extension",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed0_longer_budget/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 76
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed1/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed1/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed2/run_metadata.json": {
+      "format": "json",
+      "object_keys": [
+        "batch_size",
+        "biological_replicates",
+        "checkpoint_stability_rule_met",
+        "checkpoints",
+        "configuration",
+        "dataset",
+        "elapsed_seconds",
+        "final_epoch",
+        "final_reconstruction_error",
+        "input",
+        "input_file_sha256",
+        "input_serialization",
+        "input_shape",
+        "instrumentation",
+        "latent_dimension",
+        "loss_definition",
+        "max_epochs",
+        "max_steps",
+        "maximum_epochs",
+        "method",
+        "numpy",
+        "original_counts_file_sha256",
+        "out_dir",
+        "portable_input_file_sha256",
+        "python",
+        "saucie_source",
+        "seed",
+        "source_sha256",
+        "status",
+        "tensorflow"
+      ]
+    },
+    "data/source_data/deep_controls/pbmc3k_scScope_recurrent_latent_seed2/training_history.csv": {
+      "columns": [
+        {
+          "name": "epoch",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "reconstruction_error",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "relative_checkpoint_change",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "latent_dimension",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 24
+    },
+    "data/source_data/deep_controls/training_completion.csv": {
+      "columns": [
+        {
+          "name": "dataset",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "configuration",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "maximum_budget_extension",
+          "observed_types": [
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "name": "final_epoch",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "name": "final_step",
+          "observed_types": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "name": "checkpoint_stability_rule_met",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "saucie_distance_stabilization",
+          "observed_types": [
+            "boolean",
+            "null"
+          ]
+        },
+        {
+          "name": "elapsed_seconds",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 42
+    },
+    "data/source_data/reference_attribution/Supplementary_Fig_S20_conceptual_source.json": {
+      "data_source_class": "D0",
+      "edges": 8,
+      "evidence_panels": 0,
+      "format": "json",
+      "nodes": 9
+    },
+    "data/source_data/reference_attribution/crossed_root_agreement.csv": {
+      "columns": [
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "expression_root",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "representation_root",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "scope",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "mask",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_scope",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "same_root",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_pairs",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "signed_spearman",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "kendall_tau_b",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "absolute_spearman",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "absolute_distance_spearman",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "rank_mae_direct",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "rank_mae_reversed",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "rank_mae_best_orientation",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "best_orientation",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "rho_negative",
+          "observed_types": [
+            "boolean"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 10800
+    },
+    "data/source_data/reference_attribution/fixed_side_contrasts.csv": {
+      "columns": [
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "scope",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "metric",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "varied_side",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "fixed_root",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "root_a",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "root_b",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "value_a",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "value_b",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "delta_b_minus_a",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 21600
+    },
+    "data/source_data/reference_attribution/legacy_geometry_continuum.csv": {
+      "columns": [
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "expression_root",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "scope",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_pairs",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "pseudotime_distance_correlation",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "local_pseudotime_retention",
+          "observed_types": [
+            "null",
+            "number"
+          ]
+        },
+        {
+          "name": "distance_cutoff_secondary",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "distance_cutoff_met",
+          "observed_types": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "local_cutoff_secondary",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "local_cutoff_met",
+          "observed_types": [
+            "boolean",
+            "null"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 900
+    },
+    "data/source_data/reference_attribution/marker_consistency.csv": {
+      "columns": [
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "seed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "root_definition",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "lineage",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "mask",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "lineage_program_spearman",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "progenitor_program_spearman",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 1472
+    },
+    "data/source_data/reference_attribution/matched_root_seed_summary.csv": {
+      "columns": [
+        {
+          "name": "method",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "scope",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "expression_root",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_seeds",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "signed_rho_median",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "signed_rho_min",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "signed_rho_max",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "distance_rho_median",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "distance_rho_min",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "distance_rho_max",
+          "observed_types": [
+            "number"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 180
+    },
+    "data/source_data/reference_attribution/reference_root_concordance.csv": {
+      "columns": [
+        {
+          "name": "expression_root_a",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "expression_root_b",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "scope",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "mask",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "n_scope",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_coverage_changed",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_cells",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "n_pairs",
+          "observed_types": [
+            "integer"
+          ]
+        },
+        {
+          "name": "signed_spearman",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "kendall_tau_b",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "absolute_spearman",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "absolute_distance_spearman",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "rank_mae_direct",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "rank_mae_reversed",
+          "observed_types": [
+            "number"
+          ]
+        },
+        {
+          "name": "rank_mae_best_orientation",
+          "observed_types": [
+            "integer",
+            "number"
+          ]
+        },
+        {
+          "name": "best_orientation",
+          "observed_types": [
+            "string"
+          ]
+        },
+        {
+          "name": "rho_negative",
+          "observed_types": [
+            "boolean"
+          ]
+        }
+      ],
+      "format": "csv",
+      "rows": 240
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S18_deep_controls.pdf": {
+      "conceptual": false,
+      "figure": "S18",
+      "format": "pdf"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S18_deep_controls.png": {
+      "conceptual": false,
+      "figure": "S18",
+      "format": "png"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S18_deep_controls.svg": {
+      "conceptual": false,
+      "figure": "S18",
+      "format": "svg"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S19_reference_attribution.pdf": {
+      "conceptual": false,
+      "figure": "S19",
+      "format": "pdf"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S19_reference_attribution.png": {
+      "conceptual": false,
+      "figure": "S19",
+      "format": "png"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S19_reference_attribution.svg": {
+      "conceptual": false,
+      "figure": "S19",
+      "format": "svg"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S20_decision_map.pdf": {
+      "conceptual": true,
+      "figure": "S20",
+      "format": "pdf"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S20_decision_map.png": {
+      "conceptual": true,
+      "figure": "S20",
+      "format": "png"
+    },
+    "outputs/supplementary_figures/Supplementary_Fig_S20_decision_map.svg": {
+      "conceptual": true,
+      "figure": "S20",
+      "format": "svg"
+    },
+    "outputs/tables/Additional_file_3_Supplementary_Tables.xlsx": {
+      "format": "xlsx",
+      "sheets": [
+        "README",
+        "ST1_DatasetRegistry",
+        "ST2_AnalysisObjects",
+        "ST3_MathSpecifications",
+        "ST4_DiagnosticCriteria",
+        "ST5_BiologicalDefinitions",
+        "ST6_MethodSettings",
+        "ST7_BoundarySensitivity",
+        "ST8_SeedStability",
+        "ST9_SpecificationSensitivity",
+        "ST10_LocalCalibration",
+        "ST11_ContinuumCalibration",
+        "ST12_RobustnessTransitions",
+        "ST13_SimulationReplication",
+        "ST14_DownstreamResults",
+        "ST15_NullCalibration",
+        "ST16_scVIGeometry",
+        "ST17_SpecificationExtension",
+        "ST18_ConfigurationControls",
+        "ST19_ReferenceAttribution"
+      ]
+    }
+  },
+  "hash_meanings": {
+    "sha256": "Actual published file bytes, verified after writing.",
+    "source_id": "Semantic relative identity, never a private absolute path.",
+    "source_sha256": "Certified original metadata bytes for sanitized metadata; source bytes otherwise."
+  },
+  "inventory_fields": [
+    "path",
+    "role",
+    "bytes",
+    "sha256",
+    "source_id",
+    "source_sha256",
+    "transformation",
+    "schema"
+  ],
+  "ownership": "Only these derived public files may be replaced; no files are deleted.",
+  "path_base": "public code repository root",
+  "schema_version": 1,
+  "scope": {
+    "S20_is_conceptual_not_empirical": true,
+    "computational_not_biological_replicates": true,
+    "deep_fits": 42,
+    "endpoint_rows": 162,
+    "fit_completion_is_convergence": false,
+    "per_cell_records": false,
+    "raw_arrays": false,
+    "stability_pairs": 12
+  }
+}

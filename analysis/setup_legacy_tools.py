@@ -5,21 +5,26 @@ from __future__ import annotations
 import subprocess
 from pathlib import Path
 
-from analysis.paths import ANALYSIS_ROOT
+from analysis.legacy_runtime import SAUCIE_COMMIT, legacy_source
 
 
 SAUCIE_REPOSITORY = "https://github.com/KrishnaswamyLab/SAUCIE.git"
-SAUCIE_COMMIT = "5ab7976fc8d19a3823b6005f51736dc70f2017fb"
 
 
 def main() -> None:
-    target = ANALYSIS_ROOT / "external" / "SAUCIE"
+    target = legacy_source()
     target.parent.mkdir(parents=True, exist_ok=True)
     if not target.exists():
-        subprocess.run(["git", "clone", SAUCIE_REPOSITORY, str(target)], check=True)
-    subprocess.run(["git", "-C", str(target), "fetch", "origin"], check=True)
-    subprocess.run(["git", "-C", str(target), "checkout", "--detach", SAUCIE_COMMIT], check=True)
-    observed = subprocess.check_output(["git", "-C", str(target), "rev-parse", "HEAD"], text=True).strip()
+        subprocess.run(["git", "-c", "core.longpaths=true", "clone", SAUCIE_REPOSITORY, str(target)], check=True)
+    if not (target / ".git").exists():
+        raise RuntimeError("SAUCIE source directory is not a Git checkout; preserve it and select a new SCDR_SAUCIE_SOURCE.")
+    git = ["git", "-c", "core.longpaths=true", "-C", str(target)]
+    dirty = subprocess.check_output([*git, "status", "--porcelain", "--untracked-files=all"], text=True).strip()
+    if dirty:
+        raise RuntimeError("SAUCIE checkout has local changes; preserve them and select a clean SCDR_SAUCIE_SOURCE.")
+    subprocess.run([*git, "fetch", "origin"], check=True)
+    subprocess.run([*git, "checkout", "--detach", SAUCIE_COMMIT], check=True)
+    observed = subprocess.check_output([*git, "rev-parse", "HEAD"], text=True).strip()
     if observed != SAUCIE_COMMIT:
         raise RuntimeError(f"Unexpected SAUCIE revision: {observed}")
     print(f"SAUCIE source ready at {target} ({observed})")

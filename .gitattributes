@@ -1,1 +1,8 @@
 * text=auto
+data/source_data/deep_controls/** -text
+data/source_data/reference_attribution/** -text
+data/source_data/control_plot_data_inventory.json -text
+data/source_data/control_plot_data_schema.json -text
+outputs/supplementary_figures/Supplementary_Fig_S18_* -text
+outputs/supplementary_figures/Supplementary_Fig_S19_* -text
+outputs/supplementary_figures/Supplementary_Fig_S20_* -text

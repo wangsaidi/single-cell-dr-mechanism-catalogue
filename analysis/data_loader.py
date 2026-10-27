@@ -10,6 +10,7 @@ from analysis.paths import RAW_CACHE_DIR, ensure_analysis_dirs
 def load_pbmc3k():
     """Return Scanpy PBMC3k processed data and matched integer counts."""
     ensure_analysis_dirs()
+    sc.settings.datasetdir = RAW_CACHE_DIR / "scanpy_public"
     proc_path = RAW_CACHE_DIR / "pbmc3k_processed.h5ad"
     counts_path = RAW_CACHE_DIR / "pbmc3k_counts.h5ad"
     if proc_path.exists() and counts_path.exists():
@@ -33,6 +34,7 @@ def load_pbmc3k():
 def load_paul15():
     """Return the public Paul15 count object distributed through Scanpy."""
     ensure_analysis_dirs()
+    sc.settings.datasetdir = RAW_CACHE_DIR / "scanpy_public"
     path = RAW_CACHE_DIR / "paul15.h5ad"
     if not path.exists():
         sc.datasets.paul15().write_h5ad(path, compression="gzip")

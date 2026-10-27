@@ -27,6 +27,8 @@ from scipy import sparse
 from scvi.model import SCVI
 
 from analysis.paths import LOGS_DIR as ANALYSIS_LOGS_DIR, MANIFEST_PATH, REPO_ROOT, RESULTS_DIR
+from analysis.paths import display_path, analysis_input_path
+from analysis.execution import SMOKE, SEEDS
 
 ROOT = REPO_ROOT
 MANIFEST = MANIFEST_PATH
@@ -35,7 +37,6 @@ LOG_DIR = ANALYSIS_LOGS_DIR
 
 DATASETS = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
 LATENT_DIMS = [2, 10]
-SEEDS = [0, 1, 2, 3, 4]
 
 MODEL_CONFIG = {
     "n_layers": 1,
@@ -47,11 +48,11 @@ MODEL_CONFIG = {
 }
 
 TRAIN_CONFIG = {
-    "max_epochs": 200,
+    "max_epochs": 2 if SMOKE else 200,
     "train_size": 0.9,
     "validation_size": 0.1,
     "batch_size": 128,
-    "early_stopping": True,
+    "early_stopping": not SMOKE,
     "early_stopping_patience": 20,
     "accelerator": "cpu",
     "devices": 1,
@@ -168,7 +169,7 @@ def fit_one(
     metadata = {
         "status": "completed",
         "dataset_id": dataset_id,
-        "input_path": str(counts_path.relative_to(ROOT)),
+        "input_path": display_path(counts_path),
         "input_sha256": input_sha256,
         "n_cells": int(adata.n_obs),
         "n_genes": int(adata.n_vars),
@@ -208,7 +209,7 @@ def run(datasets: list[str], latent_dims: list[int], seeds: list[int], force: bo
         if dataset_id not in manifest.index:
             raise KeyError(f"Dataset is absent from the analysis manifest: {dataset_id}")
         record = manifest.loc[dataset_id]
-        counts_path = ROOT / str(record["analysis_counts_path"])
+        counts_path = analysis_input_path(str(record["analysis_counts_path"]))
         input_sha256 = sha256_file(counts_path)
         expected_sha256 = str(record["counts_sha256"])
         if input_sha256 != expected_sha256:

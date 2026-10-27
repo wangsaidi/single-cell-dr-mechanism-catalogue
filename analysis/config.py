@@ -6,6 +6,7 @@ import os
 import random
 
 import numpy as np
+from analysis.execution import SMOKE
 
 
 SEED = 0
@@ -13,8 +14,8 @@ N_HVG = 2000
 N_PCS = 50
 N_NEIGHBORS = 15
 TSNE_PERPLEXITY = 30
-GLMPCA_MAX_ITER = 120
-RANK_PAIRS = 5000
+GLMPCA_MAX_ITER = 3 if SMOKE else 120
+RANK_PAIRS = 500 if SMOKE else 5000
 
 ANCHOR_METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP"]
 METHOD_FAMILY = {

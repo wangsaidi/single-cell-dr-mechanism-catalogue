@@ -1,0 +1,244 @@
+{
+  "active_clustering_penalties": false,
+  "batch_size": 256,
+  "biological_replicates": false,
+  "checkpoint_stability_rule_met": false,
+  "checkpoints": 100,
+  "configuration": "task_architecture_reconstruction",
+  "dataset": "heart_cell_atlas_subsampled",
+  "diagnostic_subset_n": 1024,
+  "diagnostic_subset_seed": 20261027,
+  "elapsed_seconds": 571.2868521213531,
+  "final_diagnostic_loss": 0.02577214129269123,
+  "final_step": 10000,
+  "input": "input_heart_cell_atlas_subsampled_SAUCIE.npz",
+  "input_file_sha256": "bd8234a8f185b485cb6948d0f6f5d5b9ac0bb669d63a298490f0a77df77904cf",
+  "input_serialization": {
+    "allow_pickle": false,
+    "conversion": "unicode_ids_from_hash_validated_counts_X_npy_byte_identical",
+    "counts_hvg_sha256": "0ee339cfd1d2900cd88f55b200685cc35a0d365e7e1f1e12b585993630564ade",
+    "id_provenance": "ordered obs_names/var_names of registered hash-validated count-HVG object; original object IDs compared as exact literal strings by restricted symbolic verification, never unpickled",
+    "legacy_id_verifier_sha256": "a7e873bbff52f5585ae90e4afe7a7d197aaf23afa1572e3686e9d07381f4dfe4",
+    "numeric_X_dtype": "float32",
+    "numeric_X_npy_byte_identical": true,
+    "numeric_X_npy_sha256": "26669dd95a988141728073f7b917dcd9ef5a38cd2b97ca3867c2818d1994891e",
+    "numeric_X_raw_C_sha256": "d5e96943ad34ee642def3baf31c5582ef7df8e1cd51cbdb9ba09ee88350ac363",
+    "numeric_X_shape": [
+      8000,
+      2000
+    ],
+    "object_id_payloads_deserialized": false,
+    "ordered_cell_ids_sha256": "1476f7ab2ca639bbb635fe9a293d0dfbaa6017d535ddc768bb3c0a09a90eb113",
+    "ordered_gene_ids_sha256": "424833d0d5e594f0424b7ffeed7a1b9b640dcec1f9d5bb3bc02ea90da5c1fb69",
+    "ordered_id_hash_encoding": "SHA256 of UTF-8 JSON string list, ensure_ascii=False, separators=(',', ':')",
+    "portable_id_dtypes": {
+      "cell_ids": "<U34",
+      "gene_ids": "<U14"
+    },
+    "portable_npz_sha256": "6470c856370fd80f6b347d1578e49c58e821e3d68d4e72f0f77e75a90000b967",
+    "processed_object_sha256": "8c9efe695ce7ef775092b45906189bda38ba255089fe90846f70b8474437a313",
+    "schema_version": 1,
+    "source_id_dtypes": {
+      "cell_ids": "object",
+      "gene_ids": "object"
+    },
+    "source_id_npy_sha256": {
+      "cell_ids": "85aac8887c7b8ab623f6604584c2a7b643a7901ee146286ad0ffd6eba8f22920",
+      "gene_ids": "60f5186797ea81c4c7818d4d1b3cff867094e6c6e79ceb58b20edcd28e0ea4d9"
+    },
+    "source_id_shapes": {
+      "cell_ids": [
+        8000
+      ],
+      "gene_ids": [
+        2000
+      ]
+    },
+    "source_id_symbolic_proofs": {
+      "cell_ids": {
+        "frames": [
+          {
+            "length": 65550,
+            "position": 2
+          },
+          {
+            "length": 65562,
+            "position": 65561
+          },
+          {
+            "length": 65554,
+            "position": 131132
+          },
+          {
+            "length": 65556,
+            "position": 196695
+          },
+          {
+            "length": 17107,
+            "position": 262260
+          }
+        ],
+        "globals_recorded_as_inert_symbols": [
+          [
+            "numpy._core.multiarray",
+            "_reconstruct"
+          ],
+          [
+            "numpy",
+            "ndarray"
+          ],
+          [
+            "numpy",
+            "dtype"
+          ]
+        ],
+        "header": {
+          "dtype": "|O",
+          "fortran_order": false,
+          "hasobject": true,
+          "header_bytes": 128,
+          "npy_version": [
+            1,
+            0
+          ],
+          "shape": [
+            8000
+          ]
+        },
+        "member_sha256": "85aac8887c7b8ab623f6604584c2a7b643a7901ee146286ad0ffd6eba8f22920",
+        "opcode_counts": {
+          "APPENDS": 8,
+          "BINGET": 1,
+          "BININT": 2,
+          "BININT1": 4,
+          "BININT2": 1,
+          "BUILD": 2,
+          "EMPTY_LIST": 1,
+          "FRAME": 5,
+          "MARK": 10,
+          "MEMOIZE": 8020,
+          "NEWFALSE": 2,
+          "NEWTRUE": 1,
+          "NONE": 3,
+          "PROTO": 1,
+          "REDUCE": 2,
+          "SHORT_BINBYTES": 1,
+          "SHORT_BINUNICODE": 8007,
+          "STACK_GLOBAL": 3,
+          "STOP": 1,
+          "TUPLE": 2,
+          "TUPLE1": 2,
+          "TUPLE3": 2
+        },
+        "ordered_ids_sha256": "1476f7ab2ca639bbb635fe9a293d0dfbaa6017d535ddc768bb3c0a09a90eb113",
+        "pickle_instructions_executed": false,
+        "pickle_payload_sha256": "b130fd3b6f736bf9236371fbbda3c302a89e8284997c1254ae01860501cdcc7c",
+        "pickle_protocol": 4,
+        "reduce_count": 2
+      },
+      "gene_ids": {
+        "frames": [
+          {
+            "length": 19318,
+            "position": 2
+          }
+        ],
+        "globals_recorded_as_inert_symbols": [
+          [
+            "numpy._core.multiarray",
+            "_reconstruct"
+          ],
+          [
+            "numpy",
+            "ndarray"
+          ],
+          [
+            "numpy",
+            "dtype"
+          ]
+        ],
+        "header": {
+          "dtype": "|O",
+          "fortran_order": false,
+          "hasobject": true,
+          "header_bytes": 128,
+          "npy_version": [
+            1,
+            0
+          ],
+          "shape": [
+            2000
+          ]
+        },
+        "member_sha256": "60f5186797ea81c4c7818d4d1b3cff867094e6c6e79ceb58b20edcd28e0ea4d9",
+        "opcode_counts": {
+          "APPENDS": 2,
+          "BINGET": 1,
+          "BININT": 2,
+          "BININT1": 4,
+          "BININT2": 1,
+          "BUILD": 2,
+          "EMPTY_LIST": 1,
+          "FRAME": 1,
+          "MARK": 4,
+          "MEMOIZE": 2020,
+          "NEWFALSE": 2,
+          "NEWTRUE": 1,
+          "NONE": 3,
+          "PROTO": 1,
+          "REDUCE": 2,
+          "SHORT_BINBYTES": 1,
+          "SHORT_BINUNICODE": 2007,
+          "STACK_GLOBAL": 3,
+          "STOP": 1,
+          "TUPLE": 2,
+          "TUPLE1": 2,
+          "TUPLE3": 2
+        },
+        "ordered_ids_sha256": "424833d0d5e594f0424b7ffeed7a1b9b640dcec1f9d5bb3bc02ea90da5c1fb69",
+        "pickle_instructions_executed": false,
+        "pickle_payload_sha256": "9c77edc12f35e38cd53b67c4e310a166795fe63503e899ff6671f2c42b5a698a",
+        "pickle_protocol": 4,
+        "reduce_count": 2
+      }
+    },
+    "source_id_values_compared": {
+      "cell_ids": true,
+      "gene_ids": true
+    },
+    "source_npz_sha256": "bd8234a8f185b485cb6948d0f6f5d5b9ac0bb669d63a298490f0a77df77904cf",
+    "training_input_sha256_preserved": true,
+    "training_inputs_modified": false
+  },
+  "input_shape": [
+    8000,
+    2000
+  ],
+  "kmp_affinity": "disabled",
+  "lambda_b": 0,
+  "lambda_c": 0,
+  "lambda_d": 0,
+  "latent_dimension": 2,
+  "loss_definition": "raw objective components averaged over fixed diagnostic training subset; not independent validation",
+  "max_epochs": 600,
+  "max_steps": 10000,
+  "maximum_steps": 10000,
+  "method": "SAUCIE",
+  "numerical_implementation_sensitivity": false,
+  "numerical_instrumentation": "original losses, gradients and division operands observed without epsilon/clipping or optimizer changes; failure is fatal and raw state is retained",
+  "numpy": "1.18.5",
+  "original_counts_file_sha256": "0ee339cfd1d2900cd88f55b200685cc35a0d365e7e1f1e12b585993630564ade",
+  "out_dir": "heart_cell_atlas_subsampled_SAUCIE_task_architecture_reconstruction_seed0",
+  "pairwise_distance_implementation": "original float32 squared-distance formula",
+  "portable_input_file_sha256": "6470c856370fd80f6b347d1578e49c58e821e3d68d4e72f0f77e75a90000b967",
+  "pre_update_trace_steps": 0,
+  "python": "3.7.16 (default, Jan 17 2023, 16:06:28) [MSC v.1916 64 bit (AMD64)]",
+  "saucie_distance_stabilization": false,
+  "saucie_source": "external/SAUCIE",
+  "seed": 0,
+  "source_sha256": "5c4713d9195c8cef05e040d521319774df64432a463e98108b4deca033817308",
+  "status": "complete",
+  "task_architecture": true,
+  "tensorflow": "1.15.0",
+  "training_flag_consumers": []
+}

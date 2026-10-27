@@ -28,6 +28,8 @@ from sklearn.manifold import trustworthiness
 from sklearn.neighbors import NearestNeighbors
 
 from analysis.paths import ANALYSIS_OBJECTS_DIR, ANCHOR_EMBEDDINGS_DIR, REPO_ROOT, RESULTS_DIR
+from analysis.paths import SCVI_EMBEDDINGS_DIR
+from analysis.execution import SMOKE, SEEDS
 
 DATASETS = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"]
@@ -42,7 +44,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def select_cells(labels, target=1000):
+def select_cells(labels, target=200 if SMOKE else 1000):
     rng = np.random.default_rng(SUBSET_SEED)
     groups = {x: np.flatnonzero(labels == x) for x in np.unique(labels)}
     target = min(target, len(labels))
@@ -65,7 +67,8 @@ def pair_indices(n):
     rng = np.random.default_rng(SEED)
     i, j = rng.integers(0, n, (2, 6000))
     keep = i != j
-    return i[keep][:5000], j[keep][:5000]
+    limit = 500 if SMOKE else 5000
+    return i[keep][:limit], j[keep][:limit]
 
 
 def ranked(x):
@@ -141,6 +144,8 @@ def run(b, scvi_dir, out, export_plot_data=False):
     out.mkdir(parents=True, exist_ok=True)
     design = json.loads((REPO_ROOT / "analysis/calibration_design.json").read_text())
     design["permutations"] = b
+    if SMOKE:
+        design.update(execution_scale="smoke_not_publication", subset_cells_per_dataset=200, sampled_nonself_pairs=500, embedding_seeds=SEEDS)
     (out / "analysis_design.json").write_text(json.dumps(design, indent=2))
     rows, donor_rows, continuum_rows, scvi_full, reference_rows, stability_rows = [], [], [], [], [], []
     subsets, provenance, null_store = [], [], []
@@ -155,7 +160,7 @@ def run(b, scvi_dir, out, export_plot_data=False):
     for ds in DATASETS:
         obj_path = ANALYSIS_OBJECTS_DIR / f"{ds}_proc.h5ad"
         ad = sc.read_h5ad(obj_path)
-        field = str(ad.uns.get("ijbs_label_field", ""))
+        field = str(ad.uns.get("analysis_label_field", ad.uns.get("ijbs_label_field", "")))
         if field not in ad.obs:
             raise ValueError(f"Missing annotation field for {ds}")
         labels_full = ad.obs[field].astype(str).to_numpy()
@@ -229,7 +234,7 @@ def run(b, scvi_dir, out, export_plot_data=False):
         full_ref_nn = neighbours(high)
         scvi_nn, scvi_pair_ranks = {}, {}
         for dim in [2, 10]:
-            for seed in range(5):
+            for seed in SEEDS:
                 path = embedding(ds, "scVI", dim, seed, scvi_dir)
                 z = np.load(path).astype(float)
                 if z.shape != (ad.n_obs, dim) or not np.isfinite(z).all():
@@ -244,7 +249,7 @@ def run(b, scvi_dir, out, export_plot_data=False):
                     rnn = neighbours(ref[:, :ref_dim]); znn = neighbours(z[selection])
                     value = float(np.mean([len(set(a) & set(c)) / K for a, c in zip(rnn, znn)]))
                     reference_rows.append({"dataset_id": ds, "output_dimension": dim, "seed": seed, "reference_dimension": ref_dim, "metric": "local_retention", "value": value, "n_cells": n, "k": K})
-            for first, second in combinations(range(5), 2):
+            for first, second in combinations(SEEDS, 2):
                 overlap = float(np.mean([len(set(a) & set(c)) / K for a, c in zip(scvi_nn[dim, first], scvi_nn[dim, second])]))
                 for metric, value in [("neighbour_overlap", overlap), ("distance_rank_stability", float(scvi_pair_ranks[dim, first] @ scvi_pair_ranks[dim, second]))]:
                     stability_rows.append({"dataset_id": ds, "output_dimension": dim, "seed_a": first, "seed_b": second, "metric": metric, "value": value, "n_cells": ad.n_obs, "k": K, "sampled_pairs": len(full_i)})
@@ -304,7 +309,7 @@ def run(b, scvi_dir, out, export_plot_data=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--permutations", type=int, default=1999)
-    parser.add_argument("--scvi-dir", type=Path, default=RESULTS_DIR / "embeddings")
+    parser.add_argument("--scvi-dir", type=Path, default=SCVI_EMBEDDINGS_DIR)
     parser.add_argument("--output", type=Path, default=RESULTS_DIR / "calibration")
     parser.add_argument("--export-plot-data", action="store_true")
     args = parser.parse_args()

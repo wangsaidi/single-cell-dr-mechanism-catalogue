@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
 from pathlib import Path
 
@@ -12,6 +13,8 @@ import scanpy as sc
 from scipy import sparse
 
 from analysis import config, diagnostics
+from analysis.execution import SMOKE
+from analysis.paths import display_path, analysis_input_path
 from analysis.paths import (
     ANALYSIS_OBJECTS_DIR,
     MANIFEST_PATH,
@@ -27,13 +30,13 @@ SOURCE_DIR = SOURCE_RESULTS_DIR
 ANALYSIS_DIR = ANALYSIS_OBJECTS_DIR
 ROBUST_DIR = ROBUSTNESS_EMBEDDINGS_DIR
 
-OUTPUT_DIMS = [2, 3, 5, 10, 20]
-UPSTREAM_PCS = [20, 50, 100]
+OUTPUT_DIMS = [2, 10] if SMOKE else [2, 3, 5, 10, 20]
+UPSTREAM_PCS = [20] if SMOKE else [20, 50, 100]
 ROBUST_METHODS = ["PCA", "UMAP", "PHATE", "PaCMAP"]
 UPSTREAM_METHODS = ["UMAP", "PHATE", "t-SNE", "PaCMAP"]
 SIM_METHODS = ["PCA", "UMAP", "PHATE", "t-SNE", "PaCMAP"]
 PERTURB_LEVELS = [0.0, 0.2, 0.4]
-PERTURB_REPLICATES = [0, 1]
+PERTURB_REPLICATES = [0] if SMOKE else [0, 1]
 
 
 def _sha256(path: Path) -> str:
@@ -53,7 +56,7 @@ def _read_manifest() -> pd.DataFrame:
 def _load_proc(dataset_id: str):
     manifest = _read_manifest()
     row = manifest.loc[manifest["dataset_id"] == dataset_id].iloc[0]
-    return sc.read_h5ad(ROOT / row["analysis_proc_path"]), row
+    return sc.read_h5ad(analysis_input_path(str(row["analysis_proc_path"]))), row
 
 
 def _compute_pca_space(proc, n_pcs: int) -> np.ndarray:
@@ -79,6 +82,7 @@ def _embed_from_reference(X_ref: np.ndarray, method: str, n_components: int, see
             min_dist=0.5,
             random_state=seed,
             n_components=n_components,
+            n_epochs=20 if SMOKE else None,
         )
         return np.asarray(reducer.fit_transform(X_ref), dtype=np.float32)
     if method == "PHATE":
@@ -146,7 +150,7 @@ def _metric_bundle(dataset_id: str, method: str, labels, X_ref: np.ndarray, Z: n
     return rows
 
 
-def write_output_dimension_response() -> Path:
+def write_output_dimension_response(force: bool = False) -> Path:
     rows = []
     for dataset_id in ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]:
         proc, meta = _load_proc(dataset_id)
@@ -157,10 +161,12 @@ def write_output_dimension_response() -> Path:
             for dim in OUTPUT_DIMS:
                 try:
                     cache = ROBUST_DIR / f"dim_{dataset_id}_{method}_{dim}.npy"
-                    if cache.exists():
+                    if cache.exists() and not force:
                         Z = np.load(cache)
                     else:
                         Z = _embed_from_reference(X_ref, method, dim, config.SEED)
+                        if Z.shape != (proc.n_obs, dim) or not np.isfinite(Z).all():
+                            raise ValueError(f"Invalid robustness embedding shape/finiteness: {Z.shape}")
                         cache.parent.mkdir(parents=True, exist_ok=True)
                         np.save(cache, Z.astype(np.float32))
                     rows.extend(
@@ -197,7 +203,7 @@ def write_output_dimension_response() -> Path:
     return out
 
 
-def write_upstream_pca_response() -> Path:
+def write_upstream_pca_response(force: bool = False) -> Path:
     rows = []
     for dataset_id in ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]:
         proc, meta = _load_proc(dataset_id)
@@ -208,10 +214,12 @@ def write_upstream_pca_response() -> Path:
             for method in UPSTREAM_METHODS:
                 try:
                     cache = ROBUST_DIR / f"upstream_{dataset_id}_{method}_pca{n_pcs}.npy"
-                    if cache.exists():
+                    if cache.exists() and not force:
                         Z = np.load(cache)
                     else:
                         Z = _embed_from_reference(X_ref, method, 2, config.SEED)
+                        if Z.shape != (proc.n_obs, 2) or not np.isfinite(Z).all():
+                            raise ValueError(f"Invalid robustness embedding shape/finiteness: {Z.shape}")
                         cache.parent.mkdir(parents=True, exist_ok=True)
                         np.save(cache, Z.astype(np.float32))
                     rows.extend(
@@ -491,11 +499,14 @@ def write_method_coverage() -> Path:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--force", action="store_true", help="Refit dimension and upstream caches; other axes always refit.")
+    args = parser.parse_args()
     ensure_analysis_dirs()
     SOURCE_DIR.mkdir(parents=True, exist_ok=True)
     ROBUST_DIR.mkdir(parents=True, exist_ok=True)
-    dim_out = write_output_dimension_response()
-    upstream_out = write_upstream_pca_response()
+    dim_out = write_output_dimension_response(force=args.force)
+    upstream_out = write_upstream_pca_response(force=args.force)
     perturb_out = write_dropout_noise_response()
     sim_out = write_known_truth_simulation()
     coverage_out = write_method_coverage()
@@ -509,7 +520,11 @@ def main() -> None:
     )
     paths = [dim_out, upstream_out, perturb_out, sim_out, coverage_out, worst_out, practice_out, SOURCE_DIR / "fig6_known_truth_simulation_design.json"]
     hash_out = SOURCE_DIR / "fig6_robustness_source_data.sha256.txt"
-    hash_out.write_text("\n".join(f"{_sha256(path)}  {path.relative_to(ROOT)}" for path in paths) + "\n", encoding="utf-8")
+    hash_out.write_text("\n".join(f"{_sha256(path)}  {display_path(path)}" for path in paths) + "\n", encoding="utf-8")
+    failed = [str(path) for path in (dim_out, upstream_out, perturb_out, sim_out)
+              if pd.read_csv(path)["support"].eq("not_run").any()]
+    if failed:
+        raise RuntimeError(f"Robustness fits failed; inspect {failed}")
     for path in paths:
         print(f"wrote {path}")
     print(f"wrote {hash_out}")

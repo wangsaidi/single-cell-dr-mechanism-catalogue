@@ -11,13 +11,14 @@ import numpy as np
 import pandas as pd
 
 from analysis.paths import LOGS_DIR, RESULTS_DIR
+from analysis.execution import SMOKE, SEEDS as EXECUTION_SEEDS
 
 BASE = RESULTS_DIR
 LOGS = LOGS_DIR
 METHODS = {"PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"}
 DATASETS = {"pbmc3k", "paul15", "heart_cell_atlas_subsampled"}
 ROOTS = {"7MEP_centroid", "9GMP_centroid", "1Ery_centroid", "stored_8Mk_root"}
-SEEDS = set(range(5))
+SEEDS = set(EXECUTION_SEEDS)
 
 
 def root_grid_errors(frame: pd.DataFrame) -> list[str]:
@@ -65,8 +66,9 @@ def main() -> None:
 
     clustering = read("downstream_clustering/clustering_metrics_by_resolution.csv")
     checks["clustering_rows"] = int(clustering.shape[0])
-    if clustering.shape[0] != 1728:
-        errors.append(f"clustering rows {clustering.shape[0]} != 1728")
+    expected = 162 if SMOKE else 1728
+    if clustering.shape[0] != expected:
+        errors.append(f"clustering rows {clustering.shape[0]} != {expected}")
     check_methods(clustering, "clustering", errors)
     if set(clustering["dataset_id"].astype(str)) != DATASETS:
         errors.append("clustering: incomplete dataset coverage")
@@ -84,13 +86,15 @@ def main() -> None:
 
     cluster_summary = read("downstream_clustering/clustering_resolution_summaries.csv")
     checks["clustering_summary_rows"] = int(cluster_summary.shape[0])
-    if cluster_summary.shape[0] != 135:
-        errors.append(f"clustering summary rows {cluster_summary.shape[0]} != 135")
+    expected = 54 if SMOKE else 135
+    if cluster_summary.shape[0] != expected:
+        errors.append(f"clustering summary rows {cluster_summary.shape[0]} != {expected}")
 
     stability = read("downstream_clustering/clustering_seed_stability.csv")
     checks["clustering_seed_stability_rows"] = int(stability.shape[0])
-    if stability.shape[0] != 2160:
-        errors.append(f"clustering seed-stability rows {stability.shape[0]} != 2160")
+    expected = 54 if SMOKE else 2160
+    if stability.shape[0] != expected:
+        errors.append(f"clustering seed-stability rows {stability.shape[0]} != {expected}")
     finite_columns(
         stability,
         ["partition_adjusted_rand_index", "partition_normalized_mutual_information"],
@@ -105,8 +109,9 @@ def main() -> None:
 
     marker = read("marker_concordance/marker_concordance_by_resolution.csv")
     checks["marker_summary_rows"] = int(marker.shape[0])
-    if marker.shape[0] != 144:
-        errors.append(f"marker summary rows {marker.shape[0]} != 144")
+    expected = 36 if SMOKE else 144
+    if marker.shape[0] != expected:
+        errors.append(f"marker summary rows {marker.shape[0]} != {expected}")
     check_methods(marker, "marker concordance", errors)
     finite_columns(
         marker,
@@ -122,8 +127,9 @@ def main() -> None:
 
     trajectory = read("trajectory/trajectory_outcomes.csv")
     checks["trajectory_rows"] = int(trajectory.shape[0])
-    if trajectory.shape[0] != 45:
-        errors.append(f"trajectory rows {trajectory.shape[0]} != 45")
+    expected = 18 if SMOKE else 45
+    if trajectory.shape[0] != expected:
+        errors.append(f"trajectory rows {trajectory.shape[0]} != {expected}")
     check_methods(trajectory, "trajectory", errors)
     finite_columns(
         trajectory,
@@ -134,8 +140,9 @@ def main() -> None:
 
     lineage = read("trajectory/lineage_marker_monotonicity.csv")
     checks["lineage_marker_rows"] = int(lineage.shape[0])
-    if lineage.shape[0] != 180:
-        errors.append(f"lineage marker rows {lineage.shape[0]} != 180")
+    expected = 72 if SMOKE else 180
+    if lineage.shape[0] != expected:
+        errors.append(f"lineage marker rows {lineage.shape[0]} != {expected}")
     finite_columns(
         lineage,
         ["lineage_program_spearman", "progenitor_program_spearman"],
@@ -155,8 +162,9 @@ def main() -> None:
 
     donor_folds = read("donor_predictability/heart_predictability_folds.csv")
     checks["donor_fold_rows"] = int(donor_folds.shape[0])
-    if donor_folds.shape[0] != 450:
-        errors.append(f"donor fold rows {donor_folds.shape[0]} != 450")
+    expected = 180 if SMOKE else 450
+    if donor_folds.shape[0] != expected:
+        errors.append(f"donor fold rows {donor_folds.shape[0]} != {expected}")
     check_methods(donor_folds, "donor predictability", errors)
     finite_columns(
         donor_folds,
@@ -168,7 +176,7 @@ def main() -> None:
     donor_level = read("donor_predictability/heart_cell_type_predictability_by_donor.csv")
     checks["donor_level_rows"] = int(donor_level.shape[0])
     checks["n_donors"] = int(donor_level["donor"].nunique())
-    expected_donor_rows = 9 * 5 * int(donor_level["donor"].nunique())
+    expected_donor_rows = 9 * len(SEEDS) * int(donor_level["donor"].nunique())
     if donor_level.shape[0] != expected_donor_rows:
         errors.append(f"donor-level rows {donor_level.shape[0]} != {expected_donor_rows}")
     finite_columns(
@@ -180,8 +188,9 @@ def main() -> None:
 
     dimension_cluster = read("dimension_sensitivity/output_dimension_clustering_summary.csv")
     checks["dimension_clustering_rows"] = int(dimension_cluster.shape[0])
-    if dimension_cluster.shape[0] != 78:
-        errors.append(f"dimension clustering rows {dimension_cluster.shape[0]} != 78")
+    expected = 36 if SMOKE else 78
+    if dimension_cluster.shape[0] != expected:
+        errors.append(f"dimension clustering rows {dimension_cluster.shape[0]} != {expected}")
     finite_columns(
         dimension_cluster,
         [
@@ -195,8 +204,9 @@ def main() -> None:
 
     dimension_trajectory = read("dimension_sensitivity/output_dimension_trajectory_outcomes.csv")
     checks["dimension_trajectory_rows"] = int(dimension_trajectory.shape[0])
-    if dimension_trajectory.shape[0] != 26:
-        errors.append(f"dimension trajectory rows {dimension_trajectory.shape[0]} != 26")
+    expected = 12 if SMOKE else 26
+    if dimension_trajectory.shape[0] != expected:
+        errors.append(f"dimension trajectory rows {dimension_trajectory.shape[0]} != {expected}")
     finite_columns(
         dimension_trajectory,
         ["reference_pseudotime_spearman", "reference_pseudotime_kendall", "branch_neighbour_fraction"],
@@ -224,7 +234,8 @@ def main() -> None:
         if failures:
             errors.append(f"{relative}: {len(failures)} recorded failures")
 
-    result = {"audit_passed": not errors, "errors": errors, "checks": checks}
+    result = {"audit_passed": not errors, "errors": errors, "checks": checks,
+              "execution_scale": "smoke_not_publication" if SMOKE else "publication"}
     LOGS.mkdir(parents=True, exist_ok=True)
     (LOGS / "revision_result_audit.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))

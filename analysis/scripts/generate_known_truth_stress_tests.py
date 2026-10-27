@@ -7,8 +7,8 @@ each scenario has known ground truth and answers one mechanism question.
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
-import os
 import subprocess
 from pathlib import Path
 
@@ -20,6 +20,9 @@ from scipy.stats import spearmanr
 from sklearn.manifold import TSNE
 
 from analysis import config, diagnostics
+from analysis.execution import SMOKE
+from analysis.legacy_runtime import require_legacy_python, legacy_environment, legacy_source
+from analysis.paths import display_path
 from analysis.paths import (
     ANALYSIS_ROOT,
     REPO_ROOT,
@@ -49,7 +52,7 @@ SCENARIOS = [
 METHODS = config.ANCHOR_METHODS
 LEGACY_METHODS = {"scScope", "SAUCIE"}
 # Independent generated datasets, not repeated embeddings of one simulated matrix.
-SIM_REPLICATES = list(range(5))
+SIM_REPLICATES = [0] if SMOKE else list(range(5))
 
 METRIC_THRESHOLDS = {
     "truth_local_retention": 0.30,
@@ -276,7 +279,7 @@ def _glmpca_embedding(counts: np.ndarray, seed: int) -> np.ndarray:
         np.asarray(counts, dtype=np.float32).T,
         2,
         fam="poi",
-        ctl={"maxIter": 80, "eps": 1e-4},
+        ctl={"maxIter": 3 if SMOKE else 80, "eps": 1e-4},
         verbose=False,
     )
     return np.asarray(result["factors"], dtype=np.float32)
@@ -364,9 +367,10 @@ def _project_scscope_latent(
     seed: int,
     scenario: str,
     replicate: int,
+    force: bool = False,
 ) -> np.ndarray:
     output = SIM_DIR / f"{scenario}_rep{replicate}_scscope_recommended_v1_tsne2.npy"
-    cached = _load_finite_cache(output)
+    cached = None if force else _load_finite_cache(output)
     if cached is not None:
         return cached
     coords = TSNE(
@@ -401,25 +405,18 @@ def _project_scscope_latent(
     return coords
 
 
-def _run_legacy_method(counts: np.ndarray, labels: np.ndarray, method: str, seed: int, scenario: str, replicate: int) -> np.ndarray:
+def _run_legacy_method(counts: np.ndarray, labels: np.ndarray, method: str, seed: int, scenario: str, replicate: int, force: bool = False) -> np.ndarray:
     tag = f"mechsim_{scenario}_rep{replicate}_recommended_v1" if method == "scScope" else f"mechsim_{scenario}_rep{replicate}"
     out = _legacy_output_path(method, seed, tag)
-    latent = _load_finite_cache(out)
+    latent = None if force else _load_finite_cache(out)
     if latent is not None:
-        return _project_scscope_latent(latent, seed, scenario, replicate) if method == "scScope" else latent
+        return _project_scscope_latent(latent, seed, scenario, replicate, force=force) if method == "scScope" else latent
 
-    configured_python = os.environ.get("SCDR_LEGACY_PYTHON", "")
-    python_exe = Path(configured_python) if configured_python else Path()
-    if not python_exe.exists():
-        raise FileNotFoundError(
-            "Set SCDR_LEGACY_PYTHON to the Python executable in the recorded Python 3.7 environment."
-        )
+    python_exe = require_legacy_python()
 
     input_path = _prepare_legacy_input(counts, labels, scenario, replicate, method)
     runner = ANALYSIS_ROOT / "legacy_deep_runner.py"
-    saucie_parent = Path(
-        os.environ.get("SCDR_SAUCIE_SOURCE", ANALYSIS_ROOT / "external" / "SAUCIE")
-    )
+    saucie_parent = legacy_source()
     cmd = [
         str(python_exe),
         str(runner),
@@ -438,39 +435,27 @@ def _run_legacy_method(counts: np.ndarray, labels: np.ndarray, method: str, seed
         "--latent-dim",
         "50" if method == "scScope" else "2",
         "--scscope-epochs",
-        "300" if method == "scScope" else "20",
+        str(3 if SMOKE else 300) if method == "scScope" else "20",
         "--scscope-recurrence",
         "2" if method == "scScope" else "1",
         "--saucie-steps",
-        "300",
+        "10" if SMOKE else "300",
         "--saucie-parent",
         str(saucie_parent),
     ]
-    env = os.environ.copy()
-    env["PATH"] = os.pathsep.join(
-        [
-            str(python_exe.parent),
-            str(python_exe.parent / "Library" / "bin"),
-            str(python_exe.parent / "Library" / "mingw-w64" / "bin"),
-            str(python_exe.parent / "DLLs"),
-            str(python_exe.parent / "Scripts"),
-            env.get("PATH", ""),
-        ]
-    )
-    env["PYTHONPATH"] = str(saucie_parent)
-    env.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
+    env = legacy_environment(python_exe, saucie_parent)
     subprocess.run(cmd, check=True, env=env)
     latent = _load_finite_cache(out)
     if latent is None:
         raise FileNotFoundError(f"Legacy runner did not create {out}")
-    return _project_scscope_latent(latent, seed, scenario, replicate) if method == "scScope" else latent
+    return _project_scscope_latent(latent, seed, scenario, replicate, force=force) if method == "scScope" else latent
 
 
-def _embed(counts: np.ndarray, X_ref: np.ndarray, labels: np.ndarray, method: str, seed: int, scenario: str, replicate: int) -> np.ndarray:
+def _embed(counts: np.ndarray, X_ref: np.ndarray, labels: np.ndarray, method: str, seed: int, scenario: str, replicate: int, force: bool = False) -> np.ndarray:
     if method == "GLM-PCA":
         return _glmpca_embedding(counts, seed)
     if method in LEGACY_METHODS:
-        return _run_legacy_method(counts, labels, method, seed, scenario, replicate)
+        return _run_legacy_method(counts, labels, method, seed, scenario, replicate, force=force)
     return _embed_from_reference(X_ref, method, 2, seed)
 
 
@@ -549,7 +534,7 @@ def _not_run_rows(scenario: str, replicate: int, method: str, seed: int, n_cells
     ]
 
 
-def run_suite() -> tuple[Path, Path, Path, Path]:
+def run_suite(force: bool = False) -> tuple[Path, Path, Path, Path]:
     SOURCE_DIR.mkdir(parents=True, exist_ok=True)
     SIM_DIR.mkdir(parents=True, exist_ok=True)
     rows: list[dict[str, object]] = []
@@ -582,9 +567,11 @@ def run_suite() -> tuple[Path, Path, Path, Path]:
                 try:
                     cache_suffix = "_recommended_v1" if method == "scScope" else ""
                     cache = SIM_DIR / f"{scenario}_rep{replicate}_{method.lower().replace('-', '')}{cache_suffix}.npy"
-                    Z = _load_finite_cache(cache)
+                    Z = None if force else _load_finite_cache(cache)
                     if Z is None:
-                        Z = _embed(counts, X_ref, labels, method, seed, scenario, replicate)
+                        Z = _embed(counts, X_ref, labels, method, seed, scenario, replicate, force=force)
+                        if Z.shape != (counts.shape[0], 2) or not np.isfinite(Z).all():
+                            raise ValueError(f"Invalid simulation embedding shape/finiteness: {Z.shape}")
                         np.save(cache, np.asarray(Z, dtype=np.float32))
                     rows.extend(_metric_rows(scenario=scenario, replicate=replicate, method=method, seed=seed, sim=sim, Z=Z))
                 except Exception as exc:
@@ -634,20 +621,27 @@ def run_suite() -> tuple[Path, Path, Path, Path]:
                 "replicates": SIM_REPLICATES,
                 "metric_thresholds": METRIC_THRESHOLDS,
                 "random_seed_base": config.SEED,
+                "force_refit": force,
+                "legacy_batch_sizes": {"scScope": 64, "SAUCIE_effective_default": 256},
             },
             indent=2,
         ),
         encoding="utf-8",
     )
+    if (metric_df["support"] == "not_run").any():
+        raise RuntimeError(f"Simulation fits failed; inspect {out} and {coverage_out}")
     return out, design_out, summary_out, coverage_out
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--force", action="store_true", help="Refit all outer, latent and projection caches.")
+    args = parser.parse_args()
     ensure_analysis_dirs()
-    outputs = list(run_suite())
+    outputs = list(run_suite(force=args.force))
     outputs.append(SOURCE_DIR / "fig6_mechanism_simulation_design.json")
     hash_out = SOURCE_DIR / "fig6_mechanism_simulation_suite.sha256.txt"
-    hash_out.write_text("\n".join(f"{_sha256(path)}  {path.relative_to(ROOT)}" for path in outputs) + "\n", encoding="utf-8")
+    hash_out.write_text("\n".join(f"{_sha256(path)}  {display_path(path)}" for path in outputs) + "\n", encoding="utf-8")
     for path in outputs:
         print(f"wrote {path}")
     print(f"wrote {hash_out}")

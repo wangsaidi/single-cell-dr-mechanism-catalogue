@@ -12,6 +12,9 @@ import pandas as pd
 
 from analysis.paths import (
     ANALYSIS_ROOT,
+    DATA_DIR,
+    SCVI_EMBEDDINGS_DIR,
+    PUBLIC_SOURCE_DATA_DIR,
     LOGS_DIR,
     REFERENCE_RESULTS_DIR,
     RESULTS_DIR,
@@ -27,7 +30,7 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def verify_inputs() -> list[str]:
+def verify_inputs(data_only: bool = False) -> list[str]:
     manifest = ANALYSIS_ROOT / "ARCHIVE_SHA256SUMS.txt"
     if not manifest.exists():
         return [f"missing checksum manifest: {manifest}"]
@@ -36,11 +39,33 @@ def verify_inputs() -> list[str]:
         if not line.strip():
             continue
         expected, relative = line.split("  ", 1)
-        path = ANALYSIS_ROOT / relative
+        relative_path = Path(relative)
+        if relative_path.parts[0] == "data":
+            path = DATA_DIR.joinpath(*relative_path.parts[1:])
+        elif relative_path.parts[:2] == ("results", "embeddings"):
+            if data_only:
+                continue
+            path = SCVI_EMBEDDINGS_DIR.joinpath(*relative_path.parts[2:])
+        else:
+            errors.append(f"unexpected archive manifest entry: {relative}")
+            continue
         if not path.exists():
             errors.append(f"missing input: {relative}")
         elif sha256(path) != expected:
             errors.append(f"checksum mismatch: {relative}")
+    table_manifest = ANALYSIS_ROOT / "ARCHIVED_TABLE_SHA256SUMS.txt"
+    if not table_manifest.is_file():
+        errors.append(f"missing table checksum manifest: {table_manifest}")
+    else:
+        for line in table_manifest.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            expected, relative = line.split("  ", 1)
+            path = PUBLIC_SOURCE_DATA_DIR / relative
+            # Publication CSVs are Git text: only CRLF versus LF is canonicalised.
+            observed = hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest() if path.is_file() else None
+            if observed != expected:
+                errors.append(f"missing or changed archived publication table: {relative}")
     return errors
 
 
@@ -70,6 +95,8 @@ def verify_results() -> list[str]:
     errors = []
     reference_files = sorted([*REFERENCE_RESULTS_DIR.rglob("*.csv"),
                               *REFERENCE_RESULTS_DIR.rglob("*.csv.gz")])
+    if not reference_files:
+        return [f"no archived reference tables found: {REFERENCE_RESULTS_DIR}"]
     for reference in reference_files:
         relative = reference.relative_to(REFERENCE_RESULTS_DIR)
         observed = RESULTS_DIR / relative
@@ -85,13 +112,15 @@ def verify_results() -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--inputs-only", action="store_true")
+    parser.add_argument("--data-only", action="store_true", help="Verify archive data/tables, excluding newly refitted scVI arrays.")
     args = parser.parse_args()
     ensure_analysis_dirs()
-    errors = verify_inputs()
+    errors = verify_inputs(data_only=args.data_only)
     if not args.inputs_only:
         errors.extend(verify_results())
     report = {
         "inputs_checked": True,
+        "refitted_scvi_excluded_from_archive_hash_check": args.data_only,
         "results_checked": not args.inputs_only,
         "reference_tables_compared": 0 if args.inputs_only else len([
             *REFERENCE_RESULTS_DIR.rglob("*.csv"), *REFERENCE_RESULTS_DIR.rglob("*.csv.gz")]),

@@ -21,7 +21,6 @@ The coding unit is one published dimensionality-reduction method. Each row must 
 | `directly_constrained_object` | The mathematical object whose discrepancy, likelihood or ordering is directly optimized. |
 | `not_established_by_objective` | Properties that cannot be concluded from the objective alone and therefore require empirical validation. |
 | `derivation_anchor` | Heading in Supplementary Note 1 containing the formula used for coding. |
-| `verification_status` | Provenance state of the row. |
 
 ## Controlled objective terms
 
@@ -50,4 +49,4 @@ The coding unit is one published dimensionality-reduction method. Each row must 
 3. Do not translate a property into a biological claim. For example, a neighbourhood loss constrains selected neighbour relations; it does not establish cell identity.
 4. When a software implementation differs from the publication, code the publication here and record implementation deviations in a separate reproducibility table.
 5. Multi-stage methods receive all terms that influence the final representation. The sequence of stages must be stated in `directly_constrained_object`.
-6. For final human verification, two coders should independently assess all categorical fields. Agreement should be calculated before adjudication, with disagreements and the final rationale retained in the audit record.
+6. The coding is study-defined. No independent inter-rater validation is claimed. Published-method records and active-workflow encodings are retained separately so that the choices can be inspected or re-encoded.

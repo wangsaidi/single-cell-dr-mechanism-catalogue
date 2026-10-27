@@ -1,0 +1,105 @@
+{
+  "data_source_class": "D0",
+  "empirical": false,
+  "conceptual": true,
+  "counts_as_evidence_panel": false,
+  "nodes": [
+    {
+      "id": "claim",
+      "title": "State the claim",
+      "body": "Population identity, developmental order,\nor donor-variable organisation",
+      "type": "conceptual recommendation"
+    },
+    {
+      "id": "reference",
+      "title": "Check reference consistency",
+      "body": "Check roots, lineages and finite-cell coverage.\nSeparate reversal from reordered distances.",
+      "type": "conceptual recommendation"
+    },
+    {
+      "id": "candidate",
+      "title": "Choose an analytical representation",
+      "body": "PCA/GLM-PCA baseline; suitable count-model latents.\nChoose dimension; keep the 2D display separate.",
+      "type": "conceptual recommendation"
+    },
+    {
+      "id": "endpoint",
+      "title": "Check the task outcome",
+      "body": "Per-label F1, order agreement, or cell-type\nand donor information reported separately.",
+      "type": "conceptual recommendation"
+    },
+    {
+      "id": "stress",
+      "title": "Check stability",
+      "body": "Vary dimension, graph, seed and reference.\nTrack the task outcome and diagnostic together.",
+      "type": "conceptual recommendation"
+    },
+    {
+      "id": "interpret",
+      "title": "Interpret or withhold",
+      "body": "Report conditional support, reference dependence,\nrepresentation discrepancy or an indeterminate result.",
+      "type": "conceptual recommendation"
+    },
+    {
+      "id": "reference_alternative",
+      "title": "Reference uncertain",
+      "body": "Reassess the anchor;\nwithhold an unsupported\ndirectional claim.",
+      "type": "conceptual alternative or stop"
+    },
+    {
+      "id": "endpoint_alternative",
+      "title": "Outcome unsupported",
+      "body": "Change representation;\ncheck the task outcome,\nor narrow the claim.",
+      "type": "conceptual alternative or stop"
+    },
+    {
+      "id": "stress_alternative",
+      "title": "Conclusion unstable",
+      "body": "Report the sensitivity;\nreassess the reference\nor withhold the claim.",
+      "type": "conceptual alternative or stop"
+    }
+  ],
+  "edges": [
+    {
+      "from": "claim",
+      "to": "reference",
+      "condition": "proceed with declared scope"
+    },
+    {
+      "from": "reference",
+      "to": "candidate",
+      "condition": "proceed with declared scope"
+    },
+    {
+      "from": "candidate",
+      "to": "endpoint",
+      "condition": "proceed with declared scope"
+    },
+    {
+      "from": "endpoint",
+      "to": "stress",
+      "condition": "proceed with declared scope"
+    },
+    {
+      "from": "stress",
+      "to": "interpret",
+      "condition": "proceed with declared scope"
+    },
+    {
+      "from": "reference",
+      "to": "reference_alternative",
+      "condition": "uncertain"
+    },
+    {
+      "from": "endpoint",
+      "to": "endpoint_alternative",
+      "condition": "not met"
+    },
+    {
+      "from": "stress",
+      "to": "stress_alternative",
+      "condition": "unstable"
+    }
+  ],
+  "main_decision_map": "Table 2 (unchanged by this plotting script)"
+}

@@ -13,6 +13,8 @@ import json
 from pathlib import Path
 
 import numpy as np
+from analysis.paths import SCVI_EMBEDDINGS_DIR, analysis_input_path
+from analysis.execution import SEEDS, RESOLUTIONS, OUTPUT_DIMENSIONS
 import pandas as pd
 import scanpy as sc
 
@@ -36,15 +38,13 @@ from analysis.scripts.compute_trajectory import (
 
 ROOT = REPO_ROOT
 MANIFEST = MANIFEST_PATH
-EMBEDDINGS = RESULTS_DIR / "embeddings"
+EMBEDDINGS = SCVI_EMBEDDINGS_DIR
 ROBUST_EMBEDDINGS = ROBUSTNESS_EMBEDDINGS_DIR
 OUT_DIR = RESULTS_DIR / "dimension_sensitivity"
 
 DATASETS = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
 METHODS = ["PCA", "UMAP", "PHATE", "PaCMAP", "scVI"]
-DIMENSIONS = [2, 5, 10, 20]
-SEEDS = [0, 1, 2, 3, 4]
-RESOLUTIONS = [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0]
+DIMENSIONS = OUTPUT_DIMENSIONS
 GRAPH_K = 15
 GRAPH_SEED = 0
 LEIDEN_ITERATIONS = -1
@@ -69,7 +69,7 @@ def run_clustering(datasets: list[str], methods: list[str], dimensions: list[int
 
     for dataset_id in datasets:
         record = manifest.loc[dataset_id]
-        proc = sc.read_h5ad(ROOT / str(record["analysis_proc_path"]), backed="r")
+        proc = sc.read_h5ad(analysis_input_path(str(record["analysis_proc_path"])), backed="r")
         labels = proc.obs[str(record["label_field"])].astype(str).to_numpy()
         proc.file.close()
         for method in methods:

@@ -1,0 +1,9 @@
+{
+  "k": 15,
+  "reference": "full-cell PCA50",
+  "trustworthiness_only_subset_n": 1000,
+  "subset_and_pair_seed": 20261027,
+  "clustering": "same fixed eight-resolution grid and Leiden seed0; majority mapping after clustering",
+  "cell_ids": "same author-confirmed R1 analysis-object row order",
+  "ranges": "computational seed ranges, not biological confidence intervals"
+}

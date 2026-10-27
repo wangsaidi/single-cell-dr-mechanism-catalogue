@@ -19,6 +19,8 @@ from pathlib import Path
 
 import anndata as ad
 import numpy as np
+from analysis.paths import SCVI_EMBEDDINGS_DIR, display_path, analysis_input_path
+from analysis.execution import SMOKE, SEEDS, RESOLUTIONS
 import pandas as pd
 import scanpy as sc
 from sklearn.metrics import (
@@ -43,16 +45,14 @@ from analysis.paths import (
 ROOT = REPO_ROOT
 MANIFEST = MANIFEST_PATH
 EXISTING_EMBEDDINGS = ANCHOR_EMBEDDINGS_DIR
-SCVI_EMBEDDINGS = RESULTS_DIR / "embeddings"
+SCVI_EMBEDDINGS = SCVI_EMBEDDINGS_DIR
 RESULTS = RESULTS_DIR / "downstream_clustering"
 LOGS = LOGS_DIR
 
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"]
 DATASETS = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
-SEEDS = [0, 1, 2, 3, 4]
-RESOLUTIONS = [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0]
 PRIMARY_K = 15
-SENSITIVITY_K = [5, 30, 50]
+SENSITIVITY_K = [5] if SMOKE else [5, 30, 50]
 GRAPH_SEED = 0
 LEIDEN_ITERATIONS = -1
 
@@ -177,7 +177,7 @@ def run(datasets: list[str], methods: list[str], seeds: list[int]) -> None:
 
     for dataset_id in datasets:
         record = manifest.loc[dataset_id]
-        proc_path = ROOT / str(record["analysis_proc_path"])
+        proc_path = analysis_input_path(str(record["analysis_proc_path"]))
         proc = sc.read_h5ad(proc_path, backed="r")
         label_field = str(record["label_field"])
         labels = proc.obs[label_field].astype(str).to_numpy()
@@ -197,7 +197,7 @@ def run(datasets: list[str], methods: list[str], seeds: list[int]) -> None:
                         "dataset_id": dataset_id,
                         "method": method,
                         "embedding_seed": embedding_seed,
-                        "path": str(path.relative_to(ROOT)),
+                        "path": display_path(path),
                         "sha256": sha256_file(path),
                         "n_cells": int(coords.shape[0]),
                         "n_dimensions": int(coords.shape[1]),

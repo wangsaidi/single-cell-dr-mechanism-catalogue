@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import json
 import sys
+import os
 from itertools import combinations
 from pathlib import Path
 
@@ -22,6 +23,8 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.manifold import trustworthiness
 from scipy.stats import spearmanr
 from analysis.scripts.compute_trajectory import PRIMARY_ROOT, reference_dpt, root_definitions
+from analysis.paths import SCVI_EMBEDDINGS_DIR, display_path, analysis_input_path
+from analysis.execution import SMOKE, SEEDS
 
 from analysis.paths import (
     ANALYSIS_OBJECTS_DIR,
@@ -42,17 +45,16 @@ EXISTING = (
     if GENERATED_BASELINE.exists()
     else PUBLIC_SOURCE_DATA_DIR / "fig3_family_local_label_metrics.csv"
 )
-SCVI_DIR = RESULTS_DIR / "embeddings"
+SCVI_DIR = SCVI_EMBEDDINGS_DIR
 EXISTING_EMBEDDINGS = ANCHOR_EMBEDDINGS_DIR
 OUT_DIR = RESULTS_DIR / "diagnostics"
 LOG_DIR = ANALYSIS_LOGS_DIR
 
 DATASETS = ["pbmc3k", "paul15", "heart_cell_atlas_subsampled"]
-SEEDS = [0, 1, 2, 3, 4]
 DIMENSIONS = [2, 10]
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP", "scVI"]
 K = 15
-RANK_PAIRS = 5000
+RANK_PAIRS = 500 if SMOKE else 5000
 
 
 def method_stem(method: str) -> str:
@@ -231,7 +233,7 @@ def run(datasets: list[str], seeds: list[int], dimensions: list[int]) -> None:
 
     for dataset_id in datasets:
         record = manifest.loc[dataset_id]
-        proc_path = ROOT / str(record["analysis_proc_path"])
+        proc_path = analysis_input_path(str(record["analysis_proc_path"]))
         proc = sc.read_h5ad(proc_path, backed="r")
         labels = proc.obs[str(record["label_field"])].astype(str).to_numpy()
         high = np.asarray(proc.obsm["X_pca_ref"][:, :50], dtype=np.float32)
@@ -252,7 +254,7 @@ def run(datasets: list[str], seeds: list[int], dimensions: list[int]) -> None:
                         "method": "scVI",
                         "seed": seed,
                         "output_dimension": dimension,
-                        "path": str(path.relative_to(ROOT)),
+                        "path": display_path(path),
                         "sha256": sha256_file(path),
                     }
                 )
@@ -282,7 +284,14 @@ def run(datasets: list[str], seeds: list[int], dimensions: list[int]) -> None:
                 print(f"completed diagnostics {dataset_id} scVI dim={dimension} seed={seed}", flush=True)
 
     scvi = pd.DataFrame(rows)
-    existing = pd.read_csv(EXISTING).copy()
+    if os.environ.get("SCDR_WORKFLOW_PROFILE") == "full-refit":
+        # Never substitute the supplied publication table for refitted anchor scores.
+        existing = pd.concat([
+            pd.read_csv(SOURCE_RESULTS_DIR / f"fig3_family_local_label_metrics_seed{seed}.csv")
+            for seed in seeds
+        ], ignore_index=True)
+    else:
+        existing = pd.read_csv(EXISTING).copy()
     existing["output_dimension"] = 2
     existing["n_sampled_pairs"] = np.where(existing["metric"].eq("global_rank_corr"), RANK_PAIRS, np.nan)
     shared = [

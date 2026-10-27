@@ -8,6 +8,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from analysis.paths import display_path, analysis_input_path, SCVI_EMBEDDINGS_DIR
+from analysis.execution import SEEDS, OUTPUT_DIMENSIONS
 
 from analysis.paths import (
     ANCHOR_EMBEDDINGS_DIR,
@@ -22,13 +24,12 @@ ROOT = REPO_ROOT
 MANIFEST = MANIFEST_PATH
 EXISTING = ANCHOR_EMBEDDINGS_DIR
 ROBUST = ROBUSTNESS_EMBEDDINGS_DIR
-SCVI = RESULTS_DIR / "embeddings"
+SCVI = SCVI_EMBEDDINGS_DIR
 LOGS = LOGS_DIR
 
 METHODS = ["PCA", "GLM-PCA", "scScope", "SAUCIE", "UMAP", "PHATE", "t-SNE", "PaCMAP"]
-SEEDS = [0, 1, 2, 3, 4]
 DIMENSION_METHODS = ["PCA", "UMAP", "PHATE", "PaCMAP"]
-DIMENSIONS = [2, 5, 10, 20]
+DIMENSIONS = OUTPUT_DIMENSIONS
 
 
 def stem(method: str) -> str:
@@ -56,14 +57,14 @@ def run() -> None:
             ("processed", record.analysis_proc_path, record.proc_sha256),
             ("counts", record.analysis_counts_path, record.counts_sha256),
         ]:
-            path = ROOT / str(relative)
+            path = analysis_input_path(str(relative))
             observed = sha256_file(path) if path.exists() else ""
             valid = path.exists() and observed == str(expected)
             object_rows.append(
                 {
                     "dataset_id": record.dataset_id,
                     "role": role,
-                    "path": str(path.relative_to(ROOT)),
+                    "path": display_path(path),
                     "exists": path.exists(),
                     "expected_sha256": expected,
                     "observed_sha256": observed,
@@ -80,7 +81,7 @@ def run() -> None:
                     "dataset_id": record.dataset_id,
                     "method": method,
                     "seed": seed,
-                    "path": str(path.relative_to(ROOT)),
+                    "path": display_path(path),
                     "exists": path.exists(),
                 }
                 if path.exists():
@@ -108,7 +109,7 @@ def run() -> None:
                     "method": method,
                     "output_dimension": dimension,
                     "seed": 0,
-                    "path": str(path.relative_to(ROOT)),
+                    "path": display_path(path),
                     "exists": path.exists(),
                 }
                 if path.exists():

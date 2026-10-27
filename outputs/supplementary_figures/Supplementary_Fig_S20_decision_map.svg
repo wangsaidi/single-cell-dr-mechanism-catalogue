@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="504pt" height="669.6pt" viewBox="0 0 504 669.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-27T20:02:16.823259</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 669.6 
+L 504 669.6 
+L 504 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 29.547 138.125088 
+L 331.9848 138.125088 
+L 331.9848 74.004192 
+L 29.547 74.004192 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #ffffff; stroke: #a2abb1; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 29.547 138.125088 
+L 33.35724 138.125088 
+L 33.35724 74.004192 
+L 29.547 74.004192 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 29.547 229.726368 
+L 331.9848 229.726368 
+L 331.9848 165.605472 
+L 29.547 165.605472 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #ffffff; stroke: #a2abb1; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 29.547 229.726368 
+L 33.35724 229.726368 
+L 33.35724 165.605472 
+L 29.547 165.605472 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #009e73"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 180.7659 142.413866 
+Q 180.7659 151.865756 180.7659 160.311415 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 182.7659 156.311415 
+L 180.7659 160.311415 
+L 178.7659 156.311415 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 29.547 321.327648 
+L 331.9848 321.327648 
+L 331.9848 257.206752 
+L 29.547 257.206752 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #ffffff; stroke: #a2abb1; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 29.547 321.327648 
+L 33.35724 321.327648 
+L 33.35724 257.206752 
+L 29.547 257.206752 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 180.7659 234.015146 
+Q 180.7659 243.467036 180.7659 251.912695 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 182.7659 247.912695 
+L 180.7659 251.912695 
+L 178.7659 247.912695 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 29.547 412.928928 
+L 331.9848 412.928928 
+L 331.9848 348.808032 
+L 29.547 348.808032 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #ffffff; stroke: #a2abb1; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 29.547 412.928928 
+L 33.35724 412.928928 
+L 33.35724 348.808032 
+L 29.547 348.808032 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 180.7659 325.616426 
+Q 180.7659 335.068316 180.7659 343.513975 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 182.7659 339.513975 
+L 180.7659 343.513975 
+L 178.7659 339.513975 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 29.547 504.530208 
+L 331.9848 504.530208 
+L 331.9848 440.409312 
+L 29.547 440.409312 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #ffffff; stroke: #a2abb1; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 29.547 504.530208 
+L 33.35724 504.530208 
+L 33.35724 440.409312 
+L 29.547 440.409312 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #009e73"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 180.7659 417.217706 
+Q 180.7659 426.669596 180.7659 435.115255 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 182.7659 431.115255 
+L 180.7659 435.115255 
+L 178.7659 431.115255 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 29.547 596.131488 
+L 331.9848 596.131488 
+L 331.9848 532.010592 
+L 29.547 532.010592 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #ffffff; stroke: #a2abb1; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 29.547 596.131488 
+L 33.35724 596.131488 
+L 33.35724 532.010592 
+L 29.547 532.010592 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #20242a"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 180.7659 508.818986 
+Q 180.7659 518.270876 180.7659 526.716535 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 182.7659 522.716535 
+L 180.7659 526.716535 
+L 178.7659 522.716535 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 381.9942 233.44767 
+L 491.5386 233.44767 
+L 491.5386 161.88417 
+L 381.9942 161.88417 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #fafbfc; stroke: #9ea7ae; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 336.840362 197.66592 
+Q 356.988089 197.66592 376.24139 197.66592 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 372.64139 195.86592 
+L 376.24139 197.66592 
+L 372.64139 199.46592 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 381.9942 416.65023 
+L 491.5386 416.65023 
+L 491.5386 345.08673 
+L 381.9942 345.08673 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #fafbfc; stroke: #9ea7ae; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 336.840362 380.86848 
+Q 356.988089 380.86848 376.24139 380.86848 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 372.64139 379.06848 
+L 376.24139 380.86848 
+L 372.64139 382.66848 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 381.9942 508.25151 
+L 491.5386 508.25151 
+L 491.5386 436.68801 
+L 381.9942 436.68801 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #fafbfc; stroke: #9ea7ae; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 336.840362 472.46976 
+Q 356.988089 472.46976 376.24139 472.46976 
+" clip-path="url(#p18c425f5d7)" style="fill: none; stroke: #667078; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 372.64139 470.66976 
+L 376.24139 472.46976 
+L 372.64139 474.26976 
+z
+" clip-path="url(#p18c425f5d7)" style="fill: #667078; stroke: #667078; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 9px; font-family: 'Arial', sans-serif; text-anchor: start; fill: #20242a" x="40.50144" y="94.657417" transform="rotate(-0 40.50144 94.657417)">1  State the claim</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 113.540784)">Population identity, developmental order,</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 123.241284)">or donor-variable organisation</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 9px; font-family: 'Arial', sans-serif; text-anchor: start; fill: #20242a" x="40.50144" y="186.254478" transform="rotate(-0 40.50144 186.254478)">2  Check reference consistency</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 205.169439)">Check roots, lineages and finite-cell coverage.</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 215.006439)">Separate reversal from reordered distances.</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 9px; font-family: 'Arial', sans-serif; text-anchor: start; fill: #20242a" x="40.50144" y="277.855758" transform="rotate(-0 40.50144 277.855758)">3  Choose an analytical representation</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 296.721969)">PCA/GLM-PCA baseline; suitable count-model latents.</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 306.465219)">Choose dimension; keep the 2D display separate.</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 9px; font-family: 'Arial', sans-serif; text-anchor: start; fill: #20242a" x="40.50144" y="369.461257" transform="rotate(-0 40.50144 369.461257)">4  Check the task outcome</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 388.288249)">Per-label F1, order agreement, or cell-type</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 398.125249)">and donor information reported separately.</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 9px; font-family: 'Arial', sans-serif; text-anchor: start; fill: #20242a" x="40.50144" y="461.058318" transform="rotate(-0 40.50144 461.058318)">5  Check stability</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 479.994654)">Vary dimension, graph, seed and reference.</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 489.695154)">Track the task outcome and diagnostic together.</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 9px; font-family: 'Arial', sans-serif; text-anchor: start; fill: #20242a" x="40.50144" y="552.677176" transform="rotate(-0 40.50144 552.677176)">6  Interpret or withhold</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 571.642809)">Report conditional support, reference dependence,</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(40.50144 581.249559)">representation discrepancy or an indeterminate result.</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="436.7664" y="179.70189" transform="rotate(-0 436.7664 179.70189)">Reference uncertain</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(398.0814 200.432556)">Reassess the anchor;</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(393.182025 209.466681)">withhold an unsupported</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(406.9789 218.500806)">directional claim.</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="356.9895" y="187.4883" transform="rotate(-0 356.9895 187.4883)">uncertain</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="436.7664" y="362.9532" transform="rotate(-0 436.7664 362.9532)">Outcome unsupported</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(394.963275 383.636991)">Change representation;</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(393.6364 392.764866)">check the task outcome,</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(401.645775 401.798991)">or narrow the claim.</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="356.9895" y="370.69086" transform="rotate(-0 356.9895 370.69086)">not met</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="436.7664" y="454.50573" transform="rotate(-0 436.7664 454.50573)">Conclusion unstable</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(398.53015 475.189521)">Report the sensitivity;</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(396.082025 484.317396)">reassess the reference</text>
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; fill: #20242a" transform="translate(399.1964 493.351521)">or withhold the claim.</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="356.9895" y="462.29214" transform="rotate(-0 356.9895 462.29214)">unstable</text>
+   </g>
+  </g>
+  <g id="text_22">
+   <text style="font-size: 8.5px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="252" y="22.7664" transform="rotate(-0 252 22.7664)">Conceptual model; not a quantitative measurement.</text>
+  </g>
+  <g id="text_23">
+   <text style="font-size: 8px; font-family: 'Arial', sans-serif; text-anchor: middle; fill: #20242a" x="252" y="651.5208" transform="rotate(-0 252 651.5208)">No fitted result, method ranking or universal reliability threshold is shown.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p18c425f5d7">
+   <rect x="17.64" y="60.264" width="476.28" height="572.508"/>
+  </clipPath>
+ </defs>
+</svg>

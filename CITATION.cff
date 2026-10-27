@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript and this software when using the analysis workflows or figure source data."
+title: "Single-cell DR mechanism catalogue"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Saidi
+  - family-names: Chen
+    given-names: Mintong
+  - family-names: Sun
+    given-names: Zhihui
+  - family-names: Jiao
+    given-names: Di
+repository-code: "https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue"
+url: "https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue"
+license: MIT
