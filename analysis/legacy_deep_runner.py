@@ -6,9 +6,11 @@ parse parts of the main Python 3.14 figure package.
 
 import argparse
 import hashlib
+import inspect
 import json
 import os
 import platform
+import random
 import sys
 import time
 from pathlib import Path
@@ -62,14 +64,24 @@ def run_scscope(X, args):
     import scscope
 
     np.random.seed(args.seed)
+    random.seed(args.seed)
     try:
         tf.set_random_seed(args.seed)
     except AttributeError:
         tf.compat.v1.set_random_seed(args.seed)
 
     batch_size = max(1, min(args.batch_size, X.shape[0]))
+    # scScope creates its own graph; an outer default-graph seed is not inherited.
+    source = inspect.getsource(scscope.train)
+    boundary = "with tf.Graph().as_default(), tf.device('/cpu:0'):"
+    if source.count(boundary) != 1:
+        raise ValueError("Unsupported scScope graph construction; do not fit with an uncontrolled graph seed.")
+    source = source.replace(boundary, boundary + "\n        tf.set_random_seed(_scdr_graph_seed)", 1)
+    namespace = dict(scscope.__dict__)
+    namespace['_scdr_graph_seed'] = args.seed
+    exec(compile(source, '<graph-seeded scScope train>', 'exec'), namespace)
     started = time.time()
-    model = scscope.train(
+    model = namespace['train'](
         X,
         latent_code_dim=args.latent_dim,
         use_mask=True,
@@ -132,6 +144,8 @@ def run_method(method, X, args):
         extra = {
             "scscope_epochs": args.scscope_epochs,
             "scscope_recurrence": args.scscope_recurrence,
+            "scscope_graph_seed": args.seed,
+            "scscope_python_sampling_seed": args.seed,
         }
     elif normalized == "saucie":
         latent, reconstruction, elapsed, layers = run_saucie(X, args)

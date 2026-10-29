@@ -1,0 +1,446 @@
+{
+  "scope": "Public-source count preprocessing, refitting and recomputation in recorded installed environments; not FASTQ processing, a fresh environment build, exact historical stochastic replay, or a proof of model convergence.",
+  "all_24_stage_types_and_validator_completed": true,
+  "anchor_output_records": 120,
+  "simulation_method_scenario_replicate_records": 240,
+  "simulation_metric_rows": 1120,
+  "stage_events": [
+    {
+      "stage": "record_environment",
+      "event": "start",
+      "started_utc": "2026-10-28T09:18:38.241331+00:00"
+    },
+    {
+      "stage": "record_environment",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:18:38.241331+00:00",
+      "finished_utc": "2026-10-28T09:18:38.900466+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.6590627000005043
+    },
+    {
+      "stage": "legacy_preflight",
+      "event": "start",
+      "started_utc": "2026-10-28T09:18:38.900887+00:00"
+    },
+    {
+      "stage": "legacy_preflight",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:18:38.900887+00:00",
+      "finished_utc": "2026-10-28T09:18:48.432519+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 9.530337899999722
+    },
+    {
+      "stage": "prepare_objects",
+      "event": "start",
+      "started_utc": "2026-10-28T09:18:48.432599+00:00"
+    },
+    {
+      "stage": "prepare_objects",
+      "event": "failure",
+      "started_utc": "2026-10-28T09:18:48.432599+00:00",
+      "finished_utc": "2026-10-28T09:19:40.506593+00:00",
+      "returncode": 1,
+      "elapsed_seconds": 52.06684590000077
+    },
+    {
+      "stage": "record_environment",
+      "event": "start",
+      "started_utc": "2026-10-28T09:22:50.966140+00:00"
+    },
+    {
+      "stage": "record_environment",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:22:50.966140+00:00",
+      "finished_utc": "2026-10-28T09:22:51.393055+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.42688949999865144
+    },
+    {
+      "stage": "legacy_preflight",
+      "event": "start",
+      "started_utc": "2026-10-28T09:22:51.393143+00:00"
+    },
+    {
+      "stage": "legacy_preflight",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:22:51.393143+00:00",
+      "finished_utc": "2026-10-28T09:22:58.534629+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 7.140800999999556
+    },
+    {
+      "stage": "prepare_objects",
+      "event": "start",
+      "started_utc": "2026-10-28T09:22:58.534715+00:00"
+    },
+    {
+      "stage": "prepare_objects",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:22:58.534715+00:00",
+      "finished_utc": "2026-10-28T09:23:33.265850+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 34.72773000000052
+    },
+    {
+      "stage": "anchor_embeddings_seed_0",
+      "event": "start",
+      "started_utc": "2026-10-28T09:23:33.977995+00:00"
+    },
+    {
+      "stage": "anchor_embeddings_seed_0",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:23:33.977995+00:00",
+      "finished_utc": "2026-10-28T09:50:15.320045+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1601.2067729999999
+    },
+    {
+      "stage": "anchor_embeddings_seed_1",
+      "event": "start",
+      "started_utc": "2026-10-28T09:50:15.320335+00:00"
+    },
+    {
+      "stage": "anchor_embeddings_seed_1",
+      "event": "finish",
+      "started_utc": "2026-10-28T09:50:15.320335+00:00",
+      "finished_utc": "2026-10-28T10:20:34.054438+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1818.6424574000011
+    },
+    {
+      "stage": "anchor_embeddings_seed_2",
+      "event": "start",
+      "started_utc": "2026-10-28T10:20:34.054743+00:00"
+    },
+    {
+      "stage": "anchor_embeddings_seed_2",
+      "event": "finish",
+      "started_utc": "2026-10-28T10:20:34.054743+00:00",
+      "finished_utc": "2026-10-28T10:47:20.722244+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1606.6219824
+    },
+    {
+      "stage": "anchor_embeddings_seed_3",
+      "event": "start",
+      "started_utc": "2026-10-28T10:47:20.722521+00:00"
+    },
+    {
+      "stage": "anchor_embeddings_seed_3",
+      "event": "finish",
+      "started_utc": "2026-10-28T10:47:20.722521+00:00",
+      "finished_utc": "2026-10-28T11:18:06.297164+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1845.544127699999
+    },
+    {
+      "stage": "anchor_embeddings_seed_4",
+      "event": "start",
+      "started_utc": "2026-10-28T11:18:06.297407+00:00"
+    },
+    {
+      "stage": "anchor_embeddings_seed_4",
+      "event": "finish",
+      "started_utc": "2026-10-28T11:18:06.297407+00:00",
+      "finished_utc": "2026-10-28T11:45:55.511819+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1669.1987019999997
+    },
+    {
+      "stage": "known_truth_stress_tests",
+      "event": "start",
+      "started_utc": "2026-10-28T11:45:55.512116+00:00"
+    },
+    {
+      "stage": "known_truth_stress_tests",
+      "event": "finish",
+      "started_utc": "2026-10-28T11:45:55.512116+00:00",
+      "finished_utc": "2026-10-28T12:19:34.093259+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 2018.5709590999977
+    },
+    {
+      "stage": "robustness_embeddings",
+      "event": "start",
+      "started_utc": "2026-10-28T12:19:34.093517+00:00"
+    },
+    {
+      "stage": "robustness_embeddings",
+      "event": "finish",
+      "started_utc": "2026-10-28T12:19:34.093517+00:00",
+      "finished_utc": "2026-10-28T12:54:08.398880+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 2074.3000127999985
+    },
+    {
+      "stage": "fit_scvi",
+      "event": "start",
+      "started_utc": "2026-10-28T12:54:08.399162+00:00"
+    },
+    {
+      "stage": "fit_scvi",
+      "event": "finish",
+      "started_utc": "2026-10-28T12:54:08.399162+00:00",
+      "finished_utc": "2026-10-29T10:57:36.662981+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 79408.3124499
+    },
+    {
+      "stage": "audit_inputs",
+      "event": "start",
+      "started_utc": "2026-10-29T10:57:36.663195+00:00"
+    },
+    {
+      "stage": "audit_inputs",
+      "event": "finish",
+      "started_utc": "2026-10-29T10:57:36.663195+00:00",
+      "finished_utc": "2026-10-29T10:57:41.587974+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 4.9248127000028035
+    },
+    {
+      "stage": "audit_scvi",
+      "event": "start",
+      "started_utc": "2026-10-29T10:57:41.588100+00:00"
+    },
+    {
+      "stage": "audit_scvi",
+      "event": "finish",
+      "started_utc": "2026-10-29T10:57:41.588100+00:00",
+      "finished_utc": "2026-10-29T10:57:43.997967+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 2.409898700003396
+    },
+    {
+      "stage": "diagnostics",
+      "event": "start",
+      "started_utc": "2026-10-29T10:57:43.998129+00:00"
+    },
+    {
+      "stage": "diagnostics",
+      "event": "finish",
+      "started_utc": "2026-10-29T10:57:43.998129+00:00",
+      "finished_utc": "2026-10-29T11:02:05.972632+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 261.97503460000735
+    },
+    {
+      "stage": "dimension_sensitivity",
+      "event": "start",
+      "started_utc": "2026-10-29T11:02:05.972804+00:00"
+    },
+    {
+      "stage": "dimension_sensitivity",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:02:05.972804+00:00",
+      "finished_utc": "2026-10-29T11:06:17.663977+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 251.69162860000506
+    },
+    {
+      "stage": "clustering",
+      "event": "start",
+      "started_utc": "2026-10-29T11:06:17.664154+00:00"
+    },
+    {
+      "stage": "clustering",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:06:17.664154+00:00",
+      "finished_utc": "2026-10-29T11:17:47.973170+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 690.3099313999992
+    },
+    {
+      "stage": "marker_concordance",
+      "event": "start",
+      "started_utc": "2026-10-29T11:17:47.973266+00:00"
+    },
+    {
+      "stage": "marker_concordance",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:17:47.973266+00:00",
+      "finished_utc": "2026-10-29T11:18:26.404653+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 38.43145479999657
+    },
+    {
+      "stage": "trajectory",
+      "event": "start",
+      "started_utc": "2026-10-29T11:18:26.404759+00:00"
+    },
+    {
+      "stage": "trajectory",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:18:26.404759+00:00",
+      "finished_utc": "2026-10-29T11:18:58.901023+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 32.49633179999364
+    },
+    {
+      "stage": "donor_predictability",
+      "event": "start",
+      "started_utc": "2026-10-29T11:18:58.901201+00:00"
+    },
+    {
+      "stage": "donor_predictability",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:18:58.901201+00:00",
+      "finished_utc": "2026-10-29T11:19:43.385345+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 44.484242099992116
+    },
+    {
+      "stage": "summarise",
+      "event": "start",
+      "started_utc": "2026-10-29T11:19:43.385574+00:00"
+    },
+    {
+      "stage": "summarise",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:19:43.385574+00:00",
+      "finished_utc": "2026-10-29T11:19:53.124135+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 9.738591000001179
+    },
+    {
+      "stage": "audit_results",
+      "event": "start",
+      "started_utc": "2026-10-29T11:19:53.124283+00:00"
+    },
+    {
+      "stage": "audit_results",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:19:53.124283+00:00",
+      "finished_utc": "2026-10-29T11:19:54.633959+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1.50972709999769
+    },
+    {
+      "stage": "export_figure4",
+      "event": "start",
+      "started_utc": "2026-10-29T11:19:54.634175+00:00"
+    },
+    {
+      "stage": "export_figure4",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:19:54.634175+00:00",
+      "finished_utc": "2026-10-29T11:19:56.178196+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1.544057100007194
+    },
+    {
+      "stage": "threshold_calibration",
+      "event": "start",
+      "started_utc": "2026-10-29T11:19:56.178347+00:00"
+    },
+    {
+      "stage": "threshold_calibration",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:19:56.178347+00:00",
+      "finished_utc": "2026-10-29T11:27:01.235300+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 425.0574001999921
+    },
+    {
+      "stage": "validate_refit",
+      "event": "start",
+      "started_utc": "2026-10-29T11:27:01.235404+00:00"
+    },
+    {
+      "stage": "validate_refit",
+      "event": "finish",
+      "started_utc": "2026-10-29T11:27:01.235404+00:00",
+      "finished_utc": "2026-10-29T11:27:01.477585+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.24220579999382608
+    }
+  ],
+  "environment": {
+    "python": "3.14.4",
+    "implementation": "CPython",
+    "operating_system": "Windows",
+    "release": "10",
+    "machine": "AMD64",
+    "packages": {
+      "anndata": "0.12.16",
+      "glmpca": "0.1.0",
+      "igraph": "1.0.0",
+      "leidenalg": "0.12.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.4.4",
+      "pacmap": "0.9.1",
+      "pandas": "2.3.3",
+      "phate": "2.0.0",
+      "scanpy": "1.12.1",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.1",
+      "scvi-tools": "1.4.3",
+      "seaborn": "0.13.2",
+      "torch": "2.12.0+cpu",
+      "umap-learn": "0.5.12"
+    }
+  },
+  "source_download_recovery": {
+    "initial_failure_retained": true,
+    "source_url": "https://exampledata.scverse.org/scvi-tools/hca_subsampled_20k.h5ad",
+    "source_sha256": "4a54acfa72faf108473f8c2705894eea2194b45a2b5e21b7630bdd32eaf1e808",
+    "recovery": "Certificate-verified system curl download into the existing isolated raw cache, followed by an explicit restart from the first workflow stage with --resume --force. No archived fit or result table was substituted."
+  },
+  "comparison_scope": "Descriptive matched endpoint differences and ranks; no post hoc numerical acceptance cutoff or silent substitution of archived fits.",
+  "specification_comparison": [
+    {
+      "encoding": "full_17_feature_record",
+      "profile": "empirical",
+      "mantel_spearman_rho": 0.1522349450159471,
+      "exact_two_sided_p": 0.5125496031746032,
+      "n_methods": 8,
+      "dependent_method_pairs": 28,
+      "whole_label_permutations": 40320,
+      "encoded_features": 17,
+      "empirical_indexed_seed": 0,
+      "scope": "Independent fitting realisation, not an independent biological validation dataset.",
+      "q_bh_two_full_record_tests": 0.5125496031746032
+    },
+    {
+      "encoding": "full_17_feature_record",
+      "profile": "simulation",
+      "mantel_spearman_rho": 0.5405707927811774,
+      "exact_two_sided_p": 0.007936507936507936,
+      "n_methods": 8,
+      "dependent_method_pairs": 28,
+      "whole_label_permutations": 40320,
+      "encoded_features": 17,
+      "empirical_indexed_seed": 0,
+      "scope": "Independent fitting realisation, not an independent biological validation dataset.",
+      "q_bh_two_full_record_tests": 0.015873015873015872
+    },
+    {
+      "encoding": "objective_terms_only",
+      "profile": "empirical",
+      "mantel_spearman_rho": -0.19117575351512747,
+      "exact_two_sided_p": 0.39404761904761904,
+      "n_methods": 8,
+      "dependent_method_pairs": 28,
+      "whole_label_permutations": 40320,
+      "encoded_features": 7,
+      "empirical_indexed_seed": 0,
+      "scope": "Independent fitting realisation, not an independent biological validation dataset."
+    },
+    {
+      "encoding": "objective_terms_only",
+      "profile": "simulation",
+      "mantel_spearman_rho": 0.193469862557309,
+      "exact_two_sided_p": 0.3904761904761905,
+      "n_methods": 8,
+      "dependent_method_pairs": 28,
+      "whole_label_permutations": 40320,
+      "encoded_features": 7,
+      "empirical_indexed_seed": 0,
+      "scope": "Independent fitting realisation, not an independent biological validation dataset."
+    }
+  ],
+  "fresh_environment_build_claimed": false,
+  "historical_binary_equality_or_model_convergence_claimed": false
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "pbmc3k",
+  "configuration": "recurrent_latent",
+  "seed": 0,
+  "stage": "scheduled_final",
+  "n_cells": 2638,
+  "compared_numeric_fields": [
+    "seed",
+    "n_cells",
+    "representation_dimension",
+    "local_retention",
+    "same_label_neighbor_fraction",
+    "trustworthiness_fixed_subset",
+    "trust_subset_n",
+    "global_rank_correlation",
+    "n_distance_pairs",
+    "resolution_integrated_ari",
+    "resolution_integrated_macro_f1"
+  ],
+  "maximum_absolute_scalar_difference": 5.551115123125783e-17,
+  "array_sha256_matches": true,
+  "scope": "One actual scheduled-fit endpoint, public-versus-executed scoring; not a new biological experiment or a full public refit."
+}

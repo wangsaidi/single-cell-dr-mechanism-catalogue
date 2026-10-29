@@ -1,0 +1,23 @@
+{
+  "complete_fits": 36,
+  "expected_fits": 36,
+  "missing_fits": [],
+  "all_fits_completed": true,
+  "endpoint_rows": 90,
+  "expected_endpoint_rows": 90,
+  "all_endpoints_scored": true,
+  "strict_original_monitor_met": 36,
+  "strict_full_monitor_met": 36,
+  "stability_comparisons": 189,
+  "prefix_maximum_absolute_difference": 0.0,
+  "scope": "Computational optimisation sensitivities; raw rules retained; not biological replication or global optimality proof",
+  "source_sha256": {
+    "complete_training_histories.csv": "287f2490af80e3c11341e913c6ec750e2d811434aa1056ec3b83441202419da4",
+    "full_gradient_diagnostics.csv": "e852f376e95e8ecc2fb2ff6ecf8cbc9d00df08cbea69191b6f69aef9426ed9cc",
+    "matched_endpoint_scores.csv": "41c48fe022590b057de2e81156da47c4f27e2bccc2720b9ca2dab95c01fecb9f",
+    "matched_population_scores.csv": "e6958b5d29a07fbf4af47d5481a834086b39a26dff8bd7f2a23e930cfb7aa30b",
+    "optimisation_diagnostics.csv": "95dda1ebf6a550945446b2256e3d7cfc55867424d7ab281c1ac339c593dfed89",
+    "prefix_comparison.csv": "551b745f38b115323c83c6d3ae4e78ffbf4ec192e09ae37822facf14cf03c4a5",
+    "tail_checkpoint_stability.csv": "da6139ca25a6a50568a6f8f6d9038c6c74f1352ded5d51b7dd678c8e97720320"
+  }
+}

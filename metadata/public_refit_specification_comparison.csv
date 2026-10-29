@@ -1,0 +1,5 @@
+encoding,profile,mantel_spearman_rho,exact_two_sided_p,n_methods,dependent_method_pairs,whole_label_permutations,encoded_features,empirical_indexed_seed,scope,q_bh_two_full_record_tests
+full_17_feature_record,empirical,0.1522349450159471,0.5125496031746032,8,28,40320,17,0,"Independent fitting realisation, not an independent biological validation dataset.",0.5125496031746032
+full_17_feature_record,simulation,0.5405707927811774,0.007936507936507936,8,28,40320,17,0,"Independent fitting realisation, not an independent biological validation dataset.",0.015873015873015872
+objective_terms_only,empirical,-0.19117575351512747,0.39404761904761904,8,28,40320,7,0,"Independent fitting realisation, not an independent biological validation dataset.",
+objective_terms_only,simulation,0.193469862557309,0.3904761904761905,8,28,40320,7,0,"Independent fitting realisation, not an independent biological validation dataset.",

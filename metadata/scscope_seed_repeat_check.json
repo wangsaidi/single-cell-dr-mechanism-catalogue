@@ -1,0 +1,39 @@
+{
+  "scope": "Two separate-process, single-thread PBMC3k scScope fits at 300 epochs, recurrent width 50 and depth 2; same input and seed 17. Not a rerun of all historical fits or a convergence test.",
+  "runner_sha256": "e1f8299f1aa60177a6627abf3f4140885ea0e3f8a9a02601b5978a2dd16c62a7",
+  "preceding_runner_sha256": "09e8fd211176a4b8be133449c2bf676f3c0157dd1521c7a8b31d757f19f05024",
+  "input_sha256": "35618b1f2f72cd01f3adc83a29130adb40fbc5ac34e6d535ed8f9dafb4cef031",
+  "all_arrays_bitwise_equal": true,
+  "arrays": [
+    {
+      "array": "scscope_reconstruction_seed17_seed_repeat_check.npy",
+      "shape": [
+        2638,
+        1838
+      ],
+      "bitwise_equal": true,
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "array": "scscope_seed17_seed_repeat_check.npy",
+      "shape": [
+        2638,
+        100
+      ],
+      "bitwise_equal": true,
+      "maximum_absolute_difference": 0.0
+    }
+  ],
+  "output_hashes": [
+    {
+      "scscope_reconstruction_seed17_seed_repeat_check.npy": "cefbbbcf39012b91a867c698aba1209d31a3119b5fa8de259fcc1974ea1bc3be",
+      "scscope_seed17_seed_repeat_check.npy": "78c931bd4802f4fa0bddca97a043ca19c0e91459e8a1d584f05b7338af4b3a05"
+    },
+    {
+      "scscope_reconstruction_seed17_seed_repeat_check.npy": "cefbbbcf39012b91a867c698aba1209d31a3119b5fa8de259fcc1974ea1bc3be",
+      "scscope_seed17_seed_repeat_check.npy": "78c931bd4802f4fa0bddca97a043ca19c0e91459e8a1d584f05b7338af4b3a05"
+    }
+  ],
+  "historical_outputs_not_modified": true,
+  "primary_full_workflow_used_preceding_seed_wrapper": true
+}

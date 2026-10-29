@@ -1,0 +1,1141 @@
+dataset,method,configuration,seed,stage,label,n_label,resolution_integrated_f1
+pbmc3k,scScope,recurrent_latent,0,baseline,B cells,342,0.6646832392598919
+pbmc3k,scScope,recurrent_latent,0,baseline,CD14+ Monocytes,480,0.7979401663927583
+pbmc3k,scScope,recurrent_latent,0,baseline,CD4 T cells,1144,0.7970603306626499
+pbmc3k,scScope,recurrent_latent,0,baseline,CD8 T cells,316,0.3389549548167893
+pbmc3k,scScope,recurrent_latent,0,baseline,Dendritic cells,37,0.208463274822537
+pbmc3k,scScope,recurrent_latent,0,baseline,FCGR3A+ Monocytes,150,0.4265874098844396
+pbmc3k,scScope,recurrent_latent,0,baseline,Megakaryocytes,15,0.4276662035282725
+pbmc3k,scScope,recurrent_latent,0,baseline,NK cells,154,0.4030685858176392
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,B cells,342,0.756602980194083
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,CD14+ Monocytes,480,0.7872984017553406
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,CD4 T cells,1144,0.7986432876254266
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,CD8 T cells,316,0.2201310039063137
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,Dendritic cells,37,0.0651927437641723
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,FCGR3A+ Monocytes,150,0.4465443642580542
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,Megakaryocytes,15,0.6103207425788071
+pbmc3k,scScope,recurrent_latent,0,scheduled_final,NK cells,154,0.1821573053867671
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,B cells,342,0.4450130338411195
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,CD14+ Monocytes,480,0.7880937494931634
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,CD4 T cells,1144,0.7645832776752257
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,CD8 T cells,316,0.0942696446657343
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,FCGR3A+ Monocytes,150,0.0
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,scScope,recurrent_PCA2,0,scheduled_final,NK cells,154,0.0341130604288499
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,B cells,342,0.7306699232981262
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,CD14+ Monocytes,480,0.8370851825129794
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,CD4 T cells,1144,0.8096814827874219
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,CD8 T cells,316,0.4901621712786043
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,Dendritic cells,37,0.3142857142857142
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,FCGR3A+ Monocytes,150,0.6914889890486581
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,Megakaryocytes,15,0.2981029810298103
+pbmc3k,scScope,recurrent_tSNE2,0,scheduled_final,NK cells,154,0.5922513710652431
+pbmc3k,SAUCIE,reconstruction,0,baseline,B cells,342,0.9747494460609214
+pbmc3k,SAUCIE,reconstruction,0,baseline,CD14+ Monocytes,480,0.8816858024255934
+pbmc3k,SAUCIE,reconstruction,0,baseline,CD4 T cells,1144,0.9461740201770092
+pbmc3k,SAUCIE,reconstruction,0,baseline,CD8 T cells,316,0.7316885547855133
+pbmc3k,SAUCIE,reconstruction,0,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,reconstruction,0,baseline,FCGR3A+ Monocytes,150,0.6513230986156551
+pbmc3k,SAUCIE,reconstruction,0,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,reconstruction,0,baseline,NK cells,154,0.7214817035783677
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,B cells,342,0.9756464195249248
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,CD14+ Monocytes,480,0.8735285287920829
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,CD4 T cells,1144,0.937837878289634
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,CD8 T cells,316,0.6768730914633393
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,FCGR3A+ Monocytes,150,0.573984293363094
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,reconstruction,0,scheduled_final,NK cells,154,0.772689781892171
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,B cells,342,0.911815015671534
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,CD14+ Monocytes,480,0.8905592420695074
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,CD4 T cells,1144,0.9316797170162184
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,CD8 T cells,316,0.7049721769949163
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,FCGR3A+ Monocytes,150,0.6603191814584631
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,baseline,NK cells,154,0.6480112209095689
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,B cells,342,0.9327056859058304
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,CD14+ Monocytes,480,0.8779374762428809
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,CD4 T cells,1144,0.910764173796686
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,CD8 T cells,316,0.5904118188951989
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,FCGR3A+ Monocytes,150,0.4717519406769322
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Megakaryocytes,15,0.0992063492063492
+pbmc3k,SAUCIE,task_architecture_reconstruction,0,scheduled_final,NK cells,154,0.846223087892811
+pbmc3k,SAUCIE,task_enabled,0,baseline,B cells,342,0.8218050838774072
+pbmc3k,SAUCIE,task_enabled,0,baseline,CD14+ Monocytes,480,0.812558665194988
+pbmc3k,SAUCIE,task_enabled,0,baseline,CD4 T cells,1144,0.8888706054317166
+pbmc3k,SAUCIE,task_enabled,0,baseline,CD8 T cells,316,0.4499159140403037
+pbmc3k,SAUCIE,task_enabled,0,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_enabled,0,baseline,FCGR3A+ Monocytes,150,0.3672033984533984
+pbmc3k,SAUCIE,task_enabled,0,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_enabled,0,baseline,NK cells,154,0.7431240826792437
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,B cells,342,0.8443520637707512
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,CD14+ Monocytes,480,0.8237285395653346
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,CD4 T cells,1144,0.890493128482628
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,CD8 T cells,316,0.508578821446374
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,FCGR3A+ Monocytes,150,0.4577014638677269
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_enabled,0,scheduled_final,NK cells,154,0.758147907439616
+pbmc3k,scScope,recurrent_latent,1,baseline,B cells,342,0.7429054301931304
+pbmc3k,scScope,recurrent_latent,1,baseline,CD14+ Monocytes,480,0.7778886445368058
+pbmc3k,scScope,recurrent_latent,1,baseline,CD4 T cells,1144,0.8087931040660847
+pbmc3k,scScope,recurrent_latent,1,baseline,CD8 T cells,316,0.4149963488151475
+pbmc3k,scScope,recurrent_latent,1,baseline,Dendritic cells,37,0.1842810457516339
+pbmc3k,scScope,recurrent_latent,1,baseline,FCGR3A+ Monocytes,150,0.3454245791625428
+pbmc3k,scScope,recurrent_latent,1,baseline,Megakaryocytes,15,0.749248362151588
+pbmc3k,scScope,recurrent_latent,1,baseline,NK cells,154,0.5049937039643848
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,B cells,342,0.8076701941283877
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,CD14+ Monocytes,480,0.7769671026613321
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,CD4 T cells,1144,0.8067051428925827
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,CD8 T cells,316,0.3767878829936462
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,Dendritic cells,37,0.2432394563542104
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,FCGR3A+ Monocytes,150,0.2191952758325031
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,Megakaryocytes,15,0.7087973754640421
+pbmc3k,scScope,recurrent_latent,1,scheduled_final,NK cells,154,0.3344610174021533
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,B cells,342,0.383287683461044
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,CD14+ Monocytes,480,0.7907635747097664
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,CD4 T cells,1144,0.7333012605765812
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,CD8 T cells,316,0.0
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,FCGR3A+ Monocytes,150,0.0
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,scScope,recurrent_PCA2,1,scheduled_final,NK cells,154,0.0
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,B cells,342,0.7651674393572004
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,CD14+ Monocytes,480,0.7729360460837357
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,CD4 T cells,1144,0.8154531309212788
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,CD8 T cells,316,0.4665820022498366
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,FCGR3A+ Monocytes,150,0.5295044400617753
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,Megakaryocytes,15,0.5686129588568613
+pbmc3k,scScope,recurrent_tSNE2,1,scheduled_final,NK cells,154,0.6806972777589492
+pbmc3k,SAUCIE,reconstruction,1,baseline,B cells,342,0.9673949147053346
+pbmc3k,SAUCIE,reconstruction,1,baseline,CD14+ Monocytes,480,0.8986152211391133
+pbmc3k,SAUCIE,reconstruction,1,baseline,CD4 T cells,1144,0.936528489963152
+pbmc3k,SAUCIE,reconstruction,1,baseline,CD8 T cells,316,0.6955994670337831
+pbmc3k,SAUCIE,reconstruction,1,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,reconstruction,1,baseline,FCGR3A+ Monocytes,150,0.6999628971617641
+pbmc3k,SAUCIE,reconstruction,1,baseline,Megakaryocytes,15,0.6419753086419753
+pbmc3k,SAUCIE,reconstruction,1,baseline,NK cells,154,0.8050355923013892
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,B cells,342,0.9636751035447728
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,CD14+ Monocytes,480,0.8908318428061784
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,CD4 T cells,1144,0.9379375269444774
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,CD8 T cells,316,0.713960029192846
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,Dendritic cells,37,0.0952380952380952
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,FCGR3A+ Monocytes,150,0.714170661232928
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,Megakaryocytes,15,0.3209876543209876
+pbmc3k,SAUCIE,reconstruction,1,scheduled_final,NK cells,154,0.8037282817579111
+paul15,scScope,recurrent_latent,0,baseline,10GMP,153,0.3726007494066369
+paul15,scScope,recurrent_latent,0,baseline,11DC,30,0.9655172413793104
+paul15,scScope,recurrent_latent,0,baseline,12Baso,69,0.0349956255468066
+paul15,scScope,recurrent_latent,0,baseline,13Baso,300,0.6276248144310036
+paul15,scScope,recurrent_latent,0,baseline,14Mo,373,0.6309586190246322
+paul15,scScope,recurrent_latent,0,baseline,15Mo,186,0.2860916907567213
+paul15,scScope,recurrent_latent,0,baseline,16Neu,164,0.5438167385200247
+paul15,scScope,recurrent_latent,0,baseline,17Neu,22,0.0
+paul15,scScope,recurrent_latent,0,baseline,18Eos,9,0.0
+paul15,scScope,recurrent_latent,0,baseline,19Lymph,31,0.0
+paul15,scScope,recurrent_latent,0,baseline,1Ery,43,0.0
+paul15,scScope,recurrent_latent,0,baseline,2Ery,329,0.6077915110963674
+paul15,scScope,recurrent_latent,0,baseline,3Ery,246,0.2993072561480521
+paul15,scScope,recurrent_latent,0,baseline,4Ery,124,0.0332667997338656
+paul15,scScope,recurrent_latent,0,baseline,5Ery,180,0.4682217979563192
+paul15,scScope,recurrent_latent,0,baseline,6Ery,173,0.2944238578738539
+paul15,scScope,recurrent_latent,0,baseline,7MEP,167,0.4825898486134801
+paul15,scScope,recurrent_latent,0,baseline,8Mk,68,0.0
+paul15,scScope,recurrent_latent,0,baseline,9GMP,63,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,10GMP,153,0.4540077322936665
+paul15,scScope,recurrent_latent,0,scheduled_final,11DC,30,0.9699883109292812
+paul15,scScope,recurrent_latent,0,scheduled_final,12Baso,69,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,13Baso,300,0.5568844671002148
+paul15,scScope,recurrent_latent,0,scheduled_final,14Mo,373,0.5906752447906233
+paul15,scScope,recurrent_latent,0,scheduled_final,15Mo,186,0.0782765308949847
+paul15,scScope,recurrent_latent,0,scheduled_final,16Neu,164,0.5354558131495446
+paul15,scScope,recurrent_latent,0,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,19Lymph,31,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,2Ery,329,0.6011246533042319
+paul15,scScope,recurrent_latent,0,scheduled_final,3Ery,246,0.3786332107981185
+paul15,scScope,recurrent_latent,0,scheduled_final,4Ery,124,0.0
+paul15,scScope,recurrent_latent,0,scheduled_final,5Ery,180,0.4909937164338304
+paul15,scScope,recurrent_latent,0,scheduled_final,6Ery,173,0.3448345273713774
+paul15,scScope,recurrent_latent,0,scheduled_final,7MEP,167,0.2873022263330766
+paul15,scScope,recurrent_latent,0,scheduled_final,8Mk,68,0.0608465608465608
+paul15,scScope,recurrent_latent,0,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,10GMP,153,0.5001513005254224
+paul15,scScope,recurrent_PCA2,0,scheduled_final,11DC,30,0.4608934971838197
+paul15,scScope,recurrent_PCA2,0,scheduled_final,12Baso,69,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,13Baso,300,0.7512214551594496
+paul15,scScope,recurrent_PCA2,0,scheduled_final,14Mo,373,0.7135586409015079
+paul15,scScope,recurrent_PCA2,0,scheduled_final,15Mo,186,0.477067977909807
+paul15,scScope,recurrent_PCA2,0,scheduled_final,16Neu,164,0.8018771358479743
+paul15,scScope,recurrent_PCA2,0,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,19Lymph,31,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,2Ery,329,0.5941631522115729
+paul15,scScope,recurrent_PCA2,0,scheduled_final,3Ery,246,0.5180949950564954
+paul15,scScope,recurrent_PCA2,0,scheduled_final,4Ery,124,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,5Ery,180,0.0
+paul15,scScope,recurrent_PCA2,0,scheduled_final,6Ery,173,0.4750443795403687
+paul15,scScope,recurrent_PCA2,0,scheduled_final,7MEP,167,0.4160041173657401
+paul15,scScope,recurrent_PCA2,0,scheduled_final,8Mk,68,0.2083333333333333
+paul15,scScope,recurrent_PCA2,0,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,10GMP,153,0.5500348223490878
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,11DC,30,0.9666666666666668
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,12Baso,69,0.0341530054644808
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,13Baso,300,0.7140616549731561
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,14Mo,373,0.7189042501040083
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,15Mo,186,0.5683174386584201
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,16Neu,164,0.8450343333892446
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,19Lymph,31,0.2089904660073064
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,2Ery,329,0.6704668986161268
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,3Ery,246,0.5974625015551932
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,4Ery,124,0.0821026432284491
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,5Ery,180,0.5596790211231976
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,6Ery,173,0.5086723690618775
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,7MEP,167,0.4626232627942273
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,8Mk,68,0.4085747159009364
+paul15,scScope,recurrent_tSNE2,0,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,reconstruction,0,baseline,10GMP,153,0.5494330655400651
+paul15,SAUCIE,reconstruction,0,baseline,11DC,30,0.3282828282828283
+paul15,SAUCIE,reconstruction,0,baseline,12Baso,69,0.0
+paul15,SAUCIE,reconstruction,0,baseline,13Baso,300,0.5685681506694986
+paul15,SAUCIE,reconstruction,0,baseline,14Mo,373,0.6453696244495709
+paul15,SAUCIE,reconstruction,0,baseline,15Mo,186,0.3339199533984365
+paul15,SAUCIE,reconstruction,0,baseline,16Neu,164,0.6445182922372475
+paul15,SAUCIE,reconstruction,0,baseline,17Neu,22,0.0
+paul15,SAUCIE,reconstruction,0,baseline,18Eos,9,0.0
+paul15,SAUCIE,reconstruction,0,baseline,19Lymph,31,0.7909604519774011
+paul15,SAUCIE,reconstruction,0,baseline,1Ery,43,0.0
+paul15,SAUCIE,reconstruction,0,baseline,2Ery,329,0.6779173113193812
+paul15,SAUCIE,reconstruction,0,baseline,3Ery,246,0.5068481607724368
+paul15,SAUCIE,reconstruction,0,baseline,4Ery,124,0.047008547008547
+paul15,SAUCIE,reconstruction,0,baseline,5Ery,180,0.3876952393641772
+paul15,SAUCIE,reconstruction,0,baseline,6Ery,173,0.4878398626108254
+paul15,SAUCIE,reconstruction,0,baseline,7MEP,167,0.5598506527684011
+paul15,SAUCIE,reconstruction,0,baseline,8Mk,68,0.3667063689759652
+paul15,SAUCIE,reconstruction,0,baseline,9GMP,63,0.0
+paul15,SAUCIE,reconstruction,0,scheduled_final,10GMP,153,0.5248285501395158
+paul15,SAUCIE,reconstruction,0,scheduled_final,11DC,30,0.5947712418300652
+paul15,SAUCIE,reconstruction,0,scheduled_final,12Baso,69,0.0
+paul15,SAUCIE,reconstruction,0,scheduled_final,13Baso,300,0.5643969643349032
+paul15,SAUCIE,reconstruction,0,scheduled_final,14Mo,373,0.676018884656233
+paul15,SAUCIE,reconstruction,0,scheduled_final,15Mo,186,0.2390755745748905
+paul15,SAUCIE,reconstruction,0,scheduled_final,16Neu,164,0.6998046396555648
+paul15,SAUCIE,reconstruction,0,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,reconstruction,0,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,reconstruction,0,scheduled_final,19Lymph,31,0.6267001464741577
+paul15,SAUCIE,reconstruction,0,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,reconstruction,0,scheduled_final,2Ery,329,0.6635990851345175
+paul15,SAUCIE,reconstruction,0,scheduled_final,3Ery,246,0.467642674432181
+paul15,SAUCIE,reconstruction,0,scheduled_final,4Ery,124,0.0745981830887491
+paul15,SAUCIE,reconstruction,0,scheduled_final,5Ery,180,0.3817139363213336
+paul15,SAUCIE,reconstruction,0,scheduled_final,6Ery,173,0.5037898576512493
+paul15,SAUCIE,reconstruction,0,scheduled_final,7MEP,167,0.5675359326228576
+paul15,SAUCIE,reconstruction,0,scheduled_final,8Mk,68,0.4053153202340841
+paul15,SAUCIE,reconstruction,0,scheduled_final,9GMP,63,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,B cells,342,0.9414071355176322
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,CD14+ Monocytes,480,0.8551093244060133
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,CD4 T cells,1144,0.9327646607370076
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,CD8 T cells,316,0.7012929509074814
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,FCGR3A+ Monocytes,150,0.631583653519863
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,baseline,NK cells,154,0.8159932487188473
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,B cells,342,0.9327695872374728
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,CD14+ Monocytes,480,0.871288349701186
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,CD4 T cells,1144,0.9267611113159252
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,CD8 T cells,316,0.696911471529528
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,FCGR3A+ Monocytes,150,0.6188568320021931
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,1,scheduled_final,NK cells,154,0.7213828517063389
+pbmc3k,SAUCIE,task_enabled,1,baseline,B cells,342,0.9042041335680572
+pbmc3k,SAUCIE,task_enabled,1,baseline,CD14+ Monocytes,480,0.837149176334268
+pbmc3k,SAUCIE,task_enabled,1,baseline,CD4 T cells,1144,0.920061637967121
+pbmc3k,SAUCIE,task_enabled,1,baseline,CD8 T cells,316,0.6654678155665616
+pbmc3k,SAUCIE,task_enabled,1,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_enabled,1,baseline,FCGR3A+ Monocytes,150,0.378467548917654
+pbmc3k,SAUCIE,task_enabled,1,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_enabled,1,baseline,NK cells,154,0.7642714532478313
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,B cells,342,0.8977240691631342
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,CD14+ Monocytes,480,0.8384274706347192
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,CD4 T cells,1144,0.913860643413782
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,CD8 T cells,316,0.6436639978469636
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,FCGR3A+ Monocytes,150,0.2930290843429011
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_enabled,1,scheduled_final,NK cells,154,0.7005604430129342
+pbmc3k,scScope,recurrent_latent,2,baseline,B cells,342,0.738168292545456
+pbmc3k,scScope,recurrent_latent,2,baseline,CD14+ Monocytes,480,0.7211636311165356
+pbmc3k,scScope,recurrent_latent,2,baseline,CD4 T cells,1144,0.7707491726803706
+pbmc3k,scScope,recurrent_latent,2,baseline,CD8 T cells,316,0.2737623791157186
+pbmc3k,scScope,recurrent_latent,2,baseline,Dendritic cells,37,0.0837359098228663
+pbmc3k,scScope,recurrent_latent,2,baseline,FCGR3A+ Monocytes,150,0.2798758054684779
+pbmc3k,scScope,recurrent_latent,2,baseline,Megakaryocytes,15,0.5555555555555556
+pbmc3k,scScope,recurrent_latent,2,baseline,NK cells,154,0.3651086436147411
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,B cells,342,0.630799998134717
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,CD14+ Monocytes,480,0.7545507937719943
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,CD4 T cells,1144,0.7604656882003964
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,CD8 T cells,316,0.4342190363599895
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,Dendritic cells,37,0.0458937198067632
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,FCGR3A+ Monocytes,150,0.3680753551179815
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,Megakaryocytes,15,0.5059436274509803
+pbmc3k,scScope,recurrent_latent,2,scheduled_final,NK cells,154,0.365268013535266
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,B cells,342,0.6187372511747122
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,CD14+ Monocytes,480,0.8005432579706694
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,CD4 T cells,1144,0.7630641048050297
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,CD8 T cells,316,0.0
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,FCGR3A+ Monocytes,150,0.0
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,scScope,recurrent_PCA2,2,scheduled_final,NK cells,154,0.0
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,B cells,342,0.7414704859273357
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,CD14+ Monocytes,480,0.831897395620484
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,CD4 T cells,1144,0.8080921897262417
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,CD8 T cells,316,0.3750600510876921
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,FCGR3A+ Monocytes,150,0.5814722046322645
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,scScope,recurrent_tSNE2,2,scheduled_final,NK cells,154,0.4951939577345718
+pbmc3k,SAUCIE,reconstruction,2,baseline,B cells,342,0.9613880396638892
+pbmc3k,SAUCIE,reconstruction,2,baseline,CD14+ Monocytes,480,0.8983257933546349
+pbmc3k,SAUCIE,reconstruction,2,baseline,CD4 T cells,1144,0.9263380248413084
+pbmc3k,SAUCIE,reconstruction,2,baseline,CD8 T cells,316,0.7018036131300994
+pbmc3k,SAUCIE,reconstruction,2,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,reconstruction,2,baseline,FCGR3A+ Monocytes,150,0.6763950829183512
+pbmc3k,SAUCIE,reconstruction,2,baseline,Megakaryocytes,15,0.1175213675213675
+pbmc3k,SAUCIE,reconstruction,2,baseline,NK cells,154,0.7968427681436562
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,B cells,342,0.9413203666040254
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,CD14+ Monocytes,480,0.8935136266856717
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,CD4 T cells,1144,0.9371232630335864
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,CD8 T cells,316,0.7032918751885465
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,FCGR3A+ Monocytes,150,0.6734744167866518
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,Megakaryocytes,15,0.2222222222222222
+pbmc3k,SAUCIE,reconstruction,2,scheduled_final,NK cells,154,0.7598806571900595
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,B cells,342,0.9564037814037814
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,CD14+ Monocytes,480,0.8745497724630759
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,CD4 T cells,1144,0.9370950132735024
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,CD8 T cells,316,0.6992290603765676
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,FCGR3A+ Monocytes,150,0.6781839066825465
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,baseline,NK cells,154,0.8329997584696194
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,B cells,342,0.9592080606217948
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,CD14+ Monocytes,480,0.8632171656473231
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,CD4 T cells,1144,0.9238432899925244
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,CD8 T cells,316,0.6074983442209672
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,FCGR3A+ Monocytes,150,0.628889943917341
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_architecture_reconstruction,2,scheduled_final,NK cells,154,0.6757318797532624
+pbmc3k,SAUCIE,task_enabled,2,baseline,B cells,342,0.9022815748735572
+pbmc3k,SAUCIE,task_enabled,2,baseline,CD14+ Monocytes,480,0.8390937020009686
+pbmc3k,SAUCIE,task_enabled,2,baseline,CD4 T cells,1144,0.908578739847865
+pbmc3k,SAUCIE,task_enabled,2,baseline,CD8 T cells,316,0.578665466989767
+pbmc3k,SAUCIE,task_enabled,2,baseline,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_enabled,2,baseline,FCGR3A+ Monocytes,150,0.5166277506277264
+pbmc3k,SAUCIE,task_enabled,2,baseline,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_enabled,2,baseline,NK cells,154,0.701195745054828
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,B cells,342,0.8821605454599175
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,CD14+ Monocytes,480,0.8385182946262425
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,CD4 T cells,1144,0.905611778767122
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,CD8 T cells,316,0.6378758785897963
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,Dendritic cells,37,0.0
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,FCGR3A+ Monocytes,150,0.5760297891237556
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,Megakaryocytes,15,0.0
+pbmc3k,SAUCIE,task_enabled,2,scheduled_final,NK cells,154,0.7505710199141818
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Adipocytes,145,0.8512144411499347
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Atrial_Cardiomyocyte,471,0.7655628275728358
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Endothelial,1717,0.856976486410681
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Fibroblast,1019,0.8427379326632437
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Lymphoid,267,0.23788840345704992
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Myeloid,395,0.6900525642670845
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Neuronal,153,0.5016897582673189
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Pericytes,1336,0.7824979256580454
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Smooth_muscle_cells,261,0.1154412782132363
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,baseline,Ventricular_Cardiomyocyte,2219,0.9135188479108864
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Adipocytes,145,0.7801057960662421
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Atrial_Cardiomyocyte,471,0.7628947379704242
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Endothelial,1717,0.8342892783380569
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Fibroblast,1019,0.834185129295366
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Lymphoid,267,0.329221962497884
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Myeloid,395,0.6921767340187903
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Neuronal,153,0.48678212374748797
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Pericytes,1336,0.7614754427390773
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Smooth_muscle_cells,261,0.043859649122807015
+heart_cell_atlas_subsampled,scScope,recurrent_latent,0,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9077981431739042
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Atrial_Cardiomyocyte,471,0.0870564467677063
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Endothelial,1717,0.6323838901464229
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Fibroblast,1019,0.457253282000745
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Lymphoid,267,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Myeloid,395,0.03292181069958848
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Neuronal,153,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Pericytes,1336,0.4859593388057123
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Smooth_muscle_cells,261,0.024922118380062308
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,0,scheduled_final,Ventricular_Cardiomyocyte,2219,0.7717726510072588
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Adipocytes,145,0.810703247594725
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Atrial_Cardiomyocyte,471,0.8368142523572062
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Endothelial,1717,0.8684484776498198
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Fibroblast,1019,0.8812186737932828
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Lymphoid,267,0.6730549912683989
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Myeloid,395,0.7953622797634744
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Neuronal,153,0.6436091954022988
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Pericytes,1336,0.7725867124205478
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Smooth_muscle_cells,261,0.23409370683132646
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,0,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9365843393744017
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Adipocytes,145,0.9048174048174047
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Atrial_Cardiomyocyte,471,0.850156317780981
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Endothelial,1717,0.9500386111847737
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Fibroblast,1019,0.9303308398953081
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Lymphoid,267,0.7031749533564832
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Myeloid,395,0.890301504857344
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Neuronal,153,0.7953667953667954
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Pericytes,1336,0.8652624225628249
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Smooth_muscle_cells,261,0.38199501136959035
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,baseline,Ventricular_Cardiomyocyte,2219,0.9679800205969892
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Adipocytes,145,0.873355555204726
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Atrial_Cardiomyocyte,471,0.9270037426369873
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Endothelial,1717,0.9594696770859316
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Fibroblast,1019,0.9475980815867207
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Lymphoid,267,0.8545306895960603
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Mesothelial,17,0.12903225806451613
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Myeloid,395,0.8844464222968385
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Neuronal,153,0.575123611619962
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Pericytes,1336,0.8725302763735565
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Smooth_muscle_cells,261,0.45400990166125815
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,0,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9791838553720076
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Adipocytes,145,0.7604842493205487
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Atrial_Cardiomyocyte,471,0.890930314439407
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Endothelial,1717,0.9515711099566827
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Fibroblast,1019,0.9520795911382166
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Lymphoid,267,0.6373156299652701
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Myeloid,395,0.8635229835511062
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Neuronal,153,0.7481996394633774
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Pericytes,1336,0.871031462618045
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Smooth_muscle_cells,261,0.1602773769440436
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,baseline,Ventricular_Cardiomyocyte,2219,0.9727984675362945
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Adipocytes,145,0.7792726745653847
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Atrial_Cardiomyocyte,471,0.9070322863130121
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Endothelial,1717,0.9536525748665052
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Fibroblast,1019,0.9532963526992937
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Lymphoid,267,0.6043537503370355
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Myeloid,395,0.7804197661071858
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Neuronal,153,0.6648114539221618
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Pericytes,1336,0.8630205740725172
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Smooth_muscle_cells,261,0.44329761686546093
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,0,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9725157059293493
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Atrial_Cardiomyocyte,471,0.6057572949034887
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Endothelial,1717,0.7192017368885729
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Fibroblast,1019,0.7075299743973739
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Lymphoid,267,0.06956670819182902
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Myeloid,395,0.35133431122460773
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Neuronal,153,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Pericytes,1336,0.6112720467861381
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,baseline,Ventricular_Cardiomyocyte,2219,0.873339774254268
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Atrial_Cardiomyocyte,471,0.6115615111949666
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Endothelial,1717,0.7147450347891995
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Fibroblast,1019,0.7083672805670385
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Lymphoid,267,0.25557669172839664
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Myeloid,395,0.34724287525706937
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Neuronal,153,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Pericytes,1336,0.614586850724291
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Smooth_muscle_cells,261,0.0625
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,0,scheduled_final,Ventricular_Cardiomyocyte,2219,0.8762144809027028
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Adipocytes,145,0.9221688166044455
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Atrial_Cardiomyocyte,471,0.765378538282837
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Endothelial,1717,0.8737299249676456
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Fibroblast,1019,0.8650258122297108
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Lymphoid,267,0.2600734336443129
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Myeloid,395,0.6861100610170578
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Neuronal,153,0.5498207685707686
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Pericytes,1336,0.7880201689738632
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Smooth_muscle_cells,261,0.12521499828001376
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,baseline,Ventricular_Cardiomyocyte,2219,0.9408023241483972
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Adipocytes,145,0.8579125221322562
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Atrial_Cardiomyocyte,471,0.8055382683899985
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Endothelial,1717,0.84976918468395
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Fibroblast,1019,0.836643171667695
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Lymphoid,267,0.29195217827438885
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Myeloid,395,0.6594064579687865
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Neuronal,153,0.2931428489586464
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Pericytes,1336,0.7585248603470383
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Smooth_muscle_cells,261,0.13696808510638298
+heart_cell_atlas_subsampled,scScope,recurrent_latent,1,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9424377174436239
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Atrial_Cardiomyocyte,471,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Endothelial,1717,0.6345192003336445
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Fibroblast,1019,0.3959304175670348
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Lymphoid,267,0.036221002199942814
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Myeloid,395,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Neuronal,153,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Pericytes,1336,0.5087819868436222
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,1,scheduled_final,Ventricular_Cardiomyocyte,2219,0.7754640406242526
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Adipocytes,145,0.8878458054732535
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Atrial_Cardiomyocyte,471,0.8468622079870304
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Endothelial,1717,0.871143797871392
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Fibroblast,1019,0.8931272557339048
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Lymphoid,267,0.7048274964381274
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Mesothelial,17,0.6538461538461537
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Myeloid,395,0.7904391483193611
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Neuronal,153,0.5073090724963124
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Pericytes,1336,0.7959631514561859
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Smooth_muscle_cells,261,0.37027242460159143
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,1,scheduled_final,Ventricular_Cardiomyocyte,2219,0.941410572393981
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Adipocytes,145,0.7371205123749774
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Atrial_Cardiomyocyte,471,0.9100243016243296
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Endothelial,1717,0.9658483846529625
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Fibroblast,1019,0.9481352301315562
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Lymphoid,267,0.7718985126859141
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Myeloid,395,0.9025710780382854
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Neuronal,153,0.6132212340146279
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Pericytes,1336,0.8744344134343665
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Smooth_muscle_cells,261,0.2127231891787944
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,baseline,Ventricular_Cardiomyocyte,2219,0.9769069584642487
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Adipocytes,145,0.894736842105263
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Atrial_Cardiomyocyte,471,0.9137529487971727
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Endothelial,1717,0.9701641523711115
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Fibroblast,1019,0.9538421631274245
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Lymphoid,267,0.6829724917264637
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Mesothelial,17,0.13675213675213677
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Myeloid,395,0.8054356671131618
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Neuronal,153,0.6860873976742099
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Pericytes,1336,0.8704842475777455
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Smooth_muscle_cells,261,0.07007007007007006
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,1,scheduled_final,Ventricular_Cardiomyocyte,2219,0.964990940574842
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Adipocytes,145,0.7552672531000705
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Atrial_Cardiomyocyte,471,0.8519241495759623
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Endothelial,1717,0.9702833906269016
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Fibroblast,1019,0.9237766715911058
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Lymphoid,267,0.7102870347465323
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Myeloid,395,0.7295790880662517
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Neuronal,153,0.7502234038384252
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Pericytes,1336,0.8800797281751915
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Smooth_muscle_cells,261,0.22848744875984267
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,baseline,Ventricular_Cardiomyocyte,2219,0.9717293168574029
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Adipocytes,145,0.7113277146001966
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Atrial_Cardiomyocyte,471,0.8448280009802279
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Endothelial,1717,0.9494309850653067
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Fibroblast,1019,0.9354509727852277
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Lymphoid,267,0.7974320371047172
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Myeloid,395,0.6596092323297157
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Neuronal,153,0.7295081967213115
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Pericytes,1336,0.8812979355668694
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Smooth_muscle_cells,261,0.2797810846151968
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,1,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9708995612330446
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Atrial_Cardiomyocyte,471,0.2134703196347032
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Endothelial,1717,0.7606802595409068
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Fibroblast,1019,0.519934195119659
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Lymphoid,267,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Myeloid,395,0.23694419555622456
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Neuronal,153,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Pericytes,1336,0.4617077205329543
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,baseline,Ventricular_Cardiomyocyte,2219,0.8581830487234463
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Atrial_Cardiomyocyte,471,0.25336829072900735
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Endothelial,1717,0.7576320338570467
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Fibroblast,1019,0.502391403798175
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Lymphoid,267,0.029691211401425176
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Myeloid,395,0.18372083845192244
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Neuronal,153,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Pericytes,1336,0.44640898464103324
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,1,scheduled_final,Ventricular_Cardiomyocyte,2219,0.8583368101779124
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Adipocytes,145,0.7020268999111013
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Atrial_Cardiomyocyte,471,0.7936057565065759
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Endothelial,1717,0.8795748532778134
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Fibroblast,1019,0.8640335002059409
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Lymphoid,267,0.11111111111111112
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Mesothelial,17,0.14814814814814814
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Myeloid,395,0.7129004884929222
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Neuronal,153,0.5147112018231714
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Pericytes,1336,0.7761599757483534
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Smooth_muscle_cells,261,0.11761192680690606
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,baseline,Ventricular_Cardiomyocyte,2219,0.9477477509117581
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Adipocytes,145,0.70077448549801
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Atrial_Cardiomyocyte,471,0.7720066991873211
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Endothelial,1717,0.844350680734612
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Fibroblast,1019,0.8499367428696618
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Lymphoid,267,0.09531590413943355
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Myeloid,395,0.6747305013982484
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Neuronal,153,0.43701300203214255
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Pericytes,1336,0.7420574837359003
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Smooth_muscle_cells,261,0.18531662525564965
+heart_cell_atlas_subsampled,scScope,recurrent_latent,2,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9338286876750694
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Atrial_Cardiomyocyte,471,0.09874191153469575
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Endothelial,1717,0.6513629172444398
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Fibroblast,1019,0.3409064437788689
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Lymphoid,267,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Myeloid,395,0.07091961701180138
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Neuronal,153,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Pericytes,1336,0.4497614604474129
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,scScope,recurrent_PCA2,2,scheduled_final,Ventricular_Cardiomyocyte,2219,0.7981863779677956
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Adipocytes,145,0.8579440585254539
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Atrial_Cardiomyocyte,471,0.825482813380462
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Endothelial,1717,0.8713470230990351
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Fibroblast,1019,0.8995725882765846
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Lymphoid,267,0.7328832253901144
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Mesothelial,17,0.6428571428571428
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Myeloid,395,0.7966430867285634
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Neuronal,153,0.6512775953925906
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Pericytes,1336,0.8032227442439304
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Smooth_muscle_cells,261,0.41524381483960476
+heart_cell_atlas_subsampled,scScope,recurrent_tSNE2,2,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9355855922776726
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Adipocytes,145,0.7687576875768758
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Atrial_Cardiomyocyte,471,0.8621103662883504
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Endothelial,1717,0.9533478515505115
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Fibroblast,1019,0.9183601783701401
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Lymphoid,267,0.8277606258520349
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Myeloid,395,0.9187097904687909
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Neuronal,153,0.6778997852960789
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Pericytes,1336,0.8540944002009904
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Smooth_muscle_cells,261,0.5181595177590619
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,baseline,Ventricular_Cardiomyocyte,2219,0.9693136879708445
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Adipocytes,145,0.5731170604700153
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Atrial_Cardiomyocyte,471,0.9079489264017995
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Endothelial,1717,0.9594952184669187
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Fibroblast,1019,0.9052236009620694
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Lymphoid,267,0.8142473112949025
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Myeloid,395,0.886380904200841
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Neuronal,153,0.7071208524783477
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Pericytes,1336,0.8606329398398378
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Smooth_muscle_cells,261,0.1536521601724639
+heart_cell_atlas_subsampled,SAUCIE,reconstruction,2,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9743293070550477
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Adipocytes,145,0.7120461297464041
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Atrial_Cardiomyocyte,471,0.9384773560198244
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Endothelial,1717,0.9496552747950083
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Fibroblast,1019,0.9473051446562117
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Lymphoid,267,0.8138179410604335
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Myeloid,395,0.8766167158008454
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Neuronal,153,0.698960044079428
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Pericytes,1336,0.8720653652430367
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Smooth_muscle_cells,261,0.35207232893667073
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,baseline,Ventricular_Cardiomyocyte,2219,0.9849580702893004
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Adipocytes,145,0.6515879427726958
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Atrial_Cardiomyocyte,471,0.8688685522990964
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Endothelial,1717,0.9491991370574603
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Fibroblast,1019,0.9365330833509682
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Lymphoid,267,0.7710424978076136
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Myeloid,395,0.8108600489556546
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Neuronal,153,0.6219535221110288
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Pericytes,1336,0.8708409693429371
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Smooth_muscle_cells,261,0.42138529473266717
+heart_cell_atlas_subsampled,SAUCIE,task_architecture_reconstruction,2,scheduled_final,Ventricular_Cardiomyocyte,2219,0.9555835710422621
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Adipocytes,145,0.3977268756161568
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Atrial_Cardiomyocyte,471,0.012262742589038172
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Endothelial,1717,0.6753045752271102
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Fibroblast,1019,0.6270837310925498
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Lymphoid,267,0.25465964793737517
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Myeloid,395,0.3376082707116392
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Neuronal,153,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Pericytes,1336,0.5239086678027886
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,baseline,Ventricular_Cardiomyocyte,2219,0.8504908252530851
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Adipocytes,145,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Atrial_Cardiomyocyte,471,0.11297852006229206
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Endothelial,1717,0.6863200666151686
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Fibroblast,1019,0.6060712344655504
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Lymphoid,267,0.2086294257790779
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Mesothelial,17,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Myeloid,395,0.27505166682015253
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Neuronal,153,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Pericytes,1336,0.5024647380913896
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Smooth_muscle_cells,261,0.0
+heart_cell_atlas_subsampled,SAUCIE,task_enabled,2,scheduled_final,Ventricular_Cardiomyocyte,2219,0.855684465212953
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,10GMP,153,0.5160377759761391
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,11DC,30,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,12Baso,69,0.03136200716845878
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,13Baso,300,0.5043054856771765
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,14Mo,373,0.5913878426096174
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,15Mo,186,0.4609103314155302
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,16Neu,164,0.7519895026575758
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,17Neu,22,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,18Eos,9,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,19Lymph,31,0.23513236513779107
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,1Ery,43,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,2Ery,329,0.5909494060743267
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,3Ery,246,0.48791353909419455
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,4Ery,124,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,5Ery,180,0.4433817272089289
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,6Ery,173,0.5175740246311926
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,7MEP,167,0.5951093848703909
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,8Mk,68,0.15787025636816326
+paul15,SAUCIE,task_architecture_reconstruction,0,baseline,9GMP,63,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,10GMP,153,0.5341236549563813
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,11DC,30,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,12Baso,69,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,13Baso,300,0.5588240461556704
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,14Mo,373,0.6285247072080712
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,15Mo,186,0.3351664720174714
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,16Neu,164,0.6909864861727013
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,19Lymph,31,0.33031270729360934
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,2Ery,329,0.5733451867725082
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,3Ery,246,0.4801731161472261
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,4Ery,124,0.0
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,5Ery,180,0.38132930918692937
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,6Ery,173,0.4012342192004386
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,7MEP,167,0.5991067246511095
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,8Mk,68,0.16845039018952063
+paul15,SAUCIE,task_architecture_reconstruction,0,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,task_enabled,0,baseline,10GMP,153,0.36439899043240487
+paul15,SAUCIE,task_enabled,0,baseline,11DC,30,0.0
+paul15,SAUCIE,task_enabled,0,baseline,12Baso,69,0.14884177173627527
+paul15,SAUCIE,task_enabled,0,baseline,13Baso,300,0.22881190189894263
+paul15,SAUCIE,task_enabled,0,baseline,14Mo,373,0.5147182178849057
+paul15,SAUCIE,task_enabled,0,baseline,15Mo,186,0.0
+paul15,SAUCIE,task_enabled,0,baseline,16Neu,164,0.17811704834605596
+paul15,SAUCIE,task_enabled,0,baseline,17Neu,22,0.0
+paul15,SAUCIE,task_enabled,0,baseline,18Eos,9,0.0
+paul15,SAUCIE,task_enabled,0,baseline,19Lymph,31,0.0
+paul15,SAUCIE,task_enabled,0,baseline,1Ery,43,0.0
+paul15,SAUCIE,task_enabled,0,baseline,2Ery,329,0.5491934364257666
+paul15,SAUCIE,task_enabled,0,baseline,3Ery,246,0.3859032810497544
+paul15,SAUCIE,task_enabled,0,baseline,4Ery,124,0.0
+paul15,SAUCIE,task_enabled,0,baseline,5Ery,180,0.27825298511978963
+paul15,SAUCIE,task_enabled,0,baseline,6Ery,173,0.40572730036927074
+paul15,SAUCIE,task_enabled,0,baseline,7MEP,167,0.5808781993235217
+paul15,SAUCIE,task_enabled,0,baseline,8Mk,68,0.11368312757201646
+paul15,SAUCIE,task_enabled,0,baseline,9GMP,63,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,10GMP,153,0.35319385227476346
+paul15,SAUCIE,task_enabled,0,scheduled_final,11DC,30,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,12Baso,69,0.22923000865158819
+paul15,SAUCIE,task_enabled,0,scheduled_final,13Baso,300,0.26137905758120444
+paul15,SAUCIE,task_enabled,0,scheduled_final,14Mo,373,0.5087195215905015
+paul15,SAUCIE,task_enabled,0,scheduled_final,15Mo,186,0.09293556226743521
+paul15,SAUCIE,task_enabled,0,scheduled_final,16Neu,164,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,19Lymph,31,0.09961685823754789
+paul15,SAUCIE,task_enabled,0,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,2Ery,329,0.5535246730766146
+paul15,SAUCIE,task_enabled,0,scheduled_final,3Ery,246,0.3664226309867281
+paul15,SAUCIE,task_enabled,0,scheduled_final,4Ery,124,0.0
+paul15,SAUCIE,task_enabled,0,scheduled_final,5Ery,180,0.34219885882460666
+paul15,SAUCIE,task_enabled,0,scheduled_final,6Ery,173,0.43925412219056165
+paul15,SAUCIE,task_enabled,0,scheduled_final,7MEP,167,0.5857883543094574
+paul15,SAUCIE,task_enabled,0,scheduled_final,8Mk,68,0.19825708061002179
+paul15,SAUCIE,task_enabled,0,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_latent,1,baseline,10GMP,153,0.3587723266131852
+paul15,scScope,recurrent_latent,1,baseline,11DC,30,0.9661341645561401
+paul15,scScope,recurrent_latent,1,baseline,12Baso,69,0.08679810007157264
+paul15,scScope,recurrent_latent,1,baseline,13Baso,300,0.4536506775766121
+paul15,scScope,recurrent_latent,1,baseline,14Mo,373,0.6015176907573306
+paul15,scScope,recurrent_latent,1,baseline,15Mo,186,0.23352432193224565
+paul15,scScope,recurrent_latent,1,baseline,16Neu,164,0.7553565471252814
+paul15,scScope,recurrent_latent,1,baseline,17Neu,22,0.0
+paul15,scScope,recurrent_latent,1,baseline,18Eos,9,0.12152777777777778
+paul15,scScope,recurrent_latent,1,baseline,19Lymph,31,0.0
+paul15,scScope,recurrent_latent,1,baseline,1Ery,43,0.0
+paul15,scScope,recurrent_latent,1,baseline,2Ery,329,0.6340453427802987
+paul15,scScope,recurrent_latent,1,baseline,3Ery,246,0.3482888787085045
+paul15,scScope,recurrent_latent,1,baseline,4Ery,124,0.0
+paul15,scScope,recurrent_latent,1,baseline,5Ery,180,0.41430800134014845
+paul15,scScope,recurrent_latent,1,baseline,6Ery,173,0.2925381163788422
+paul15,scScope,recurrent_latent,1,baseline,7MEP,167,0.48034315465803584
+paul15,scScope,recurrent_latent,1,baseline,8Mk,68,0.06860776439089691
+paul15,scScope,recurrent_latent,1,baseline,9GMP,63,0.0
+paul15,scScope,recurrent_latent,1,scheduled_final,10GMP,153,0.3721196275678748
+paul15,scScope,recurrent_latent,1,scheduled_final,11DC,30,0.9017025958239088
+paul15,scScope,recurrent_latent,1,scheduled_final,12Baso,69,0.0
+paul15,scScope,recurrent_latent,1,scheduled_final,13Baso,300,0.6376229348859365
+paul15,scScope,recurrent_latent,1,scheduled_final,14Mo,373,0.4481974724076538
+paul15,scScope,recurrent_latent,1,scheduled_final,15Mo,186,0.22464408205526437
+paul15,scScope,recurrent_latent,1,scheduled_final,16Neu,164,0.6833076857229323
+paul15,scScope,recurrent_latent,1,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_latent,1,scheduled_final,18Eos,9,0.39969135802469136
+paul15,scScope,recurrent_latent,1,scheduled_final,19Lymph,31,0.0
+paul15,scScope,recurrent_latent,1,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_latent,1,scheduled_final,2Ery,329,0.6160225136861361
+paul15,scScope,recurrent_latent,1,scheduled_final,3Ery,246,0.2121980925686089
+paul15,scScope,recurrent_latent,1,scheduled_final,4Ery,124,0.0
+paul15,scScope,recurrent_latent,1,scheduled_final,5Ery,180,0.3913249968323851
+paul15,scScope,recurrent_latent,1,scheduled_final,6Ery,173,0.2652090281918117
+paul15,scScope,recurrent_latent,1,scheduled_final,7MEP,167,0.46970408120570023
+paul15,scScope,recurrent_latent,1,scheduled_final,8Mk,68,0.04767827529021559
+paul15,scScope,recurrent_latent,1,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,10GMP,153,0.4121734434777498
+paul15,scScope,recurrent_PCA2,1,scheduled_final,11DC,30,0.42512171658513126
+paul15,scScope,recurrent_PCA2,1,scheduled_final,12Baso,69,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,13Baso,300,0.7147101045227163
+paul15,scScope,recurrent_PCA2,1,scheduled_final,14Mo,373,0.6981177172383983
+paul15,scScope,recurrent_PCA2,1,scheduled_final,15Mo,186,0.4139398451393563
+paul15,scScope,recurrent_PCA2,1,scheduled_final,16Neu,164,0.8326510721247563
+paul15,scScope,recurrent_PCA2,1,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,19Lymph,31,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,2Ery,329,0.630778963431669
+paul15,scScope,recurrent_PCA2,1,scheduled_final,3Ery,246,0.49119267372335923
+paul15,scScope,recurrent_PCA2,1,scheduled_final,4Ery,124,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,5Ery,180,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,6Ery,173,0.4998600896954028
+paul15,scScope,recurrent_PCA2,1,scheduled_final,7MEP,167,0.407731613253127
+paul15,scScope,recurrent_PCA2,1,scheduled_final,8Mk,68,0.0
+paul15,scScope,recurrent_PCA2,1,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,10GMP,153,0.5813718744917318
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,11DC,30,0.9655172413793104
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,12Baso,69,0.028089887640449437
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,13Baso,300,0.7510803936328247
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,14Mo,373,0.7376040497824767
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,15Mo,186,0.48536288897723
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,16Neu,164,0.816478003855104
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,18Eos,9,0.7999999999999999
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,19Lymph,31,0.455743879472693
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,1Ery,43,0.08385744234800839
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,2Ery,329,0.7246312177385396
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,3Ery,246,0.5859986082356768
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,4Ery,124,0.21842272391454723
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,5Ery,180,0.517927592301551
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,6Ery,173,0.5321473641614801
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,7MEP,167,0.5092592699951103
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,8Mk,68,0.46879744689635405
+paul15,scScope,recurrent_tSNE2,1,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,reconstruction,1,baseline,10GMP,153,0.4230432978212697
+paul15,SAUCIE,reconstruction,1,baseline,11DC,30,0.12054507337526206
+paul15,SAUCIE,reconstruction,1,baseline,12Baso,69,0.0
+paul15,SAUCIE,reconstruction,1,baseline,13Baso,300,0.488523399026101
+paul15,SAUCIE,reconstruction,1,baseline,14Mo,373,0.6646380430965864
+paul15,SAUCIE,reconstruction,1,baseline,15Mo,186,0.29178685095400464
+paul15,SAUCIE,reconstruction,1,baseline,16Neu,164,0.6043101585389573
+paul15,SAUCIE,reconstruction,1,baseline,17Neu,22,0.11672908863920099
+paul15,SAUCIE,reconstruction,1,baseline,18Eos,9,0.0
+paul15,SAUCIE,reconstruction,1,baseline,19Lymph,31,0.5965179175118323
+paul15,SAUCIE,reconstruction,1,baseline,1Ery,43,0.0
+paul15,SAUCIE,reconstruction,1,baseline,2Ery,329,0.6720312650992214
+paul15,SAUCIE,reconstruction,1,baseline,3Ery,246,0.5372700374909682
+paul15,SAUCIE,reconstruction,1,baseline,4Ery,124,0.10657894419218802
+paul15,SAUCIE,reconstruction,1,baseline,5Ery,180,0.4964330541458395
+paul15,SAUCIE,reconstruction,1,baseline,6Ery,173,0.36824541816878764
+paul15,SAUCIE,reconstruction,1,baseline,7MEP,167,0.5399139366243583
+paul15,SAUCIE,reconstruction,1,baseline,8Mk,68,0.33141620126914245
+paul15,SAUCIE,reconstruction,1,baseline,9GMP,63,0.0
+paul15,SAUCIE,reconstruction,1,scheduled_final,10GMP,153,0.4497210087279507
+paul15,SAUCIE,reconstruction,1,scheduled_final,11DC,30,0.47406718608760245
+paul15,SAUCIE,reconstruction,1,scheduled_final,12Baso,69,0.0
+paul15,SAUCIE,reconstruction,1,scheduled_final,13Baso,300,0.5670035761026196
+paul15,SAUCIE,reconstruction,1,scheduled_final,14Mo,373,0.6533165219962455
+paul15,SAUCIE,reconstruction,1,scheduled_final,15Mo,186,0.31789459750893495
+paul15,SAUCIE,reconstruction,1,scheduled_final,16Neu,164,0.662149801091473
+paul15,SAUCIE,reconstruction,1,scheduled_final,17Neu,22,0.046296296296296294
+paul15,SAUCIE,reconstruction,1,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,reconstruction,1,scheduled_final,19Lymph,31,0.41156255323609964
+paul15,SAUCIE,reconstruction,1,scheduled_final,1Ery,43,0.12026143790849672
+paul15,SAUCIE,reconstruction,1,scheduled_final,2Ery,329,0.6702882876276375
+paul15,SAUCIE,reconstruction,1,scheduled_final,3Ery,246,0.49760628246540994
+paul15,SAUCIE,reconstruction,1,scheduled_final,4Ery,124,0.0
+paul15,SAUCIE,reconstruction,1,scheduled_final,5Ery,180,0.43112255384014475
+paul15,SAUCIE,reconstruction,1,scheduled_final,6Ery,173,0.4413878064914225
+paul15,SAUCIE,reconstruction,1,scheduled_final,7MEP,167,0.5164356936251729
+paul15,SAUCIE,reconstruction,1,scheduled_final,8Mk,68,0.26505781799899447
+paul15,SAUCIE,reconstruction,1,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,10GMP,153,0.5960314932111331
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,11DC,30,0.5746943115364167
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,12Baso,69,0.0939476061427281
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,13Baso,300,0.5599348536881907
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,14Mo,373,0.6162356419212256
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,15Mo,186,0.393001400936952
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,16Neu,164,0.7313920010376579
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,17Neu,22,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,18Eos,9,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,19Lymph,31,0.0492831541218638
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,1Ery,43,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,2Ery,329,0.7072145101271257
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,3Ery,246,0.5507955231997598
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,4Ery,124,0.2639952193211838
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,5Ery,180,0.5408815448247914
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,6Ery,173,0.24893924550528163
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,7MEP,167,0.6086660045450166
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,8Mk,68,0.30441245786320537
+paul15,SAUCIE,task_architecture_reconstruction,1,baseline,9GMP,63,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,10GMP,153,0.536277771363436
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,11DC,30,0.16436070853462156
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,12Baso,69,0.09103641456582633
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,13Baso,300,0.5257571314064257
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,14Mo,373,0.5929534436532576
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,15Mo,186,0.3876259431258175
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,16Neu,164,0.69340143606528
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,19Lymph,31,0.14895833333333333
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,2Ery,329,0.6501382668772293
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,3Ery,246,0.45219832793656267
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,4Ery,124,0.313649054953367
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,5Ery,180,0.474757281747081
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,6Ery,173,0.344819136239874
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,7MEP,167,0.6010820815026308
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,8Mk,68,0.03634475597092419
+paul15,SAUCIE,task_architecture_reconstruction,1,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,task_enabled,1,baseline,10GMP,153,0.44823610140503795
+paul15,SAUCIE,task_enabled,1,baseline,11DC,30,0.0
+paul15,SAUCIE,task_enabled,1,baseline,12Baso,69,0.0
+paul15,SAUCIE,task_enabled,1,baseline,13Baso,300,0.24303250619040093
+paul15,SAUCIE,task_enabled,1,baseline,14Mo,373,0.52206746562484
+paul15,SAUCIE,task_enabled,1,baseline,15Mo,186,0.0
+paul15,SAUCIE,task_enabled,1,baseline,16Neu,164,0.0
+paul15,SAUCIE,task_enabled,1,baseline,17Neu,22,0.0
+paul15,SAUCIE,task_enabled,1,baseline,18Eos,9,0.0
+paul15,SAUCIE,task_enabled,1,baseline,19Lymph,31,0.0
+paul15,SAUCIE,task_enabled,1,baseline,1Ery,43,0.0
+paul15,SAUCIE,task_enabled,1,baseline,2Ery,329,0.53988806835512
+paul15,SAUCIE,task_enabled,1,baseline,3Ery,246,0.423736206800161
+paul15,SAUCIE,task_enabled,1,baseline,4Ery,124,0.0
+paul15,SAUCIE,task_enabled,1,baseline,5Ery,180,0.3327165802139002
+paul15,SAUCIE,task_enabled,1,baseline,6Ery,173,0.4062222231971523
+paul15,SAUCIE,task_enabled,1,baseline,7MEP,167,0.5842089440189663
+paul15,SAUCIE,task_enabled,1,baseline,8Mk,68,0.0
+paul15,SAUCIE,task_enabled,1,baseline,9GMP,63,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,10GMP,153,0.44680961329601937
+paul15,SAUCIE,task_enabled,1,scheduled_final,11DC,30,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,12Baso,69,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,13Baso,300,0.35172753722927325
+paul15,SAUCIE,task_enabled,1,scheduled_final,14Mo,373,0.5080505801164086
+paul15,SAUCIE,task_enabled,1,scheduled_final,15Mo,186,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,16Neu,164,0.0794392523364486
+paul15,SAUCIE,task_enabled,1,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,19Lymph,31,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,2Ery,329,0.5378016353248779
+paul15,SAUCIE,task_enabled,1,scheduled_final,3Ery,246,0.4102216137717476
+paul15,SAUCIE,task_enabled,1,scheduled_final,4Ery,124,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,5Ery,180,0.3617284237298729
+paul15,SAUCIE,task_enabled,1,scheduled_final,6Ery,173,0.43617178415591457
+paul15,SAUCIE,task_enabled,1,scheduled_final,7MEP,167,0.5931035849481362
+paul15,SAUCIE,task_enabled,1,scheduled_final,8Mk,68,0.0
+paul15,SAUCIE,task_enabled,1,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_latent,2,baseline,10GMP,153,0.4037058241709495
+paul15,scScope,recurrent_latent,2,baseline,11DC,30,0.9830508474576272
+paul15,scScope,recurrent_latent,2,baseline,12Baso,69,0.05952380952380952
+paul15,scScope,recurrent_latent,2,baseline,13Baso,300,0.5459255392681677
+paul15,scScope,recurrent_latent,2,baseline,14Mo,373,0.677834488310659
+paul15,scScope,recurrent_latent,2,baseline,15Mo,186,0.3024431003402966
+paul15,scScope,recurrent_latent,2,baseline,16Neu,164,0.7178481572668493
+paul15,scScope,recurrent_latent,2,baseline,17Neu,22,0.0
+paul15,scScope,recurrent_latent,2,baseline,18Eos,9,0.0
+paul15,scScope,recurrent_latent,2,baseline,19Lymph,31,0.0
+paul15,scScope,recurrent_latent,2,baseline,1Ery,43,0.0
+paul15,scScope,recurrent_latent,2,baseline,2Ery,329,0.6435127357261491
+paul15,scScope,recurrent_latent,2,baseline,3Ery,246,0.32743101520492524
+paul15,scScope,recurrent_latent,2,baseline,4Ery,124,0.04802259887005649
+paul15,scScope,recurrent_latent,2,baseline,5Ery,180,0.48617877248295943
+paul15,scScope,recurrent_latent,2,baseline,6Ery,173,0.4447902488560315
+paul15,scScope,recurrent_latent,2,baseline,7MEP,167,0.33992194746604815
+paul15,scScope,recurrent_latent,2,baseline,8Mk,68,0.0
+paul15,scScope,recurrent_latent,2,baseline,9GMP,63,0.0
+paul15,scScope,recurrent_latent,2,scheduled_final,10GMP,153,0.3713398616649208
+paul15,scScope,recurrent_latent,2,scheduled_final,11DC,30,0.9830508474576272
+paul15,scScope,recurrent_latent,2,scheduled_final,12Baso,69,0.10304009183363691
+paul15,scScope,recurrent_latent,2,scheduled_final,13Baso,300,0.6152288175836432
+paul15,scScope,recurrent_latent,2,scheduled_final,14Mo,373,0.49269417980330943
+paul15,scScope,recurrent_latent,2,scheduled_final,15Mo,186,0.1682643634027168
+paul15,scScope,recurrent_latent,2,scheduled_final,16Neu,164,0.6670095682734966
+paul15,scScope,recurrent_latent,2,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_latent,2,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_latent,2,scheduled_final,19Lymph,31,0.0
+paul15,scScope,recurrent_latent,2,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_latent,2,scheduled_final,2Ery,329,0.6615506367204185
+paul15,scScope,recurrent_latent,2,scheduled_final,3Ery,246,0.30231805231805237
+paul15,scScope,recurrent_latent,2,scheduled_final,4Ery,124,0.04110612855007474
+paul15,scScope,recurrent_latent,2,scheduled_final,5Ery,180,0.4616560412425621
+paul15,scScope,recurrent_latent,2,scheduled_final,6Ery,173,0.1881897121131571
+paul15,scScope,recurrent_latent,2,scheduled_final,7MEP,167,0.3955822890124171
+paul15,scScope,recurrent_latent,2,scheduled_final,8Mk,68,0.0
+paul15,scScope,recurrent_latent,2,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,10GMP,153,0.4292761147557001
+paul15,scScope,recurrent_PCA2,2,scheduled_final,11DC,30,0.044893378226711564
+paul15,scScope,recurrent_PCA2,2,scheduled_final,12Baso,69,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,13Baso,300,0.716809699381339
+paul15,scScope,recurrent_PCA2,2,scheduled_final,14Mo,373,0.7352600573812396
+paul15,scScope,recurrent_PCA2,2,scheduled_final,15Mo,186,0.20690860747713213
+paul15,scScope,recurrent_PCA2,2,scheduled_final,16Neu,164,0.8066508847851873
+paul15,scScope,recurrent_PCA2,2,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,19Lymph,31,0.1349206349206349
+paul15,scScope,recurrent_PCA2,2,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,2Ery,329,0.6528957501408607
+paul15,scScope,recurrent_PCA2,2,scheduled_final,3Ery,246,0.4193748819141226
+paul15,scScope,recurrent_PCA2,2,scheduled_final,4Ery,124,0.2557683256262955
+paul15,scScope,recurrent_PCA2,2,scheduled_final,5Ery,180,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,6Ery,173,0.5289670348975205
+paul15,scScope,recurrent_PCA2,2,scheduled_final,7MEP,167,0.3807496863865999
+paul15,scScope,recurrent_PCA2,2,scheduled_final,8Mk,68,0.0
+paul15,scScope,recurrent_PCA2,2,scheduled_final,9GMP,63,0.0
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,10GMP,153,0.5163871204601809
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,11DC,30,0.9830508474576272
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,12Baso,69,0.18383182298409295
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,13Baso,300,0.7358408068762387
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,14Mo,373,0.7050855325069377
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,15Mo,186,0.6131731746152818
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,16Neu,164,0.867513703866361
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,17Neu,22,0.0
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,18Eos,9,0.0
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,19Lymph,31,0.2076338295850491
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,1Ery,43,0.0
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,2Ery,329,0.7181263381144768
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,3Ery,246,0.602303815316264
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,4Ery,124,0.0
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,5Ery,180,0.5922146828482868
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,6Ery,173,0.6127851252769714
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,7MEP,167,0.4543564623681791
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,8Mk,68,0.15369958027874353
+paul15,scScope,recurrent_tSNE2,2,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,reconstruction,2,baseline,10GMP,153,0.46275524841124016
+paul15,SAUCIE,reconstruction,2,baseline,11DC,30,0.4545454545454545
+paul15,SAUCIE,reconstruction,2,baseline,12Baso,69,0.04891684136967155
+paul15,SAUCIE,reconstruction,2,baseline,13Baso,300,0.6107315607295103
+paul15,SAUCIE,reconstruction,2,baseline,14Mo,373,0.6121466764249873
+paul15,SAUCIE,reconstruction,2,baseline,15Mo,186,0.44299945403743674
+paul15,SAUCIE,reconstruction,2,baseline,16Neu,164,0.7152800424890747
+paul15,SAUCIE,reconstruction,2,baseline,17Neu,22,0.0
+paul15,SAUCIE,reconstruction,2,baseline,18Eos,9,0.0
+paul15,SAUCIE,reconstruction,2,baseline,19Lymph,31,0.6937879410740142
+paul15,SAUCIE,reconstruction,2,baseline,1Ery,43,0.0
+paul15,SAUCIE,reconstruction,2,baseline,2Ery,329,0.6968396075344802
+paul15,SAUCIE,reconstruction,2,baseline,3Ery,246,0.5380416478584481
+paul15,SAUCIE,reconstruction,2,baseline,4Ery,124,0.0
+paul15,SAUCIE,reconstruction,2,baseline,5Ery,180,0.44240390072542185
+paul15,SAUCIE,reconstruction,2,baseline,6Ery,173,0.45501606450589327
+paul15,SAUCIE,reconstruction,2,baseline,7MEP,167,0.5297636744896584
+paul15,SAUCIE,reconstruction,2,baseline,8Mk,68,0.21002162268416139
+paul15,SAUCIE,reconstruction,2,baseline,9GMP,63,0.0
+paul15,SAUCIE,reconstruction,2,scheduled_final,10GMP,153,0.4980011890165038
+paul15,SAUCIE,reconstruction,2,scheduled_final,11DC,30,0.11437908496732026
+paul15,SAUCIE,reconstruction,2,scheduled_final,12Baso,69,0.0
+paul15,SAUCIE,reconstruction,2,scheduled_final,13Baso,300,0.5634946404611935
+paul15,SAUCIE,reconstruction,2,scheduled_final,14Mo,373,0.6346767964415033
+paul15,SAUCIE,reconstruction,2,scheduled_final,15Mo,186,0.4385705017560939
+paul15,SAUCIE,reconstruction,2,scheduled_final,16Neu,164,0.6696900922414286
+paul15,SAUCIE,reconstruction,2,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,reconstruction,2,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,reconstruction,2,scheduled_final,19Lymph,31,0.5307113603988604
+paul15,SAUCIE,reconstruction,2,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,reconstruction,2,scheduled_final,2Ery,329,0.6776922758512773
+paul15,SAUCIE,reconstruction,2,scheduled_final,3Ery,246,0.5200408508991408
+paul15,SAUCIE,reconstruction,2,scheduled_final,4Ery,124,0.0
+paul15,SAUCIE,reconstruction,2,scheduled_final,5Ery,180,0.2897808608430971
+paul15,SAUCIE,reconstruction,2,scheduled_final,6Ery,173,0.4877869165737787
+paul15,SAUCIE,reconstruction,2,scheduled_final,7MEP,167,0.5699578813953762
+paul15,SAUCIE,reconstruction,2,scheduled_final,8Mk,68,0.10436656932276457
+paul15,SAUCIE,reconstruction,2,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,10GMP,153,0.48831500396606975
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,11DC,30,0.11437908496732026
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,12Baso,69,0.19090950556467798
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,13Baso,300,0.5757121609929933
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,14Mo,373,0.6019772540849567
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,15Mo,186,0.4758760754971687
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,16Neu,164,0.736532553318768
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,17Neu,22,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,18Eos,9,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,19Lymph,31,0.23357142857142857
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,1Ery,43,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,2Ery,329,0.6718770192323025
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,3Ery,246,0.43148764452316724
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,4Ery,124,0.23447567146871992
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,5Ery,180,0.5010710693742145
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,6Ery,173,0.4540175806960036
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,7MEP,167,0.48219299364069407
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,8Mk,68,0.3953135476074878
+paul15,SAUCIE,task_architecture_reconstruction,2,baseline,9GMP,63,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,10GMP,153,0.5011365686694944
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,11DC,30,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,12Baso,69,0.024691358024691357
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,13Baso,300,0.5297335732025843
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,14Mo,373,0.5962963902464115
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,15Mo,186,0.3602302606921663
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,16Neu,164,0.7386828988938837
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,19Lymph,31,0.1604376334457424
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,2Ery,329,0.6627989583310443
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,3Ery,246,0.45824666231865646
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,4Ery,124,0.09987874729210741
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,5Ery,180,0.4334250353278441
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,6Ery,173,0.43110392521111646
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,7MEP,167,0.5429819956867211
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,8Mk,68,0.27316112215092464
+paul15,SAUCIE,task_architecture_reconstruction,2,scheduled_final,9GMP,63,0.0
+paul15,SAUCIE,task_enabled,2,baseline,10GMP,153,0.3585229316876199
+paul15,SAUCIE,task_enabled,2,baseline,11DC,30,0.0
+paul15,SAUCIE,task_enabled,2,baseline,12Baso,69,0.14784946236559138
+paul15,SAUCIE,task_enabled,2,baseline,13Baso,300,0.2937421132954722
+paul15,SAUCIE,task_enabled,2,baseline,14Mo,373,0.5000664818606892
+paul15,SAUCIE,task_enabled,2,baseline,15Mo,186,0.12499999999999999
+paul15,SAUCIE,task_enabled,2,baseline,16Neu,164,0.0
+paul15,SAUCIE,task_enabled,2,baseline,17Neu,22,0.0
+paul15,SAUCIE,task_enabled,2,baseline,18Eos,9,0.0
+paul15,SAUCIE,task_enabled,2,baseline,19Lymph,31,0.0
+paul15,SAUCIE,task_enabled,2,baseline,1Ery,43,0.0
+paul15,SAUCIE,task_enabled,2,baseline,2Ery,329,0.6789857719163761
+paul15,SAUCIE,task_enabled,2,baseline,3Ery,246,0.49526334078157563
+paul15,SAUCIE,task_enabled,2,baseline,4Ery,124,0.0
+paul15,SAUCIE,task_enabled,2,baseline,5Ery,180,0.3130242528787932
+paul15,SAUCIE,task_enabled,2,baseline,6Ery,173,0.4250271949372222
+paul15,SAUCIE,task_enabled,2,baseline,7MEP,167,0.5558045418380041
+paul15,SAUCIE,task_enabled,2,baseline,8Mk,68,0.0
+paul15,SAUCIE,task_enabled,2,baseline,9GMP,63,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,10GMP,153,0.3627662254341499
+paul15,SAUCIE,task_enabled,2,scheduled_final,11DC,30,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,12Baso,69,0.03003003003003003
+paul15,SAUCIE,task_enabled,2,scheduled_final,13Baso,300,0.3104127308876511
+paul15,SAUCIE,task_enabled,2,scheduled_final,14Mo,373,0.5244918575638922
+paul15,SAUCIE,task_enabled,2,scheduled_final,15Mo,186,0.07891038531770797
+paul15,SAUCIE,task_enabled,2,scheduled_final,16Neu,164,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,17Neu,22,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,18Eos,9,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,19Lymph,31,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,1Ery,43,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,2Ery,329,0.6765146084416598
+paul15,SAUCIE,task_enabled,2,scheduled_final,3Ery,246,0.487126385178906
+paul15,SAUCIE,task_enabled,2,scheduled_final,4Ery,124,0.0
+paul15,SAUCIE,task_enabled,2,scheduled_final,5Ery,180,0.31998744136570456
+paul15,SAUCIE,task_enabled,2,scheduled_final,6Ery,173,0.41412017163833986
+paul15,SAUCIE,task_enabled,2,scheduled_final,7MEP,167,0.5628600537186256
+paul15,SAUCIE,task_enabled,2,scheduled_final,8Mk,68,0.046296296296296294
+paul15,SAUCIE,task_enabled,2,scheduled_final,9GMP,63,0.0

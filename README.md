@@ -171,6 +171,45 @@ Choose a new empty directory for each run. The workflow records consumed inputs,
 
 The complete budgets, exact commands, resume rules and expected outputs are in [analysis/README.md](analysis/README.md). Separate deep-configuration and reference-attribution controls supply S18/S19; they are not automatically run by `make_figures.py` or implied complete by a primary-workflow smoke run.
 
+### Scheduled optimisation controls and execution evidence
+
+Supplementary Figure S21 reports 36 fixed-budget scScope/SAUCIE fits, 90 matched
+representation endpoints and 45 read-only saved-state gradient checks. The
+complete measured scalar inputs are in
+[`data/source_data/optimisation_controls`](data/source_data/optimisation_controls).
+To reproduce this figure without model fitting:
+
+```bash
+python -B -m analysis.optimization_controls.plot_controls --controls-dir data/source_data/optimisation_controls --output-dir outputs/scheduled_controls
+```
+
+Fitting, saved-state auditing, scoring, schedules and separate environments are
+documented in [analysis/OPTIMISATION_CONTROLS.md](analysis/OPTIMISATION_CONTROLS.md).
+The standalone command is separate from `make_figures.py`. The supplied
+[`Supplementary_Figures.pdf`](outputs/supplementary_figures/Supplementary_Figures.pdf)
+contains S1-S21, and the [results workbook](outputs/tables/Supplementary_Tables.xlsx)
+contains Tables S1-S20.
+
+The [publication-budget execution receipt](metadata/public_source_publication_budget_validation.json)
+records successful completion of all 24 public-source workflow stage types and
+the current-run validator in the recorded installed environments. It is not a
+fresh environment build. The [endpoint comparison](metadata/public_refit_endpoint_summary.csv)
+quantifies differences from archived outputs, including rare-population changes;
+the original figure values have not been silently replaced. The
+[specification comparison](metadata/public_refit_specification_comparison.csv)
+reports the actual whole-method permutation analyses on freshly fitted outputs.
+
+The historical scScope wrapper did not fully seed Python sampling and the new
+TensorFlow graph created inside scScope. Exact historical replay therefore uses
+the supplied fitted arrays. The public wrapper now seeds those sources, with
+an actual separate-process repeat check documented in
+[`metadata/scscope_seed_repeat_check.json`](metadata/scscope_seed_repeat_check.json).
+The completed publication-budget execution used the preceding wrapper; the
+targeted seed correction check is not a complete rerun of that execution. The
+scheduled optimisation controls already seed Python, NumPy and graph-local
+TensorFlow explicitly. Loss stability and seed repeatability do not establish
+a global optimum or biological reliability.
+
 ## Scope
 
 The specification records describe terms traceable to published mathematical formulations. They are multi-component records rather than mutually exclusive method classes or performance rankings. Figures 2, 3 and 5-7 reproduce the focused eight-anchor analyses. Figure 4 adds scVI as a ninth implementation for direct clustering, population-recovery, trajectory and donor-information outcomes. Supplementary Figs. S15-S17 additionally include scVI in matched empirical permutation calibration, geometry and a separate empirical specification sensitivity. scVI does not enter the original eight-anchor primary specification test or controlled-simulation comparisons. No panel estimates performance for catalogue methods that were not executed.
