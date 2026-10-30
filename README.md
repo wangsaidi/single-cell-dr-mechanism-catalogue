@@ -9,11 +9,13 @@ This repository contains the figure and analysis-reproduction materials for the 
 - `scripts/`: portable command-line plotters for the additional control figures; no fitting is performed by these plotters.
 - `metadata/`: mathematical specification records, public dataset sources and panel-level evidence mapping.
 - `outputs/main_figures/`: final Figures 1-7 in publication formats.
-- `outputs/supplementary_figures/`: S1-S20 outputs. S18-S20 also have complete scalar sources and standalone plotters.
-- `outputs/tables/`: Table 1 source and the Supplementary Tables S1-S19 workbook.
+- `outputs/supplementary_figures/`: S1-S21 outputs. S18-S21 have complete scalar sources and standalone plotters.
+- `outputs/tables/`: Table 1 source and the Supplementary Tables S1-S21 workbook.
 - `analysis/`: executable preprocessing, representation, downstream-analysis and verification workflow.
 
 The lightweight checkout contains the established plotting inputs. Larger checksum-locked processed objects and fitted arrays for archived analysis are distributed through the [`analysis-reproducibility-v1.0.1` GitHub Release](https://github.com/wangsaidi/single-cell-dr-mechanism-catalogue/releases/tag/analysis-reproducibility-v1.0.1) and installed by `python -m analysis.download_inputs`. Do not assume that this historical release also contains the new S18-S20 control-source bundle. Public-source refitting instead starts from the access routes in `metadata/public_data_sources.csv`.
+
+Supplementary Table S21 checks the Figure 4 association pattern using saved optimised scScope and reconstruction-only SAUCIE coordinates. Its complete [rescoring instructions](analysis/SAVED_REPRESENTATION_SENSITIVITY.md), measured records and 18 replacement coordinate arrays are included in this checkout. The other seven seed-zero representations remain fixed. This is a conditional implementation sensitivity, not another independent benchmark or a replacement of the historical main figures.
 
 ## Choose An Execution Route
 

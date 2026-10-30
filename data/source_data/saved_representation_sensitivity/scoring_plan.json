@@ -1,0 +1,48 @@
+{
+  "recorded_utc": "2026-10-30T02:04:59.339973+00:00",
+  "methods": [
+    "PCA",
+    "GLM-PCA",
+    "scScope",
+    "SAUCIE",
+    "UMAP",
+    "PHATE",
+    "t-SNE",
+    "PaCMAP",
+    "scVI"
+  ],
+  "control_seeds": [
+    0,
+    1,
+    2
+  ],
+  "other_seven_seed": 0,
+  "replaced_methods": [
+    "scScope",
+    "SAUCIE"
+  ],
+  "datasets": [
+    "pbmc3k",
+    "paul15",
+    "heart_cell_atlas_subsampled"
+  ],
+  "scScope": "saved t-SNE2 of scheduled epoch-2500 native output",
+  "SAUCIE": "saved reconstruction-only step-30000 two-dimensional output",
+  "model_fitting": false,
+  "graph_k": 15,
+  "graph_seed": 0,
+  "resolutions": [
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0,
+    1.2,
+    1.5,
+    2.0
+  ],
+  "exact_test": "two-sided Spearman whole-method-label permutations, identity included",
+  "multiplicity": "seven original comparisons per conditional panel, BH within panel",
+  "trajectory": "7MEP root, common finite cells across original and replacement outputs; original-only population separately retained",
+  "scope": "Post hoc configuration and re-execution sensitivity; three replacements share seven fixed anchors, not independent biological or algorithm samples."
+}

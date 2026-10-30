@@ -21,3 +21,7 @@ metadata/scheduled_optimisation_validation.json -text
 metadata/scscope_seed_repeat_check.json -text
 metadata/Supplementary_Fig_S21_evidence_matrix.csv -text
 outputs/supplementary_figures/Supplementary_Fig_S21_* -text
+data/source_data/saved_representation_sensitivity/** -text
+analysis/scripts/evaluate_saved_representations.py -text
+analysis/SAVED_REPRESENTATION_SENSITIVITY.md -text
+metadata/saved_representation_sensitivity_validation.json -text

@@ -1,0 +1,52 @@
+{
+  "scope": "Post hoc configuration and re-execution sensitivity; three replacements share seven fixed anchors, not independent biological or algorithm samples.",
+  "result_source": "data/source_data/saved_representation_sensitivity",
+  "model_refitting_performed": false,
+  "scored_representations": 45,
+  "conditional_panels": 4,
+  "association_tests": 28,
+  "common_Paul15_cells": 2671,
+  "bundle_sha256": "fdee2b0604af41b01ace1479b6663519f32358ec94ad1777c12a6264b816b74f",
+  "coordinate_member_sha256": {
+    "pb_sc_0/final_tSNE2.npy": "c43e44815150a2b10fdae684fc36b3a93d614ad7a60edbc7cba418dcd21187a5",
+    "pb_rec_0/embedding_final.npy": "f53adbe82f5a3c6947ac0841638602933ff9450055ad5fef4abf093445fa7ade",
+    "pb_sc_1/final_tSNE2.npy": "bbe4a8e916173f5f7f679de4bdd297462f6d6050cdd7451d6b3438bbf4fa1415",
+    "pb_rec_1/embedding_final.npy": "a8558cd01b19c49ba500ed4e8dc46405586168ec7f5930aa95aee774f24483e9",
+    "pb_sc_2/final_tSNE2.npy": "b0d8108354a14252e9e0d1b076d0d323f882f9b7ce3e012a31a6e5360ecb9775",
+    "pb_rec_2/embedding_final.npy": "ccfc747de8755817b92737d51fa471286dcf1e7cf19042eb63f656ee2f0411b0",
+    "pa_sc_0/final_tSNE2.npy": "d197d471872adb0f135c3340dc93702e73e5a9bce73fb6f757e322db1bb8930e",
+    "pa_rec_0/embedding_final.npy": "81d2fc55f4cc9daff7ddd82898e59cf076f3af46ddc53bd4fe028d9568442909",
+    "pa_sc_1/final_tSNE2.npy": "703bab5680fe7607dd8bbb1b201c3c82184e5c5da61d0759c9caf41115447f73",
+    "pa_rec_1/embedding_final.npy": "862e946fea6ff4a4e58a6f4503823403ce31002edeaa638ec456c9badc53edd3",
+    "pa_sc_2/final_tSNE2.npy": "f9667d74ff7f5a92c3bcf2f635931a29598352e6fbc6e925f3a2271c1a9443fc",
+    "pa_rec_2/embedding_final.npy": "18d0a6a5c558bf42c7b1613e965ecb47598c0ce9749855d5f36c4ef906f284d2",
+    "ht_sc_0/final_tSNE2.npy": "f08449f60f51596ae3f9a6ab91980d40776f15e90148c6ef2702fa113ce649c7",
+    "ht_rec_0/embedding_final.npy": "2d9e3289a77b3b02c0aaa971bd477f70c6525593383ef64488d69fa01f1f3de1",
+    "ht_sc_1/final_tSNE2.npy": "d61cc597d81aa04927562c1ff3db419ec2f578cc7a79439069dac6efe4945c86",
+    "ht_rec_1/embedding_final.npy": "7400246e790517de1e4e497d5ad05a0a96a64046564ad3389cb2fd5e17c26daf",
+    "ht_sc_2/final_tSNE2.npy": "ad8e312f9d7e912dc4bb484067992983051c31e6c0c522cd7216374df2a3cb75",
+    "ht_rec_2/embedding_final.npy": "a7617c322929d77667d0fb6d40ce4931596d88a98cecdd87ec64aa2c770a93da"
+  },
+  "original_association_reproduction": {
+    "spearman_rho_old": 3.33333360913457e-11,
+    "exact_two_sided_permutation_p": 4.056438518418304e-11,
+    "q_bh_7_planned_tests": 4.056438518418304e-11
+  },
+  "conditional_panel_decisions": [
+    {
+      "panel": "scheduled0",
+      "same_seven_BH_decisions": true,
+      "q_below_0_05_count": 4
+    },
+    {
+      "panel": "scheduled1",
+      "same_seven_BH_decisions": true,
+      "q_below_0_05_count": 4
+    },
+    {
+      "panel": "scheduled2",
+      "same_seven_BH_decisions": true,
+      "q_below_0_05_count": 4
+    }
+  ]
+}

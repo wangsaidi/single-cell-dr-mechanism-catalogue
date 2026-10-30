@@ -1,0 +1,46 @@
+{
+  "completed": true,
+  "model_fitting_performed": false,
+  "new_main_figures": 0,
+  "number_of_representations_scored": 45,
+  "conditional_panels": 4,
+  "association_tests": 28,
+  "original_trajectory_common_cells": 2671,
+  "joint_trajectory_common_cells": 2671,
+  "n_cells": {
+    "pbmc3k": 2638,
+    "paul15": 2730,
+    "heart_cell_atlas_subsampled": 8000
+  },
+  "scoring_scope": "Post hoc configuration and re-execution sensitivity; three replacements share seven fixed anchors, not independent biological or algorithm samples.",
+  "modules": {
+    "analysis.scripts.compute_clustering": "32eb7477b2113b792f36c4285147a649d813a61c982fc835bc30f02fa047a928",
+    "analysis.scripts.compute_diagnostics": "149156c193cad0fac5bef4fe44b141a22cb4181ab63c73c0a05db2638fcb670f",
+    "analysis.scripts.compute_marker_concordance": "39b7e31ada1912f539cff12fbfc56465aa01b29ef30c3758099d1b7b37f039ec",
+    "analysis.scripts.compute_trajectory": "bbb7d1d04bcb2bf39787e810c506bcfca768f1f6b17eacbe5e9a74dcccb14215",
+    "analysis.scripts.summarise_results": "1a81213eca17665ff9c1bfa08105ef8c0b23f3c6748171683d94d78d440190c2"
+  },
+  "software": {
+    "numpy": "2.4.4",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scanpy": "1.12.1",
+    "anndata": "0.12.16",
+    "igraph": "1.0.0",
+    "scikit-learn": "1.8.0"
+  },
+  "result_sha256": {
+    "input_inventory.csv": "92895983ef3ae0fd31cac54c66c68b99b804dcbc6e3aa69e220e4f90c6b57d7f",
+    "geometry_metrics.csv": "17f509fc70870c8994883acbc2b8048b3b9624a0e216b2a3643cf6af6ff775a0",
+    "clustering_by_resolution.csv": "3ed77ed943847a6dcd4551f2be2c874d8c1e2e7064e6e315c0afa09a8983e627",
+    "population_by_resolution.csv": "afe7f26630141dea2d18908bca9e2860471095c4d55634f9b20c6634d804e198",
+    "marker_by_resolution.csv": "4a2cb35974485eaef5f6098e09aaf2aa4082da9e42e14cf91b1bd254e62cbf43",
+    "trajectory_summary.csv": "8af1b86cbea94e71ed94421285984087db55480445e3b8f9198c3ac916fe8564",
+    "representation_endpoints.csv": "092a842b4231135e2422de51124a357b9d4f3d15c44eba81a1c7855a4bf2c2de",
+    "association_results.csv": "5870267b3219333cbbf7b9fbeffc3704b14ee6df3b90445a23ef8927e8d56df4",
+    "association_inputs.csv": "4afb3f7769fc504c1ca2242e05aeeb5814287a1e8bf6264dbdaa6abbf4e544d2",
+    "population_summary.csv": "f896e6e3685df4a910707fb7c2ddfce5ffe2be8f4eb6908e964f5598804b5f2d",
+    "trajectory_comparison_population.csv": "70aa4636fca32505af37174fddf3c173dfae098db246a7931f31e142c9f84908",
+    "trajectory_cell_pseudotimes.csv": "8aa31e43d14ce8eaa4f1b5815d9038d40b1dd31ef018d504ee2e2bce63ac32e3"
+  }
+}
